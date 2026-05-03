@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacific Lightning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="hud-column">
+      <div class="brand">
+        <p class="eyebrow">Arcade Squadron</p>
+        <h1>Pacific Lightning</h1>
+        <p class="tagline">Fly a P-38 Lightning through carrier strikes, burning battleships, and ace squadrons over the Pacific.</p>
+      </div>
+      <div class="panel">
+        <h2>Mission Controls</h2>
+        <p>Move with <span>WASD</span> or <span>Arrow Keys</span>.</p>
+        <p>Fire with <span>Space</span>. Launch bomb with <span>Shift</span> or <span>X</span>.</p>
+        <p>Press <span>Enter</span> to begin or restart.</p>
+      </div>
+      <div class="panel legend">
+        <h2>Power-Ups</h2>
+        <p><span class="chip red"></span> Spread fire</p>
+        <p><span class="chip blue"></span> Beam cannon</p>
+        <p><span class="chip gold"></span> Shield restore</p>
+      </div>
+    </section>
+    <section class="play-column">
+      <canvas id="game" width="480" height="720" aria-label="Pacific Lightning game canvas"></canvas>
+      <div class="cabinet-glow"></div>
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
