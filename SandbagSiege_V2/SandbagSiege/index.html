@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sandbag Siege V2</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="top-bar">
+        <div>
+          <p class="eyebrow">First Person Arcade Shooter</p>
+          <h1>Sandbag Siege V2</h1>
+        </div>
+        <div class="status-strip">
+          <span>Wave <strong id="waveValue">1</strong></span>
+          <span>Score <strong id="scoreValue">0</strong></span>
+          <span>Health <strong id="healthValue">100</strong></span>
+        </div>
+      </header>
+
+      <section class="playfield-wrap">
+        <canvas
+          id="gameCanvas"
+          width="1280"
+          height="720"
+          aria-label="Sandbag Siege first person game canvas"
+        ></canvas>
+
+        <aside class="hud-panel">
+          <section>
+            <h2>Controls</h2>
+            <ul>
+              <li>Mouse to aim, click to fire</li>
+              <li><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> to move</li>
+              <li><kbd>Q</kbd> use medkit</li>
+              <li><kbd>E</kbd> throw grenade</li>
+              <li><kbd>1</kbd> rifle</li>
+              <li><kbd>2</kbd> auto rifle</li>
+              <li><kbd>R</kbd> reload</li>
+              <li><kbd>P</kbd> pause</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Loadout</h2>
+            <div class="weapon-card">
+              <p class="weapon-label">Active Weapon</p>
+              <p id="weaponName" class="weapon-name">Ranger Rifle</p>
+              <p id="weaponAmmo" class="weapon-ammo">10 / 60</p>
+            </div>
+            <div class="weapon-card alt">
+              <p class="weapon-label">Backup Weapon</p>
+              <p id="backupName" class="weapon-name">Auto Rifle</p>
+              <p id="backupAmmo" class="weapon-ammo">36 / 180</p>
+            </div>
+            <div class="mini-stats">
+              <div class="mini-card">
+                <span class="mini-label">Medkits</span>
+                <strong id="medkitValue">3</strong>
+              </div>
+              <div class="mini-card">
+                <span class="mini-label">Grenades</span>
+                <strong id="grenadeValue">4</strong>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Mission Feed</h2>
+            <p id="missionText" class="mission-text">
+              Advance through the canyon, clear the raiders, and survive the gunship run.
+            </p>
+          </section>
+        </aside>
+      </section>
+
+      <footer class="bottom-bar">
+        <div class="legend">
+          <span class="legend-chip enemy">Enemy Squad</span>
+          <span class="legend-chip ammo">Ammo</span>
+          <span class="legend-chip med">Medkit</span>
+          <span class="legend-chip power">Power Core</span>
+        </div>
+        <p class="footer-note">
+          Version 2 switches to a first-person point of view with modernized sprite art and movement-based combat.
+        </p>
+      </footer>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>

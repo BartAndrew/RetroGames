@@ -1,0 +1,225 @@
+:root {
+  --bg-top: #09131f;
+  --bg-bottom: #182435;
+  --panel: rgba(8, 15, 24, 0.9);
+  --panel-border: rgba(112, 190, 255, 0.22);
+  --text-main: #ebf5ff;
+  --text-dim: #96a6b8;
+  --accent: #6fd0ff;
+  --accent-hot: #ff8b5d;
+  --accent-green: #72e6b2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at top, rgba(111, 208, 255, 0.14), transparent 30%),
+    linear-gradient(180deg, var(--bg-top) 0%, #101b29 52%, var(--bg-bottom) 100%);
+}
+
+.game-shell {
+  min-height: 100vh;
+  padding: 18px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+}
+
+.top-bar,
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+}
+
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 4vw, 3.7rem);
+}
+
+.status-strip,
+.legend,
+.mini-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.status-strip span,
+.legend-chip,
+.mini-card {
+  border: 1px solid var(--panel-border);
+  background: rgba(7, 13, 22, 0.72);
+}
+
+.status-strip span,
+.legend-chip {
+  padding: 8px 12px;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+}
+
+.playfield-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 16px;
+  min-height: 0;
+}
+
+#gameCanvas {
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 170px);
+  border: 1px solid rgba(111, 208, 255, 0.3);
+  background: linear-gradient(180deg, #0f2135, #9a5f43);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.42);
+  cursor: crosshair;
+}
+
+.hud-panel {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(180deg, rgba(111, 208, 255, 0.04), transparent 30%),
+    var(--panel);
+}
+
+.hud-panel section {
+  display: grid;
+  gap: 10px;
+}
+
+.hud-panel h2 {
+  color: var(--accent);
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.hud-panel ul {
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: var(--text-dim);
+  line-height: 1.3;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 22px;
+  padding: 2px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  text-align: center;
+}
+
+.weapon-card {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.weapon-card.alt {
+  border-color: rgba(114, 230, 178, 0.28);
+}
+
+.weapon-label,
+.mini-label {
+  color: var(--text-dim);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.weapon-name {
+  font-size: 1.1rem;
+}
+
+.weapon-ammo,
+.mission-text,
+.footer-note {
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+.mini-card {
+  min-width: 110px;
+  padding: 10px 12px;
+  display: grid;
+  gap: 4px;
+}
+
+.mini-card strong {
+  font-size: 1.2rem;
+}
+
+.legend-chip.enemy {
+  border-color: rgba(255, 139, 93, 0.5);
+}
+
+.legend-chip.ammo {
+  border-color: rgba(111, 208, 255, 0.5);
+}
+
+.legend-chip.med {
+  border-color: rgba(114, 230, 178, 0.5);
+}
+
+.legend-chip.power {
+  border-color: rgba(255, 214, 117, 0.5);
+}
+
+@media (max-width: 1080px) {
+  .playfield-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  #gameCanvas {
+    max-height: none;
+  }
+
+  .hud-panel {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .game-shell {
+    padding: 12px;
+  }
+
+  .top-bar,
+  .bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

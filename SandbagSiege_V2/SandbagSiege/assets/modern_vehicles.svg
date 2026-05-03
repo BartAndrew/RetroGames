@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="96" viewBox="0 0 640 96">
+<defs>
+<linearGradient id="skyBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b8e7ff"/><stop offset="100%" stop-color="#4b82b1"/></linearGradient>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7e8ea2"/><stop offset="100%" stop-color="#304055"/></linearGradient>
+<linearGradient id="armorOlive" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6b8f79"/><stop offset="100%" stop-color="#2e473a"/></linearGradient>
+<linearGradient id="armorBrown" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8a5f53"/><stop offset="100%" stop-color="#4c2f29"/></linearGradient>
+<linearGradient id="armorBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6fc8ff"/><stop offset="100%" stop-color="#234f74"/></linearGradient>
+<radialGradient id="blast" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff7d6"/><stop offset="45%" stop-color="#ffb15e"/><stop offset="100%" stop-color="#d8563e"/></radialGradient>
+</defs>
+<ellipse cx="80" cy="84" rx="48" ry="10" fill="rgba(0,0,0,0.22)" />
+<path d="M 28 56 L 122 56 L 132 66 L 40 76 Z" fill="url(#steel)" />
+<path d="M 52 40 L 100 40 L 116 56 L 44 56 Z" fill="#50667f" />
+<rect x="24" y="48" width="112" height="5" rx="2" fill="#1f2935" />
+<rect x="76" y="22" width="8" height="22" rx="3" fill="#2a3947" />
+<rect x="34" y="18" width="92" height="4" rx="2" fill="#121920" />
+<rect x="14" y="62" width="22" height="4" rx="2" fill="#1a222b" />
+<rect x="126" y="62" width="22" height="4" rx="2" fill="#1a222b" />
+<ellipse cx="240" cy="84" rx="48" ry="10" fill="rgba(0,0,0,0.22)" />
+<path d="M 188 56 L 282 56 L 292 66 L 200 76 Z" fill="url(#steel)" />
+<path d="M 212 40 L 260 40 L 276 56 L 204 56 Z" fill="#50667f" />
+<rect x="184" y="48" width="112" height="5" rx="2" fill="#1f2935" />
+<rect x="236" y="22" width="8" height="22" rx="3" fill="#2a3947" />
+<rect x="197" y="18" width="92" height="4" rx="2" fill="#121920" />
+<rect x="174" y="62" width="22" height="4" rx="2" fill="#1a222b" />
+<rect x="286" y="62" width="22" height="4" rx="2" fill="#1a222b" />
+<ellipse cx="400" cy="84" rx="48" ry="10" fill="rgba(0,0,0,0.22)" />
+<path d="M 348 56 L 442 56 L 452 66 L 360 76 Z" fill="url(#steel)" />
+<path d="M 372 40 L 420 40 L 436 56 L 364 56 Z" fill="#50667f" />
+<rect x="344" y="48" width="112" height="5" rx="2" fill="#1f2935" />
+<rect x="396" y="22" width="8" height="22" rx="3" fill="#2a3947" />
+<rect x="354" y="18" width="92" height="4" rx="2" fill="#121920" />
+<rect x="334" y="62" width="22" height="4" rx="2" fill="#1a222b" />
+<rect x="446" y="62" width="22" height="4" rx="2" fill="#1a222b" />
+<ellipse cx="560" cy="84" rx="48" ry="10" fill="rgba(0,0,0,0.22)" />
+<path d="M 508 56 L 602 56 L 612 66 L 520 76 Z" fill="url(#steel)" />
+<path d="M 532 40 L 580 40 L 596 56 L 524 56 Z" fill="#50667f" />
+<rect x="504" y="48" width="112" height="5" rx="2" fill="#1f2935" />
+<rect x="556" y="22" width="8" height="22" rx="3" fill="#2a3947" />
+<rect x="511" y="18" width="92" height="4" rx="2" fill="#121920" />
+<rect x="494" y="62" width="22" height="4" rx="2" fill="#1a222b" />
+<rect x="606" y="62" width="22" height="4" rx="2" fill="#1a222b" />
+</svg>

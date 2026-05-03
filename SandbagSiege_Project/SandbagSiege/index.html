@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sandbag Siege</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="top-bar">
+        <div>
+          <p class="eyebrow">Retro Shooting Gallery</p>
+          <h1>Sandbag Siege</h1>
+        </div>
+        <div class="status-strip" id="statusStrip">
+          <span>Wave <strong id="waveValue">1</strong></span>
+          <span>Score <strong id="scoreValue">0</strong></span>
+          <span>Health <strong id="healthValue">100</strong></span>
+        </div>
+      </header>
+
+      <section class="playfield-wrap">
+        <canvas
+          id="gameCanvas"
+          width="1280"
+          height="720"
+          aria-label="Sandbag Siege game canvas"
+        ></canvas>
+
+        <aside class="hud-panel">
+          <section>
+            <h2>Controls</h2>
+            <ul>
+              <li>Mouse to aim, click to fire</li>
+              <li><kbd>Space</kbd> pop up or duck behind sandbags</li>
+              <li><kbd>1</kbd> sniper rifle</li>
+              <li><kbd>2</kbd> support weapon</li>
+              <li><kbd>Q</kbd> cycle support weapon</li>
+              <li><kbd>G</kbd> grenade</li>
+              <li><kbd>R</kbd> reload active weapon</li>
+              <li><kbd>P</kbd> pause</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Loadout</h2>
+            <div class="weapon-card">
+              <p class="weapon-label">Active Weapon</p>
+              <p id="weaponName" class="weapon-name">Sniper Rifle</p>
+              <p id="weaponAmmo" class="weapon-ammo">8 / 40</p>
+            </div>
+            <div class="weapon-card alt">
+              <p class="weapon-label">Support Slot</p>
+              <p id="supportName" class="weapon-name">Machine Gun</p>
+              <p id="supportAmmo" class="weapon-ammo">80 / 240</p>
+            </div>
+            <div class="weapon-card grenade-card">
+              <p class="weapon-label">Grenades</p>
+              <p id="grenadeCount" class="weapon-name">5</p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Mission Tips</h2>
+            <p id="missionText" class="mission-text">
+              Hold the ridge. Pop up, fire fast, then duck before enemy snipers line up.
+            </p>
+          </section>
+        </aside>
+      </section>
+
+      <footer class="bottom-bar">
+        <div class="legend">
+          <span class="legend-chip enemy">Enemy</span>
+          <span class="legend-chip ammo">Ammo Crate</span>
+          <span class="legend-chip power">Power-Up</span>
+          <span class="legend-chip cover">Cover Bonus</span>
+        </div>
+        <p class="footer-note">
+          Built with heavily commented code and handmade retro sprite sheets so it can double as a classroom example.
+        </p>
+      </footer>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
