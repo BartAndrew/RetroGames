@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Scrapper '84</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="cabinet">
+    <header class="marquee">
+      <div>
+        <p class="eyebrow">Retro Arcade Prototype</p>
+        <h1>Star Scrapper '84</h1>
+      </div>
+      <div class="scoreboard">
+        <div><span>Score</span><strong id="score">000000</strong></div>
+        <div><span>Lives</span><strong id="lives">3</strong></div>
+        <div><span>Wave</span><strong id="wave">1</strong></div>
+      </div>
+    </header>
+
+    <section class="playfield-shell">
+      <canvas id="game" width="320" height="240" aria-label="Star Scrapper game screen"></canvas>
+      <aside class="side-panel">
+        <p class="panel-title">Mission</p>
+        <p>Defend the salvage lane. Blast raiders, dodge debris, survive the waves.</p>
+        <p class="panel-title">Controls</p>
+        <p>Move: Arrow keys or WASD</p>
+        <p>Fire: Space</p>
+        <p>Restart: Enter after game over</p>
+        <div class="status-box" id="statusBox">
+          <p class="status-title">Insert Coin</p>
+          <p class="status-copy">Press Space to begin.</p>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="legend">
+      <span>Raiders: 100</span>
+      <span>Comets: avoid</span>
+      <span>Wave clear bonus: 250</span>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
