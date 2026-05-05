@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Left Vs Right: Hipster Fighter</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="title-strip">
+        <p class="eyebrow">Late-Night Pixel Politics</p>
+        <h1>Left Vs Right</h1>
+        <p class="subtitle">
+          A grown-up parody fighter where espresso-fueled ideologues settle it
+          with quips, kicks, and bad podcast energy.
+        </p>
+      </section>
+
+      <section class="stage-shell">
+        <canvas
+          id="gameCanvas"
+          width="960"
+          height="540"
+          aria-label="Left Vs Right game canvas"
+        ></canvas>
+
+        <div class="menu-overlay" id="menuOverlay">
+          <div class="menu-panel">
+            <div class="panel-copy">
+              <p class="panel-kicker">Character Select</p>
+              <h2>Choose Your Walking Think Piece</h2>
+              <p>
+                Pick a fighter, then either brawl the CPU or drag a friend into
+                the discourse.
+              </p>
+            </div>
+
+            <div class="character-grid" id="characterGrid"></div>
+
+            <div class="selection-row">
+              <div class="selection-card" id="selectionCard">
+                <span class="selection-label">Selected Fighter</span>
+                <strong id="selectedName">Cassette Jack</strong>
+                <p id="selectedBio">
+                  Vintage denim bruiser with a tote full of unsolicited
+                  opinions.
+                </p>
+                <div class="move-list" id="selectedMoves"></div>
+              </div>
+
+              <div class="mode-card">
+                <span class="selection-label">Modes</span>
+                <div class="button-stack">
+                  <button id="cpuStartButton" class="arcade-button primary">
+                    Start Vs CPU
+                  </button>
+                  <button id="duelStartButton" class="arcade-button">
+                    Start 2P Duel
+                  </button>
+                </div>
+                <p class="control-note">
+                  P1: WASD + F/G/H<br />
+                  P2: Arrows + J/K/L
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud-notes">
+          <span>Parody only. Everybody gets roasted.</span>
+          <span>First to survive the discourse wins.</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>

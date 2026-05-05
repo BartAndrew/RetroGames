@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="336" height="72" viewBox="0 0 336 72" shape-rendering="crispEdges">
+  <defs>
+    <g id="body">
+      <rect x="21" y="8" width="6" height="6" fill="#f2cfb6"/>
+      <rect x="18" y="14" width="12" height="3" fill="#2f2f3e"/>
+      <rect x="15" y="17" width="18" height="9" fill="#f2cfb6"/>
+      <rect x="18" y="20" width="12" height="3" fill="#161826"/>
+      <rect x="18" y="26" width="12" height="3" fill="#cc4048"/>
+      <rect x="15" y="29" width="18" height="15" fill="#5a7c6a"/>
+      <rect x="12" y="29" width="3" height="12" fill="#5a7c6a"/>
+      <rect x="33" y="29" width="3" height="12" fill="#5a7c6a"/>
+      <rect x="18" y="44" width="6" height="15" fill="#283149"/>
+      <rect x="24" y="44" width="6" height="15" fill="#1d243a"/>
+      <rect x="18" y="59" width="6" height="6" fill="#f2cfb6"/>
+      <rect x="24" y="59" width="6" height="6" fill="#f2cfb6"/>
+      <rect x="12" y="11" width="3" height="3" fill="#d6485f"/>
+      <rect x="33" y="11" width="3" height="3" fill="#d6485f"/>
+    </g>
+  </defs>
+
+  <g transform="translate(0 0)">
+    <use href="#body"/>
+  </g>
+  <g transform="translate(48 0)">
+    <use href="#body"/>
+    <rect x="12" y="32" width="3" height="3" fill="#f2cfb6"/>
+    <rect x="33" y="32" width="3" height="3" fill="#f2cfb6"/>
+  </g>
+  <g transform="translate(96 0)">
+    <use href="#body"/>
+    <rect x="36" y="32" width="15" height="3" fill="#f2cfb6"/>
+    <rect x="48" y="29" width="6" height="6" fill="#d6485f"/>
+  </g>
+  <g transform="translate(144 0)">
+    <use href="#body"/>
+    <rect x="39" y="38" width="15" height="3" fill="#f2cfb6"/>
+    <rect x="42" y="35" width="12" height="3" fill="#b8e986"/>
+  </g>
+  <g transform="translate(192 0)">
+    <use href="#body"/>
+    <rect x="15" y="17" width="18" height="9" fill="#f0a4ae"/>
+    <rect x="12" y="32" width="3" height="6" fill="#f2cfb6"/>
+  </g>
+  <g transform="translate(240 0)">
+    <use href="#body"/>
+    <rect x="18" y="47" width="6" height="12" fill="#283149"/>
+    <rect x="24" y="47" width="6" height="12" fill="#1d243a"/>
+    <rect x="12" y="35" width="3" height="12" fill="#f2cfb6"/>
+    <rect x="33" y="35" width="3" height="9" fill="#f2cfb6"/>
+  </g>
+  <g transform="translate(288 0)">
+    <use href="#body"/>
+    <rect x="33" y="29" width="12" height="6" fill="#f2cfb6"/>
+    <rect x="42" y="26" width="6" height="3" fill="#ffffff"/>
+    <rect x="42" y="29" width="6" height="6" fill="#6ccff6"/>
+  </g>
+</svg>
