@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stereotype Fighters — Retro 2D Fighting Demo</title>
+  <meta name="description" content="A two-player retro pixel fighting-game prototype." />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="cabinet">
+    <header class="marquee" aria-labelledby="game-title">
+      <div>
+        <p class="eyebrow">16-bit parody brawler prototype</p>
+        <h1 id="game-title">STEREOTYPE <span>FIGHTERS</span></h1>
+        <p class="tagline">Two archetypes enter. The comment section does not survive.</p>
+      </div>
+      <div class="cabinet-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+    </header>
+
+    <section class="stage-shell">
+      <canvas id="gameCanvas" width="960" height="540" aria-label="Stereotype Fighters game screen"></canvas>
+
+      <div class="select-overlay" id="selectOverlay">
+        <div class="select-panel">
+          <div class="select-heading">
+            <div>
+              <p class="panel-kicker">Character Select</p>
+              <h2>Choose your fighter</h2>
+            </div>
+            <div class="slot-tabs" role="group" aria-label="Choose player slot to edit">
+              <button class="slot-tab active" type="button" data-slot="0">P1</button>
+              <button class="slot-tab" type="button" data-slot="1">P2</button>
+            </div>
+          </div>
+
+          <div class="fighter-grid" id="fighterGrid"></div>
+
+          <div class="match-setup">
+            <div class="selection-summary">
+              <div><span>P1</span><strong id="p1Name">Lefty Liberal</strong></div>
+              <div class="versus">VS</div>
+              <div><span>P2 / CPU</span><strong id="p2Name">Agenda Fluid</strong></div>
+            </div>
+            <div class="start-buttons">
+              <button type="button" class="arcade-button primary" id="cpuButton">START VS CPU</button>
+              <button type="button" class="arcade-button" id="duelButton">START 2 PLAYER</button>
+            </div>
+          </div>
+
+          <div class="controls-grid">
+            <div>
+              <strong>PLAYER 1</strong>
+              <span>A/D move · W jump · S crouch · E block · F punch · G kick · H special</span>
+            </div>
+            <div>
+              <strong>PLAYER 2</strong>
+              <span>←/→ move · ↑ jump · ↓ crouch · I block · J punch · K kick · L special</span>
+            </div>
+          </div>
+          <p class="parody-note">Fictional parody archetypes; no real person is represented.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="cabinet-footer">
+      <span><kbd>P</kbd> pause</span>
+      <span><kbd>M</kbd> character select after a match</span>
+      <button id="muteButton" type="button" class="tiny-button" aria-pressed="false">SOUND: ON</button>
+    </footer>
+  </main>
+
+  <script src="./assets/lefty-atlas-00.js"></script>
+  <script src="./assets/lefty-atlas-01.js"></script>
+  <script src="./assets/lefty-atlas-02.js"></script>
+  <script src="./assets/lefty-atlas-03.js"></script>
+  <script src="./assets/lefty-atlas-04.js"></script>
+  <script src="./assets/agenda-atlas-00.js"></script>
+  <script src="./assets/agenda-atlas-01.js"></script>
+  <script src="./assets/agenda-atlas-02.js"></script>
+  <script src="./assets/agenda-atlas-03.js"></script>
+  <script src="./assets/agenda-atlas-04.js"></script>
+  <script src="./assets/agenda-atlas-05.js"></script>
+  <script src="./assets/game-code-00.js"></script>
+  <script src="./assets/game-code-01.js"></script>
+  <script src="./assets/game-code-02.js"></script>
+  <script src="./assets/game-code-03.js"></script>
+  <script src="./assets/game-code-04.js"></script>
+  <script src="./assets/game-code-05.js"></script>
+  <script src="./assets/game-code-06.js"></script>
+  <script src="./assets/game-code-07.js"></script>
+  <script src="./game-loader.js"></script>
+</body>
+</html>
