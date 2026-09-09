@@ -1,0 +1,43 @@
+{
+  "character": "Lefty Liberal",
+  "style": "retro 2D fighting game pixel art",
+  "master": "lefty-liberal-additional-movements-master.png",
+  "source_size": {
+    "width": 1536,
+    "height": 1024
+  },
+  "panels": {
+    "idle": {"box": [5, 36, 445, 210], "frame_count": 6},
+    "walk_forward": {"box": [450, 36, 1017, 210], "frame_count": 8},
+    "walk_back": {"box": [1024, 36, 1531, 210], "frame_count": 8},
+    "dash_run": {"box": [5, 213, 458, 378], "frame_count": 8},
+    "crouch": {"box": [461, 213, 772, 378], "frame_count": 5},
+    "crouch_walk": {"box": [777, 213, 1127, 378], "frame_count": 5},
+    "jump_neutral": {"box": [1132, 213, 1531, 378], "frame_count": 5},
+    "jump_forward": {"box": [5, 382, 384, 539], "frame_count": 6},
+    "jump_back": {"box": [388, 382, 775, 539], "frame_count": 6},
+    "landing": {"box": [779, 382, 1120, 539], "frame_count": 4},
+    "turn_around": {"box": [1125, 382, 1531, 539], "frame_count": 4},
+    "punch_combo": {"box": [5, 543, 534, 700], "frame_count": 8},
+    "kick_combo": {"box": [539, 543, 1113, 700], "frame_count": 8},
+    "special_projectile": {"box": [1117, 543, 1531, 700], "frame_count": 5},
+    "block": {"box": [5, 704, 357, 857], "frame_count": 5},
+    "hit_light": {"box": [361, 704, 674, 857], "frame_count": 4},
+    "hit_heavy": {"box": [679, 704, 1132, 857], "frame_count": 5},
+    "get_up": {"box": [1137, 704, 1531, 857], "frame_count": 5},
+    "knockdown": {"box": [5, 861, 379, 1019], "frame_count": 5},
+    "taunt": {"box": [384, 861, 779, 1019], "frame_count": 5},
+    "win": {"box": [784, 861, 1209, 1019], "frame_count": 5},
+    "lose": {"box": [1214, 861, 1531, 1019], "frame_count": 4}
+  },
+  "recommended_next_drawn_movements": [
+    "low sweep kick", "uppercut / launcher", "crouching punch", "crouching kick",
+    "air punch", "air kick", "throw / grab", "throw victim reaction", "parry",
+    "dodge / backstep", "dizzy / stun", "KO fall", "intro pose", "character select portrait"
+  ],
+  "consistency_notes": [
+    "Keep brown beanie, dark glasses, beard, olive jacket, black EAT THE RICH shirt, cuffed dark jeans and black-and-white sneakers locked.",
+    "Keep the same head-to-body proportions, pixel density, outline weight and warm skin palette.",
+    "Use the master sheet as the visual reference for any future generated poses rather than regenerating the character from text alone."
+  ]
+}
