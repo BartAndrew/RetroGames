@@ -15,10 +15,17 @@
   const keys = Object.create(null), pressed = new Set();
   let audioMuted = false, paused = false, frame = 0;
 
+  const bimboRects = [
+    [16,183,68,111],[84,183,66,111],[18,472,60,107],[142,472,63,107],[204,472,60,107],
+    [263,472,61,107],[640,472,65,107],[700,472,65,107],[985,472,70,107],[1048,472,72,107],
+    [1120,472,78,107],[18,620,92,120],[105,620,110,120],[205,620,102,120],[835,620,65,120],
+    [895,620,73,120],[965,620,80,120],[102,785,88,93],[795,780,77,98],[1328,620,87,120]
+  ];
+
   const fighters = [
     { id:'lefty', name:'Lefty Liberal', style:'Activist Brawler', accent:'#ffba08', color:'#687836', special:'Safe Space Bubble', atlas: () => 'data:image/png;base64,' + (window.__SF_LEFTY_ATLAS || ''), bio:'A caffeinated street activist who fights with righteous jabs and defensive energy.' },
     { id:'agenda', name:'Agenda Fluid', style:'Identity Punk', accent:'#dc5cff', color:'#1687dc', special:'Gender Bending Beatdown', atlas: () => 'data:image/png;base64,' + (window.__SF_AGENDA_ATLAS || ''), bio:'A neon punk rushdown fighter with fast kicks and a purple energy wave.' },
-    { id:'club-doll', name:'Club Doll', style:'Nightlife Queen', accent:'#ff64c8', color:'#ff2f98', special:'Velvet Rope Vortex', atlas: () => './assets/club-doll-atlas.png', bio:'Paris nightlife royalty: high kicks, evasive spins and camera-ready finishing poses.' },
+    { id:'bimbo-babe', name:'Bimbo Babe', style:'Valley Girl Diva', accent:'#ff43b5', color:'#ff79c8', special:'Heart Blast', atlas: () => './Bimbo.png', sourceRects:bimboRects, bio:'A deceptively sharp Valley Girl Diva with fast kicks, pink heart energy and a shopping-fuelled attitude.' },
     { id:'tweaker', name:'Tweaker', style:'Street Static', accent:'#8ce6ff', color:'#3f5364', special:'Street Static', atlas: () => './assets/tweaker-atlas.png', bio:'An unpredictable fictional arcade drifter built around fake-outs, sudden dashes and awkward angles.' }
   ];
 
@@ -27,12 +34,40 @@
   };
 
   const images = new Map();
+  const processedFrames = new Map();
   for (const f of fighters) {
     const img = new Image(); img.src = f.atlas(); images.set(f.id, img);
   }
 
-  const state = { mode:'select', editSlot:0, selected:[0,1], cpu:false, timer:60, round:1, wins:[0,0], banner:'', bannerTime:0, entities:[], particles:[] };
+  function cleanBimboFrame(img, idx) {
+    const key=`bimbo-${idx}`;
+    if(processedFrames.has(key)) return processedFrames.get(key);
+    const [sx,sy,sw,sh]=bimboRects[idx];
+    const temp=document.createElement('canvas'); temp.width=sw; temp.height=sh;
+    const tctx=temp.getContext('2d',{willReadFrequently:true}); tctx.imageSmoothingEnabled=false;
+    tctx.drawImage(img,sx,sy,sw,sh,0,0,sw,sh);
+    try {
+      const data=tctx.getImageData(0,0,sw,sh), px=data.data;
+      const dark=i=>Math.max(px[i],px[i+1],px[i+2])<52;
+      const seen=new Uint8Array(sw*sh), q=[];
+      const add=(x,y)=>{const p=y*sw+x, i=p*4;if(!seen[p]&&dark(i)){seen[p]=1;q.push(p);}};
+      for(let x=0;x<sw;x++){add(x,0);add(x,sh-1);} for(let y=0;y<sh;y++){add(0,y);add(sw-1,y);}
+      for(let h=0;h<q.length;h++){const p=q[h],x=p%sw,y=Math.floor(p/sw),i=p*4;px[i+3]=0;if(x)add(x-1,y);if(x<sw-1)add(x+1,y);if(y)add(x,y-1);if(y<sh-1)add(x,y+1);}
+      tctx.putImageData(data,0,0);
+    } catch {}
+    const out=document.createElement('canvas'); out.width=FRAME; out.height=FRAME;
+    const o=out.getContext('2d'); o.imageSmoothingEnabled=false;
+    const scale=Math.min(90/sw,88/sh,1.5), dw=Math.max(1,Math.round(sw*scale)), dh=Math.max(1,Math.round(sh*scale));
+    o.drawImage(temp,0,0,sw,sh,Math.round((FRAME-dw)/2),94-dh,dw,dh);
+    processedFrames.set(key,out); return out;
+  }
 
+  function drawFrame(targetCtx, def, img, idx, dx, dy, dw, dh) {
+    if(def.sourceRects){ const f=cleanBimboFrame(img,idx); targetCtx.drawImage(f,0,0,FRAME,FRAME,dx,dy,dw,dh); }
+    else { const sx=(idx%COLS)*FRAME, sy=Math.floor(idx/COLS)*FRAME; targetCtx.drawImage(img,sx,sy,FRAME,FRAME,dx,dy,dw,dh); }
+  }
+
+  const state = { mode:'select', editSlot:0, selected:[0,1], cpu:false, timer:60, round:1, wins:[0,0], banner:'', bannerTime:0, entities:[], particles:[] };
   const controls = [
     {left:'KeyA',right:'KeyD',jump:'KeyW',down:'KeyS',block:'KeyE',punch:'KeyF',kick:'KeyG',special:'KeyH'},
     {left:'ArrowLeft',right:'ArrowRight',jump:'ArrowUp',down:'ArrowDown',block:'KeyI',punch:'KeyJ',kick:'KeyK',special:'KeyL'}
@@ -98,11 +133,10 @@
       let idx=seq[0];
       if(this.attack){ idx=seq[Math.min(seq.length-1,Math.floor(this.attack.t/(this.attack.len/seq.length)))]; }
       else if(seq.length>1) idx=seq[Math.floor(frame/(this.state==='idle'?16:9))%seq.length];
-      const sx=(idx%COLS)*FRAME, sy=Math.floor(idx/COLS)*FRAME;
       let scale=2.35, dw=FRAME*scale, dh=FRAME*scale, x=this.x-dw/2, y=this.y-dh+10;
       if(this.state==='crouch'){ dh*=.82; y=this.y-dh+8; }
       ctx.save(); if(this.face<0){ ctx.translate(this.x,0); ctx.scale(-1,1); x=-dw/2; }
-      ctx.drawImage(img,sx,sy,FRAME,FRAME,x,y,dw,dh); ctx.restore();
+      drawFrame(ctx,this.def,img,idx,x,y,dw,dh); ctx.restore();
     }
   }
 
@@ -111,7 +145,7 @@
       const b=document.createElement('button'); b.className='fighter-card'; b.type='button'; b.innerHTML=`<div class="portrait-wrap"><canvas width="96" height="96"></canvas><div class="pick-badges"><span class="pick-badge p1-badge">P1</span><span class="pick-badge p2-badge">P2</span></div></div><div class="fighter-copy"><strong>${f.name}</strong><span class="archetype">${f.style}</span><p>${f.bio}</p><div class="move-row"><em>${f.special}</em></div></div>`;
       b.onclick=()=>{ state.selected[state.editSlot]=i; syncMenu(); };
       grid.appendChild(b); const pc=b.querySelector('canvas'), pctx=pc.getContext('2d'); pctx.imageSmoothingEnabled=false; const img=images.get(f.id);
-      const draw=()=>{ if(img.complete&&img.naturalWidth){ pctx.clearRect(0,0,96,96); pctx.drawImage(img,0,0,96,96,0,0,96,96); } else requestAnimationFrame(draw); }; draw();
+      const draw=()=>{ if(img.complete&&img.naturalWidth){ pctx.clearRect(0,0,96,96); drawFrame(pctx,f,img,0,0,0,96,96); } else requestAnimationFrame(draw); }; draw();
     });
     document.querySelectorAll('.slot-tab').forEach(btn=>btn.onclick=()=>{ state.editSlot=Number(btn.dataset.slot); syncMenu(); }); syncMenu();
   }
@@ -120,12 +154,8 @@
     document.querySelectorAll('.slot-tab').forEach(b=>b.classList.toggle('active',Number(b.dataset.slot)===state.editSlot));
     p1Name.textContent=fighters[state.selected[0]].name; p2Name.textContent=fighters[state.selected[1]].name;
   }
-  function start(cpu){
-    state.cpu=cpu; state.mode='fight'; state.timer=60; state.round=1; state.wins=[0,0]; overlay.classList.add('hidden'); resetRound(true);
-  }
-  function resetRound(){
-    state.entities=[new Fighter(fighters[state.selected[0]],260,0,false),new Fighter(fighters[state.selected[1]],700,1,state.cpu)]; state.timer=60; state.roundClock=0; state.banner=`ROUND ${state.round}`; state.bannerTime=90;
-  }
+  function start(cpu){ state.cpu=cpu; state.mode='fight'; state.timer=60; state.round=1; state.wins=[0,0]; overlay.classList.add('hidden'); resetRound(true); }
+  function resetRound(){ state.entities=[new Fighter(fighters[state.selected[0]],260,0,false),new Fighter(fighters[state.selected[1]],700,1,state.cpu)]; state.timer=60; state.roundClock=0; state.banner=`ROUND ${state.round}`; state.bannerTime=90; }
   function endRound(){
     if(state.mode!=='fight') return; const [a,b]=state.entities; let win=a.health===b.health?(Math.random()<.5?0:1):(a.health>b.health?0:1); state.wins[win]++; state.banner=`${state.entities[win].def.name} WINS`; state.bannerTime=120;
     if(state.wins[win]>=2){ state.mode='matchover'; state.banner=`${state.entities[win].def.name} TAKES THE MATCH`; }
