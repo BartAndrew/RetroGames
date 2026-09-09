@@ -1,0 +1,21 @@
+{
+  "character": "Agenda Fluid",
+  "visual_lock": {
+    "hair": "electric blue swept punk hair",
+    "outfit": "black/red punk jacket, black cropped Agenda Fluid shirt, ripped black jeans, chains, black/white sneakers",
+    "rendering": "late-16-bit / arcade pixel-art; nearest-neighbour scaling only"
+  },
+  "runtime_sequences": [
+    {"name": "idle_sway_breath", "frames": 8, "file": "runtime/agenda-fluid-idle-sway-breath-strip-v1.png"},
+    {"name": "defensive_weave", "frames": 8, "file": "runtime/agenda-fluid-defensive-weave-strip-v1.png"},
+    {"name": "ready_bounce", "frames": 8, "file": "runtime/agenda-fluid-ready-bounce-strip-v1.png"},
+    {"name": "forward_feint", "frames": 8, "file": "runtime/agenda-fluid-forward-feint-strip-v1.png"}
+  ],
+  "implementation_note": "These micro-movement strips intentionally reuse the locked source sprite and only apply tiny whole-sprite pixel-preserving transforms to avoid face, outfit, body-proportion and palette drift.",
+  "generated_concept_coverage": [
+    "idle", "walk forward", "walk back", "run", "jump", "crouch", "standing block", "crouching block", "turn", "win", "hit reaction", "knockdown", "get up", "jab", "strong punch", "punch combo", "uppercut", "elbow", "palm", "backfist", "spin punch", "front kick", "roundhouse", "spin kick", "jump kick", "low kick", "axe kick", "flying kick", "special kick", "taunt"
+  ],
+  "next_unique_pose_backlog": [
+    "crouching jab", "crouching heavy punch", "true sweep", "overhead strike", "air punch", "air block", "forward throw", "back throw", "throw escape", "wall bounce", "air juggle hit", "quick rise / tech", "guard break", "dizzy / stun", "KO fall", "intro", "perfect win", "super startup/active/recovery", "EX variants"
+  ]
+}
