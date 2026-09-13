@@ -1,30 +1,61 @@
 # Stereotype Fighters — playable prototype
 
-A dependency-free 2D browser fighting-game demo using the supplied pixel-art fighter sheets and generated combat atlases.
+A dependency-free browser-based 2D fighting-game prototype built from the pixel-art fighter sheets in this repository.
 
-## Current fighters
+## Current roster
 
-- **Lefty Liberal** — close-range fighter. Special: **Safe Space Bubble**.
-- **Agenda Fluid** — quicker movement and a travelling energy-wave special: **Gender Bending Beatdown**.
-- **Bimbo Babe** — Valley Girl Diva built directly from the supplied `Bimbo.png` sprite sheet. Special: **Heart Blast**.
-- **Douchebag Dave** — Trust Fund Tough rich-kid brawler built directly from the supplied `Dave.png` sprite sheet. Special: **Trust Fund Toss**.
-- **Junkie** — fast, fragile Street Brawler / Tweaker archetype generated from the supplied Junkie sprite sheet. Special: **Needle Rush**.
+The character-select screen now exposes the complete named sprite-sheet roster in `StereoTypeFighter`, plus the two original prototype fighters:
 
-Club Doll and Tweaker are no longer in the playable roster as separate characters.
+1. Lefty Liberal — **Safe Space Bubble**
+2. Agenda Fluid — **Gender Bending Beatdown**
+3. RapThug — **Bass Drop**
+4. KillWoodRat — **Razor Riff**
+5. SK8R BOI — **Kickflip KO**
+6. Club Doll — **Velvet Rope Vortex**
+7. Grunge — **Feedback Frenzy**
+8. Yuppie — **Hostile Takeover**
+9. Fat Gamer — **Level Up**
+10. Bimbo Babe — **Heart Blast**
+11. Influencer — **Viral Spiral**
+12. Yoga Mom — **Namaste Knockout**
+13. E-Girl — **Lag Spike**
+14. Cheerleader — **Pom-Pom Cyclone**
+15. Punk Princess — **Mosh Pit Riot**
+16. Douchebag Dave — **Trust Fund Toss**
+17. Junkie — **Needle Rush**
+18. Neckbeard Nate — **Actually…**
+
+The 16 named-sheet characters correspond to the roster documented in `CHARACTER_BIBLE.md`. Lefty Liberal and Agenda Fluid remain as bonus/original prototype fighters.
+
+## Character-select v4
+
+The selector was rebuilt after the previous version stopped during menu initialization. The immediate cause was a strict-mode JavaScript error in the portrait setup path: the `img` variable was being assigned without a declaration, which stopped `setupMenu()` before the selector buttons became interactive.
+
+The v4 selector now:
+
+- repairs that runtime error before the game initializes;
+- supports the full 18-fighter roster;
+- uses a compact arcade-style portrait grid instead of large two-column cards;
+- keeps the P1/P2 selection summary and start buttons visible;
+- gives the roster its own scroll area so a large roster fits inside the game cabinet;
+- supports mouse, touch and keyboard button activation;
+- continues to use the named sprite-sheet images already stored in this repository.
 
 ## Play
 
-Open `index.html` in a modern browser. The game has no framework or package install requirement.
+GitHub Pages:
 
-For local testing, serve the repository through a simple web server:
+`https://bartandrew.github.io/RetroGames/StereoTypeFighter/`
+
+For local testing from the repository root:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Then visit `http://localhost:8080/StereoTypeFighter/` when serving from the repository root, or `http://localhost:8080/` when serving from this folder.
+Then open:
 
-The same folder is configured for GitHub Pages deployment from `main`.
+`http://localhost:8080/StereoTypeFighter/`
 
 ## Controls
 
@@ -39,54 +70,21 @@ The same folder is configured for GitHub Pages deployment from `main`.
 | Special | H | L |
 | Pause | P | P |
 
-Two modes are available from character select: **Vs CPU** and **2 Player** on one keyboard.
-
-## Demo feature set
-
-- Five-character select, including mirror matches.
-- Best-of-three rounds, 60-second timer, health bars and meter.
-- Idle breathing/bobbing, walking, crouching, jumping, blocking and knockback.
-- Multi-frame punch, kick, hurt and recovery animation sequences.
-- Character-specific specials, hit sparks, particles and synthesized arcade sound.
-- Basic CPU opponent with spacing, blocking, jumping and attack decisions.
-- Responsive retro arcade presentation with a procedurally drawn animated neon pixel stage.
-- No framework or package install.
+Two modes are available: **Vs CPU** and **2 Player** on one keyboard.
 
 ## Sprite handling
 
-Lefty Liberal and Agenda Fluid use compact 96×96 combat atlases. Bimbo Babe and Douchebag Dave use their supplied full sprite sheets directly and are cropped / background-cleaned in-browser. Junkie uses a compact 480×960 runtime atlas generated from the newly supplied sheet, arranged as fifty 96×96 frames.
+Lefty Liberal and Agenda Fluid use compact 96×96 combat atlases. Junkie uses the dedicated compact runtime atlas generated from the supplied Junkie sheet. Douchebag Dave keeps his detailed frame map.
 
-### Douchebag Dave
-
-Dave uses dedicated sequences from `Dave.png` for idle breathing, walk, jump, crouch, light punch, kick, **Trust Fund Toss**, hurt, block, knockdown, get-up/recovery and taunt/win poses. Trust Fund Toss also emits a cash-particle burst.
-
-### Junkie
-
-Junkie uses dedicated sequences for:
-
-- five-frame idle breathing
-- five-frame walk cycle
-- four-frame jump cycle
-- four-frame crouch cycle
-- four-frame light punch
-- four-frame light kick
-- four-frame **Needle Rush** special
-- three hurt frames
-- three block frames
-- five knockdown frames
-- five get-up/recovery frames
-- four taunt / win poses
-
-Junkie is tuned as a faster but more fragile pressure fighter and gets a green burst effect when Needle Rush is triggered.
+The other named full-sheet characters use a conservative common crop map based on the shared sprite-sheet layout so they can immediately participate in the current game engine. These generic mappings are a playable baseline; each fighter can progressively receive bespoke animation coordinates, attack timings and unique specials without changing the selector architecture again.
 
 ## Next useful additions
 
-1. Add Junkie's Crazed Flurry as a second special / combo route.
-2. Add Dave's Yacht Kick as a second special / heavy kick path.
-3. Use Bimbo Babe's dedicated walk, run, jump, crouch and knockdown sequences more fully.
-4. Add heavy attacks, throws, aerial attacks and combo chains to the core engine.
-5. Add stage selection and home stages for each archetype.
-6. Add gamepad support, input remapping and difficulty settings.
-7. Add music, sampled sound effects and combo counters.
+1. Replace generic full-sheet crops with bespoke animation maps for each fighter.
+2. Add each character's second special / super from the character bible.
+3. Add heavy attacks, throws, aerial attacks and combo chains.
+4. Add stage selection and character-specific home stages.
+5. Add gamepad support and input remapping.
+6. Add music, sampled sound effects and combo counters.
 
-This is a playable vertical slice rather than a finished fighting-game engine.
+This remains a playable vertical slice rather than a finished fighting-game engine.
