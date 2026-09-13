@@ -1,0 +1,72 @@
+/* Large-roster character select. Keeps the roster scrollable and controls visible. */
+.select-panel {
+  width: min(1080px, 100%);
+  height: min(94%, 760px);
+  max-height: 94%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.select-heading { flex: 0 0 auto; margin-bottom: 0; }
+.fighter-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 5px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  scrollbar-color: #59617c #111522;
+  scrollbar-width: thin;
+}
+.fighter-card {
+  display: block;
+  min-width: 0;
+  padding: 7px;
+  text-align: center;
+  touch-action: manipulation;
+}
+.fighter-card:hover, .fighter-card:focus-visible {
+  transform: translateY(-1px);
+  outline: 2px solid var(--yellow);
+  outline-offset: 1px;
+  z-index: 2;
+}
+.portrait-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0 auto 6px;
+}
+.fighter-copy strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.fighter-copy .archetype {
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 8px;
+}
+.fighter-copy p, .move-row { display: none; }
+.match-setup { flex: 0 0 auto; margin-top: 0; }
+.controls-grid { flex: 0 0 auto; margin-top: 0; }
+.parody-note { flex: 0 0 auto; margin-top: 0; }
+.selector-error { grid-column: 1 / -1; padding: 30px; border: 1px solid #d76868; background: #261215; color: #fff; }
+.selector-error strong, .selector-error span { display: block; }
+.selector-error span { margin-top: 8px; color: #ffb9b9; font-size: 11px; }
+@media (min-width: 1050px) { .fighter-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (max-width: 780px) {
+  .select-panel { height: auto; max-height: none; overflow: visible; }
+  .fighter-grid { max-height: 62vh; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .fighter-card { grid-template-columns: none; }
+  .controls-grid { display: none; }
+}
+@media (max-width: 520px) {
+  .fighter-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .fighter-copy .archetype { display: none; }
+}
