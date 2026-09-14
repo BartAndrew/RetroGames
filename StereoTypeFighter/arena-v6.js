@@ -14,7 +14,7 @@ export const STAGE_DEFS=[
  {id:'docklands-container-clash',name:'Docklands Container Clash',src:'./assets/backgrounds/game/docklands-container-clash.webp'},
  {id:'outback-servo-showdown',name:'Outback Servo Showdown',src:'./assets/backgrounds/game/outback-servo-showdown.webp'}
 ];
-const stageUrl=src=>new URL(src,document.baseURI).href;
+const stageUrl=src=>new URL(src,import.meta.url).href;
 const STAGES=STAGE_DEFS.map(def=>{const image=new Image(),stage={...def,image,failed:false};image.decoding='async';image.loading='eager';image.onerror=()=>{stage.failed=true;console.warn('Arena background failed to load:',stageUrl(def.src));};image.src=stageUrl(def.src);return stage;});
 class Fighter {
  constructor(asset,side){this.asset=asset;this.side=side;this.x=side?700:260;this.y=FLOOR;this.vx=0;this.vy=0;this.face=side?-1:1;this.hp=100;this.meter=35;this.state='idle';this.tick=0;this.action=null;this.stun=0;this.buffer=null;this.think=0;this.plan={axis:0};}
@@ -139,6 +139,8 @@ export class Arena {
  stage(c){
   const image=this.venue?.image;
   if(image?.complete&&image.naturalWidth&&!this.venue?.failed){c.drawImage(image,0,0,960,540);c.fillStyle='rgba(4,8,16,.06)';c.fillRect(0,0,960,540);return;}
+  // Never leave the arena black while an image is loading or if a deployment path is broken.
+
   const g=c.createLinearGradient(0,0,0,540);g.addColorStop(0,'#0c1225');g.addColorStop(.65,'#31364b');g.addColorStop(1,'#161a25');c.fillStyle=g;c.fillRect(0,0,960,540);
   c.fillStyle='#c9c6b6';c.fillRect(713,55,34,34);c.fillStyle='#202438';c.fillRect(720,55,30,21);
   for(let i=0;i<13;i++){const x=i*83,h=90+(i*71)%130;c.fillStyle=i%2?'#141d2d':'#192638';c.fillRect(x,285-h,79,h);for(let y=290-h;y<275;y+=19)for(let j=0;j<4;j++){c.fillStyle=(j+i+y)%3?'#314256':'#ac8460';c.fillRect(x+12+j*16,y,6,7);}}
