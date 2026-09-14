@@ -17,10 +17,7 @@ function captureMotion(arena, before) {
   if (!arena.people?.length) return;
   arena.__visualMotion = arena.people.map((fighter, index) => {
     const previous = before[index] || {x: fighter.x, y: fighter.y};
-    return {
-      dx: fighter.x - previous.x,
-      dy: fighter.y - previous.y,
-    };
+    return {dx: fighter.x - previous.x, dy: fighter.y - previous.y};
   });
   arena.__visualUpdateAt = now();
 }
@@ -46,12 +43,10 @@ function resizeBackingStore(arena) {
   if (!canvas?.isConnected) return;
   const rect = canvas.getBoundingClientRect();
   if (rect.width < 2 || rect.height < 2) return;
-
   const dpr = Math.min(MAX_DPR, Math.max(1, window.devicePixelRatio || 1));
   let targetW = Math.max(WORLD_W, Math.round(rect.width * dpr));
   targetW = Math.min(MAX_BACKING_W, targetW);
   const targetH = Math.round(targetW * WORLD_H / WORLD_W);
-
   if (canvas.width !== targetW || canvas.height !== targetH) {
     canvas.width = targetW;
     canvas.height = targetH;
@@ -109,12 +104,13 @@ function syncPlayingClass() {
 function keepRetryActionUsable() {
   const button = document.getElementById('startButton');
   if (!button) return;
-  if (/retry/i.test(button.textContent || '') && button.disabled) {
-    button.disabled = false;
-    button.removeAttribute('aria-busy');
-  } else if (/preparing|loading/i.test(button.textContent || '')) {
-    button.setAttribute('aria-busy', 'true');
-  } else {
+  const text = button.textContent || '';
+  const retry = /retry/i.test(text);
+  const busy = /preparing|loading/i.test(text);
+  if (retry && button.disabled) button.disabled = false;
+  if (busy) {
+    if (button.getAttribute('aria-busy') !== 'true') button.setAttribute('aria-busy', 'true');
+  } else if (button.hasAttribute('aria-busy')) {
     button.removeAttribute('aria-busy');
   }
 }
@@ -134,7 +130,7 @@ if (matchScreen) new MutationObserver(syncPlayingClass).observe(matchScreen, {at
 const startButton = document.getElementById('startButton');
 if (startButton) new MutationObserver(keepRetryActionUsable).observe(startButton, {
   attributes: true,
-  attributeFilter: ['disabled', 'aria-busy'],
+  attributeFilter: ['disabled'],
   childList: true,
   characterData: true,
   subtree: true,
