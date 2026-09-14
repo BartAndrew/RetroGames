@@ -1,28 +1,181 @@
-import {test,expect} from '@playwright/test';import fs from 'node:fs/promises';
+import {test,expect} from '@playwright/test';
+import fs from 'node:fs/promises';
+
+const BASE=process.env.SF_BASE_URL||'http://127.0.0.1:4173/StereoTypeFighter/';
 const seq=['idle','walk','jump','crouch','punch','kick','special','hurt','block','fall','getup','victory'];
-async function boot(page){await page.goto('./?qa=1');await page.waitForFunction(()=>window.SF?.roster().length===20);await expect(page.locator('#startButton')).toBeEnabled({timeout:20000})}async function begin(page,mode='local'){await boot(page);await page.locator('#modeSelect').selectOption(mode);await page.locator('#startButton').click();await page.waitForFunction(()=>SF.snapshot().phase!=='off')}async function fight(page){await page.waitForFunction(()=>SF.snapshot().phase==='fight',{timeout:8000})}async function snap(page){return page.evaluate(()=>SF.snapshot())}async function together(page,codes){await page.evaluate(cs=>cs.forEach(code=>dispatchEvent(new KeyboardEvent('keydown',{code,bubbles:true}))),codes);await page.waitForTimeout(35);await page.evaluate(cs=>cs.forEach(code=>dispatchEvent(new KeyboardEvent('keyup',{code,bubbles:true}))),codes)}
-let unexpected=[];test.beforeEach(async({page})=>{unexpected=[];page.on('pageerror',e=>unexpected.push('pageerror: '+e.message));page.on('console',m=>m.type()==='error'&&unexpected.push('console: '+m.text()))});test.afterEach(async({},info)=>{if(!info.title.includes('[expected failure]'))expect(unexpected,'unexpected browser errors').toEqual([])});
-test('production roster is exactly 20 unique compact fighters with all sequences and six arenas',async({page})=>{await boot(page);await page.evaluate(()=>SF.test.loadAll());await page.waitForFunction(()=>SF.roster().every(f=>f.status==='ready'),{timeout:30000});const d=await page.evaluate(()=>({r:SF.roster(),s:SF.stages()}));expect(d.r).toHaveLength(20);expect(new Set(d.r.map(x=>x.id)).size).toBe(20);for(const f of d.r){expect(f.render).toBe('atlas');expect(f.renderMode).toBe('atlas');expect(f.atlas).toBeTruthy();for(const s of seq)expect(f.frames[s],`${f.id}/${s}`).toBeGreaterThan(0)}expect(d.s).toHaveLength(6)});
-test('selector supports P1 P2 mirror search no-results random fighter and Random Stage',async({page})=>{await boot(page);const first=page.locator('.card').first();await first.click();await page.locator('[data-slot="1"]').click();await first.click();let s=await page.evaluate(()=>SF.selection());expect(s.pick[0]).toBe(s.pick[1]);await page.locator('#fighterSearch').fill('zzzz-no-match');await expect(page.locator('#noResults')).toBeVisible();await page.locator('#fighterSearch').fill('');await page.locator('#randomButton').click();await page.locator('[data-stage="random"]').click();s=await page.evaluate(()=>SF.selection());expect(s.stage).toBe('random');expect(s.pick[1]).toBeTruthy()});
-test('CPU Local and Training modes expose correct difficulty and rules',async({page})=>{await boot(page);await page.locator('#modeSelect').selectOption('cpu');await expect(page.locator('#difficultyLabel')).toBeVisible();await page.locator('#difficultySelect').selectOption('hard');expect((await page.evaluate(()=>SF.selection())).difficulty).toBe('hard');await page.locator('#modeSelect').selectOption('local');await expect(page.locator('#difficultyLabel')).toBeHidden();await page.locator('#modeSelect').selectOption('training');await expect(page.locator('#rulesText')).toContainText('Unlimited')});
-test('Enter on Help Random fighter card and stage never launches a match',async({page})=>{await boot(page);await page.locator('#helpButton').focus();await page.keyboard.press('Enter');await expect(page.locator('#helpDialog')).toHaveAttribute('open','');await page.locator('#helpDialog .dialogClose').click();for(const q of ['#randomButton','.card:first-child','.stageCard:first-child']){await page.locator(q).focus();await page.keyboard.press('Enter');expect((await snap(page)).phase).toBe('off');await expect(page.locator('#selectScreen')).toHaveClass(/active/)} });
-test('non-interactive Enter remains deliberate Start shortcut',async({page})=>{await boot(page);await page.evaluate(()=>document.activeElement?.blur());await page.keyboard.press('Enter');await expect(page.locator('#matchScreen')).toHaveClass(/active/)});
-test('pause resume Escape P menu and focus semantics are explicit',async({page})=>{await begin(page);await page.locator('#pauseButton').click();await expect(page.locator('#pauseOverlay')).toBeVisible();await expect(page.locator('#resumeButton')).toBeFocused();await page.locator('#resumeButton').click();await expect(page.locator('#pauseButton')).toBeFocused();await page.keyboard.press('KeyP');expect((await snap(page)).paused).toBe(true);await page.keyboard.press('Escape');expect((await snap(page)).paused).toBe(false);await page.keyboard.press('KeyP');await page.locator('#backButton').click();await expect(page.locator('#selectScreen')).toHaveClass(/active/);await expect(page.locator('.card:focus')).toHaveCount(1)});
-test('repeated pause keydown cannot double-trigger and modal focus is trapped',async({page})=>{await begin(page);await page.keyboard.press('KeyP');expect((await snap(page)).paused).toBe(true);await page.evaluate(()=>dispatchEvent(new KeyboardEvent('keydown',{code:'KeyP',repeat:true,bubbles:true})));expect((await snap(page)).paused).toBe(true);await expect(page.locator('#resumeButton')).toBeFocused();await page.keyboard.press('Shift+Tab');await expect(page.locator('#backButton')).toBeFocused();await page.keyboard.press('Tab');await expect(page.locator('#resumeButton')).toBeFocused()});
-test('movement jump crouch block punch kick health meter knockdown and recovery work',async({page})=>{await begin(page);await fight(page);let s=await snap(page),x=s.people[0].x;await page.keyboard.down('KeyD');await page.waitForTimeout(160);await page.keyboard.up('KeyD');expect((await snap(page)).people[0].x).toBeGreaterThan(x);await page.keyboard.press('KeyW');await page.waitForTimeout(70);expect((await snap(page)).people[0].y).toBeLessThan(446);await page.waitForFunction(()=>SF.snapshot().people[0].y>=446);await page.keyboard.down('KeyS');await page.waitForTimeout(40);expect((await snap(page)).people[0].state).toBe('crouch');await page.keyboard.up('KeyS');await page.keyboard.down('KeyE');await page.waitForTimeout(40);expect((await snap(page)).people[0].state).toBe('block');await page.keyboard.up('KeyE');await page.evaluate(()=>SF.test.set({positions:[430,500],meter:[0,0]}));await page.keyboard.press('KeyF');await page.waitForTimeout(220);s=await snap(page);expect(s.people[1].hp).toBeLessThan(100);expect(s.people[0].meter).toBeGreaterThan(0);const hp=s.people[1].hp;await page.waitForTimeout(500);await page.keyboard.press('KeyG');await page.waitForTimeout(330);s=await snap(page);expect(s.people[1].hp).toBeLessThan(hp)});
-test('special projectile collision follows a moving visible gameplay entity',async({page})=>{await begin(page,'training');await page.evaluate(()=>SF.test.set({positions:[300,680]}));await page.keyboard.press('KeyH');await page.waitForFunction(()=>SF.snapshot().projectiles.length>0);const p1=(await snap(page)).projectiles[0],hp=(await snap(page)).people[1].hp;await page.waitForTimeout(100);const p2=(await snap(page)).projectiles[0];expect(p2.x).not.toBe(p1.x);expect((await snap(page)).people[1].hp).toBe(hp);await page.waitForFunction(h=>SF.snapshot().people[1].hp<h,hp,{timeout:3000})});
-test('same-frame attacks trade without frame-order advantage',async({page})=>{await begin(page);await fight(page);await page.evaluate(()=>SF.test.set({positions:[430,500]}));await together(page,['KeyF','KeyJ']);await page.waitForTimeout(200);const s=await snap(page);expect(s.people[0].hp).toBeLessThan(100);expect(s.people[1].hp).toBeLessThan(100)});
-test('simultaneous KO is draw with no round point',async({page})=>{await begin(page);await fight(page);await page.evaluate(()=>SF.test.set({positions:[430,500],hp:[7,7]}));await together(page,['KeyF','KeyJ']);await page.waitForFunction(()=>SF.snapshot().phase==='roundover');const s=await snap(page);expect(s.roundReason).toBe('double-ko');expect(s.wins).toEqual([0,0]);expect(s.winner).toBe(-1)});
-test('timeout loss reacts visibly and two-round match result focuses Rematch',async({page})=>{await begin(page);await fight(page);await page.evaluate(()=>SF.test.set({hp:[80,50],remaining:1}));await page.waitForFunction(()=>SF.snapshot().phase==='roundover');let s=await snap(page);expect(s.roundReason).toBe('time');expect(s.people[1].state).toBe('fall');await fight(page);await page.evaluate(()=>SF.test.set({hp:[100,0]}));await page.waitForFunction(()=>SF.snapshot().phase==='matchover',{timeout:8000});await expect(page.locator('#rematchButton')).toBeFocused()});
-test('rematch preserves fighters stage mode and difficulty; result menu returns selector',async({page})=>{await boot(page);await page.locator('#modeSelect').selectOption('local');await page.locator('[data-stage="docklands-container-clash"]').click();const before=await page.evaluate(()=>SF.selection());await page.locator('#startButton').click();await fight(page);for(let i=0;i<2;i++){await page.evaluate(()=>SF.test.set({hp:[100,0]}));await page.waitForFunction(()=>['roundover','matchover'].includes(SF.snapshot().phase));if(i===0)await fight(page)}await page.locator('#rematchButton').click();expect(await page.evaluate(()=>SF.selection())).toEqual(before);expect((await snap(page)).round).toBe(1);for(let i=0;i<2;i++){await page.evaluate(()=>SF.test.set({hp:[100,0]}));await page.waitForFunction(()=>['roundover','matchover'].includes(SF.snapshot().phase));if(i===0)await fight(page)}await page.locator('#resultMenuButton').click();await expect(page.locator('#selectScreen')).toHaveClass(/active/)});
-test('Training has unlimited timer full meter R reset and short auto reset',async({page})=>{await begin(page,'training');let s=await snap(page),t=s.remaining;expect(s.people.map(p=>p.meter)).toEqual([100,100]);await page.waitForTimeout(300);expect((await snap(page)).remaining).toBe(t);await page.evaluate(()=>SF.test.set({hp:[10,20]}));await page.keyboard.press('KeyR');expect((await snap(page)).people.map(p=>p.hp)).toEqual([100,100]);await page.evaluate(()=>SF.test.set({hp:[100,0]}));await page.waitForTimeout(1000);expect((await snap(page)).people.map(p=>p.hp)).toEqual([100,100])});
-test('blur clears held input and hidden document auto-pauses',async({page})=>{await begin(page);await fight(page);await page.keyboard.down('KeyD');await page.waitForTimeout(100);await page.evaluate(()=>dispatchEvent(new Event('blur')));const x=(await snap(page)).people[0].x;await page.waitForTimeout(180);expect(Math.abs((await snap(page)).people[0].x-x)).toBeLessThan(2);await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'))});expect((await snap(page)).paused).toBe(true)});
-test('touch controls use pointer capture semantics and clear on release',async({browser})=>{const c=await browser.newContext({hasTouch:true,isMobile:true,viewport:{width:844,height:390}}),page=await c.newPage();await begin(page);await fight(page);await expect(page.locator('#touchControls')).toBeVisible();const x=(await snap(page)).people[0].x,b=page.locator('[data-touch="right"]');await b.dispatchEvent('pointerdown',{pointerId:7,pointerType:'touch'});await page.waitForTimeout(150);await b.dispatchEvent('pointerup',{pointerId:7,pointerType:'touch'});const moved=(await snap(page)).people[0].x;expect(moved).toBeGreaterThan(x);await page.waitForTimeout(160);expect(Math.abs((await snap(page)).people[0].x-moved)).toBeLessThan(2);await c.close()});
-test('two gamepads work concurrently in Local mode and Menu pauses',async({browser})=>{const c=await browser.newContext();await c.addInitScript(()=>{const p=()=>({axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false,value:0}))});window.__pads=[p(),p()];Object.defineProperty(navigator,'getGamepads',{configurable:true,value:()=>window.__pads})});const page=await c.newPage();await begin(page);await fight(page);const a=await snap(page);await page.evaluate(()=>{__pads[0].axes[0]=1;__pads[1].axes[0]=-1});await page.waitForTimeout(180);const b=await snap(page);expect(b.people[0].x).toBeGreaterThan(a.people[0].x);expect(b.people[1].x).toBeLessThan(a.people[1].x);await page.evaluate(()=>{__pads[0].axes[0]=0;__pads[1].axes[0]=0;__pads[0].buttons[9].pressed=true});await page.waitForTimeout(50);expect((await snap(page)).paused).toBe(true);await c.close()});
-test('settings selected fighters live regions meters canvases skip link and Animation Lab expose a11y state',async({page})=>{await boot(page);await page.locator('#muteButton').click();await expect(page.locator('#muteButton')).toHaveAttribute('aria-pressed','true');await page.locator('#motionButton').click();await expect(page.locator('#motionButton')).toHaveAttribute('aria-pressed','true');const card=page.locator('.card').nth(2);await card.click();await expect(card).toHaveAttribute('aria-pressed','true');await expect(card).toHaveAttribute('aria-label',/Player 1/);await expect(page.locator('#loadStatus')).toHaveAttribute('role','status');await expect(page.locator('#gameCanvas')).toHaveAttribute('aria-label');await expect(page.locator('#labCanvas')).toHaveAttribute('aria-label');const skip=page.locator('.skipLink');expect(await skip.evaluate(e=>getComputedStyle(e).transform)).not.toBe('none');await skip.focus();expect(await skip.evaluate(e=>getComputedStyle(e).transform)).toBe('none');await page.locator('#labButton').click();await expect(page.locator('#labPlay')).toHaveAttribute('aria-pressed','true');await page.locator('#labPlay').click();await expect(page.locator('#labPlay')).toHaveAttribute('aria-pressed','false');await page.locator('#labHitboxes').check()});
-test('fighter grid supports full keyboard arrow navigation',async({page})=>{await boot(page);await page.locator('.card').first().focus();await page.keyboard.press('ArrowRight');await expect(page.locator('.card').nth(1)).toBeFocused()});
-test('failed arena image keeps procedural fallback playable and retriable [expected failure]',async({page})=>{await page.route('**/backyard-bbq-bash.webp*',r=>r.abort());await boot(page);const b=page.locator('[data-stage="backyard-bbq-bash"]');await b.click();await expect(b).toHaveClass(/stageMissing/);await page.locator('#startButton').click();await fight(page);await expect(page.locator('#gameCanvas')).toBeVisible()});
-test('single failed combat atlas can be retried without blocking other fighters [expected failure]',async({page})=>{let fail=true;await page.route('**/bimbo-babe-atlas.webp*',async r=>fail?(fail=false,r.abort()):r.continue());await boot(page);await page.locator('[data-id="bimbo-babe"]').click();await expect(page.locator('#loadStatus')).toContainText('failed',{timeout:12000});await page.locator('#startButton').click();await page.waitForFunction(()=>SF.roster().find(f=>f.id==='bimbo-babe')?.status==='ready',{timeout:12000})});
-test('all required selector breakpoints have no overflow overlap or unreachable controls',async({page})=>{await boot(page);for(const[w,h]of[[320,568],[360,800],[390,844],[480,900],[768,1024],[1024,768],[1440,900]]){await page.setViewportSize({width:w,height:h});const m=await page.evaluate(()=>{const p=[...document.querySelectorAll('.previewCard')].map(e=>e.getBoundingClientRect()),s=document.querySelector('#startButton').getBoundingClientRect(),a=document.querySelector('.stageCard').getBoundingClientRect();return{overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,p,s,a}});expect(m.overflow,`${w}px overflow`).toBeLessThanOrEqual(1);const[a,b]=m.p;expect(a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top,`${w}px preview overlap`).toBe(true);expect(m.s.width).toBeGreaterThan(70);expect(m.a.width).toBeGreaterThan(30)}});
-test('canvas HUD pause and result overlays stay attached to the arena',async({page})=>{await begin(page);for(const[w,h]of[[320,568],[390,844],[768,1024],[1024,768],[1440,900]]){await page.setViewportSize({width:w,height:h});const m=await page.evaluate(()=>{const w=document.querySelector('#gameWrap').getBoundingClientRect(),c=document.querySelector('#gameCanvas').getBoundingClientRect(),h=document.querySelector('.hud').getBoundingClientRect();return{w,c,h,overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth}});expect(m.overflow).toBeLessThanOrEqual(1);expect(m.c.left).toBeGreaterThanOrEqual(m.w.left-1);expect(m.c.right).toBeLessThanOrEqual(m.w.right+1);expect(Math.abs(m.h.left-m.w.left)).toBeLessThan(2)}await page.locator('#pauseButton').click();const r=await page.evaluate(()=>[document.querySelector('#gameWrap').getBoundingClientRect(),document.querySelector('#pauseOverlay').getBoundingClientRect()]);expect(Math.abs(r[0].width-r[1].width)).toBeLessThan(2)});
-test('CI captures desktop and mobile select fight pause and result artifacts',async({browser},info)=>{await fs.mkdir('test-results/screenshots',{recursive:true});const p=await browser.newPage({viewport:{width:1440,height:900}});await boot(p);await p.screenshot({path:'test-results/screenshots/desktop-select.png',fullPage:true});await p.locator('#modeSelect').selectOption('local');await p.locator('#startButton').click();await fight(p);await p.screenshot({path:'test-results/screenshots/desktop-fight.png',fullPage:true});await p.locator('#pauseButton').click();await p.screenshot({path:'test-results/screenshots/desktop-pause.png',fullPage:true});await p.locator('#resumeButton').click();for(let i=0;i<2;i++){await p.evaluate(()=>SF.test.set({hp:[100,0]}));await p.waitForFunction(()=>['roundover','matchover'].includes(SF.snapshot().phase));if(i===0)await fight(p)}await p.screenshot({path:'test-results/screenshots/desktop-result.png',fullPage:true});const c=await browser.newContext({hasTouch:true,isMobile:true,viewport:{width:390,height:844}}),m=await c.newPage();await boot(m);await m.screenshot({path:'test-results/screenshots/mobile-select.png',fullPage:true});await m.setViewportSize({width:844,height:390});await m.locator('#modeSelect').selectOption('local');await m.locator('#startButton').click();await fight(m);await expect(m.locator('#touchControls')).toBeVisible();await m.screenshot({path:'test-results/screenshots/mobile-landscape-fight.png',fullPage:true});for(const name of ['desktop-select','desktop-fight','desktop-pause','desktop-result','mobile-select','mobile-landscape-fight'])await info.attach(name,{path:`test-results/screenshots/${name}.png`,contentType:'image/png'});await c.close();await p.close()});
+const url=()=>new URL('?qa=1',BASE).href;
+
+async function boot(page){
+  await page.goto(url());
+  await page.waitForFunction(()=>window.SF?.roster().length===20,{timeout:20000});
+  await expect(page.locator('#startButton')).toBeEnabled({timeout:20000});
+}
+async function begin(page,mode='local'){
+  await boot(page);
+  await page.locator('#modeSelect').selectOption(mode);
+  await page.locator('#startButton').click();
+  await page.waitForFunction(()=>window.SF.snapshot().phase!=='off');
+}
+async function fight(page){await page.waitForFunction(()=>window.SF.snapshot().phase==='fight',{timeout:8000});}
+async function snap(page){return page.evaluate(()=>window.SF.snapshot());}
+
+let unexpected=[];
+test.beforeEach(async({page})=>{
+  unexpected=[];
+  page.on('pageerror',e=>unexpected.push('pageerror: '+e.message));
+  page.on('console',m=>m.type()==='error'&&unexpected.push('console: '+m.text()));
+});
+test.afterEach(async()=>{expect(unexpected,'unexpected browser errors').toEqual([]);});
+
+test('production roster has 20 compact fighters, all sequences and six arenas',async({page})=>{
+  await boot(page);
+  await page.evaluate(()=>window.SF.test.loadAll());
+  await page.waitForFunction(()=>window.SF.roster().every(f=>f.status==='ready'),{timeout:30000});
+  const d=await page.evaluate(()=>({r:window.SF.roster(),s:window.SF.stages()}));
+  expect(d.r).toHaveLength(20);
+  expect(new Set(d.r.map(x=>x.id)).size).toBe(20);
+  for(const f of d.r){
+    expect(f.render).toBe('atlas');
+    expect(f.renderMode).toBe('atlas');
+    for(const s of seq)expect(f.frames[s],`${f.id}/${s}`).toBeGreaterThan(0);
+  }
+  expect(d.s).toHaveLength(6);
+});
+
+test('selector, mode, random stage and keyboard start remain playable',async({page})=>{
+  await boot(page);
+  await page.locator('[data-slot="1"]').click();
+  await page.locator('.card').nth(3).click();
+  await page.locator('[data-stage="random"]').click();
+  await page.locator('#modeSelect').selectOption('training');
+  const selection=await page.evaluate(()=>window.SF.selection());
+  expect(selection.stage).toBe('random');
+  expect(selection.mode).toBe('training');
+  await page.evaluate(()=>document.activeElement?.blur());
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#matchScreen')).toHaveClass(/active/);
+});
+
+test('movement, attacks, pause and rematch remain functional',async({page})=>{
+  await begin(page);
+  await fight(page);
+  const x=(await snap(page)).people[0].x;
+  await page.keyboard.down('KeyD');
+  await page.waitForTimeout(140);
+  await page.keyboard.up('KeyD');
+  expect((await snap(page)).people[0].x).toBeGreaterThan(x);
+  await page.evaluate(()=>window.SF.test.set({positions:[430,500]}));
+  await page.keyboard.press('KeyF');
+  await page.waitForTimeout(220);
+  expect((await snap(page)).people[1].hp).toBeLessThan(100);
+  await page.locator('#pauseButton').click();
+  expect((await snap(page)).paused).toBe(true);
+  await page.locator('#resumeButton').click();
+  expect((await snap(page)).paused).toBe(false);
+});
+
+test('fighter asset failure exposes a usable retry action',async({page})=>{
+  let fail=true;
+  await page.route('**/bimbo-babe-atlas.webp*',async route=>fail?(fail=false,route.abort()):route.continue());
+  await boot(page);
+  await page.locator('[data-id="bimbo-babe"]').click();
+  await expect(page.locator('#loadStatus')).toContainText('failed',{timeout:12000});
+  await expect(page.locator('#startButton')).toBeEnabled();
+  await expect(page.locator('#startButton')).toContainText('Retry');
+  await page.locator('#startButton').click();
+  await page.waitForFunction(()=>window.SF.roster().find(f=>f.id==='bimbo-babe')?.status==='ready',{timeout:12000});
+});
+
+test('iPhone portrait selector has no horizontal overflow and reachable targets',async({browser})=>{
+  const c=await browser.newContext({hasTouch:true,isMobile:true,deviceScaleFactor:3,viewport:{width:390,height:844}});
+  const page=await c.newPage();
+  await boot(page);
+  const m=await page.evaluate(()=>({
+    overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,
+    start:document.querySelector('#startButton').getBoundingClientRect(),
+    card:document.querySelector('.card').getBoundingClientRect(),
+    stage:document.querySelector('.stageCard').getBoundingClientRect()
+  }));
+  expect(m.overflow).toBeLessThanOrEqual(1);
+  expect(m.start.height).toBeGreaterThanOrEqual(44);
+  expect(m.card.width).toBeGreaterThan(50);
+  expect(m.stage.width).toBeGreaterThan(100);
+  await c.close();
+});
+
+test('iPhone landscape supports simultaneous touch movement and attacks',async({browser})=>{
+  const c=await browser.newContext({hasTouch:true,isMobile:true,deviceScaleFactor:3,viewport:{width:844,height:390}});
+  const page=await c.newPage();
+  await begin(page,'training');
+  await expect(page.locator('#touchControls')).toBeVisible();
+  const right=page.locator('[data-touch="right"]'),punch=page.locator('[data-touch="punch"]');
+  const start=(await snap(page)).people[0].x;
+  await right.dispatchEvent('pointerdown',{pointerId:11,pointerType:'touch'});
+  await punch.dispatchEvent('pointerdown',{pointerId:12,pointerType:'touch'});
+  await page.waitForTimeout(150);
+  await punch.dispatchEvent('pointerup',{pointerId:12,pointerType:'touch'});
+  await right.dispatchEvent('pointerup',{pointerId:11,pointerType:'touch'});
+  const state=await snap(page);
+  expect(state.people[0].x).toBeGreaterThan(start);
+  expect(['punch','idle','walk','hurt','block']).toContain(state.people[0].state);
+  const layout=await page.evaluate(()=>({
+    overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,
+    vh:document.documentElement.clientHeight,
+    game:document.querySelector('#gameWrap').getBoundingClientRect(),
+    buttons:[...document.querySelectorAll('#touchControls button')].map(b=>b.getBoundingClientRect())
+  }));
+  expect(layout.overflow).toBeLessThanOrEqual(1);
+  expect(Math.abs(layout.game.height-layout.vh)).toBeLessThan(4);
+  for(const b of layout.buttons){expect(b.width).toBeGreaterThanOrEqual(50);expect(b.height).toBeGreaterThanOrEqual(40);}
+  await c.close();
+});
+
+test('iPad portrait and landscape layouts stay usable',async({browser})=>{
+  for(const viewport of [{width:768,height:1024},{width:1024,height:768},{width:820,height:1180},{width:1180,height:820}]){
+    const c=await browser.newContext({hasTouch:true,isMobile:true,deviceScaleFactor:2,viewport});
+    const page=await c.newPage();
+    await boot(page);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth),`${viewport.width}x${viewport.height}`).toBeLessThanOrEqual(1);
+    await page.locator('#modeSelect').selectOption('training');
+    await page.locator('#startButton').click();
+    await expect(page.locator('#touchControls')).toBeVisible();
+    await c.close();
+  }
+});
+
+test('Retina rendering raises backing resolution without changing logical combat space',async({browser})=>{
+  const c=await browser.newContext({hasTouch:true,isMobile:true,deviceScaleFactor:3,viewport:{width:844,height:390}});
+  const page=await c.newPage();
+  await begin(page,'training');
+  await page.waitForTimeout(100);
+  const render=await page.evaluate(()=>({
+    width:document.querySelector('#gameCanvas').width,
+    height:document.querySelector('#gameCanvas').height,
+    scale:document.querySelector('#gameCanvas').dataset.renderScale,
+    enhancement:window.SFEnhancements
+  }));
+  expect(render.width).toBeGreaterThan(960);
+  expect(render.width).toBeLessThanOrEqual(1920);
+  expect(render.width/render.height).toBeCloseTo(16/9,2);
+  expect(Number(render.scale)).toBeGreaterThan(1);
+  expect(render.enhancement.simulationHz).toBe(60);
+  await c.close();
+});
+
+test('desktop and mobile screenshots are generated for release review',async({browser},info)=>{
+  await fs.mkdir('test-results/screenshots',{recursive:true});
+  const desktopContext=await browser.newContext({viewport:{width:1440,height:900}});
+  const desktop=await desktopContext.newPage();
+  await boot(desktop);
+  await desktop.screenshot({path:'test-results/screenshots/desktop-select.png',fullPage:true});
+  await desktop.locator('#modeSelect').selectOption('training');
+  await desktop.locator('#startButton').click();
+  await desktop.screenshot({path:'test-results/screenshots/desktop-fight.png',fullPage:true});
+  const mobileContext=await browser.newContext({hasTouch:true,isMobile:true,deviceScaleFactor:3,viewport:{width:844,height:390}});
+  const mobile=await mobileContext.newPage();
+  await begin(mobile,'training');
+  await mobile.screenshot({path:'test-results/screenshots/iphone-landscape-fight.png'});
+  for(const name of ['desktop-select','desktop-fight','iphone-landscape-fight'])await info.attach(name,{path:`test-results/screenshots/${name}.png`,contentType:'image/png'});
+  await desktopContext.close();
+  await mobileContext.close();
+});
