@@ -1,0 +1,3 @@
+/* Stereotype Fighters V6 additions. Loaded after the V5 base styles. */
+.fighter-card .v6-badge{position:absolute;right:4px;bottom:37px;z-index:2;padding:3px 5px;border:1px solid #ffe09a;background:#101521e6;color:#ffe09a;font:700 6px 'Courier New',monospace;letter-spacing:.6px}.fighter-card.chosen1 .v6-badge,.fighter-card.chosen2 .v6-badge{bottom:39px}.stage-card.stage-missing{border-color:#8d5b63}.stage-card.stage-missing .random-stage-art{color:#ff9c9c}.stage-card.stage-missing .stage-copy small::after{content:' / FALLBACK AVAILABLE';color:#ff9c9c}.fighter-preview .animation-readout{min-height:29px}.edition b{color:#ffe09a}
+@media(max-width:800px){.fighter-card .v6-badge{font-size:5px;bottom:35px}.fighter-preview .animation-readout{min-height:22px}}
