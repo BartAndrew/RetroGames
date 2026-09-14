@@ -71,7 +71,7 @@
       "fx": "dash",
       "bio": "A worksite bruiser with heavy hands, steel-capped kicks and a tool-powered ranged special.",
       "atlas": "./assets/characters/v6/bogan-tradie-atlas.webp",
-      "atlasCell": [96,60],
+      "atlasCell": [64,40],
       "atlasColumns": 8,
       "atlasCounts": {"idle":4,"walk":5,"jump":4,"crouch":4,"punch":4,"kick":3,"special":2,"hurt":1,"block":1,"fall":4,"getup":6,"victory":2},
       "portraitIndex": 40,
