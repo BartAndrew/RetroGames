@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StereoType Fighter V6.6 Audio Admin</title>
+  <link rel="stylesheet" href="./ui-v66.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>Audio / Settings Admin <span class="pill">V6.6</span></h1>
+        <p>Upload sound effects, assign stage music, and sync audio to fighter animations.</p>
+      </div>
+      <div class="topActions">
+        <a class="pill" href="./index.html">Back to Game</a>
+        <span id="adminStatus" class="pill">Loading…</span>
+      </div>
+    </header>
+
+    <div class="selectLayout" style="grid-template-columns:360px 1fr 360px">
+      <aside class="panel">
+        <h2>Asset source</h2>
+        <p class="sub">Choose what you want to edit.</p>
+        <div class="controlsBlock">
+          <label class="sub">Category</label>
+          <select id="categorySelect">
+            <option value="fighter">Character action sounds</option>
+            <option value="stage">Environment background music</option>
+            <option value="ui">UI sounds</option>
+          </select>
+          <label class="sub">Fighter</label>
+          <select id="fighterSelect"></select>
+          <label class="sub">Stage</label>
+          <select id="stageSelect"></select>
+          <label class="sub">UI slot</label>
+          <select id="uiSlotSelect">
+            <option value="ui.select">Select</option>
+            <option value="ui.confirm">Confirm</option>
+            <option value="ui.start">Start Match</option>
+          </select>
+          <label class="sub">Action slot</label>
+          <select id="actionSelect"></select>
+          <hr style="border-color:#2e3c61;opacity:.35;width:100%" />
+          <input id="audioFile" type="file" accept="audio/*" />
+          <div class="actionRow">
+            <button id="uploadButton" class="primary">Upload / Replace</button>
+            <button id="removeButton" class="ghost">Remove</button>
+          </div>
+          <div class="actionRow">
+            <button id="previewAudioButton" class="secondary">Preview audio only</button>
+            <button id="previewSyncButton" class="ghost">Preview synced animation</button>
+          </div>
+          <div class="actionRow">
+            <button id="saveConfigButton" class="secondary">Save config</button>
+            <button id="reloadConfigButton" class="ghost">Reload config</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="panel">
+        <div class="playerMeta">
+          <div>
+            <h2>Waveform sync</h2>
+            <p class="sub">Use the offset slider to align the sound with the animation. Positive offset delays the sound. Negative values trigger it earlier.</p>
+          </div>
+          <div class="pill" id="slotKeyLabel">slot</div>
+        </div>
+        <canvas id="waveCanvas" width="820" height="220" style="width:100%;height:220px;background:#0f1628;border-radius:16px;border:1px solid #2c3658"></canvas>
+        <div class="controlsBlock" style="margin-top:12px">
+          <label>Sync offset: <strong id="offsetValue">0 ms</strong></label>
+          <input id="offsetRange" type="range" min="-1000" max="1000" step="10" value="0" />
+          <label>Volume: <strong id="volumeValue">100%</strong></label>
+          <input id="volumeRange" type="range" min="0" max="200" step="1" value="100" />
+          <label>Animation scrub: <strong id="scrubValue">0%</strong></label>
+          <input id="scrubRange" type="range" min="0" max="100" step="1" value="0" />
+        </div>
+      </main>
+
+      <aside class="panel">
+        <h2>Animation preview</h2>
+        <p class="sub">See the chosen fighter action and test the audio alignment.</p>
+        <canvas id="animCanvas" class="previewCanvas" width="320" height="280"></canvas>
+        <div id="animMeta" class="note"></div>
+        <div class="controlsBlock" style="margin-top:8px">
+          <label><input id="enabledCheck" type="checkbox" /> Enabled for gameplay</label>
+          <label><input id="loopCheck" type="checkbox" /> Loop music (stage only)</label>
+          <p class="note">Files are stored locally in your browser via IndexedDB. This means you can tune the game without changing code, then export later if needed.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <script type="module" src="./admin-v66.js"></script>
+</body>
+</html>
