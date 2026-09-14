@@ -1,274 +1,38 @@
-import { loadFighter, loadRosterPortrait, drawSprite } from './sprites-v66.js';
-import { Arena, STAGE_DEFS } from './arena-v66.js';
-import { SoundSystem } from './sound-v66.js';
-
-const $ = id => document.getElementById(id);
-const state = {
-  roster: [],
-  portraits: new Map(),
-  selected: ['lefty', 'bogan-tradie'],
-  slot: 0,
-  stageId: STAGE_DEFS[0].id,
-  mode: 'cpu',
-  difficulty: 'normal',
-  muted: false,
-  previewTick: 0,
-  fps: 0,
-  frameCount: 0,
-  fpsStamp: performance.now(),
-  arena: null,
-  sound: null,
-  running: false,
-  assetCache: new Map()
-};
-
-const previewContexts = new Map();
-
-function prettyLabel(id) {
-  return id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-}
-
-function fighterById(id) { return state.roster.find(f => f.id === id); }
-function stageById(id) { return STAGE_DEFS.find(s => s.id === id); }
-
-function updateLoadStatus(text) { $('loadStatus').textContent = text; }
-
-async function ensureSelectedAssets() {
-  const defs = state.selected.map(fighterById).filter(Boolean);
-  const loaded = await Promise.all(defs.map(async def => {
-    const asset = await loadFighter(def);
-    state.assetCache.set(def.id, asset);
-    return asset;
-  }));
-  return loaded;
-}
-
-function makeMetaHtml(def) {
-  return `
-    <div class="playerName">${def.name}</div>
-    <div class="playerStyle">${def.style} • ${def.country}</div>
-    <p class="note" style="margin:.35rem 0 .1rem">${def.bio || ''}</p>
-    <div class="statRow">
-      <span class="stat">SPD ${(def.speed || 1).toFixed(2)}</span>
-      <span class="stat">DEF ${(def.defense || 1).toFixed(2)}</span>
-      <span class="stat">Special: ${def.special || 'Finisher'}</span>
-    </div>`;
-}
-
-async function buildRosterGrid() {
-  const grid = $('rosterGrid');
-  grid.innerHTML = '';
-  for (const def of state.roster) {
-    const card = document.createElement('button');
-    card.className = 'card';
-    card.type = 'button';
-    card.dataset.id = def.id;
-    const canvas = document.createElement('canvas');
-    canvas.width = 72; canvas.height = 72;
-    const portrait = await loadRosterPortrait(def.portraitIndex);
-    state.portraits.set(def.id, portrait);
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(portrait, 4, 4, 64, 64);
-    const label = document.createElement('div');
-    label.className = 'label'; label.textContent = def.name;
-    const tiny = document.createElement('div');
-    tiny.className = 'tiny'; tiny.textContent = def.render === 'atlas' ? 'HD Atlas' : 'Normalized';
-    const tag = document.createElement('div');
-    tag.className = 'assignTag';
-    card.append(canvas, label, tiny, tag);
-    card.onclick = async () => {
-      await state.sound?.resume();
-      state.sound?.playUi('ui.select');
-      state.selected[state.slot] = def.id;
-      updateSelectionUi();
-      renderPreviews();
-    };
-    grid.append(card);
-  }
-}
-
-function buildStageGrid() {
-  const grid = $('stageGrid');
-  grid.innerHTML = '';
-  for (const stage of STAGE_DEFS) {
-    const card = document.createElement('button');
-    card.type = 'button'; card.className = 'stageCard'; card.dataset.id = stage.id;
-    const img = document.createElement('img');
-    img.className = 'stageThumb'; img.src = new URL(stage.src, import.meta.url).href; img.alt = stage.name;
-    const info = document.createElement('div');
-    info.className = 'stageInfo';
-    info.innerHTML = `<strong>${stage.name}</strong><span>${prettyLabel(stage.id)}</span>`;
-    card.append(img, info);
-    card.onclick = () => { state.stageId = stage.id; updateSelectionUi(); };
-    grid.append(card);
-  }
-}
-
-function updateSelectionUi() {
-  $('slotToggle').textContent = `Selecting: ${state.slot === 0 ? 'Player 1' : 'Player 2'}`;
-  for (const card of $('rosterGrid').querySelectorAll('.card')) {
-    card.classList.toggle('selected1', card.dataset.id === state.selected[0]);
-    card.classList.toggle('selected2', card.dataset.id === state.selected[1]);
-    card.classList.toggle('active', card.dataset.id === state.selected[state.slot]);
-    const tag = card.querySelector('.assignTag');
-    tag.textContent = card.dataset.id === state.selected[0] ? 'P1' : card.dataset.id === state.selected[1] ? 'P2' : '';
-    tag.style.visibility = tag.textContent ? 'visible' : 'hidden';
-  }
-  for (const card of $('stageGrid').querySelectorAll('.stageCard')) card.classList.toggle('active', card.dataset.id === state.stageId);
-  const [a, b] = state.selected.map(fighterById);
-  if (a) $('p1Meta').innerHTML = makeMetaHtml(a);
-  if (b) $('p2Meta').innerHTML = makeMetaHtml(b);
-}
-
-function primePreviewAsset(fighterId) {
-  if (state.assetCache.has(fighterId)) return;
-  const def = fighterById(fighterId);
-  if (!def) return;
-  loadFighter(def).then(asset => state.assetCache.set(fighterId, asset)).catch(() => {});
-}
-
-function renderPreviewInto(canvasId, fighterId, facing) {
-  const canvas = $(canvasId); const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#0f1628'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'rgba(255,255,255,.04)';
-  for (let i = 0; i < canvas.width; i += 28) ctx.fillRect(i, canvas.height - 44, 16, 2);
-  const def = fighterById(fighterId); if (!def) return;
-  primePreviewAsset(fighterId);
-  const asset = state.assetCache.get(fighterId);
-  const demoStates = ['idle', 'walk', 'punch', 'kick', 'special', 'victory'];
-  const segment = Math.floor((state.previewTick / 90) % demoStates.length);
-  const subTick = state.previewTick % 90;
-  const displayState = demoStates[segment];
-  ctx.fillStyle = def.accent;
-  ctx.globalAlpha = 0.08;
-  ctx.beginPath(); ctx.arc(canvas.width / 2, canvas.height / 2 - 14, 92, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1;
-  if (!asset) {
-    ctx.fillStyle = '#dfe8ff';
-    ctx.font = '14px system-ui';
-    ctx.fillText('Loading preview…', 18, 24);
-    return;
-  }
-  drawSprite(ctx, asset, displayState, subTick, canvas.width / 2, canvas.height - 30, 1.85, facing, 36, displayState === 'jump' ? -4 : 0);
-}
-
-function renderPreviews() {
-  renderPreviewInto('p1Preview', state.selected[0], 1);
-  renderPreviewInto('p2Preview', state.selected[1], -1);
-}
-
-function switchScreen(showMatch) {
-  $('selectScreen').classList.toggle('active', !showMatch);
-  $('matchScreen').classList.toggle('active', !!showMatch);
-}
-
-function updateHud(snapshot) {
-  if (!snapshot?.people?.length) return;
-  const [a, b] = snapshot.people;
-  $('matchModeLabel').textContent = state.mode === 'cpu' ? `CPU (${state.difficulty})` : state.mode === 'training' ? 'Training' : 'Local Versus';
-  $('matchStageLabel').textContent = stageById(state.stageId)?.name || '--';
-  $('roundLabel').textContent = String(snapshot.round || 1);
-  $('timerLabel').textContent = String(Math.ceil((snapshot.remaining || 0) / 60));
-  $('p1HudName').textContent = fighterById(a.id)?.name || 'Player 1';
-  $('p2HudName').textContent = fighterById(b.id)?.name || 'Player 2';
-  $('p1HudHp').textContent = `${a.hp} HP`;
-  $('p2HudHp').textContent = `${b.hp} HP`;
-  $('p1HpBar').style.width = `${a.hp}%`;
-  $('p2HpBar').style.width = `${b.hp}%`;
-  $('p1MeterBar').style.width = `${a.meter}%`;
-  $('p2MeterBar').style.width = `${b.meter}%`;
-}
-
-async function startMatch() {
-  updateLoadStatus('Preparing fighters…');
-  await state.sound.resume();
-  await state.sound.playUi('ui.start');
-  const assets = await ensureSelectedAssets();
-  state.mode = $('modeSelect').value;
-  state.difficulty = $('difficultySelect').value;
-  $('modeSelect').disabled = true; $('difficultySelect').disabled = true;
-  switchScreen(true);
-  await state.arena.start(state.mode, assets, state.difficulty, state.stageId);
-  updateHud(state.arena.snapshot());
-  state.running = true;
-  updateLoadStatus('Match ready');
-}
-
-function stopMatch() {
-  state.running = false;
-  state.arena.stop();
-  $('modeSelect').disabled = false; $('difficultySelect').disabled = false;
-  switchScreen(false);
-  updateSelectionUi();
-}
-
-function bindUi() {
-  $('slotToggle').onclick = () => { state.slot = state.slot ? 0 : 1; updateSelectionUi(); };
-  $('randomButton').onclick = async () => {
-    const pool = [...state.roster];
-    state.selected[state.slot] = pool[Math.floor(Math.random() * pool.length)].id;
-    await state.sound.resume();
-    state.sound.playUi('ui.select');
-    updateSelectionUi();
-    renderPreviews();
-  };
-  $('startButton').onclick = startMatch;
-  $('pauseButton').onclick = () => { state.arena.pause(); $('pauseButton').textContent = state.arena.paused ? 'Resume' : 'Pause'; };
-  $('backButton').onclick = stopMatch;
-  $('muteButton').onclick = () => {
-    state.muted = !state.muted;
-    state.sound.setMuted(state.muted);
-    $('muteButton').textContent = state.muted ? 'Unmute' : 'Mute';
-  };
-  $('modeSelect').onchange = e => { state.mode = e.target.value; };
-  $('difficultySelect').onchange = e => { state.difficulty = e.target.value; };
-  window.addEventListener('keydown', async e => {
-    if (['Tab'].includes(e.code)) { e.preventDefault(); state.slot = state.slot ? 0 : 1; updateSelectionUi(); }
-    if (e.code === 'Enter' && $('selectScreen').classList.contains('active')) await startMatch();
-    if (state.running) state.arena.key(e.code, true);
-  });
-  window.addEventListener('keyup', e => { if (state.running) state.arena.key(e.code, false); });
-}
-
-function loop(now) {
-  state.frameCount++;
-  if (now - state.fpsStamp >= 1000) {
-    state.fps = Math.round(state.frameCount * 1000 / (now - state.fpsStamp));
-    state.frameCount = 0; state.fpsStamp = now;
-    $('fpsLabel').textContent = `FPS ${state.fps}`;
-  }
-  state.previewTick += 1;
-  if ($('selectScreen').classList.contains('active')) renderPreviews();
-  if (state.running) {
-    state.accumulator = (state.accumulator || 0) + Math.min(50, now - (state.lastTime || now));
-    while (state.accumulator >= 1000 / 60) {
-      state.arena.update();
-      state.accumulator -= 1000 / 60;
-    }
-    state.arena.draw();
-    updateHud(state.arena.snapshot());
-  }
-  state.lastTime = now;
-  requestAnimationFrame(loop);
-}
-
-async function init() {
-  state.roster = await (await fetch(new URL('./tools/roster-v66.json', import.meta.url))).json();
-  state.sound = await new SoundSystem(state.roster, STAGE_DEFS).init();
-  state.arena = new Arena($('gameCanvas'), arena => updateHud(arena.snapshot()), state.sound);
-  previewContexts.set('p1', $('p1Preview').getContext('2d'));
-  previewContexts.set('p2', $('p2Preview').getContext('2d'));
-  await buildRosterGrid();
-  buildStageGrid();
-  updateSelectionUi();
-  bindUi();
-  renderPreviews();
-  updateLoadStatus('20 fighters ready • audio admin enabled • lazy load active');
-  requestAnimationFrame(loop);
-}
-
-init().catch(err => {
-  console.error(err);
-  updateLoadStatus('Load failed');
-  alert('StereoType Fighter V6.6 failed to initialize. Check the console for details.');
-});
+import {loadFighter,retryFighter,loadRosterPortrait,drawSprite,sequences} from './sprites-v66.js';
+import {Arena,CONTROL,STAGE_DEFS,resolveStageUrl,retryStage} from './arena-v66.js';
+import {SoundSystem} from './sound-v66.js';
+import {getFighterBalance} from './combat-v66.js';
+const VERSION='6.6',$=id=>document.getElementById(id),live=(text,urgent=false)=>{const n=$(urgent?'liveAssertive':'liveStatus');n.textContent='';requestAnimationFrame(()=>n.textContent=text)};
+let roster=[],assets=new Map(),loads=new Map(),slot=0,pick=['lefty','bogan-tradie'],mode='cpu',stage=STAGE_DEFS[0].id,difficulty='normal',muted=false,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,soundSystem=null,lastSelectorFocus=null,labTick=0,labPlaying=true,lastPaused=false,lastOver=false,rafFrames=0,fpsStamp=performance.now();
+const arena=new Arena($('gameCanvas'),syncHud,null,text=>live(text,true),()=>togglePause());
+const ready=id=>assets.get(id)?.status==='ready',fighter=id=>roster.find(x=>x.id===id),save=()=>{try{localStorage.setItem('sf-v66',JSON.stringify({muted,reduced,stage,difficulty,mode}))}catch{}},uiSound=slot=>soundSystem?.playUi(slot).catch(()=>{});
+try{const s=JSON.parse(localStorage.getItem('sf-v66')||'{}');muted=!!s.muted;if(typeof s.reduced==='boolean')reduced=s.reduced;if(s.stage==='random'||STAGE_DEFS.some(x=>x.id===s.stage))stage=s.stage;if(['easy','normal','hard'].includes(s.difficulty))difficulty=s.difficulty;if(['cpu','local','training'].includes(s.mode))mode=s.mode}catch{}
+function applySettings(){document.body.classList.toggle('reducedMotion',reduced);arena.reduced=reduced;$('muteButton').textContent=muted?'Sound Off':'Sound On';$('muteButton').setAttribute('aria-pressed',String(muted));$('motionButton').textContent=reduced?'Reduced Motion On':'Reduced Motion Off';$('motionButton').setAttribute('aria-pressed',String(reduced));soundSystem?.setMuted(muted)}
+function fighterMeta(d){const b=getFighterBalance(d);return `<div class="playerName">${d.name}</div><div class="playerStyle">${b.archetype.toUpperCase()} · ${d.style||''}</div><p class="note">${d.bio||''}</p><div class="statRow"><span class="stat">Speed ${(d.speed||1).toFixed(2)}</span><span class="stat">Defense ${(d.defense||1).toFixed(2)}</span><span class="stat">${b.specialName}</span></div>`}
+async function paintPortrait(canvas,d,index){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);try{const p=await loadRosterPortrait(d.rosterPortraitIndex??d.portraitIndex??index);ctx.imageSmoothingEnabled=false;ctx.drawImage(p,0,0,p.width,p.height,0,0,canvas.width,canvas.height)}catch(e){ctx.fillStyle='#111a2d';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle=d.accent||'#ffd166';ctx.font='700 28px system-ui';ctx.textAlign='center';ctx.fillText(d.name.split(/\s+/).map(x=>x[0]).join('').slice(0,2),canvas.width/2,canvas.height/2);console.warn('Portrait fallback:',d.id,e)}}
+function makeRoster(){const g=$('rosterGrid');g.replaceChildren();roster.forEach((d,index)=>{const b=document.createElement('button');b.type='button';b.className='card';b.dataset.id=d.id;b.setAttribute('aria-pressed','false');const c=document.createElement('canvas');c.width=c.height=128;c.setAttribute('aria-hidden','true');const name=document.createElement('div');name.className='label';name.textContent=d.name;const style=document.createElement('div');style.className='tiny';style.textContent=getFighterBalance(d).archetype.toUpperCase();b.append(c,name,style);b.addEventListener('pointerenter',()=>prime(d));b.addEventListener('focus',()=>{});b.addEventListener('click',()=>{pick[slot]=d.id;lastSelectorFocus=b;prime(d);uiSound('ui.select');syncSelect()});g.append(b);paintPortrait(c,d,index);const o=document.createElement('option');o.value=d.id;o.textContent=d.name;$('labFighter').append(o)});syncSelect()}
+function makeStages(){const g=$('stageGrid');g.replaceChildren();const defs=[{id:'random',name:'Random Stage',tag:'SURPRISE ME'},...STAGE_DEFS];for(const d of defs){const b=document.createElement('button');b.type='button';b.className='stageCard';b.dataset.stage=d.id;b.setAttribute('aria-pressed','false');if(d.src){const img=new Image();img.alt='';img.loading='lazy';img.src=resolveStageUrl(d.src);img.className='stageThumb';img.onerror=()=>{img.hidden=true;b.classList.add('stageMissing');live(`${d.name} image failed. The procedural fallback is available.`)};b.append(img);b.onclick=()=>{if(b.classList.contains('stageMissing')){retryStage(d.id);img.hidden=false;img.src=resolveStageUrl(d.src)+'?retry='+Date.now()}selectStage(d.id)}}else{const a=document.createElement('span');a.className='randomStage';a.textContent='?';b.append(a);b.onclick=()=>selectStage('random')}const info=document.createElement('span');info.className='stageInfo';info.innerHTML=`<strong>${d.name}</strong><span>${d.id==='random'?'SURPRISE ME':'ARENA'}</span>`;b.append(info);g.append(b)}syncStage()}
+function selectStage(id){stage=id;save();syncStage();uiSound('ui.select')}function syncStage(){const name=stage==='random'?'Random Stage':STAGE_DEFS.find(x=>x.id===stage)?.name||STAGE_DEFS[0].name;$('stageChoice').textContent=name;for(const b of $('stageGrid').children){const on=b.dataset.stage===stage;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))}}
+function syncSelect(){for(let i=0;i<2;i++){const d=fighter(pick[i]);if(!d)continue;$(`preview${i}`).classList.toggle('activeSlot',slot===i);$(`preview${i}`).querySelector('.slotHead').setAttribute('aria-pressed',String(slot===i));$(`p${i+1}Meta`).innerHTML=fighterMeta(d)}for(const b of $('rosterGrid').children){const id=b.dataset.id,a=pick[0]===id,c=pick[1]===id;b.classList.toggle('selected1',a);b.classList.toggle('selected2',c);b.setAttribute('aria-pressed',String(a||c));b.setAttribute('aria-label',fighter(id).name+(a?' selected for Player 1':'')+(c?' selected for Player 2':''));b.querySelector('.assignTag')?.remove();if(a||c){const tag=document.createElement('span');tag.className='assignTag';tag.textContent=a&&c?'P1/P2':a?'P1':'P2';b.append(tag)}}const errors=pick.filter(id=>assets.get(id)?.status==='error'),loading=pick.filter(id=>!ready(id)&&!errors.includes(id));$('startButton').disabled=loading.length>0||errors.length>0;$('startButton').textContent=errors.length?'Retry Fighter Asset':loading.length?'Preparing Fighters…':mode==='training'?'Start Practice':'Fight';$('difficultyLabel').hidden=mode!=='cpu';$('rulesText').textContent=mode==='training'?'Unlimited timer · full meter · R resets':'First to 2 rounds · 60 second clock';$('loadStatus').textContent=errors.length?'Selected fighter asset failed — activate Fight to retry':loading.length?'Loading selected move set…':`${roster.length} portraits ready · combat art loads on demand`;drawPreviews()}
+async function prime(d,force=false){if(!d)return null;if(ready(d.id)&&!force)return assets.get(d.id);if(loads.has(d.id))return loads.get(d.id);assets.set(d.id,{status:'loading',def:d});syncSelect();const p=(force?retryFighter(d):loadFighter(d)).then(a=>{assets.set(d.id,a);syncSelect();return a}).catch(e=>{assets.set(d.id,{status:'error',def:d,error:e});console.error('Combat asset failed:',d.id,e);live(`${d.name} move set failed to load. Other fighters remain playable; activate Fight to retry.`,true);syncSelect();return null}).finally(()=>loads.delete(d.id));loads.set(d.id,p);return p}
+async function ensurePicked(forceErrors=false){return Promise.all(pick.map(id=>{const d=fighter(id);return prime(d,forceErrors&&assets.get(id)?.status==='error')}))}
+function scheduleWarm(){const task=()=>Promise.allSettled(roster.filter(d=>!pick.includes(d.id)).slice(0,2).map(d=>prime(d)));'requestIdleCallback'in window?requestIdleCallback(task,{timeout:3000}):setTimeout(task,1800)}
+function previewPose(ctx,a,side,t){ctx.clearRect(0,0,280,260);if(a?.status==='ready')drawSprite(ctx,a,'idle',t,140,240,1.7,side? -1:1);else{const d=fighter(pick[side]);ctx.fillStyle='#0c1325';ctx.fillRect(0,0,280,260);ctx.fillStyle=d?.accent||'#ffd166';ctx.font='700 18px system-ui';ctx.textAlign='center';ctx.fillText(a?.status==='error'?'MOVE SET FAILED':'PORTRAIT READY · MOVES ON DEMAND',140,132)}}function drawPreviews(){previewPose($('p1Preview').getContext('2d'),assets.get(pick[0]),0,performance.now()/16);previewPose($('p2Preview').getContext('2d'),assets.get(pick[1]),1,performance.now()/16)}
+async function startMatch(){if(pick.some(id=>assets.get(id)?.status==='error'))await ensurePicked(true);else await ensurePicked();if(!pick.every(ready))return;lastSelectorFocus=lastSelectorFocus||$('rosterGrid').querySelector(`[data-id="${CSS.escape(pick[slot])}"]`);await soundSystem?.resume();uiSound('ui.start');await arena.start(mode,pick.map(id=>assets.get(id)),difficulty,stage);$('selectScreen').classList.remove('active');$('matchScreen').classList.add('active');$('trainingHint').hidden=mode!=='training';window.scrollTo(0,0);lastPaused=lastOver=false;requestAnimationFrame(()=>$('pauseButton').focus())}
+function returnSelect(){arena.stop();$('matchScreen').classList.remove('active');$('selectScreen').classList.add('active');$('pauseOverlay').hidden=$('resultOverlay').hidden=true;requestAnimationFrame(()=>{const f=lastSelectorFocus&&document.contains(lastSelectorFocus)?lastSelectorFocus:$('startButton');f.focus()})}
+function setPaused(v){if(!arena.pause(v))return;uiSound('ui.pause');requestAnimationFrame(()=>$(v?'resumeButton':'pauseButton').focus())}function togglePause(){if(arena.phase!=='off'&&arena.phase!=='matchover')setPaused(!arena.paused)}function rematch(){arena.rematch();$('resultOverlay').hidden=true;lastOver=false;requestAnimationFrame(()=>$('pauseButton').focus())}
+function syncHud(g){if(!g.people)return;for(let i=0;i<2;i++){const f=g.people[i],p=i+1;$(`p${p}HudName`).textContent=f.asset.def.name;$(`p${p}HpBar`).style.width=f.hp+'%';$(`p${p}Health`).setAttribute('aria-valuenow',String(Math.round(f.hp)));$(`p${p}MeterBar`).style.width=f.meter+'%';$(`p${p}Meter`).setAttribute('aria-valuenow',String(Math.round(f.meter)));$(`p${p}Rounds`).textContent=(g.wins[i]>=1?'●':'○')+' '+(g.wins[i]>=2?'●':'○')}$('roundLabel').textContent=g.mode==='training'?'PRACTICE':g.round;$('timerLabel').textContent=g.mode==='training'?'∞':String(Math.ceil(g.remaining/60)).padStart(2,'0');$('matchModeLabel').textContent=g.mode==='cpu'?`CPU · ${g.difficulty.toUpperCase()}`:g.mode==='local'?'LOCAL 2 PLAYER':'TRAINING';$('matchStageLabel').textContent=g.venue?.name||'Arena';$('pauseOverlay').hidden=!g.paused;const over=g.phase==='matchover';$('resultOverlay').hidden=!over;if(over){const w=g.wins[0]>=2?0:1;$('resultTitle').textContent=g.people[w].asset.def.name+' wins the match'}if(g.paused&&!lastPaused)requestAnimationFrame(()=>$('resumeButton').focus());if(!g.paused&&lastPaused&&!over)requestAnimationFrame(()=>$('pauseButton').focus());if(over&&!lastOver){uiSound('ui.result');requestAnimationFrame(()=>$('rematchButton').focus())}lastPaused=g.paused;lastOver=over}
+function trapModal(e){if(e.key!=='Tab')return;const o=!$('pauseOverlay').hidden?$('pauseOverlay'):!$('resultOverlay').hidden?$('resultOverlay'):null;if(!o)return;const f=[...o.querySelectorAll('button:not([disabled])')];if(!f.length)return;if(e.shiftKey&&document.activeElement===f[0]){e.preventDefault();f.at(-1).focus()}else if(!e.shiftKey&&document.activeElement===f.at(-1)){e.preventDefault();f[0].focus()}}
+const interactive=t=>t instanceof Element&&!!t.closest('button,a,input,select,textarea,dialog,[contenteditable="true"],[role="button"],[role="link"],[role="option"],[role="menuitem"],[role="slider"]'),combatKeys=new Set(CONTROL.flatMap(c=>Object.values(c)));
+addEventListener('keydown',e=>{trapModal(e);if($('helpDialog').open||$('labDialog').open)return;if(arena.phase!=='off'){if(combatKeys.has(e.code)||e.code.startsWith('Arrow'))e.preventDefault();if((e.code==='KeyP'||e.code==='Escape')&&!e.repeat){e.preventDefault();togglePause();return}if(e.code==='KeyR'&&mode==='training'&&!e.repeat){e.preventDefault();arena.resetTraining();return}arena.key(e.code,true);return}if((e.code==='Digit1'||e.code==='Digit2')&&!e.repeat){slot=e.code==='Digit1'?0:1;syncSelect();return}if(e.code==='Enter'&&!e.repeat&&!interactive(e.target)&&pick.every(ready)){e.preventDefault();startMatch()}});addEventListener('keyup',e=>arena.key(e.code,false));addEventListener('blur',()=>arena.clearInputs());document.addEventListener('visibilitychange',()=>{arena.clearInputs();if(document.hidden&&arena.phase!=='off'&&arena.phase!=='matchover'&&!arena.paused)setPaused(true)});
+$('rosterGrid').addEventListener('keydown',e=>{if(!e.code.startsWith('Arrow'))return;const cards=[...$('rosterGrid').querySelectorAll('.card:not([hidden])')],i=cards.indexOf(document.activeElement);if(i<0)return;e.preventDefault();const cols=Math.max(1,getComputedStyle($('rosterGrid')).gridTemplateColumns.split(' ').length),d=e.code==='ArrowLeft'?-1:e.code==='ArrowRight'?1:e.code==='ArrowUp'?-cols:cols;cards[(i+d+cards.length)%cards.length]?.focus()});
+for(const b of document.querySelectorAll('[data-touch]')){const a=b.dataset.touch,release=e=>{arena.setVirtual(0,a,false);b.classList.remove('active');try{if(b.hasPointerCapture(e.pointerId))b.releasePointerCapture(e.pointerId)}catch{}};b.addEventListener('pointerdown',e=>{e.preventDefault();try{b.setPointerCapture(e.pointerId)}catch{}arena.setVirtual(0,a,true);b.classList.add('active')});for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,release)}
+$('fighterSearch').oninput=()=>{const q=$('fighterSearch').value.toLowerCase().trim();let n=0;for(const b of $('rosterGrid').children){b.hidden=!b.textContent.toLowerCase().includes(q);if(!b.hidden)n++}$('noResults').hidden=!!n;live(n?`${n} fighters match the search.`:'No fighters match that search.')};$('randomButton').onclick=()=>{pick[slot]=roster[Math.floor(Math.random()*roster.length)].id;prime(fighter(pick[slot]));syncSelect();uiSound('ui.select')};for(const b of document.querySelectorAll('[data-slot]'))b.onclick=()=>{slot=+b.dataset.slot;syncSelect();uiSound('ui.select')};$('modeSelect').value=mode;$('difficultySelect').value=difficulty;$('modeSelect').onchange=e=>{mode=e.target.value;save();syncSelect()};$('difficultySelect').onchange=e=>{difficulty=e.target.value;save()};$('startButton').onclick=startMatch;$('menuButton').onclick=$('backButton').onclick=$('resultMenuButton').onclick=returnSelect;$('pauseButton').onclick=()=>setPaused(true);$('resumeButton').onclick=()=>setPaused(false);$('rematchButton').onclick=rematch;$('muteButton').onclick=()=>{muted=!muted;applySettings();save();if(!muted)uiSound('ui.confirm')};$('motionButton').onclick=()=>{reduced=!reduced;applySettings();save()};$('helpButton').onclick=()=>$('helpDialog').showModal();
+for(const s of sequences){const o=document.createElement('option');o.value=s;o.textContent=s.toUpperCase();$('labSequence').append(o)}
+async function openLab(){const d=fighter(pick[slot]);$('labFighter').value=d.id;$('labDialog').showModal();await prime(d);drawLab()}$('labButton').onclick=openLab;$('labFighter').onchange=async()=>{await prime(fighter($('labFighter').value));labTick=0;drawLab()};$('labSequence').onchange=()=>{labTick=0;drawLab()};$('labPlay').onclick=()=>{labPlaying=!labPlaying;$('labPlay').textContent=labPlaying?'Pause':'Play';$('labPlay').setAttribute('aria-pressed',String(labPlaying))};$('labStep').onclick=()=>{labPlaying=false;$('labPlay').textContent='Play';$('labPlay').setAttribute('aria-pressed','false');labTick+=5;drawLab()};$('labHitboxes').onchange=()=>{arena.debugHitboxes=$('labHitboxes').checked;drawLab()};
+function drawLab(){const d=fighter($('labFighter').value),a=assets.get(d?.id),ctx=$('labCanvas').getContext('2d'),s=$('labSequence').value||'idle';ctx.clearRect(0,0,640,320);ctx.fillStyle='#080e1a';ctx.fillRect(0,0,640,320);if(a?.status==='ready'){drawSprite(ctx,a,s,labTick,320,290,2,1,60,0);if($('labHitboxes').checked){ctx.strokeStyle='#67d6ff';ctx.strokeRect(294,178,52,112);if(['punch','kick','special'].includes(s)){const m=getFighterBalance(d)[s];ctx.strokeStyle='#ff5c78';ctx.strokeRect(320+m.hitbox.forward*.7,290-m.hitbox.up*.7,m.hitbox.w*.7,m.hitbox.h*.7)}}$('labInfo').textContent=`${d.name} · ${s.toUpperCase()} · ${a.renderMode.toUpperCase()}`}else $('labInfo').textContent='Loading fighter asset…'}
+async function loadRoster(){try{const r=await fetch(new URL(`./tools/roster-runtime-v66.json?v=${VERSION}`,import.meta.url));if(r.ok){const d=await r.json();if(d.length===20&&new Set(d.map(x=>x.id)).size===20)return d}}catch{}const r=await fetch(new URL(`./tools/roster-v66.json?v=${VERSION}`,import.meta.url));if(!r.ok)throw Error('V6.6 roster unavailable');const d=await r.json();if(d.length!==20||new Set(d.map(x=>x.id)).size!==20)throw Error(`Expected 20 unique fighters, got ${d.length}`);return d}
+let last=performance.now(),acc=0;function loop(now){acc+=Math.min(100,now-last);last=now;while(acc>=1000/60){arena.update();if($('labDialog').open&&labPlaying)labTick++;acc-=1000/60}if($('matchScreen').classList.contains('active'))arena.draw();else drawPreviews();if($('labDialog').open)drawLab();rafFrames++;if(now-fpsStamp>=1000){$('fpsLabel').textContent=`FPS ${Math.round(rafFrames*1000/(now-fpsStamp))}`;rafFrames=0;fpsStamp=now}requestAnimationFrame(loop)}
+try{roster=await loadRoster();soundSystem=new SoundSystem(roster,STAGE_DEFS);arena.soundSystem=soundSystem;applySettings();makeStages();makeRoster();await ensurePicked();scheduleWarm();live('Stereotype Fighters V6.6 ready.')}catch(e){console.error('Fatal roster startup failure',e);$('fatalError').hidden=false;$('fatalError').textContent='Unable to load the 20-fighter roster. Reload the page to retry.';live($('fatalError').textContent,true)}
+requestAnimationFrame(loop);
+window.SF={version:VERSION,snapshot:()=>arena.snapshot(),selection:()=>({pick:[...pick],mode,stage,difficulty}),roster:()=>roster.map(d=>({id:d.id,name:d.name,render:d.render,atlas:d.atlas||null,status:assets.get(d.id)?.status||'on-demand',renderMode:assets.get(d.id)?.renderMode||null,frames:assets.get(d.id)?.frames?Object.fromEntries(Object.entries(assets.get(d.id).frames).map(([k,v])=>[k,v.length])):{},balance:getFighterBalance(d)})),stages:()=>STAGE_DEFS,audioProfile:()=>soundSystem?.config||null,triggerAudioEvent:(fighterId,action)=>soundSystem?.playAction(fighterId,action),runtimeStats:()=>({assetsCached:[...assets.values()].filter(a=>a.status==='ready').length,fps:$('fpsLabel').textContent}),test:{loadAll:()=>Promise.all(roster.map(d=>prime(d))),start:startMatch,menu:returnSelect,pause:setPaused,resetTraining:()=>arena.resetTraining(),set:d=>arena.debugSet(d),clearInputs:()=>arena.clearInputs(),debugHitboxes:v=>arena.debugHitboxes=!!v}};
