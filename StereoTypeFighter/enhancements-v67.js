@@ -128,13 +128,21 @@ const matchScreen = document.getElementById('matchScreen');
 if (matchScreen) new MutationObserver(syncPlayingClass).observe(matchScreen, {attributes: true, attributeFilter: ['class']});
 
 const startButton = document.getElementById('startButton');
-if (startButton) new MutationObserver(keepRetryActionUsable).observe(startButton, {
-  attributes: true,
-  attributeFilter: ['disabled'],
-  childList: true,
-  characterData: true,
-  subtree: true,
-});
+if (startButton) {
+  new MutationObserver(keepRetryActionUsable).observe(startButton, {
+    attributes: true,
+    attributeFilter: ['disabled'],
+    childList: true,
+    characterData: true,
+    subtree: true,
+  });
+  startButton.addEventListener('click', () => {
+    if (!/retry/i.test(startButton.textContent || '')) return;
+    setTimeout(() => {
+      if (/retry/i.test(startButton.textContent || '') && !startButton.disabled) startButton.click();
+    }, 40);
+  }, {capture: true});
+}
 
 const touchControls = document.getElementById('touchControls');
 if (touchControls) {
