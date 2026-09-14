@@ -31,10 +31,20 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Preserve the public game URL
+        shell: bash
+        run: |
+          mkdir -p _site
+          cp -R StereoTypeFighter _site/StereoTypeFighter
+          touch _site/.nojekyll
+          cat > _site/index.html <<'HTML'
+          <!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=./StereoTypeFighter/"><title>Stereotype Fighters</title><p><a href="./StereoTypeFighter/">Play Stereotype Fighters</a></p></html>
+          HTML
+
       - name: Upload Stereotype Fighters site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: './StereoTypeFighter'
+          path: './_site'
 
       - name: Deploy to GitHub Pages
         id: deployment

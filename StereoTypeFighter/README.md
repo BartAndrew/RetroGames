@@ -1,90 +1,65 @@
-# Stereotype Fighters — playable prototype
+# Stereotype Fighters - V5.1
 
-A dependency-free browser-based 2D fighting-game prototype built from the pixel-art fighter sheets in this repository.
-
-## Current roster
-
-The character-select screen now exposes the complete named sprite-sheet roster in `StereoTypeFighter`, plus the two original prototype fighters:
-
-1. Lefty Liberal — **Safe Space Bubble**
-2. Agenda Fluid — **Gender Bending Beatdown**
-3. RapThug — **Bass Drop**
-4. KillWoodRat — **Razor Riff**
-5. SK8R BOI — **Kickflip KO**
-6. Club Doll — **Velvet Rope Vortex**
-7. Grunge — **Feedback Frenzy**
-8. Yuppie — **Hostile Takeover**
-9. Fat Gamer — **Level Up**
-10. Bimbo Babe — **Heart Blast**
-11. Influencer — **Viral Spiral**
-12. Yoga Mom — **Namaste Knockout**
-13. E-Girl — **Lag Spike**
-14. Cheerleader — **Pom-Pom Cyclone**
-15. Punk Princess — **Mosh Pit Riot**
-16. Douchebag Dave — **Trust Fund Toss**
-17. Junkie — **Needle Rush**
-18. Neckbeard Nate — **Actually…**
-
-The 16 named-sheet characters correspond to the roster documented in `CHARACTER_BIBLE.md`. Lefty Liberal and Agenda Fluid remain as bonus/original prototype fighters.
-
-## Character-select v4
-
-The selector was rebuilt after the previous version stopped during menu initialization. The immediate cause was a strict-mode JavaScript error in the portrait setup path: the `img` variable was being assigned without a declaration, which stopped `setupMenu()` before the selector buttons became interactive.
-
-The v4 selector now:
-
-- repairs that runtime error before the game initializes;
-- supports the full 18-fighter roster;
-- uses a compact arcade-style portrait grid instead of large two-column cards;
-- keeps the P1/P2 selection summary and start buttons visible;
-- gives the roster its own scroll area so a large roster fits inside the game cabinet;
-- supports mouse, touch and keyboard button activation;
-- continues to use the named sprite-sheet images already stored in this repository.
+A browser arcade prototype using the repository's original character artwork. V5 replaces the string-replacement/eval loader with direct ES modules and a rebuilt character-select interface.
 
 ## Play
 
-GitHub Pages:
+Serve this folder over HTTP; ES modules and sprite processing should not be opened with file:// URLs.
 
-`https://bartandrew.github.io/RetroGames/StereoTypeFighter/`
-
-For local testing from the repository root:
-
-```bash
+```sh
+# From the repository root
 python3 -m http.server 8080
+# Open http://localhost:8080/StereoTypeFighter/
 ```
 
-Then open:
+The Pages workflow stages this game at `/RetroGames/StereoTypeFighter/` and publishes a root redirect from `/RetroGames/`. No framework, bundler, account or game installation is required. Pages publishing still depends on the repository's Pages settings and a successful deployment.
 
-`http://localhost:8080/StereoTypeFighter/`
+## Character select
+
+All 18 fighters remain available. Select P1 or P2 above the large preview, then click a portrait. Search filters the grid; Random Pick changes the active slot. Both players may choose the same fighter. Selected fighters load first, and Start unlocks only when both selected assets are ready. A failed sprite displays an error and can be retried without stopping other fighters.
+
+Modes: **VS CPU** with Easy/Normal/Hard, **Local 2P**, and **Practice** with unlimited time and special meter. Practice's opponent is a controllable training partner, not an AI.
 
 ## Controls
 
 | Action | Player 1 | Player 2 |
 | --- | --- | --- |
 | Move | A / D | Left / Right |
-| Jump | W | Up |
-| Crouch | S | Down |
+| Jump / Crouch | W / S | Up / Down |
 | Block | E | I |
-| Punch | F | J |
-| Kick | G | K |
+| Punch / Kick | F / G | J / K |
 | Special | H | L |
-| Pause | P | P |
 
-Two modes are available: **Vs CPU** and **2 Player** on one keyboard.
+P or Escape pauses. R resets Practice. Pause and match-end screens offer a return to character select. The selector also supports WASD for P1, arrows for P2 and 1/2 to change the active slot. Coarse-pointer devices have Player 1 touch controls; local two-player play requires a keyboard. Physical keyboard rollover limits still apply.
 
-## Sprite handling
+## Animation repair
 
-Lefty Liberal and Agenda Fluid use compact 96×96 combat atlases. Junkie uses the dedicated compact runtime atlas generated from the supplied Junkie sheet. Douchebag Dave keeps his detailed frame map.
+`tools/roster-v5.json` maps each of the 16 full sheets independently; it does **not** reuse Bimbo's coordinates for other fighters. Panels refine their cell boundaries against gutters. Frames are background-cleaned and cached once, with torso/foot anchors, preserved aspect ratio and consistent sequence scale. RapThug and Grunge have additional alpha masks for their textured backgrounds.
 
-The other named full-sheet characters use a conservative common crop map based on the shared sprite-sheet layout so they can immediately participate in the current game engine. These generic mappings are a playable baseline; each fighter can progressively receive bespoke animation coordinates, attack timings and unique specials without changing the selector architecture again.
+Animation timing is local to each fighter and resets when actions change. Walking reverses when retreating. Jump poses follow ascent/apex/descent; landing has a short transition. Attacks have startup, active and recovery periods, nine-frame input buffering, hit interruption, block reactions, knockdown and get-up. KO poses stop on their final frame. Explicit round phases prevent the earlier repeated round-award timer problem.
 
-## Next useful additions
+The **Animation Lab** in the top bar previews every available sequence and supports pause and frame stepping against a ground/pivot guide.
 
-1. Replace generic full-sheet crops with bespoke animation maps for each fighter.
-2. Add each character's second special / super from the character bible.
-3. Add heavy attacks, throws, aerial attacks and combo chains.
-4. Add stage selection and character-specific home stages.
-5. Add gamepad support and input remapping.
-6. Add music, sampled sound effects and combo counters.
+## Current boundaries
 
-This remains a playable vertical slice rather than a finished fighting-game engine.
+This is still a prototype, not a finished arcade animation set. Lefty Liberal and Agenda Fluid retain their older combat atlases: dedicated walk/jump/crouch/block art is absent, so they use honest neutral/guard fallbacks rather than distorted hurt poses. Some source-sheet actions contain only one or two usable poses. Hand-authored in-between frames, outline cleanup and unique hitboxes would improve them further.
+
+Specials retain their names, source poses, meter cost and character-coloured effects, but currently share a short-range combat implementation; they are not 18 separate projectile/special systems. The stage catalogue and parallax production documents are preserved, but this runtime still uses the procedural Neon Quarter stage.
+
+## Files and QA
+
+- `app-v5.js`: selection, loading, input, dialogs and accessibility.
+- `arena-v5.js`: fixed-step combat, rounds and arena drawing.
+- `sprites-v5.js`: source-sheet processing and animation rendering.
+- `ui-v5.css`: responsive UI.
+- `matte-v5.js` / `matte-part-*.js`: compressed alpha-mask polygons.
+
+Run the Chromium checks after installing Python Playwright and a Chromium executable:
+
+```sh
+python3 StereoTypeFighter/tools/qa_v5.py --offline --output /tmp/sf-qa
+# To test HTTP asset/module delivery as well, with a local server running:
+python3 StereoTypeFighter/tools/qa_v5.py --url 'http://localhost:8080/StereoTypeFighter/?test' --output /tmp/sf-http-qa
+```
+
+`--chromium` overrides the executable path. `--extract` exports frame sheets and source rectangles for art review. See `docs/QA-v5.md` for the executed checks and test limitations. Old v2/v3/v4 files are retained for history but are no longer referenced by index.html.
