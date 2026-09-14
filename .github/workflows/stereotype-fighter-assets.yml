@@ -1,0 +1,14 @@
+name: Stereotype Fighter asset QA
+on:
+  push:
+    paths: ['StereoTypeFighter/**','.github/workflows/stereotype-fighter-assets.yml']
+  pull_request:
+    paths: ['StereoTypeFighter/**','.github/workflows/stereotype-fighter-assets.yml']
+jobs:
+  verify-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node StereoTypeFighter/tools/verify-v6-assets.mjs
