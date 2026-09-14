@@ -7,7 +7,7 @@ import sharp from 'sharp';
 
 const HERE=path.dirname(fileURLToPath(import.meta.url)),GAME=path.resolve(HERE,'..');
 const arg=(name,fallback)=>{const i=process.argv.indexOf(name);return i>=0?process.argv[i+1]:fallback};
-const SITE=path.resolve(arg('--site',path.join(GAME,'.production'))),CELL=160,COLS=8,SEQUENCES=['idle','walk','jump','crouch','punch','kick','special','hurt','block','fall','getup','victory'];
+const SITE=path.resolve(arg('--site',path.join(GAME,'.production'))),CELL=192,COLS=8,SEQUENCES=['idle','walk','jump','crouch','punch','kick','special','hurt','block','fall','getup','victory'];
 const readJSON=async p=>JSON.parse(await fs.readFile(p,'utf8'));
 const median=a=>{const b=[...a].sort((x,y)=>x-y);return b[Math.floor(b.length/2)]??0};
 const cropRaw=(sheet,sw,x,y,w,h)=>{const out=Buffer.alloc(w*h*4);for(let yy=0;yy<h;yy++){const src=((y+yy)*sw+x)*4,dst=yy*w*4;sheet.copy(out,dst,src,src+w*4)}return out};
