@@ -12,11 +12,11 @@
       "fx": "pulse",
       "bio": "A heavyweight protest brawler with stubborn defense, loud counters and a megaphone-assisted special.",
       "atlas": "./assets/characters/v6/lefty-atlas.webp",
-      "atlasCell": [96,60],
+      "atlasCell": [64,40],
       "atlasColumns": 8,
       "atlasCounts": {"idle":4,"walk":5,"jump":4,"crouch":4,"punch":4,"kick":3,"special":2,"hurt":1,"block":1,"fall":4,"getup":6,"victory":2},
       "portraitIndex": 40,
-      "notes": "V6 replacement sheet with dedicated movement, attack, defense, knockdown, recovery and victory poses.",
+      "notes": "V6.2 replacement sheet with dedicated movement, attack, defense, knockdown, recovery and victory poses.",
       "v6Updated": true
     },
     {
@@ -31,11 +31,11 @@
       "fx": "wave",
       "bio": "Fast, expressive footwork with spin attacks, feints and a colour-shifting special sequence.",
       "atlas": "./assets/characters/v6/agenda-atlas.webp",
-      "atlasCell": [96,60],
+      "atlasCell": [64,40],
       "atlasColumns": 8,
       "atlasCounts": {"idle":4,"walk":5,"jump":4,"crouch":4,"punch":4,"kick":3,"special":2,"hurt":1,"block":1,"fall":5,"getup":5,"victory":2},
       "portraitIndex": 40,
-      "notes": "V6 replacement sheet with dedicated movement and combat poses instead of the legacy atlas adaptation.",
+      "notes": "V6.2 replacement sheet with dedicated movement and combat poses instead of the legacy atlas adaptation.",
       "v6Updated": true
     }
   ],
@@ -52,11 +52,11 @@
       "fx": "pulse",
       "bio": "An iron-disciplined power fighter built around heavy punches, high kicks and explosive gym-floor specials.",
       "atlas": "./assets/characters/v6/gym-bro-atlas.webp",
-      "atlasCell": [96,60],
+      "atlasCell": [64,40],
       "atlasColumns": 8,
       "atlasCounts": {"idle":4,"walk":5,"jump":4,"crouch":4,"punch":4,"kick":3,"special":2,"hurt":1,"block":1,"fall":4,"getup":6,"victory":2},
       "portraitIndex": 40,
-      "notes": "New V6 fighter. Dedicated movement and combat sequences mapped from the supplied Iron Disciple sheet.",
+      "notes": "V6.2 fighter. Dedicated movement and combat sequences mapped from the supplied Iron Disciple sheet.",
       "v6New": true
     },
     {
@@ -75,7 +75,7 @@
       "atlasColumns": 8,
       "atlasCounts": {"idle":4,"walk":5,"jump":4,"crouch":4,"punch":4,"kick":3,"special":2,"hurt":1,"block":1,"fall":4,"getup":6,"victory":2},
       "portraitIndex": 40,
-      "notes": "New V6 fighter. Dedicated movement and combat sequences mapped from the supplied Worksite Wrecker sheet.",
+      "notes": "V6.2 fighter. Dedicated movement and combat sequences mapped from the supplied Worksite Wrecker sheet.",
       "v6New": true
     }
   ]
