@@ -1,147 +1,17 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StereoType Fighter V6.6</title>
-  <link rel="stylesheet" href="./ui-v66.css" />
-</head>
-<body>
-  <div class="app">
-    <header class="topbar">
-      <div class="brand">
-        <h1>StereoType Fighter <span class="pill">V6.6</span></h1>
-        <p>Roster sizing normalized, faster rendering, lazy-loaded fighter assets, and new audio admin/sync tools.</p>
-      </div>
-      <div class="topActions">
-        <span id="loadStatus" class="pill">Loading roster…</span>
-        <span id="fpsLabel" class="pill">FPS --</span>
-        <button id="muteButton" class="ghost">Mute</button>
-        <a class="pill" href="./admin.html">Audio / Admin</a>
-      </div>
-    </header>
-
-    <section id="selectScreen" class="screen active">
-      <div class="selectLayout">
-        <aside class="panel previewCard">
-          <h2>Player 1</h2>
-          <p class="sub">Choose a fighter for the left side.</p>
-          <canvas id="p1Preview" class="previewCanvas" width="280" height="260"></canvas>
-          <div id="p1Meta"></div>
-        </aside>
-
-        <main class="panel">
-          <div class="playerMeta">
-            <div>
-              <h2>Choose your roster</h2>
-              <p class="sub">All 20 fighters fit on one screen. Use <strong>Tab</strong> to swap selection slot, then click a fighter card.</p>
-            </div>
-            <div class="actionRow" style="max-width:360px">
-              <button id="slotToggle" class="secondary">Selecting: Player 1</button>
-              <button id="randomButton" class="ghost">Random</button>
-            </div>
-          </div>
-          <div id="rosterGrid" class="rosterGrid"></div>
-
-          <div class="controlsBlock" style="margin-top:16px">
-            <div class="playerMeta">
-              <div>
-                <h3>Environment</h3>
-                <p class="sub">Each stage can now have its own background music assignment in the admin page.</p>
-              </div>
-            </div>
-            <div id="stageGrid" class="stageGrid"></div>
-          </div>
-
-          <div class="controlsBlock" style="margin-top:16px">
-            <div class="actionRow">
-              <select id="modeSelect">
-                <option value="cpu">Versus CPU</option>
-                <option value="local">Local Versus</option>
-                <option value="training">Training</option>
-              </select>
-              <select id="difficultySelect">
-                <option value="easy">CPU Easy</option>
-                <option value="normal" selected>CPU Normal</option>
-                <option value="hard">CPU Hard</option>
-              </select>
-              <button id="startButton" class="primary">Start Match</button>
-            </div>
-            <div class="controlsLegend">
-              <div class="legendBox">
-                <strong>Player 1</strong>
-                <ul>
-                  <li>Move: A / D</li>
-                  <li>Jump: W</li>
-                  <li>Crouch: S</li>
-                  <li>Block: E</li>
-                  <li>Punch / Kick / Special: F / G / H</li>
-                </ul>
-              </div>
-              <div class="legendBox">
-                <strong>Player 2</strong>
-                <ul>
-                  <li>Move: ← / →</li>
-                  <li>Jump: ↑</li>
-                  <li>Crouch: ↓</li>
-                  <li>Block: I</li>
-                  <li>Punch / Kick / Special: J / K / L</li>
-                </ul>
-              </div>
-            </div>
-            <p class="note">Performance changes in V6.6: portrait-first loading, lazy-loaded animation data, lightweight procedural fallback rendering, and a fixed-step loop with FPS readout.</p>
-          </div>
-        </main>
-
-        <aside class="panel previewCard">
-          <h2>Player 2</h2>
-          <p class="sub">Choose a fighter for the right side.</p>
-          <canvas id="p2Preview" class="previewCanvas" width="280" height="260"></canvas>
-          <div id="p2Meta"></div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="matchScreen" class="screen">
-      <div class="matchLayout">
-        <canvas id="gameCanvas" width="960" height="540"></canvas>
-        <aside class="matchSide">
-          <div class="hudCard">
-            <h3 style="margin-top:0">Match status</h3>
-            <div class="kv"><span>Mode</span><strong id="matchModeLabel">CPU</strong></div>
-            <div class="kv"><span>Stage</span><strong id="matchStageLabel">--</strong></div>
-            <div class="kv"><span>Round</span><strong id="roundLabel">1</strong></div>
-            <div class="kv"><span>Timer</span><strong id="timerLabel">60</strong></div>
-          </div>
-
-          <div class="hudCard">
-            <div class="kv"><span id="p1HudName">Player 1</span><strong id="p1HudHp">100 HP</strong></div>
-            <div class="health"><span id="p1HpBar" style="width:100%"></span></div>
-            <div class="small">Meter</div>
-            <div class="meter"><span id="p1MeterBar" style="width:35%"></span></div>
-          </div>
-
-          <div class="hudCard">
-            <div class="kv"><span id="p2HudName">Player 2</span><strong id="p2HudHp">100 HP</strong></div>
-            <div class="health"><span id="p2HpBar" style="width:100%"></span></div>
-            <div class="small">Meter</div>
-            <div class="meter"><span id="p2MeterBar" style="width:35%"></span></div>
-          </div>
-
-          <div class="hudCard">
-            <h3 style="margin-top:0">Session tools</h3>
-            <p class="small">Open the admin page to upload stage music, assign action sounds, and sync them to animation timing.</p>
-            <div class="footerActions">
-              <button id="pauseButton" class="secondary">Pause</button>
-              <button id="backButton" class="ghost">Back to Select</button>
-              <a class="pill" href="./admin.html" target="_blank" rel="noopener">Open Audio Admin</a>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-  </div>
-
-  <script type="module" src="./app-v66.js"></script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>StereoType Fighter V6.6</title><meta name="description" content="20-fighter pixel-art arcade fighting game with CPU, local multiplayer and training modes."><link rel="stylesheet" href="./ui-v66.css?v=6.6"></head>
+<body><a class="skipLink" href="#rosterGrid">Skip to fighter roster</a><div id="fatalError" class="fatal" role="alert" hidden></div><div id="liveStatus" class="srOnly" role="status" aria-live="polite" aria-atomic="true"></div><div id="liveAssertive" class="srOnly" aria-live="assertive" aria-atomic="true"></div>
+<div class="app"><header class="topbar"><div class="brand"><h1>StereoType Fighter <span class="pill">V6.6</span></h1><p>20 fighters · six arenas · CPU · local versus · training</p></div><div class="topActions"><span id="loadStatus" class="pill" role="status" aria-live="polite">Loading roster…</span><span id="fpsLabel" class="pill">FPS --</span><button id="labButton" class="ghost">Animation Lab</button><button id="helpButton" class="ghost">How to Play</button><button id="muteButton" class="ghost" aria-pressed="false">Sound On</button><button id="motionButton" class="ghost" aria-pressed="false">Reduced Motion Off</button><a class="pill" href="./admin.html">Audio / Admin</a></div></header>
+<section id="selectScreen" class="screen active" aria-labelledby="selectTitle"><div class="selectLayout">
+<aside id="preview0" class="panel previewCard activeSlot"><button class="slotHead" data-slot="0" aria-pressed="true"><b>P1</b> Player 1</button><canvas id="p1Preview" class="previewCanvas" width="280" height="260" aria-label="Player 1 selected fighter animation preview"></canvas><div id="p1Meta"></div></aside>
+<main class="panel centerSelect"><div class="playerMeta"><div><h2 id="selectTitle">Choose your fighters</h2><p class="sub">Pick P1 and P2, an arena and match mode.</p></div><div class="rosterControls"><label>Search <input id="fighterSearch" type="search" placeholder="Fighter name…"></label><button id="randomButton" class="ghost">Random Fighter</button></div></div><div id="rosterGrid" class="rosterGrid" role="group" aria-label="20 fighter roster"></div><p id="noResults" class="empty" hidden>No fighters match that search.</p>
+<div class="controlsBlock"><div class="playerMeta"><div><h3>Environment</h3><p class="sub">Six selectable arenas plus Random Stage.</p></div><strong id="stageChoice">Neon Laneway Beatdown</strong></div><div id="stageGrid" class="stageGrid" role="group" aria-label="Select arena"></div></div>
+<div class="controlsBlock matchSetup"><div class="modeRow"><label>Mode <select id="modeSelect"><option value="cpu">Versus CPU</option><option value="local">Local 2 Player</option><option value="training">Training</option></select></label><label id="difficultyLabel">Difficulty <select id="difficultySelect"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option></select></label><button id="startButton" class="primary" disabled>Preparing Fighters…</button></div><p class="note" id="rulesText">First to 2 rounds · 60 second clock</p></div></main>
+<aside id="preview1" class="panel previewCard"><button class="slotHead" data-slot="1" aria-pressed="false"><b>P2</b> Player 2</button><canvas id="p2Preview" class="previewCanvas" width="280" height="260" aria-label="Player 2 selected fighter animation preview"></canvas><div id="p2Meta"></div></aside>
+</div></section>
+<section id="matchScreen" class="screen" aria-label="Match"><div class="matchToolbar"><button id="menuButton" class="ghost">← Fighter Select</button><strong id="matchModeLabel">CPU</strong><span id="matchStageLabel">Arena</span><button id="pauseButton" class="secondary">Pause</button></div><div id="gameWrap" class="gameWrap"><canvas id="gameCanvas" width="960" height="540" aria-label="Stereotype Fighters combat arena"></canvas><div class="hud" aria-label="Match status"><div class="hudPlayer p1"><div class="hudName"><strong id="p1HudName">Player 1</strong><span id="p1Rounds">○ ○</span></div><div id="p1Health" class="health" role="progressbar" aria-label="Player 1 health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="p1HpBar" style="width:100%"></span></div><div id="p1Meter" class="meter" role="progressbar" aria-label="Player 1 special meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35"><span id="p1MeterBar" style="width:35%"></span></div></div><div class="clock"><small>ROUND <span id="roundLabel">1</span></small><strong id="timerLabel">60</strong></div><div class="hudPlayer p2"><div class="hudName"><span id="p2Rounds">○ ○</span><strong id="p2HudName">Player 2</strong></div><div id="p2Health" class="health" role="progressbar" aria-label="Player 2 health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="p2HpBar" style="width:100%"></span></div><div id="p2Meter" class="meter" role="progressbar" aria-label="Player 2 special meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35"><span id="p2MeterBar" style="width:35%"></span></div></div></div><p id="trainingHint" class="trainingHint" hidden>TRAINING · UNLIMITED TIME · FULL METER · R RESETS</p>
+<div id="pauseOverlay" class="arenaOverlay" role="dialog" aria-modal="true" aria-labelledby="pauseTitle" hidden><h2 id="pauseTitle">Paused</h2><button id="resumeButton" class="primary">Resume</button><button id="backButton" class="ghost">Fighter Select</button></div><div id="resultOverlay" class="arenaOverlay" role="dialog" aria-modal="true" aria-labelledby="resultTitle" hidden><h2 id="resultTitle">Winner</h2><button id="rematchButton" class="primary">Rematch</button><button id="resultMenuButton" class="ghost">Fighter Select</button></div></div>
+<div id="touchControls" class="touchControls" aria-label="Player 1 touch controls"><div class="touchGroup"><button data-touch="left" aria-label="Move left">◀</button><button data-touch="right" aria-label="Move right">▶</button><button data-touch="jump">Jump</button><button data-touch="down">Crouch</button></div><div class="touchGroup"><button data-touch="block">Block</button><button data-touch="punch">Punch</button><button data-touch="kick">Kick</button><button data-touch="special">Special</button></div></div></section></div>
+<dialog id="helpDialog"><form method="dialog"><button class="dialogClose" aria-label="Close">×</button><h2>How to Play</h2><div class="helpGrid"><div><strong>Player 1</strong><p>WASD move · E block · F punch · G kick · H special</p></div><div><strong>Player 2</strong><p>Arrows move · I block · J punch · K kick · L special</p></div><div><strong>Gamepad</strong><p>D-pad/stick move · face buttons attack · shoulder block · Menu pauses</p></div></div><p>P or Escape pauses. Training: R resets instantly.</p></form></dialog>
+<dialog id="labDialog"><form method="dialog"><button class="dialogClose" aria-label="Close">×</button><h2>Animation Lab</h2><div class="labControls"><label>Fighter <select id="labFighter"></select></label><label>Sequence <select id="labSequence"></select></label><button type="button" id="labPlay" aria-pressed="true">Pause</button><button type="button" id="labStep">Step</button><label><input type="checkbox" id="labHitboxes"> Show hitboxes</label></div><canvas id="labCanvas" width="640" height="320" aria-label="Animation Lab fighter preview"></canvas><p id="labInfo" role="status"></p></form></dialog>
+<script type="module">const f=document.getElementById('fatalError'),l=document.getElementById('liveAssertive');import('./app-v66.js?v=6.6').catch(e=>{console.error('Fatal V6.6 module failure',e);f.hidden=false;f.textContent='Unable to start Stereotype Fighters. Reload the page to retry.';l.textContent=f.textContent})</script></body></html>
