@@ -10,7 +10,10 @@ function cell(img,index,[w,h],cols){const c=surface(w,h);c.getContext('2d').draw
 function scales(frames){const ih=median(frames.idle.map(f=>f.canvas.height)),base=90/ih;for(const [name,g] of Object.entries(frames)){const stand=['punch','hurt','block','special','victory'].includes(name),s=stand?90/Math.max(ih*.82,Math.min(ih*1.18,median(g.map(f=>f.canvas.height)))):base;for(const f of g)f.scale=s;}}
 export async function loadFighter(def){
  if(!def.atlas)return V5.loadFighter(def);
- const img=await image(new URL(def.atlas,import.meta.url).href),frames={};let n=0;const cellSize=def.atlasCell||[96,60],cols=def.atlasColumns||8;
+ const img=await image(new URL(def.atlas,import.meta.url).href),frames={};let n=0;const cellSize=def.atlasCell||[96,60],cols=def.atlasColumns||8,[cw,ch]=cellSize;
+ const frameTotal=sequences.reduce((sum,state)=>sum+(def.atlasCounts?.[state]||0),0),portraitIndex=def.portraitIndex??frameTotal;
+ if(!cw||!ch||img.naturalWidth%cw||img.naturalHeight%ch)throw new Error(def.name+' atlas grid mismatch: '+img.naturalWidth+'x'+img.naturalHeight+' vs '+cw+'x'+ch);
+ if(img.naturalWidth/cw!==cols)throw new Error(def.name+' atlas column mismatch');const capacity=(img.naturalWidth/cw)*(img.naturalHeight/ch);if(frameTotal<1||frameTotal>capacity||portraitIndex>=capacity)throw new Error(def.name+' atlas is incomplete');
  for(const state of sequences){const count=def.atlasCounts?.[state]||0;if(!count)throw new Error(def.name+' missing '+state+' atlas frames');frames[state]=Array.from({length:count},()=>cell(img,n++,cellSize,cols));}
- scales(frames);const p=cell(img,def.portraitIndex??n,cellSize,cols),portrait=surface(140,140);portrait.getContext('2d').drawImage(p.canvas,0,0,p.canvas.width,p.canvas.height,0,0,140,140);return {def,frames,portrait,status:'ready'};
+ scales(frames);const p=cell(img,portraitIndex,cellSize,cols),portrait=surface(140,140);portrait.getContext('2d').drawImage(p.canvas,0,0,p.canvas.width,p.canvas.height,0,0,140,140);return {def,frames,portrait,status:'ready'};
 }
