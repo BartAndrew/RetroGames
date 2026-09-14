@@ -79,15 +79,15 @@ test('movement, attacks, pause and rematch remain functional',async({page})=>{
 
 test('fighter asset failure exposes a usable retry action',async({page})=>{
   let fail=true;
-  await page.route('**/bimbo-babe-atlas.webp*',async route=>fail?(fail=false,route.abort()):route.continue());
+  await page.route('**/douchebag-dave-atlas.webp*',async route=>fail?(fail=false,route.abort()):route.continue());
   await boot(page);
-  await page.locator('[data-id="bimbo-babe"]').click();
-  await page.waitForFunction(()=>window.SF.roster().find(f=>f.id==='bimbo-babe')?.status==='error',{timeout:12000});
+  await page.locator('[data-id="douchebag-dave"]').click();
+  await page.waitForFunction(()=>window.SF.roster().find(f=>f.id==='douchebag-dave')?.status==='error',{timeout:12000});
   await expect(page.locator('#liveAssertive')).toContainText('failed');
   await expect(page.locator('#startButton')).toBeEnabled();
   await expect(page.locator('#startButton')).toContainText(/Fight|Retry/);
   await page.locator('#startButton').click();
-  await page.waitForFunction(()=>window.SF.roster().find(f=>f.id==='bimbo-babe')?.status==='ready',{timeout:12000});
+  await page.waitForFunction(()=>window.SF.roster().find(f=>f.id==='douchebag-dave')?.status==='ready',{timeout:12000});
 });
 
 test('iPhone portrait selector has no horizontal overflow and reachable targets',async({browser})=>{
