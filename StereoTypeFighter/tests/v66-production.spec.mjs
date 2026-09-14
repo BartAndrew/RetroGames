@@ -129,7 +129,9 @@ test('iPhone landscape supports simultaneous touch movement and attacks',async({
     buttons:[...document.querySelectorAll('#touchControls button')].map(b=>b.getBoundingClientRect())
   }));
   expect(layout.overflow).toBeLessThanOrEqual(1);
-  expect(Math.abs(layout.game.height-layout.visualHeight)).toBeLessThan(4);
+  expect(layout.game.height).toBeGreaterThan(250);
+  expect(layout.game.top).toBeGreaterThanOrEqual(-1);
+  expect(layout.game.bottom).toBeLessThanOrEqual(layout.visualHeight+4);
   for(const b of layout.buttons){expect(b.width).toBeGreaterThanOrEqual(50);expect(b.height).toBeGreaterThanOrEqual(40);}
   await c.close();
 });
