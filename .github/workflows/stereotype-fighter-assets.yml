@@ -33,6 +33,10 @@ jobs:
           npm run test:layout
           npm run test:unit
 
+      - name: Generate detailed core fighter atlases
+        working-directory: StereoTypeFighter
+        run: node tools/build-v66-core-atlases.mjs --site ../_site/StereoTypeFighter
+
       - name: Build compact production atlases
         working-directory: StereoTypeFighter
         run: node tools/build-v66-assets.mjs --site ../_site/StereoTypeFighter
