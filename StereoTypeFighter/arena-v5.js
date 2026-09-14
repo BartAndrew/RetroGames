@@ -6,6 +6,15 @@ export const CONTROL = [
 const FLOOR=446, GRAVITY=.65;
 const MOVES={punch:{length:22,start:7,end:12,range:98,damage:8,push:7},kick:{length:30,start:12,end:19,range:131,damage:12,push:10},special:{length:44,start:14,end:26,range:190,damage:18,push:13}};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const STAGE_DEFS=[
+ {id:'neon-laneway-beatdown',name:'Neon Laneway Beatdown',src:'./assets/backgrounds/game/neon-laneway-beatdown.webp'},
+ {id:'backyard-bbq-bash',name:'Backyard BBQ Bash',src:'./assets/backgrounds/game/backyard-bbq-bash.webp'},
+ {id:'construction-yard-throwdown',name:'Construction Yard Throwdown',src:'./assets/backgrounds/game/construction-yard-throwdown.webp'},
+ {id:'arcade-food-court-frenzy',name:'Arcade Food Court Frenzy',src:'./assets/backgrounds/game/arcade-food-court-frenzy.webp'},
+ {id:'docklands-container-clash',name:'Docklands Container Clash',src:'./assets/backgrounds/game/docklands-container-clash.webp'},
+ {id:'outback-servo-showdown',name:'Outback Servo Showdown',src:'./assets/backgrounds/game/outback-servo-showdown.webp'}
+];
+const STAGES=STAGE_DEFS.map(def=>{const image=new Image();image.decoding='async';image.src=new URL(def.src,import.meta.url).href;return {...def,image};});
 class Fighter {
  constructor(asset,side){this.asset=asset;this.side=side;this.x=side?700:260;this.y=FLOOR;this.vx=0;this.vy=0;this.face=side?-1:1;this.hp=100;this.meter=35;this.state='idle';this.tick=0;this.action=null;this.stun=0;this.buffer=null;this.think=0;this.plan={axis:0};}
  setState(name){if(this.state!==name){this.state=name;this.tick=0;}}
@@ -85,8 +94,8 @@ class Fighter {
  }
 }
 export class Arena {
- constructor(canvas,onChange,sound){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.onChange=onChange;this.sound=sound;this.keys=new Set();this.pressed=new Set();this.phase='off';this.paused=false;this.tick=0;this.fx=[];this.freeze=0;this.shake=0;this.reduced=false;}
- start(mode,assets,difficulty='normal'){this.mode=mode;this.assets=assets;this.difficulty=difficulty;this.wins=[0,0];this.round=1;this.paused=false;this.keys.clear();this.pressed.clear();this.reset();}
+ constructor(canvas,onChange,sound){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.onChange=onChange;this.sound=sound;this.keys=new Set();this.pressed=new Set();this.phase='off';this.paused=false;this.tick=0;this.fx=[];this.freeze=0;this.shake=0;this.reduced=false;this.stageIndex=-1;this.venue=null;}
+ start(mode,assets,difficulty='normal'){this.mode=mode;this.assets=assets;this.difficulty=difficulty;this.stageIndex=(this.stageIndex+1)%STAGES.length;this.venue=STAGES[this.stageIndex];this.wins=[0,0];this.round=1;this.paused=false;this.keys.clear();this.pressed.clear();this.reset();}
  reset(){this.people=this.assets.map((a,i)=>new Fighter(a,i));this.remaining=3600;this.phase=this.mode==='training'?'fight':'intro';this.phaseTick=0;this.fx=[];this.freeze=0;this.shake=0;if(this.mode==='training')this.people.forEach(f=>f.meter=100);this.onChange(this);}
  stop(){this.phase='off';this.paused=false;this.keys.clear();this.pressed.clear();}
  pause(value=!this.paused){if(this.phase==='off'||this.phase==='matchover')return;this.paused=value;this.keys.clear();this.pressed.clear();this.onChange(this);}
@@ -127,6 +136,8 @@ export class Arena {
   if(banner){c.fillStyle='rgba(7,10,18,.7)';c.fillRect(0,203,960,78);c.fillStyle='#ffe09a';c.textAlign='center';c.font='bold 34px monospace';c.fillText(banner,480,253,880);}
  }
  stage(c){
+  const image=this.venue?.image;
+  if(image?.complete&&image.naturalWidth){c.drawImage(image,0,0,960,540);c.fillStyle='rgba(4,8,16,.08)';c.fillRect(0,0,960,540);return;}
   const g=c.createLinearGradient(0,0,0,540);g.addColorStop(0,'#0c1225');g.addColorStop(.65,'#31364b');g.addColorStop(1,'#161a25');c.fillStyle=g;c.fillRect(0,0,960,540);
   c.fillStyle='#c9c6b6';c.fillRect(713,55,34,34);c.fillStyle='#202438';c.fillRect(720,55,30,21);
   for(let i=0;i<13;i++){const x=i*83,h=90+(i*71)%130;c.fillStyle=i%2?'#141d2d':'#192638';c.fillRect(x,285-h,79,h);for(let y=290-h;y<275;y+=19)for(let j=0;j<4;j++){c.fillStyle=(j+i+y)%3?'#314256':'#ac8460';c.fillRect(x+12+j*16,y,6,7);}}
@@ -137,5 +148,5 @@ export class Arena {
   c.fillStyle='#444150';c.fillRect(0,441,960,8);c.fillStyle='#222734';c.fillRect(0,449,960,91);
   c.fillStyle='#555365';for(let x=0;x<960;x+=75)c.fillRect(x,456,48,2);c.fillStyle='#393f4d';for(let x=18;x<960;x+=130)c.fillRect(x,512,75,3);
  }
- snapshot(){return {phase:this.phase,paused:this.paused,round:this.round,wins:[...(this.wins||[])],remaining:this.remaining,people:(this.people||[]).map(f=>({id:f.asset.def.id,x:f.x,y:f.y,state:f.state,tick:f.tick,hp:f.hp,meter:f.meter,attack:f.action?.type||null}))};}
+ snapshot(){return {phase:this.phase,paused:this.paused,round:this.round,wins:[...(this.wins||[])],remaining:this.remaining,venue:this.venue?.id||'procedural-neon-quarter',people:(this.people||[]).map(f=>({id:f.asset.def.id,x:f.x,y:f.y,state:f.state,tick:f.tick,hp:f.hp,meter:f.meter,attack:f.action?.type||null}))};}
 }
