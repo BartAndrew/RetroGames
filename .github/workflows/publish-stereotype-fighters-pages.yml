@@ -31,6 +31,51 @@ jobs:
       - name: Validate links and stage the complete arcade
         run: python3 tools/build_site.py
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Stereotype Fighter QA dependencies
+        working-directory: StereoTypeFighter
+        run: npm install --no-audit --no-fund
+
+      - name: Run layout and deterministic engine tests
+        working-directory: StereoTypeFighter
+        run: |
+          npm run test:layout
+          npm run test:unit
+
+      - name: Build compact production fighter atlases
+        working-directory: StereoTypeFighter
+        run: node tools/build-v66-assets.mjs --site ../_site/StereoTypeFighter
+
+      - name: Prune source-only game files
+        working-directory: StereoTypeFighter
+        run: node tools/prune-v66-site.mjs --site ../_site/StereoTypeFighter
+
+      - name: Verify staged production assets
+        working-directory: StereoTypeFighter
+        run: node tools/verify-v66-assets.mjs --site ../_site/StereoTypeFighter
+
+      - name: Install Chromium
+        working-directory: StereoTypeFighter
+        run: npx playwright install --with-deps chromium
+
+      - name: Run production browser and mobile regression suite
+        working-directory: StereoTypeFighter
+        run: npm run test:browser
+
+      - name: Upload browser QA artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stereotype-fighter-browser-qa
+          path: |
+            StereoTypeFighter/playwright-report
+            StereoTypeFighter/test-results
+          if-no-files-found: ignore
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
