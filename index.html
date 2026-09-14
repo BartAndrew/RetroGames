@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111310">
+  <meta name="description" content="Andrew's browser arcade. Play Stereotype Fighters, Pacific Lightning, Sandbag Siege and Left Vs Right, including their original versions.">
+  <title>RetroGames | Choose your next game</title>
+  <link rel="icon" href="./arcade/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./arcade/arcade.css">
+  <script src="./arcade/arcade.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#games">Skip to games</a>
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="RetroGames home"><span class="brand-mark" aria-hidden="true">R<span>G</span></span>RETRO<span>GAMES</span></a>
+    <nav aria-label="Main navigation"><a href="#games">The games</a><a href="#about">About</a><a class="repo-link" href="https://github.com/BartAndrew/RetroGames">View source <span aria-hidden="true">&#8599;</span></a></nav>
+  </header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> INDEPENDENT BROWSER ARCADE</p>
+        <h1 id="hero-title">Old-school soul.<br><span>One more round.</span></h1>
+        <p class="hero-description">Big personalities. Pixel-powered dogfights. Last-stand shootouts. A growing collection of homemade arcade games, ready to play in your browser.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#games">Choose your game <span aria-hidden="true">&#8595;</span></a><button class="button button-quiet" id="random-game" type="button" hidden>Pick one for me <span aria-hidden="true">&#8599;</span></button></div>
+        <p class="hero-note">No account. No install. Just press play.</p>
+      </div>
+      <div class="arcade-ticket" aria-label="Four game families: two fighters and two shooters">
+        <div class="ticket-top"><span>THE HOME ARCADE</span><span>VOL. 01</span></div>
+        <div class="ticket-number">04<span>GAME<br>FAMILIES</span></div>
+        <div class="ticket-slots"><span>01 / FIGHT</span><span>02 / FLY</span><span>03 / DEFEND</span><span>04 / REMATCH</span></div>
+        <div class="ticket-bottom"><span class="ticket-cross" aria-hidden="true">+</span><span>ALL SKILL LEVELS WELCOME<br><strong>HIGH SCORES NOT GUARANTEED.</strong></span></div>
+      </div>
+    </section>
+    <div class="info-strip"><span><b>4</b> game families</span><span><b>8</b> distinct builds</span><span>Original versions included</span><span>Made for the browser</span></div>
+
+    <section class="library" id="games" aria-labelledby="games-title">
+      <div class="section-heading"><div><p class="eyebrow">PICK YOUR NEXT OBSESSION</p><h2 id="games-title">The game room<span>.</span></h2></div><p>Latest builds up front. Originals inside each card.</p></div>
+      <div class="library-tools" id="library-tools" hidden>
+        <div class="filters" role="group" aria-label="Filter games by genre"><button type="button" data-filter="all" aria-pressed="true">All games</button><button type="button" data-filter="fighting" aria-pressed="false">Fighting</button><button type="button" data-filter="shooter" aria-pressed="false">Shooters</button></div>
+        <label class="search"><span class="sr-only">Search games, versions or controls</span><span aria-hidden="true">&#8981;</span><input id="game-search" type="search" placeholder="Find your game..." autocomplete="off" aria-controls="game-grid"></label>
+      </div>
+      <p id="result-count" class="result-count" role="status" aria-live="polite" hidden></p>
+      <div class="game-grid" id="game-grid">
+        <article class="game-card" data-genre="fighting" data-keywords="stereotype fighters street fighter 18 characters cpu practice local multiplayer keyboard touch v5.1" aria-labelledby="stereotype-title">
+          <a class="game-art art-fighter" href="./StereoTypeFighter/" aria-label="Play Stereotype Fighters">
+            <span class="art-label">01 / FIGHTING</span>
+            <img class="sheet-art" src="./StereoTypeFighter/Dave.png" alt="Dave's original Stereotype Fighters sprite sheet, showing his combat poses." width="1536" height="1024" decoding="async" fetchpriority="high">
+            <span class="art-caption">ORIGINAL CHARACTER ART</span><span class="art-play" aria-hidden="true">&#9654;</span>
+          </a>
+          <div class="card-body"><div class="card-meta"><span class="tag">VS CPU / LOCAL 2P</span><span class="version">V5.1</span></div>
+            <h3 id="stereotype-title">Stereotype Fighters</h3>
+            <p class="game-description">Choose from 18 larger-than-life fighters and trade punches, kicks and specials in the Neon Quarter. Take on the CPU, challenge a friend on one keyboard, or sharpen your timing in Practice.</p>
+            <div class="card-features"><span>18 fighters</span><span>3 CPU difficulties</span><span>Practice mode</span></div>
+            <div class="card-actions"><a class="button button-primary play-link" data-game-link href="./StereoTypeFighter/">Play Stereotype Fighters <span aria-hidden="true">&#8599;</span></a></div>
+            <details><summary>Controls &amp; game notes</summary><div class="details-content"><p><strong>Player 1:</strong> WASD to move, jump and crouch; F punch, G kick, H special, E block.</p><p><strong>Player 2:</strong> Arrow keys; J punch, K kick, L special, I block. P or Escape pauses.</p><p>Player 1 touch controls are available on touch devices. Local 2P needs a keyboard. This is a work-in-progress prototype; some fighters use fallback poses and specials share a short-range implementation.</p><a href="https://github.com/BartAndrew/RetroGames/tree/main/StereoTypeFighter">Game source &amp; full notes &#8599;</a></div></details>
+          </div>
+        </article>
+
+        <article class="game-card" data-genre="shooter" data-keywords="pacific lightning pacificfighter flying planes p38 vertical shoot em up single player keyboard original v1 v2 sprites" aria-labelledby="pacific-title">
+          <a class="game-art art-pacific" href="./Pacific-Lightning2/Pacific-Lightning/" aria-label="Play Pacific Lightning">
+            <span class="art-label">02 / VERTICAL SHOOTER</span>
+            <img class="sheet-art" src="./Pacific-Lightning2/Pacific-Lightning/assets/pacific-lightning-player-sprites.png" alt="Original P-38 Lightning player aircraft sprite artwork from Pacific Lightning." width="1536" height="1024" loading="lazy" decoding="async">
+            <span class="art-caption">ORIGINAL AIRCRAFT ART</span><span class="art-play" aria-hidden="true">&#9654;</span>
+          </a>
+          <div class="card-body"><div class="card-meta"><span class="tag">SINGLE PLAYER</span><span class="version">SPRITE BUILD</span></div>
+            <h3 id="pacific-title">Pacific Lightning</h3>
+            <p class="game-description">Pilot a P-38 through enemy formations, battleship attacks and recurring boss encounters. Collect spread fire, beam and shield power-ups, then drop a screen-clearing bomb when the sky gets crowded.</p>
+            <div class="card-features"><span>Aircraft waves</span><span>Boss encounters</span><span>Weapon upgrades</span></div>
+            <div class="card-actions"><a class="button button-primary play-link" data-game-link href="./Pacific-Lightning2/Pacific-Lightning/">Play Pacific Lightning <span aria-hidden="true">&#8599;</span></a></div>
+            <details><summary>Controls &amp; earlier versions</summary><div class="details-content"><p><strong>Move:</strong> WASD or arrow keys. <strong>Fire:</strong> Space. <strong>Bomb:</strong> Shift or X. <strong>Start / restart:</strong> Enter.</p><p>The main button opens the sprite-art build. The earlier prototype is still available:</p><a class="version-link" data-game-link href="./PacificFighter/">Play the original Pacific Fighter build &#8599;</a><a class="version-link" data-game-link href="./PacificFighter/Pacific-Lightning/Pacific-Lightning/">Play the archived copy of the original &#8599;</a><p class="small-note">The archived copy uses the same game code as the original, so it is not counted as a separate build.</p><a href="https://github.com/BartAndrew/RetroGames/tree/main/Pacific-Lightning2/Pacific-Lightning">Game source &amp; full notes &#8599;</a></div></details>
+          </div>
+        </article>
+
+        <article class="game-card" data-genre="shooter" data-keywords="sandbag siege first person gallery defence defense single player mouse keyboard military gunship v1 v2 original" aria-labelledby="sandbag-title">
+          <a class="game-art art-sandbag" href="./SandbagSiege_V2/SandbagSiege/" aria-label="Play Sandbag Siege V2">
+            <span class="art-label">03 / ARCADE SHOOTER</span>
+            <span class="terrain terrain-back" aria-hidden="true"></span><span class="terrain terrain-front" aria-hidden="true"></span>
+            <span class="vehicle-window"><img src="./SandbagSiege_V2/SandbagSiege/assets/modern_vehicles.svg" alt="Gunship boss sprite from Sandbag Siege V2." width="640" height="96" loading="lazy" decoding="async"></span>
+            <span class="crosshair" aria-hidden="true"></span><span class="art-caption">ORIGINAL GUNSHIP ART</span><span class="art-play" aria-hidden="true">&#9654;</span>
+          </a>
+          <div class="card-body"><div class="card-meta"><span class="tag">SINGLE PLAYER</span><span class="version">V2</span></div>
+            <h3 id="sandbag-title">Sandbag Siege</h3>
+            <p class="game-description">Move into a first-person arcade battlefield. Aim with the mouse, manage your ammunition and use medkits and grenades to survive the assault, with a gunship boss waiting to test your aim.</p>
+            <div class="card-features"><span>First-person action</span><span>Pickups &amp; grenades</span><span>Gunship boss</span></div>
+            <div class="card-actions"><a class="button button-primary play-link" data-game-link href="./SandbagSiege_V2/SandbagSiege/">Play Sandbag Siege V2 <span aria-hidden="true">&#8599;</span></a></div>
+            <details><summary>Controls &amp; original version</summary><div class="details-content"><p><strong>V2:</strong> WASD to move, mouse to aim, left click to fire, Q medkit, E grenade, 1 / 2 weapon, R reload, P pause.</p><p><strong>Original:</strong> A fixed shooting gallery behind sandbags. Mouse to aim and fire; Space to pop up or hide; 1 / 2 weapon; Q cycles support weapons; G grenade; R reload; P pause.</p><a class="version-link" data-game-link href="./SandbagSiege_Project/SandbagSiege/">Play the original Sandbag Siege &#8599;</a><a href="https://github.com/BartAndrew/RetroGames/tree/main/SandbagSiege_V2/SandbagSiege">Game source &amp; full notes &#8599;</a></div></details>
+          </div>
+        </article>
+
+        <article class="game-card" data-genre="fighting" data-keywords="left vs right parody fighter cassette jack manifesto mona prairie rose discourse diego cpu local multiplayer keyboard original v1 v2 v3" aria-labelledby="left-title">
+          <a class="game-art art-left" href="./left-vs-right3/left-vs-right/" aria-label="Play Left Vs Right V3">
+            <span class="art-label">04 / PARODY FIGHTER</span><span class="versus" aria-hidden="true">VS</span>
+            <span class="fighter-window fighter-one"><img src="./left-vs-right3/left-vs-right/assets/sprites/cassette-jack.svg" alt="Cassette Jack's original pixel-art fighter sprite." width="1024" height="96" loading="lazy" decoding="async"></span>
+            <span class="fighter-window fighter-two"><img src="./left-vs-right3/left-vs-right/assets/sprites/prairie-rose.svg" alt="Prairie Rose's original pixel-art fighter sprite." width="1024" height="96" loading="lazy" decoding="async"></span>
+            <span class="art-caption">ORIGINAL FIGHTER SPRITES</span><span class="art-play" aria-hidden="true">&#9654;</span>
+          </a>
+          <div class="card-body"><div class="card-meta"><span class="tag">VS CPU / LOCAL 2P</span><span class="version">V3</span></div>
+            <h3 id="left-title">Left Vs Right</h3>
+            <p class="game-description">Four satirical fighters. One arena. Settle the score with punches, kicks and character-themed specials against the CPU or a friend. The third build expands the roster's arcade-style animation sheets.</p>
+            <div class="card-features"><span>4 fighters</span><span>Local rivalry</span><span>Fast rematches</span></div>
+            <div class="card-actions"><a class="button button-primary play-link" data-game-link href="./left-vs-right3/left-vs-right/">Play Left Vs Right V3 <span aria-hidden="true">&#8599;</span></a></div>
+            <details><summary>Controls &amp; earlier versions</summary><div class="details-content"><p><strong>Player 1:</strong> WASD movement and jump; F punch, G kick, H special.</p><p><strong>Player 2:</strong> Arrow keys; J punch, K kick, L special. Keyboard recommended.</p><a class="version-link" data-game-link href="./left-vs-right2/left-vs-right/">Play Left Vs Right V2 &#8599;</a><a class="version-link" data-game-link href="./left-vs-right/left-vs-right/">Play the original Left Vs Right &#8599;</a><a href="https://github.com/BartAndrew/RetroGames/tree/main/left-vs-right3/left-vs-right">Game source &amp; full notes &#8599;</a></div></details>
+          </div>
+        </article>
+      </div>
+      <div class="empty-state" id="empty-state" hidden><h3>No games found.</h3><p>Try another name or browse the full collection.</p><button class="button button-primary" id="clear-filters" type="button">Show all games</button></div>
+    </section>
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div><p class="eyebrow">BUILT FOR THE FUN OF IT</p><h2 id="about-title">A little arcade.<br>A work in progress.</h2></div>
+      <div><p>RetroGames is Andrew Bartlett's collection of browser-game experiments: original artwork, familiar arcade ideas and plenty of room to grow. These are playable prototypes, not finished commercial releases.</p><p>For the best experience, use a desktop browser and a keyboard. Sandbag Siege also needs a mouse. Artwork above comes from the games' own assets; the cards are not gameplay screenshots.</p><details class="coming-soon"><summary>What about Star Scrapper '84?</summary><p>A preview page exists in the repository, but its referenced <code>game.js</code> and <code>styles.css</code> are missing. It is not listed as playable until those files are restored.</p></details></div>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="./">RETRO<span>GAMES</span></a><span>Built by Andrew Bartlett. Played by you.</span><a href="https://github.com/BartAndrew/RetroGames">Explore the repository &#8599;</a></footer>
+</body>
+</html>
