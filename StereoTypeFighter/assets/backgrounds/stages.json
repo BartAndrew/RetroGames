@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "kind": "authoring-catalogue-not-runtime-configuration",
+  "artStatus": "flattened-concept-images",
+  "separateParallaxLayersGenerated": false,
+  "gameIntegration": "not-performed",
+  "assetDelivery": "Original PNGs are in the companion ZIP. Run verify-assets.py to check whether they are present in this checkout.",
+  "overview": {
+    "file": "stereotype-fighters-background-pack.png",
+    "width": 1122,
+    "height": 1402,
+    "bytes": 2945196,
+    "sha256": "2bb68231fcbfa1cab85e96c63030d283cd9bd44af29564ae59850a653d749113"
+  },
+  "stages": [
+    {
+      "id": "neon-laneway-beatdown",
+      "name": "Neon Laneway Beatdown",
+      "composite": {
+        "file": "concepts/neon-laneway-beatdown.png",
+        "width": 1916,
+        "height": 821,
+        "bytes": 2840190,
+        "sha256": "6383caf3a0964c020037b1714ff5c7d006b13f9508c510ebd8566b6914a09b4a"
+      },
+      "plannedLayers": [
+        {"id": "backdrop", "scrollFactorX": 0.05, "contents": "Blue-hour sky and high clouds"},
+        {"id": "far", "scrollFactorX": 0.15, "contents": "Distant illuminated city skyline"},
+        {"id": "middle", "scrollFactorX": 0.35, "contents": "Rooftops and elevated railway"},
+        {"id": "near", "scrollFactorX": 0.65, "contents": "Brick walls, graffiti shutter, van and hanging cables"},
+        {"id": "floor", "scrollFactorX": 1.0, "contents": "Wet asphalt fighting strip and pavement reflections"},
+        {"id": "foreground", "scrollFactorX": 1.1, "contents": "Bins, milk crates and side-edge posts"}
+      ]
+    },
+    {
+      "id": "outback-servo-showdown",
+      "name": "Outback Servo Showdown",
+      "composite": {
+        "file": "concepts/outback-servo-showdown.png",
+        "width": 1916,
+        "height": 821,
+        "bytes": 2855573,
+        "sha256": "00fd9f44f7d3b5e3ff19650a41968ded509328f875294d74d53edffcefa5246a"
+      },
+      "plannedLayers": [
+        {"id": "backdrop", "scrollFactorX": 0.05, "contents": "Orange sunset sky and sun"},
+        {"id": "far", "scrollFactorX": 0.15, "contents": "Distant mesas"},
+        {"id": "middle", "scrollFactorX": 0.35, "contents": "Scrubland, windmill and power poles"},
+        {"id": "near", "scrollFactorX": 0.65, "contents": "Roadhouse, fuel canopy, pumps and parked utes"},
+        {"id": "floor", "scrollFactorX": 1.0, "contents": "Flat red-dirt forecourt"},
+        {"id": "foreground", "scrollFactorX": 1.1, "contents": "Tyre stacks, drums and dry grass at the edges"}
+      ]
+    },
+    {
+      "id": "docklands-container-clash",
+      "name": "Docklands Container Clash",
+      "composite": {
+        "file": "concepts/docklands-container-clash.png",
+        "width": 1916,
+        "height": 821,
+        "bytes": 2767997,
+        "sha256": "2b7f74bb8d09d776c94ca39c17690ab3e4048dd92b8a0812aa0fb4da034e683f"
+      },
+      "plannedLayers": [
+        {"id": "backdrop", "scrollFactorX": 0.05, "contents": "Moonlit sky and clouds"},
+        {"id": "far", "scrollFactorX": 0.15, "contents": "Distant city and bridge"},
+        {"id": "middle", "scrollFactorX": 0.35, "contents": "Harbour water, cargo ship and distant cranes"},
+        {"id": "near", "scrollFactorX": 0.65, "contents": "Container stacks, loading ramp and dock equipment"},
+        {"id": "floor", "scrollFactorX": 1.0, "contents": "Wet dock fighting strip"},
+        {"id": "foreground", "scrollFactorX": 1.1, "contents": "Bollards, coiled ropes and pallets at the edges"}
+      ]
+    },
+    {
+      "id": "arcade-food-court-frenzy",
+      "name": "Arcade Food Court Frenzy",
+      "composite": {
+        "file": "concepts/arcade-food-court-frenzy.png",
+        "width": 1916,
+        "height": 821,
+        "bytes": 2622483,
+        "sha256": "be83905f21f7c05a602d268fce9464b2e86d7f1e205ea26548479764b516c776"
+      },
+      "plannedLayers": [
+        {"id": "backdrop", "scrollFactorX": 0.05, "contents": "Skylight and enclosed atrium backdrop"},
+        {"id": "far", "scrollFactorX": 0.15, "contents": "Upper balcony and distant storefronts"},
+        {"id": "middle", "scrollFactorX": 0.35, "contents": "Fountain and rear escalator structure"},
+        {"id": "near", "scrollFactorX": 0.65, "contents": "Arcade cabinets, counter, pillars and rear seating"},
+        {"id": "floor", "scrollFactorX": 1.0, "contents": "Clear tiled fighting strip"},
+        {"id": "foreground", "scrollFactorX": 1.1, "contents": "Low table edges and plants confined to corners"}
+      ]
+    },
+    {
+      "id": "construction-yard-throwdown",
+      "name": "Construction Yard Throwdown",
+      "composite": {
+        "file": "concepts/construction-yard-throwdown.png",
+        "width": 1916,
+        "height": 821,
+        "bytes": 2875837,
+        "sha256": "1232eb083d97c62d43b91344823c8c8d40d99521573bf51d7b2caf29d82cda2e"
+      },
+      "plannedLayers": [
+        {"id": "backdrop", "scrollFactorX": 0.05, "contents": "Sunset sky and sun"},
+        {"id": "far", "scrollFactorX": 0.15, "contents": "Distant city skyline"},
+        {"id": "middle", "scrollFactorX": 0.35, "contents": "Tower cranes and distant steel frames"},
+        {"id": "near", "scrollFactorX": 0.65, "contents": "Scaffolding, unfinished building, fencing and equipment"},
+        {"id": "floor", "scrollFactorX": 1.0, "contents": "Clear concrete fighting slab"},
+        {"id": "foreground", "scrollFactorX": 1.1, "contents": "Pipes, rebar, tools and cones at the edges"}
+      ]
+    },
+    {
+      "id": "backyard-bbq-bash",
+      "name": "Backyard BBQ Bash",
+      "composite": {
+        "file": "concepts/backyard-bbq-bash.png",
+        "width": 1916,
+        "height": 821,
+        "bytes": 3037427,
+        "sha256": "d30f9d6207c3db755cc3fb2c8db7acade99427066999d9dd7d3d0d218a199412"
+      },
+      "plannedLayers": [
+        {"id": "backdrop", "scrollFactorX": 0.05, "contents": "Golden-hour sky"},
+        {"id": "far", "scrollFactorX": 0.15, "contents": "Distant skyline and far trees"},
+        {"id": "middle", "scrollFactorX": 0.35, "contents": "Neighbouring rooftops and tall gum trees"},
+        {"id": "near", "scrollFactorX": 0.65, "contents": "Fence, lawn, pergola, barbecue and rotary clothesline"},
+        {"id": "floor", "scrollFactorX": 1.0, "contents": "Clear paved fighting strip"},
+        {"id": "foreground", "scrollFactorX": 1.1, "contents": "Picnic bench, esky, gnome and toys confined to edges"}
+      ]
+    }
+  ]
+}
