@@ -1,0 +1,16 @@
+{
+  "name": "stereotype-fighters-v6",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:unit": "node --test tests/*.unit.mjs",
+    "test:layout": "node tools/check-layout-contract.mjs",
+    "build:assets": "node tools/build-v6-assets.mjs",
+    "verify:assets": "node tools/verify-v6-assets.mjs",
+    "test:browser": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.0",
+    "sharp": "0.34.3"
+  }
+}

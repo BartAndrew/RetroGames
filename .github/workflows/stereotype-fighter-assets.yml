@@ -1,14 +1,56 @@
-name: Stereotype Fighter asset QA
+name: Stereotype Fighter V6 release QA
 on:
   push:
-    paths: ['StereoTypeFighter/**','.github/workflows/stereotype-fighter-assets.yml']
+    paths:
+      - 'StereoTypeFighter/**'
+      - 'tools/build_site.py'
+      - '.github/workflows/stereotype-fighter-assets.yml'
+      - '.github/workflows/publish-stereotype-fighters-pages.yml'
   pull_request:
-    paths: ['StereoTypeFighter/**','.github/workflows/stereotype-fighter-assets.yml']
+    paths:
+      - 'StereoTypeFighter/**'
+      - 'tools/build_site.py'
+      - '.github/workflows/stereotype-fighter-assets.yml'
+      - '.github/workflows/publish-stereotype-fighters-pages.yml'
+
 jobs:
-  verify-assets:
+  v6-release-gate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Validate arcade links and stage production site
+        run: |
+          python3 -m unittest discover -s tools -p 'test_build_site.py' -v
+          python3 tools/build_site.py
       - uses: actions/setup-node@v4
-        with: {node-version: '22'}
-      - run: node StereoTypeFighter/tools/verify-v6-assets.mjs
+        with:
+          node-version: '22'
+      - name: Install QA dependencies
+        working-directory: StereoTypeFighter
+        run: npm install --no-audit --no-fund
+      - name: Layout and deterministic engine regression
+        working-directory: StereoTypeFighter
+        run: |
+          npm run test:layout
+          npm run test:unit
+      - name: Build and validate production atlases
+        run: |
+          node StereoTypeFighter/tools/build-v6-assets.mjs --site _site/StereoTypeFighter
+          node StereoTypeFighter/tools/prune-v6-site.mjs --site _site/StereoTypeFighter
+          node StereoTypeFighter/tools/verify-v6-assets.mjs --site _site/StereoTypeFighter
+      - name: Install Chromium
+        working-directory: StereoTypeFighter
+        run: npx playwright install --with-deps chromium
+      - name: Browser regression against actual staged files
+        working-directory: StereoTypeFighter
+        run: npm run test:browser
+      - name: Upload screenshots and Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stereotype-fighters-v6-browser-qa
+          path: |
+            StereoTypeFighter/playwright-report/
+            StereoTypeFighter/test-results/
+          if-no-files-found: ignore
+          retention-days: 14

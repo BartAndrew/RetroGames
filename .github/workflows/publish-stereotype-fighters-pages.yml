@@ -2,8 +2,7 @@ name: Publish RetroGames arcade to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,29 +15,54 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  validate-build-test-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: Test site builder
-        run: python3 -m unittest discover -s tools -p 'test_build_site.py' -v
-
-      - name: Validate links and stage the complete arcade
-        run: python3 tools/build_site.py
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload complete arcade site
-        uses: actions/upload-pages-artifact@v4
+      - uses: actions/checkout@v4
+      - name: Validate links and stage arcade
+        run: |
+          python3 -m unittest discover -s tools -p 'test_build_site.py' -v
+          python3 tools/build_site.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Stereotype Fighters QA dependencies
+        working-directory: StereoTypeFighter
+        run: npm install --no-audit --no-fund
+      - name: Validate V6 layout contract and engine tests
+        working-directory: StereoTypeFighter
+        run: |
+          npm run test:layout
+          npm run test:unit
+      - name: Build compact V6 combat atlases offline
+        run: node StereoTypeFighter/tools/build-v6-assets.mjs --site _site/StereoTypeFighter
+      - name: Prune and validate staged V6 bundle
+        run: |
+          node StereoTypeFighter/tools/prune-v6-site.mjs --site _site/StereoTypeFighter
+          node StereoTypeFighter/tools/verify-v6-assets.mjs --site _site/StereoTypeFighter
+      - name: Install Playwright Chromium
+        working-directory: StereoTypeFighter
+        run: npx playwright install --with-deps chromium
+      - name: Run V6 production browser regression suite
+        working-directory: StereoTypeFighter
+        run: npm run test:browser
+      - name: Upload V6 browser QA artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stereotype-fighters-v6-browser-qa
+          path: |
+            StereoTypeFighter/playwright-report/
+            StereoTypeFighter/test-results/
+          if-no-files-found: ignore
+          retention-days: 14
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: './_site'
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

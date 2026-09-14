@@ -1,65 +1,84 @@
-# Stereotype Fighters - V5.1
+# Stereotype Fighters — V6 runtime stabilization
 
-A browser arcade prototype using the repository's original character artwork. V5 replaces the string-replacement/eval loader with direct ES modules and a rebuilt character-select interface.
+Stereotype Fighters is the RetroGames pixel-art fighting game. This branch stabilizes the V6 runtime, controls, accessibility, combat simulation, production asset pipeline and browser QA while preserving the existing 20-character roster, personalities, six arenas, Animation Lab and visual direction.
 
-## Play
+## Version status
 
-Serve this folder over HTTP; ES modules and sprite processing should not be opened with file:// URLs.
+The live runtime intentionally remains **V6.4**. The repository contains newer Agenda Fluid HD work, but its manifest only provides four micro-movement strips and still lists required production work such as KO, air, throw and super states. Under the release rule, incomplete V6.5 art is not wired into production and the page title, footer, cache keys and `window.SF.version` remain 6.4. The production Pages bundle excludes the unfinished Agenda HD source folder.
 
-```sh
-# From the repository root
-python3 -m http.server 8080
-# Open http://localhost:8080/StereoTypeFighter/
-```
+## Game modes and roster
 
-The Pages workflow stages this game at `/RetroGames/StereoTypeFighter/` and publishes a root redirect from `/RetroGames/`. No framework, bundler, account or game installation is required. Pages publishing still depends on the repository's Pages settings and a successful deployment.
-
-## Character select
-
-All 18 fighters remain available. Select P1 or P2 above the large preview, then click a portrait. Search filters the grid; Random Pick changes the active slot. Both players may choose the same fighter. Selected fighters load first, and Start unlocks only when both selected assets are ready. A failed sprite displays an error and can be retried without stopping other fighters.
-
-Modes: **VS CPU** with Easy/Normal/Hard, **Local 2P**, and **Practice** with unlimited time and special meter. Practice's opponent is a controllable training partner, not an AI.
+- **20 fighters**, with mirror matches supported.
+- **Six selectable arenas** plus Random Stage.
+- **VS CPU**: Easy, Normal and Hard.
+- **Local 2 Player**.
+- **Training**: unlimited timer, full special meter, `R` instant reset and short automatic reset after KO.
+- **Animation Lab** with all required sequences, play/pause, stepping and hitbox view.
+- Match hitboxes can also be shown with `?debug=hitboxes`.
 
 ## Controls
 
-| Action | Player 1 | Player 2 |
-| --- | --- | --- |
-| Move | A / D | Left / Right |
-| Jump / Crouch | W / S | Up / Down |
-| Block | E | I |
-| Punch / Kick | F / G | J / K |
-| Special | H | L |
+| Action | Player 1 | Player 2 | Gamepad |
+| --- | --- | --- | --- |
+| Move | W/A/S/D | Arrows | D-pad / left stick |
+| Block | E | I | shoulder |
+| Punch | F | J | A/X |
+| Kick | G | K | B |
+| Special | H | L | Y/RT |
+| Pause | P / Escape | P / Escape | Start/Menu |
+| Training reset | R | — | — |
 
-P or Escape pauses. R resets Practice. Pause and match-end screens offer a return to character select. The selector also supports WASD for P1, arrows for P2 and 1/2 to change the active slot. Coarse-pointer devices have Player 1 touch controls; local two-player play requires a keyboard. Physical keyboard rollover limits still apply.
+Coarse-pointer devices receive Player 1 touch controls for left, right, jump, crouch, block, punch, kick and special. Pointer capture/cancel handling prevents stuck touch input. Desktop pointers do not show the controller.
 
-## Animation repair
+## Combat model
 
-`tools/roster-v5.json` maps each of the 16 full sheets independently; it does **not** reuse Bimbo's coordinates for other fighters. Panels refine their cell boundaries against gutters. Frames are background-cleaned and cached once, with torso/foot anchors, preserved aspect ratio and consistent sequence scale. RapThug and Grunge have additional alpha masks for their textured backgrounds.
+V6 uses a symmetric two-phase simulation: both intentions are collected, both fighters advance, both hit/hurtbox interactions are gathered, all hit events are resolved together, bodies are separated, then round state is updated. P1 has no priority simply because it is first in an array.
 
-Animation timing is local to each fighter and resets when actions change. Walking reverses when retreating. Jump poses follow ascent/apex/descent; landing has a short transition. Attacks have startup, active and recovery periods, nine-frame input buffering, hit interruption, block reactions, knockdown and get-up. KO poses stop on their final frame. Explicit round phases prevent the earlier repeated round-award timer problem.
+Same-frame trades are valid. A simultaneous KO is a draw round and awards no point. A tied time-out is a draw; otherwise higher health wins the time-out and the losing fighter visibly falls. The 60-second clock freezes during hit-stop. Normal punch/kick attacks are intentionally grounded; accidental air normals are not started.
 
-The **Animation Lab** in the top bar previews every available sequence and supports pause and frame stepping against a ground/pivot guide.
+Gameplay collision is independent of sprite dimensions. Standing, crouching and airborne hurtboxes are explicit. Punch, kick and special moves specify startup, active frames, recovery, damage, knockback, hit stun and block stun. Projectile specials instantiate real moving gameplay entities, so rendered effects and collision occupy the same position.
 
-## Current boundaries
+## Fighter identity and CPU
 
-This is still a prototype, not a finished arcade animation set. Lefty Liberal and Agenda Fluid retain their older combat atlases: dedicated walk/jump/crouch/block art is absent, so they use honest neutral/guard fallbacks rather than distorted hurt poses. Some source-sheet actions contain only one or two usable poses. Hand-authored in-between frames, outline cleanup and unique hitboxes would improve them further.
+`combat-v6.js` is the single balance table. Every fighter maps to one of six modest archetypes—rushdown, balanced, heavy, zoner, mobile or defensive—with per-fighter overrides for movement, defense, normal attacks, special type/cost/damage, knockback and recovery. Signature move names map to real burst, dash or projectile behaviour rather than identical attacks with different labels.
 
-Specials retain their names, source poses, meter cost and character-coloured effects, but currently share a short-range combat implementation; they are not 18 separate projectile/special systems. The stage catalogue and parallax production documents are preserved, but this runtime still uses the procedural Neon Quarter stage.
+CPU levels vary reaction delay, aggression, defensive probability, spacing, attack selection, special use, anti-air response, punish behaviour, retreat behaviour and mistake probability. AI considers the fighter archetype and uses only current game state. Tests use a seeded RNG for deterministic CPU regression checks.
 
-## Files and QA
+## Production sprite/loading architecture
 
-- `app-v5.js`: selection, loading, input, dialogs and accessibility.
-- `arena-v5.js`: fixed-step combat, rounds and arena drawing.
-- `sprites-v5.js`: source-sheet processing and animation rendering.
-- `ui-v5.css`: responsive UI.
-- `matte-v5.js` / `matte-part-*.js`: compressed alpha-mask polygons.
+Character select uses the compact portrait atlas, so all 20 fighter cards appear without loading combat data. Full move sets remain lazy-loaded when selected with a small idle warm cache.
 
-Run the Chromium checks after installing Python Playwright and a Chromium executable:
+`tools/build-v6-assets.mjs` moves the expensive legacy 1536×1024 sheet processing to CI/build time. It keeps the existing compact V6 atlases and builds compact lossless WebP combat atlases for the remaining roster, including stored matte handling for difficult legacy silhouettes. It writes `tools/roster-runtime-v6.json` into the staged site. The published `_site` does not contain old runtime extractors, source PNG sheets, unused historical runtime versions or incomplete Agenda HD development assets.
 
-```sh
-python3 StereoTypeFighter/tools/qa_v5.py --offline --output /tmp/sf-qa
-# To test HTTP asset/module delivery as well, with a local server running:
-python3 StereoTypeFighter/tools/qa_v5.py --url 'http://localhost:8080/StereoTypeFighter/?test' --output /tmp/sf-http-qa
+Failures are isolated: portrait-atlas failure leaves fallback cards and Retry Portraits; a single fighter move-set failure leaves other fighters playable and exposes Retry Move Set; stage failure uses the procedural fallback and can be retried; fatal roster/module failure shows and announces actionable reload guidance.
+
+## Accessibility
+
+Sound, reduced motion and Animation Lab playback expose `aria-pressed`. Fighter cards expose P1/P2 selected state semantically. Health and special meters expose current numeric values. Pause and result overlays are modal dialogs with focus containment. Focus moves to Resume on pause, back to Pause on resume, to Rematch on match completion, and back to the relevant fighter selector when leaving a match. Round/Fight/KO/time/result/winner events and actionable failures use live regions. Both canvases are labelled, the skip-to-roster link is hidden until focused, and visible keyboard focus is preserved without changing the retro aesthetic.
+
+## Responsive/browser QA
+
+The regression suite checks 320×568, 360×800, 390×844, 480×900, 768×1024, 1024×768 and 1440×900 for overflow, roster usability, stage/start reachability, canvas containment, HUD alignment and overlay coverage. Representative desktop/mobile selector/fight/pause/result screenshots are uploaded as CI artifacts.
+
+Target browsers are current Chromium, Firefox and Safari with ES modules, Canvas 2D and Pointer Events. Gamepads use the browser Gamepad API when present. CI gates production with current Playwright Chromium.
+
+## Test procedure
+
+From the repository root:
+
+```bash
+python3 tools/build_site.py
+cd StereoTypeFighter
+npm install --no-audit --no-fund
+npm run test:layout
+npm run test:unit
+cd ..
+node StereoTypeFighter/tools/build-v6-assets.mjs --site _site/StereoTypeFighter
+node StereoTypeFighter/tools/prune-v6-site.mjs --site _site/StereoTypeFighter
+node StereoTypeFighter/tools/verify-v6-assets.mjs --site _site/StereoTypeFighter
+cd StereoTypeFighter
+npx playwright install --with-deps chromium
+npm run test:browser
 ```
 
-`--chromium` overrides the executable path. `--extract` exports frame sheets and source rectangles for art review. See `docs/QA-v5.md` for the executed checks and test limitations. Old v2/v3/v4 files are retained for history but are no longer referenced by index.html.
+The Playwright suite launches the **actual staged production files** and does not replace the app controller, arena engine or production roster. GitHub Pages deployment runs only after site/link validation, layout/engine checks, offline atlas build, production asset verification and browser regression pass.
