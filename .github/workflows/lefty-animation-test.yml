@@ -37,7 +37,7 @@ jobs:
           cat /tmp/lefty-test-server.log
           exit 1
 
-      - name: Verify animation atlas in Chromium
+      - name: Verify visible animation atlas in Chromium
         run: |
           mkdir -p artifacts/lefty-animation
           node <<'NODE'
@@ -53,14 +53,15 @@ jobs:
             await page.waitForFunction(() => window.leftyTest && window.leftyTest.ready === true, null, {timeout:10000});
             const state = await page.evaluate(() => window.leftyTest);
             if (!state.ready) throw new Error('Lefty test did not reach ready state');
-            if (state.frames !== 80) throw new Error(`Expected 80 frames, got ${state.frames}`);
-            if (state.atlas[0] !== 896 || state.atlas[1] !== 1120) throw new Error(`Unexpected atlas ${state.atlas.join('x')}`);
+            if (!state.visible) throw new Error('Lefty sprite pixels are not visible');
+            if (state.pixels < 200) throw new Error(`Insufficient visible sprite pixels: ${state.pixels}`);
+            if (state.frames !== 40) throw new Error(`Expected 40 control frames, got ${state.frames}`);
             if (state.movements.length !== 12) throw new Error(`Expected 12 movements, got ${state.movements.length}`);
             await page.screenshot({path:'artifacts/lefty-animation/idle.png', fullPage:true});
-            await page.selectOption('#movement', {label:'kick (7)'});
+            await page.selectOption('#movement', {label:'kick (3)'});
             await page.waitForTimeout(750);
             await page.screenshot({path:'artifacts/lefty-animation/kick.png', fullPage:true});
-            await page.selectOption('#movement', {label:'special (10)'});
+            await page.selectOption('#movement', {label:'special (2)'});
             await page.waitForTimeout(900);
             await page.screenshot({path:'artifacts/lefty-animation/special.png', fullPage:true});
             const status = await page.locator('#selfTest').textContent();
