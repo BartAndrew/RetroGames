@@ -5,14 +5,15 @@ on:
     branches: [main]
     paths:
       - 'AnimationTests/Lefty/**'
-      - 'StereoTypeFighter/assets/characters/v66/lefty-atlas-v65.webp'
+      - 'StereoTypeFighter/**'
+      - 'tools/build_site.py'
       - '.github/workflows/lefty-animation-test.yml'
   workflow_dispatch:
 
 jobs:
   lefty-animation:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,14 +23,23 @@ jobs:
         with:
           node-version: 22
 
+      - name: Stage production site and fighter assets
+        run: |
+          python3 tools/build_site.py
+          npm --prefix StereoTypeFighter install
+          node StereoTypeFighter/tools/build-v66-core-atlases.mjs _site/StereoTypeFighter
+          node StereoTypeFighter/tools/build-v66-assets.mjs _site/StereoTypeFighter
+          test -f _site/StereoTypeFighter/assets/characters/v66/lefty-atlas-v65.webp
+          file _site/StereoTypeFighter/assets/characters/v66/lefty-atlas-v65.webp
+
       - name: Install Playwright
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
 
-      - name: Start static server
+      - name: Start staged static server
         run: |
-          python3 -m http.server 4174 --directory . > /tmp/lefty-test-server.log 2>&1 &
+          python3 -m http.server 4174 --directory _site > /tmp/lefty-test-server.log 2>&1 &
           echo $! > /tmp/lefty-test-server.pid
           for i in {1..30}; do
             curl -fsS http://127.0.0.1:4174/AnimationTests/Lefty/ >/dev/null && exit 0
@@ -51,9 +61,9 @@ jobs:
             page.on('pageerror', e => errors.push(String(e)));
             page.on('console', msg => { if (msg.type()==='error') errors.push(msg.text()); });
             await page.goto('http://127.0.0.1:4174/AnimationTests/Lefty/', {waitUntil:'networkidle'});
-            await page.waitForFunction(() => window.leftyTest && window.leftyTest.ready === true, null, {timeout:10000});
+            await page.waitForFunction(() => window.leftyTest !== undefined, null, {timeout:10000});
             const state = await page.evaluate(() => window.leftyTest);
-            if (!state.ready) throw new Error('Lefty V6.9 recovery test did not reach ready state');
+            if (!state.ready) throw new Error(`Lefty V6.9 recovery not ready: ${JSON.stringify(state)}`);
             if (!state.visible) throw new Error('Lefty sprite pixels are not visible');
             if (state.pixels < 500) throw new Error(`Insufficient visible sprite pixels: ${state.pixels}`);
             if (state.frames !== 48) throw new Error(`Expected 48 validated production frames, got ${state.frames}`);
