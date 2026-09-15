@@ -1,14 +1,68 @@
 name: Stereotype Fighter asset QA
+
 on:
   push:
-    paths: ['StereoTypeFighter/**','.github/workflows/stereotype-fighter-assets.yml']
+    paths:
+      - 'StereoTypeFighter/**'
+      - '.github/workflows/stereotype-fighter-assets.yml'
   pull_request:
-    paths: ['StereoTypeFighter/**','.github/workflows/stereotype-fighter-assets.yml']
+    paths:
+      - 'StereoTypeFighter/**'
+      - '.github/workflows/stereotype-fighter-assets.yml'
+
 jobs:
   verify-assets:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Stage complete arcade before installing development dependencies
+        run: python3 tools/build_site.py
+
       - uses: actions/setup-node@v4
-        with: {node-version: '22'}
-      - run: node StereoTypeFighter/tools/verify-v6-assets.mjs
+        with:
+          node-version: '22'
+
+      - name: Install QA dependencies
+        working-directory: StereoTypeFighter
+        run: npm install --no-audit --no-fund
+
+      - name: Validate source layout and engine
+        working-directory: StereoTypeFighter
+        run: |
+          npm run test:layout
+          npm run test:unit
+
+      - name: Generate detailed core fighter atlases
+        working-directory: StereoTypeFighter
+        run: node tools/build-v66-core-atlases.mjs --site ../_site/StereoTypeFighter
+
+      - name: Build compact production atlases
+        working-directory: StereoTypeFighter
+        run: node tools/build-v66-assets.mjs --site ../_site/StereoTypeFighter
+
+      - name: Prune production bundle
+        working-directory: StereoTypeFighter
+        run: node tools/prune-v66-site.mjs --site ../_site/StereoTypeFighter
+
+      - name: Verify production assets
+        working-directory: StereoTypeFighter
+        run: node tools/verify-v66-assets.mjs --site ../_site/StereoTypeFighter
+
+      - name: Install Chromium
+        working-directory: StereoTypeFighter
+        run: npx playwright install --with-deps chromium
+
+      - name: Run staged browser regression suite
+        working-directory: StereoTypeFighter
+        run: npm run test:browser
+
+      - name: Upload browser QA artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stereotype-fighter-browser-qa
+          path: |
+            StereoTypeFighter/playwright-report
+            StereoTypeFighter/test-results
+          if-no-files-found: ignore
