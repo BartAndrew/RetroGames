@@ -23,12 +23,11 @@ jobs:
         with:
           node-version: 22
 
-      - name: Stage production site and fighter assets
+      - name: Stage production site and Lefty atlas
         run: |
           python3 tools/build_site.py
           npm --prefix StereoTypeFighter install
-          node StereoTypeFighter/tools/build-v66-core-atlases.mjs _site/StereoTypeFighter
-          node StereoTypeFighter/tools/build-v66-assets.mjs _site/StereoTypeFighter
+          node StereoTypeFighter/tools/build-v66-core-atlases.mjs --site _site/StereoTypeFighter
           test -f _site/StereoTypeFighter/assets/characters/v66/lefty-atlas-v65.webp
           file _site/StereoTypeFighter/assets/characters/v66/lefty-atlas-v65.webp
 
