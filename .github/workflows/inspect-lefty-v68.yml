@@ -19,6 +19,7 @@ jobs:
       - name: Decode and inspect Lefty candidates
         working-directory: StereoTypeFighter
         run: |
+          mkdir -p ../artifacts/lefty-v68
           node --input-type=module <<'NODE'
           import fs from 'node:fs/promises';
           import path from 'node:path';
@@ -40,7 +41,14 @@ jobs:
               const {data,info}=await img.ensureAlpha().raw().toBuffer({resolveWithObject:true});
               let alpha=0,bright=0;
               for(let i=0;i<data.length;i+=info.channels){const a=data[i+3];if(a>24)alpha++;if(a>24&&(data[i]+data[i+1]+data[i+2])>36)bright++;}
+              if(meta.format==='png') await fs.writeFile(`../artifacts/lefty-v68/${name}.png`,buf);
               console.log(JSON.stringify({name,parts,bytes:buf.length,width:meta.width,height:meta.height,format:meta.format,channels:meta.channels,alphaPixels:alpha,visiblePixels:bright}));
             }catch(e){console.log(JSON.stringify({name,parts,error:e.message}))}
           }
           NODE
+      - name: Upload decoded candidates
+        uses: actions/upload-artifact@v4
+        with:
+          name: lefty-v68-candidates
+          path: artifacts/lefty-v68
+          if-no-files-found: warn
