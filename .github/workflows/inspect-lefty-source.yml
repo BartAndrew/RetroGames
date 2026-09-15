@@ -19,6 +19,7 @@ jobs:
       - name: Match candidate images to supplied Lefty reference
         working-directory: StereoTypeFighter
         run: |
+          mkdir -p ../artifacts/lefty-source
           node --input-type=module <<'NODE'
           import fs from 'node:fs/promises';
           import sharp from 'sharp';
@@ -37,5 +38,14 @@ jobs:
           }
           matches.sort((a,b)=>a.distance-b.distance);
           console.log('LEFTY_MATCHES='+JSON.stringify(matches.slice(0,12)));
-          if(matches[0])console.log('BEST_LEFTY_MATCH='+JSON.stringify(matches[0]));
+          if(matches[0]){
+            console.log('BEST_LEFTY_MATCH='+JSON.stringify(matches[0]));
+            await fs.copyFile(matches[0].file,'../artifacts/lefty-source/best-lefty-source.png');
+          }
           NODE
+      - name: Upload best source candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: best-lefty-source
+          path: artifacts/lefty-source/best-lefty-source.png
+          if-no-files-found: error
