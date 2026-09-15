@@ -102,7 +102,20 @@ def stage(root: Path = ROOT) -> Path:
     output.mkdir()
     shutil.copy2(root / 'index.html', output / 'index.html')
     ignore = shutil.ignore_patterns('*.zip', '__pycache__', '.DS_Store', '.git')
-    for folder in [root / 'arcade', *folders]:
+    staged = [root / 'arcade', *folders]
+    # AnimationTests contains browser-facing QA pages such as the Lefty sprite
+    # inspector. Publish it through the same _site artifact as the games so the
+    # test page and the generated production atlases can never drift between
+    # separate Pages deployment paths.
+    animation_tests = root / 'AnimationTests'
+    if animation_tests.is_dir():
+        staged.append(animation_tests)
+    seen: set[Path] = set()
+    for folder in staged:
+        folder = folder.resolve()
+        if folder in seen:
+            continue
+        seen.add(folder)
         shutil.copytree(folder, output / folder.name, ignore=ignore)
     (output / '.nojekyll').touch()
     return output
