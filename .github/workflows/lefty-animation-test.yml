@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'AnimationTests/Lefty/**'
+      - 'StereoTypeFighter/assets/characters/v66/lefty-v68-atlas.webp'
       - '.github/workflows/lefty-animation-test.yml'
   workflow_dispatch:
 
@@ -37,7 +38,7 @@ jobs:
           cat /tmp/lefty-test-server.log
           exit 1
 
-      - name: Verify visible animation atlas in Chromium
+      - name: Verify visible V6.8 animation atlas in Chromium
         run: |
           mkdir -p artifacts/lefty-animation
           node <<'NODE'
@@ -52,16 +53,18 @@ jobs:
             await page.goto('http://127.0.0.1:4174/AnimationTests/Lefty/', {waitUntil:'networkidle'});
             await page.waitForFunction(() => window.leftyTest && window.leftyTest.ready === true, null, {timeout:10000});
             const state = await page.evaluate(() => window.leftyTest);
-            if (!state.ready) throw new Error('Lefty test did not reach ready state');
-            if (!state.visible) throw new Error('Lefty sprite pixels are not visible');
-            if (state.pixels < 200) throw new Error(`Insufficient visible sprite pixels: ${state.pixels}`);
-            if (state.frames !== 40) throw new Error(`Expected 40 control frames, got ${state.frames}`);
+            if (!state.ready) throw new Error('Lefty V6.8 test did not reach ready state');
+            if (!state.visible) throw new Error('Lefty V6.8 sprite pixels are not visible');
+            if (state.pixels < 4000) throw new Error(`Insufficient visible sprite pixels: ${state.pixels}`);
+            if (state.frames !== 140) throw new Error(`Expected 140 reference frames, got ${state.frames}`);
+            if (state.atlas[0] !== 1024 || state.atlas[1] !== 2304) throw new Error(`Unexpected atlas ${state.atlas.join('x')}`);
+            if (state.cell[0] !== 128 || state.cell[1] !== 128) throw new Error(`Unexpected cell ${state.cell.join('x')}`);
             if (state.movements.length !== 12) throw new Error(`Expected 12 movements, got ${state.movements.length}`);
             await page.screenshot({path:'artifacts/lefty-animation/idle.png', fullPage:true});
-            await page.selectOption('#movement', {label:'kick (3)'});
+            await page.selectOption('#movement', {label:'kick (12)'});
             await page.waitForTimeout(750);
             await page.screenshot({path:'artifacts/lefty-animation/kick.png', fullPage:true});
-            await page.selectOption('#movement', {label:'special (2)'});
+            await page.selectOption('#movement', {label:'special (20)'});
             await page.waitForTimeout(900);
             await page.screenshot({path:'artifacts/lefty-animation/special.png', fullPage:true});
             const status = await page.locator('#selfTest').textContent();
