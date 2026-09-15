@@ -1,0 +1,39 @@
+name: Inspect Lefty source candidates
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/inspect-lefty-source.yml'
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --prefix StereoTypeFighter
+      - name: Inspect candidate images
+        working-directory: StereoTypeFighter
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs/promises';
+          import path from 'node:path';
+          import sharp from 'sharp';
+          const entries=await fs.readdir('.',{withFileTypes:true});
+          const files=entries.filter(e=>e.isFile()).map(e=>e.name).filter(n=>/\.(png|webp|jpg|jpeg)$/i.test(n)||n==='9724e2fc-6fed-4d11-abbd-14ae6a55d820');
+          for(const file of files){
+            try{
+              const img=sharp(file);
+              const meta=await img.metadata();
+              if(meta.width<1000||meta.height<700) continue;
+              const {data}=await img.resize(8,8,{fit:'fill'}).removeAlpha().greyscale().raw().toBuffer({resolveWithObject:true});
+              const mean=data.reduce((a,b)=>a+b,0)/data.length;
+              const hash=[...data].map(v=>v>=mean?'1':'0').join('').match(/.{1,4}/g).map(x=>parseInt(x,2).toString(16)).join('');
+              console.log(JSON.stringify({file,width:meta.width,height:meta.height,format:meta.format,size:meta.size||null,hash}));
+            }catch(e){console.log(JSON.stringify({file,error:e.message}))}
+          }
+          NODE
