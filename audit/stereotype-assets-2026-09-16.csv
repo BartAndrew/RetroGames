@@ -1,0 +1,159 @@
+﻿Path in StereoTypeFighter at c8d5afc,Bytes,Image dimensions,Decode result,SHA256
+9724e2fc-6fed-4d11-abbd-14ae6a55d820,1198995,,not an image decode check,bc64be0e6bfa41f77b15de146bbc6f018f7b51169107473866b69784698c3c87
+admin-v66.js,9281,,not an image decode check,798ceb1d692d61a1af42375339abaf37ed96277a3b75e0f70009f7a0459f5691
+admin.html,4494,,not an image decode check,9fbeaec64c12115274a0bae6cb1d62a52a7fa4436c06cbfff67be96d1be3b5fe
+app-v5.js,19923,,not an image decode check,2317fec376526a6c50cbf5bd4d6b8209cafe65fef3e00b3abbfec1cc8a1b0c68
+app-v6.js,18470,,not an image decode check,6c04c0d5a559c3d76b3769d5d2495308120d791bb0fcecce29bb2a258bfce164
+app-v66.js,18714,,not an image decode check,a827be426eb60095d1bef1db73ec0a7ef7bb2b434cc00544afca3de6f3410c27
+arena-v5.js,12017,,not an image decode check,d449097ecf9dbab5dd2e9806ed7aaf26e048438bc5cae5de76ea1c09e8f932e3
+arena-v6.js,12516,,not an image decode check,dedb4b36f3ec62d8d401485e43df6473df412778f1e52246a1d5a724022d0295
+arena-v66.js,18575,,not an image decode check,e8d3d7f1c4f3f66e2a8cc415823bd0cde710110698c617e13ecac385f323210f
+assets/agenda-atlas-00.js,7060,,not an image decode check,26c807a10b53d6af575bec1d552e9bf47113212a9640b8e81f7edd15755e43ab
+assets/agenda-atlas-01.js,7060,,not an image decode check,42361a92ace88871be07c6c6b9c31f0bf834826f4c834a7e8eff0f3c4498cf5e
+assets/agenda-atlas-02.js,7060,,not an image decode check,738934de8896b2e94f512312e8bf19f209ae907eb9430520f0f56e7f736508b4
+assets/agenda-atlas-03.js,7060,,not an image decode check,a7063da42d7e709bf93d3152271fbe75280117a2ecddec99c7378fb682d5d94e
+assets/agenda-atlas-04.js,7060,,not an image decode check,fb96a783a1399ca07e6de6af853e258e085318b076c9b9f75662e9409352739a
+assets/agenda-atlas-05.js,1660,,not an image decode check,011f08505397d499ddf277ed4100c8f2cd2845d59c5846c73e06c89c98330e60
+assets/agenda-fluid/agenda-fluid-sprite-manifest.json,1739,,not an image decode check,f56d8dcfcfeefd449a71d5c8d9b6d64e1b48311a510508ed8fc21527456ca18d
+assets/agenda-fluid/README.md,2652,,not an image decode check,556f86d12eee666073cfcac2903c8bbbb61dce74b6ad0ed1d45141885051e553
+assets/agenda-fluid/runtime/agenda-fluid-defensive-weave-strip-v1.png,7599,"(768, 148)",DECODE FAILED: broken data stream when reading image file,e58a723dfaebecc906f812eed34211c8bd189102bd0be92b8494e60aee3c4f4d
+assets/agenda-fluid/runtime/agenda-fluid-forward-feint-strip-v1.png,7176,"(768, 148)",DECODE FAILED: broken data stream when reading image file,4fad60d6f10fbe7d791b5f76ecd2c247b4ea372f2ffe5e16a27f2184ecb33750
+assets/agenda-fluid/runtime/agenda-fluid-idle-sway-breath-strip-v1.png,6434,"(768, 148)",decode OK,7f2a5cb344c860504a6e9571fd7c81256895a9e72e71b5de4a73a29515db5dd9
+assets/agenda-fluid/runtime/agenda-fluid-ready-bounce-strip-v1.png,4494,"(768, 148)",DECODE FAILED: unrecognized data stream contents when reading image file,64916f17c28090d2dd4b5a2167eeab0121c460339ea98ee147cb11ea7fc7e990
+assets/backgrounds/game/arcade-food-court-frenzy.webp,4906,"(240, 135)",decode OK,800e9062663b3cf36e8495331910dbd8a0b552790f0586e54859fc79ef0b19e3
+assets/backgrounds/game/backyard-bbq-bash.webp,8822,"(400, 225)",decode OK,ff8101b65ac4eb013177ffa41fc154e4854e5c1ae7813ea243557171cb530b44
+assets/backgrounds/game/construction-yard-throwdown.webp,3928,"(240, 135)",decode OK,b86df2b91e38112775d4682fc0debb0c2d52a632e7c9f1a2d9edf0f7de5e2d6d
+assets/backgrounds/game/docklands-container-clash.webp,3768,"(240, 135)",decode OK,75d560abb93e437989f363a3185464aea7a194414f38213e2dd19e83c9cc1e19
+assets/backgrounds/game/neon-laneway-beatdown.webp,6804,"(400, 225)",decode OK,0a8be94c9fa1845fbc822cab356e58f0421845a977ae27b6f9d0ed6dc142d148
+assets/backgrounds/game/outback-servo-showdown.webp,2696,"(320, 180)",decode OK,0183bf7e3f13b8f4d1326d014bafc3cb586fa1ab33f29568f11afcd1629e0e3a
+assets/backgrounds/prompts.md,8681,,not an image decode check,79a80aa1bd04a768d64ed7f8c5eefc727bfcc54014f0f901a8236a317f832d3a
+assets/backgrounds/README.md,3887,,not an image decode check,d4a1948447af5630c8f6821f2ca51d9fc0d26f8b12bcdefff7c7d617019dd490
+assets/backgrounds/stages.json,6383,,not an image decode check,251873418ed4386d42bbdbbfc869696abd3c18ea72ff261a100cfb97be994d81
+assets/backgrounds/verify-assets.py,2371,,not an image decode check,e723eb882ac6c3cd2c5157c53ae7972514b922f444f988af991b49980f88f076
+assets/characters/lefty_liberal/lefty-liberal-animation-map.json,2383,,not an image decode check,d9ab89352ad2001061518e9f3750b5d9dbb1cac2c056b78eae0401aba82b7b79
+assets/characters/lefty_liberal/README.md,1670,,not an image decode check,f9c7dc4b0883c379211c3a64469705d88d37dfc541049f1840e5b36cf79cf9a0
+assets/characters/portraits/roster-0.b64,12000,,not an image decode check,79396dc7b93c48f17fd5633bf98e4ea1af54adbbd2105aad055b39bd4f5a35b5
+assets/characters/portraits/roster-1.b64,12000,,not an image decode check,6ef654dd04a4f3881aca711d4c887f7bdfbbf3f7b319867f3d41d4562bed188e
+assets/characters/portraits/roster-2.b64,12000,,not an image decode check,5628fa4a974a940ece223bae83a4be8e7a47570a6c65f3fefd2574e7667d597c
+assets/characters/portraits/roster-3.b64,7396,,not an image decode check,28b4d889c3dd521d9ef6edbf0951da870ff8d6b48f8c0cc518bc88a5c19a981e
+assets/characters/v6/agenda-atlas.webp,10504,"(512, 240)",decode OK,688125577876f8f57b66258d97d4810d4e026b256b2b5bc6296915fd4dbd9467
+assets/characters/v6/bogan-tradie-atlas.webp,11016,"(512, 240)",decode OK,e6db6816a8b4ba7bb27f0bc978efeafb383b65385525015781bbded2feb81a9d
+assets/characters/v6/gym-bro-atlas.webp,9446,"(512, 240)",decode OK,dfef518ad9bfae81bd627a6babae71ff69f375c5f6835189c6129cd4ed0d07ff
+assets/characters/v6/lefty-atlas.webp,11282,"(512, 240)",decode OK,f212330ae740adfda1dcdd16513ca9a4c64ec7db36ab3c023b5ce7c19204ccd4
+assets/characters/v6/README.md,1053,,not an image decode check,bad5e4b8ac1f4f2153f4ac2e0b84dde7c569cf73bc11b9c4ad146e077204a84f
+assets/characters/v65/agenda-atlas-v65-0.b64,12000,,not an image decode check,f48da8206e46e9d66f3fb654d17ef4b36cce05cb706be0b655a22afed411b738
+assets/characters/v66/lefty-atlas-v67.avif,15017,,DECODE FAILED: cannot identify image file 'C:\\Users\\Andrew\\AppData\\Local\\Temp\\stereotype-audit-wgjahr38\\StereoTypeFighter\\assets\\characters\\v66\\lefty-atlas-v67.avif',b58d4c8ca93ce6472d4124babccf03bd911e99660d65abee8c8c76e72c1002b9
+assets/characters/v66/lefty-reference-v68-0.b64,19999,,not an image decode check,f4b4e7df7c11bc77d9ac2dd1b4f5154c8e7299a3ff27aef07f7f6415db1cdcf0
+assets/characters/v66/lefty-reference-v68-00.b64,18412,,not an image decode check,89254fa5e672f605b43eec36e17544967be62a561164e8e9842d8564c3631a07
+assets/characters/v66/lefty-v67-0.b64,13608,,not an image decode check,a03ec1ee90595546ea9ce0401a31cad45f7d1749a45169334a4e6c9fa2573fcc
+assets/characters/v66/lefty-v67-1.b64,13608,,not an image decode check,61bd9b77f47b6800dd1c19846804aa36a5d337a0b346d18e2d5ccae177d70e6b
+assets/characters/v66/lefty-v67-2.b64,13729,,not an image decode check,e36c0bf178fc4b2a57fce4b5fbff7045506cfc9396e65832da14b6c03791f1f7
+assets/characters/v66/lefty-v67-3.b64,13608,,not an image decode check,95a5c9097d55a906480c17c0dcc6afb999ecac36d60af59e0be1af22013c8de0
+assets/characters/v66/lefty-v68-atlas.webp,14998,,DECODE FAILED: cannot identify image file 'C:\\Users\\Andrew\\AppData\\Local\\Temp\\stereotype-audit-wgjahr38\\StereoTypeFighter\\assets\\characters\\v66\\lefty-v68-atlas.webp',9ec11c71d00d09f8c366a648cd00c9f7b04667b8aeb4974f35006ef93bc8b295
+assets/characters/v66/lefty96-v68-00.b64,18500,,not an image decode check,7c5f0a5b1ac1f7867977e091ff79d426b33fc946bb6b659d20910c2ce81e0b90
+assets/characters/v66/lefty96-v68-01.b64,18500,,not an image decode check,fc2c00a8c390c659191a9e19106dfa0dbfea56cd43cbc5f43f4ed4bf9bef2db2
+assets/dave-game-00.txt,6000,,not an image decode check,9414a9be1c924f7fcebee611e197256b060322501aa38ff8fa1140d23bfe5f0e
+assets/dave-game-01.txt,6000,,not an image decode check,55ad1f5279de5216146629a699a73f656a0a2800c1ae8d2e7f031029c79a9a25
+assets/dave-game-02.txt,6000,,not an image decode check,e1ad75594f779e2e0eab79113d08c76ad74bb7a1cc3d41035537ddef31c2d85a
+assets/dave-game-03.txt,6000,,not an image decode check,8ef823b6a882a5c4432b55c823dd01cb66b506069e86f93e7c8097438aa7c5cd
+assets/dave-game-04.txt,1524,,not an image decode check,d2be4aadaf7a5e4c24e4a7f94e4bf0c41723e6075d082d6b7dc0a70eb89983f2
+assets/game-code-00.js,7054,,not an image decode check,f7d97f7cd19b38db9a52061ef4a513866e9a9e54d208039913aadd8a712bf429
+assets/game-code-01.js,7054,,not an image decode check,f89d0b370085a717db27727d8271b37ed8daecb0d9da3ed121ac60a59f16a191
+assets/game-code-02.js,7054,,not an image decode check,84fa77f30f74e5a16ca7da217022baf220efecd23d62f202fe9a52ac6f09a191
+assets/game-code-03.js,7054,,not an image decode check,a581621fd69a5128d9776c1e50ca028704a0ade5183638b80a511c4f4a3f0af7
+assets/game-code-04.js,7054,,not an image decode check,6ae641f4fe636c91e3c74398a11428bed0275cef3470db6303b53756e6a6b980
+assets/game-code-05.js,7054,,not an image decode check,adab4a4d8d423cc9af57698717fb02457f441dc98c6465405da5a6967bb9ddca
+assets/game-code-06.js,7054,,not an image decode check,89da40c6d4fb4512c8837edac0ba2e81a81fe83f9775be55a902423c3b3bb867
+assets/game-code-07.js,3198,,not an image decode check,2df9a4f0516c49be41c97dfc047e41bfa7340802f03149e2cdec776347de222c
+assets/junkie-atlas-v2.png,15009,"(480, 960)",DECODE FAILED: unrecognized data stream contents when reading image file,e7411d2cbf991a8e1ff198f4b960e2593dc068e43b0e4a5915c03c884acebcf9
+assets/lefty-atlas-00.js,7058,,not an image decode check,1990cf2356c7417ccd4e38a6286f38f8f25276c0a8253ff9f0b98bd7b718d72f
+assets/lefty-atlas-01.js,7058,,not an image decode check,9162b46a4f04c7ef7f75d53ef6a58653af730bbb78af4c44e5e0e6b54dc650d7
+assets/lefty-atlas-02.js,7058,,not an image decode check,3e3b7bd5fdf1b152add5ea7659f6f33649b4dceb978af7fc7e2382267592f3cd
+assets/lefty-atlas-03.js,7058,,not an image decode check,9c3483bb7cf66a9f53dc848a223101522cb4148a4d769a45823435a7f1637397
+assets/lefty-atlas-04.js,3054,,not an image decode check,864b54ab2657fc6c29971e91c8b967b2ca53d36985af01e06824d46ecc27680e
+assets/reference-sprite-sheets/agenda-fluid.webp,15009,,DECODE FAILED: could not create decoder object,aa9331f27dbbc5eb7ae413f9b6d61277019afa0d21df1e3cfe01b16e28a4921c
+assets/reference-sprite-sheets/bogan-tradie.webp,15008,,DECODE FAILED: could not create decoder object,9825b41a5bfb22517abc4604ec2121ea230697402b63e7227a627c416ede4c66
+assets/reference-sprite-sheets/gym-bro.webp,15009,,DECODE FAILED: could not create decoder object,8d772ab1282dd1d2db25fed0badc7d9017d5e90ccfeb6015d9a6860e13da7e14
+assets/reference-sprite-sheets/lefty-liberal.webp,15009,,DECODE FAILED: could not create decoder object,0bbe0bc94d8a31c105b2507d05006d2a68ba55b78ff017328edfc9f74c60a99a
+assets/SPRITE_ATLAS.md,1093,,not an image decode check,76de77764c64b3a8001b4a40a339cac7deb6f859d9fd7afba4ffbe389f7ff610
+audio-store-v66.js,3027,,not an image decode check,54e743fe62853c84b0098d0574c89e5a76ed168b7e01eee9b6eaf54621c3554a
+Bimbo.png,2409319,"(1536, 1024)",decode OK,5f9c0ec5240b7e966d232d107a6d56b00911655cd9c2124a70f51896e2c2dc68
+CHARACTER_BIBLE.md,22047,,not an image decode check,69f350fa2f260e1b32ae412df5b84650932737db3bb7ec0feaddc4f8e830283f
+"ChatGPT Image May 5, 2026, 11_15_17 PM.png",2192907,"(1410, 1116)",decode OK,36c242f18480007f4db470b32c7604878ca6ca01466de395ce12ec7a65fad681
+"ChatGPT Image May 5, 2026, 11_16_21 PM.png",2339657,"(1536, 1024)",decode OK,aff8ad7f17ab3d4319e4038cf2e901d350889cb2210f3dcf94e9584434473a1d
+"ChatGPT Image May 5, 2026, 11_16_29 PM.png",2494313,"(1536, 1024)",decode OK,20f6e7279f4e9ff157ee9e72ab3ff1534fbf5f3fee48f198541779e17e41da14
+"ChatGPT Image May 6, 2026, 10_53_06 PM.png",1581172,"(1402, 1122)",decode OK,980def70759c4ecb73a099e786ea132cb3ff3876e4e42694d4f46fe1fab80972
+"ChatGPT Image May 6, 2026, 10_53_25 PM.png",1772950,"(1402, 1122)",decode OK,f662a716ff178f040b6477370315b6401e5d3b19c090180da12c3af262a4b6ad
+"ChatGPT Image Sep 9, 2026, 09_20_51 PM.png",2773242,"(1536, 1024)",decode OK,66895a330c1a735c26e4a1572619ea59067e428fdf4abc32237dc16fe656d409
+"ChatGPT Image Sep 9, 2026, 09_26_04 PM.png",2236127,"(1536, 1024)",decode OK,47d05d0518d81ebdd187d6fc10dd31e7d19d40c3785ee4a0870e7d1ff2422e1f
+"ChatGPT Image Sep 9, 2026, 09_29_51 PM (1).png",2236127,"(1536, 1024)",decode OK,47d05d0518d81ebdd187d6fc10dd31e7d19d40c3785ee4a0870e7d1ff2422e1f
+"ChatGPT Image Sep 9, 2026, 09_29_51 PM (2).png",2025129,"(1774, 887)",decode OK,5c0d94b42f8fcc238e93ea21b1b30f1142e58f676f0279b53a773214e0e6b00b
+"ChatGPT Image Sep 9, 2026, 09_32_30 PM.png",2223188,"(1536, 1024)",decode OK,3cb345fd7a3a623112b868cd8e7a45efbff79c0dd1330dd91c144e9950be88ca
+"ChatGPT Image Sep 9, 2026, 09_32_42 PM (1).png",2272893,"(1536, 1024)",decode OK,11e160380ceaea0ea8d2af26138eae9e7579c98017d5a104cbb56812d5be3710
+"ChatGPT Image Sep 9, 2026, 09_32_42 PM (2).png",2237538,"(1200, 1310)",decode OK,4e3fe6506a8e3ffd16c9fa31320abe3901bb0c3f3d87eb724d4aa30b9c29f079
+"ChatGPT Image Sep 9, 2026, 09_32_57 PM.png",2272893,"(1536, 1024)",decode OK,11e160380ceaea0ea8d2af26138eae9e7579c98017d5a104cbb56812d5be3710
+"ChatGPT Image Sep 9, 2026, 09_47_50 PM.png",2223188,"(1536, 1024)",decode OK,3cb345fd7a3a623112b868cd8e7a45efbff79c0dd1330dd91c144e9950be88ca
+Cheerleader.png,2610836,"(1536, 1024)",decode OK,7b29eba7d3e95c7fb5341c554b5013c42e7ad9d36a0465aae3184aa826796645
+ClubDoll.png,2692030,"(1536, 1024)",decode OK,2601d60ced4c9594d323e3b600c98ec5a7ce112743ea78fcdeefe446d9e14296
+combat-v66.js,6072,,not an image decode check,1f000e8abccfceb92591f659e3aa3f49a8d7782d5b945e9f3a69029fa2201830
+dave-game-loader.js,846,,not an image decode check,2a8cddc826a83bf3085494105a57979e99300796253fe5f4ae5307a14da35cd9
+Dave.png,3021911,"(1536, 1024)",decode OK,2cacdd858420d0ba17c4027d57965f63cbb816a3a7382f01968103aecc5578e7
+docs/QA-v5.md,2200,,not an image decode check,9f06508515da957ab36ed768cd4ae0af9c98803086a135974022c065e8628b30
+E-Girl.png,2332043,"(1536, 1024)",decode OK,0f18eb0a6198a0859e1a977c534a9ab972ccc030ccfa9b39b317c8c1cb589f5a
+enhancements-v67.js,5680,,not an image decode check,4f3eb43caee433dbc31731660cfba14e4af3ccd15f98ccbfc604632e6af565ad
+FatGamer.png,2496859,"(1536, 1024)",decode OK,37fbaf4f050a20487a8506c6f913da0168536d38fd17576f3f73033bbd1335a8
+game-loader.js,84,,not an image decode check,ecb8028d7da1430205305d1088503b0d0512c46aa6e6f66c1e1002bfff0a8e0d
+game-v2.js,16410,,not an image decode check,d6909431e4ac5fbfb2df6e5b04982e5746b2e5833a1654d7ad9a7064e893efed
+game-v3.js,19663,,not an image decode check,9abe3bc2f92acc9454b53672254576bc45094d8fdfed179f6d8ccdf0accc1b0d
+game-v4-loader.js,5380,,not an image decode check,78baded0c0f2f352d8a72dff8ee2e96b87e8fc396dd70e76b81047c976e7334f
+Grunge.png,2985238,"(1536, 1024)",decode OK,efc291d4f59713557f9283ca9b5708e1989654f45579d0b3e2615ae6af707c2f
+grunge_arcade.png,328740,"(750, 772)",decode OK,8ffec0d99b69f87c83c8c72315523f198c2b376e83b96034abe2268e1f187ebb
+grunge_realistic.png,647935,"(650, 1100)",decode OK,ff9b604a4216b7d0b64ab77d5715dbbd6d76f070642e95286b0ca4b658ca4172
+index.html,8433,,not an image decode check,b1046338db29dea44c8860e0a8748d2124de160c665a851f45a157a5a1ea01d4
+Influencer.png,2430582,"(1536, 1024)",decode OK,cb879c960f9a3ed21001774aa760ef7aef364fd3df360def83ac0a3504671568
+Junkie.png,2514670,"(1536, 1024)",decode OK,77b0795a647c2cf4e89113de057cc65e650f4b8365c51c62d426434ab2d7b467
+KillWoodRat.png,2423995,"(1536, 1024)",decode OK,7447837db1a5e35e4eada3e3f89083ac52bde5a39acff9b9b9a0d12eca1eebdd
+matte-part-0.js,3219,,not an image decode check,0069ee1c4b251ae1258b111a3b273e2a237f5cea2e1522b32610372732c5cef0
+matte-part-1.js,3219,,not an image decode check,da7f434df851c621a1e89d87aaeaab1d21dc1185d72ccca61a6d930533c9afbf
+matte-part-2.js,3219,,not an image decode check,169933c2f9bf9ef4aed532d44c4dd35a46d4a32646911262b8d179281a0e511e
+matte-part-3.js,2875,,not an image decode check,b89ade3593a71c2df84d7d536d042476f579586da706100103e674ebb34c53d5
+matte-v5.js,254,,not an image decode check,c020bfb3a3e01778761e2d73da92af7e6802db9a08098abc890a4fabfd2b217d
+mobile-v67.css,5829,,not an image decode check,bb466b0a039fb1bb9eefd7c65a38dbbfb058cd3be5c6dd80414de6924f35a7b7
+Neckbeard Nate.png,2292687,"(1536, 1024)",decode OK,e04bf776597a1e5e875fc103c7e1233ea0cf359130150558368341d8027b6fff
+package.json,356,,not an image decode check,b0ed45513cfd305e159f42d53294988886cf64221a14efb3e3368a12a0b5bf72
+playwright.config.mjs,618,,not an image decode check,eae6b133484e4e0e3ee671adc702fa75efc2dcba6cc8cd9be76f740ce69a40c1
+PunkPrincess.png,2332011,"(1536, 1024)",decode OK,0839eabf76063e41dc98fe7a54061f221fea2118623d9444223a9b68b84fbb77
+RapThug.png,2558481,"(1536, 1024)",decode OK,67b01f1b0d163824a70be1c49c89efaaaa0ea438785bf6e551f08ba9ce066f62
+README.md,4554,,not an image decode check,1619df9dfec124d7fba2fa6a6403d1ffe5b34553456af669c3e4c30cd4e2df08
+selector-v4.css,2148,,not an image decode check,ee276f0ea0b26b9f1300790b217988a74d15de0935e117b358dac3cfb0b407fe
+Sk8rBoi.png,2390445,"(1536, 1024)",decode OK,451accc4e3e42b24ce4b60369f75378372cc3e31111089d0def24e8a1fb81774
+sound-v66.js,4905,,not an image decode check,b9f806cc575a0ae59143dd6953e1857cd4f5de7da877379ee3c53dbdcdd671cf
+sprites-v5.js,8895,,not an image decode check,6a991b697745e6f2158462fb8ee875e8031e1a4a1150983b5b7698a489672754
+sprites-v6.js,3267,,not an image decode check,72ef5ee1282ef3137f0e9ae030e4b699f6a647256ab409eddd2bc3909bcca365
+sprites-v66.js,6646,,not an image decode check,c57c1904fc05fdb54d6cef92c58e0b766def5d44ed369ccac02c8b3441d702be
+style.css,8596,,not an image decode check,3509706c798ba07b64fb3fb1b3af83adcaf6d003ec3c60ac247cfbd7953014cf
+tests/arena-v66.unit.mjs,2301,,not an image decode check,75a58fbb4b012de776774b5a194198518ebf825f77c0b6dbc39ad7446df60e1a
+tests/v66-production.spec.mjs,18485,,not an image decode check,cb273c5299d5b2c3b2141e76db868d9fe783d7a9a9fe3c9082b5223c1099ee6c
+tests/v67-lefty.spec.mjs,1492,,not an image decode check,e4b64cae6730a18c98e793e3a7fcaf284eea224ed7b6f89bf36bc31e64396c7c
+tools/build-v66-assets.mjs,6997,,not an image decode check,5cb52d9683331542823b11bafe1f557f060adf3bdf7518d5d710bd73c27dff55
+tools/build-v66-core-atlases.mjs,3502,,not an image decode check,320398066fb31e8a353a47ee2d87891b6b2d4783897f70b0db8609ffa7cb0179
+tools/build_mattes_v5.py,3010,,not an image decode check,e4e4ec00a7b0abf84b751aab921d12c3efc7104bf0e39633858058cdcaab2b35
+tools/check-layout-v66.mjs,1172,,not an image decode check,fab6fafd9e746dc06bd427ebaa344f77a2fdb751ac95cc0d0880cb442290c5d3
+tools/prune-v66-site.mjs,1342,,not an image decode check,3bbe3f94a05a1278f30a358c1a2481939584f2694712e44d32532da401e91fc3
+tools/qa_v5.py,10317,,not an image decode check,b3d023b2fbfb42565bc68e76cc0455f514ef82d2dfd2b6bebc8881c8f7a2a0fe
+tools/roster-v5.json,11108,,not an image decode check,a617a151810d4f1c13781c45fcbbb06be57bd2172178cc8c792b6355e57f975f
+tools/roster-v6.json,3209,,not an image decode check,ee4c31a439cb64dc8ce8aa1d7d67a469a689c502eb9d0cc03a8bc4e8145a0eb1
+tools/roster-v66.json,8928,,not an image decode check,eaa49c745ca574dcfe3308bd786f221478f456f4ef78a44c9bbf8c763d2bc237
+tools/verify-v6-assets.mjs,4616,,not an image decode check,3adbe66267b5c5ea02a29391d06e55a00f6b6dfa8e43bfc4aa0d5c5c2b55309d
+tools/verify-v66-assets.mjs,2433,,not an image decode check,92e9a0517eb7fc962c38bc786a723d1a17ebe83dd07f3910bd0e403e80ad9294
+ui-v5-2.css,3414,,not an image decode check,5333ed4a4287e64b9acba47b0fa19c53a0ca151b94cad1d111a4b548805ebb32
+ui-v5.css,14084,,not an image decode check,6a50c1a7e0a38a8d7ea9092ff38048489076dbc589ecc849cc16c4797fbc5725
+ui-v6.css,1401,,not an image decode check,2ee74cf1fda65a10458d64a3cecc2a0766136b9667d48f991081582a55dd8b5d
+ui-v66.css,13581,,not an image decode check,a4e868b96faac8a6f3fa99fc26f2726a026e26b2588d894c2fa2c53a8ee3fab0
+V6.1.md,740,,not an image decode check,d4ad8e4573e20003b6800b6ec92e87161bd2998441dfa70b5efbe1997b9798be
+V6.2.md,1054,,not an image decode check,d5fe8be0a5f28dd29389a027cd435f4255c1de85e18fa7e7ebcf29b495cf9e0e
+V6.3.md,1719,,not an image decode check,1260034ce3e8c9b2538ab5d2dfcb07b0024671d6b13831b6b0ef1dade6ecb451
+V6.4.md,1532,,not an image decode check,57fe1e668dfd42189fd71b935dab4f3b02a872bc09f570dec8a86e406cdbdf20
+V6.6.md,2144,,not an image decode check,00402873e6f12b2193572adba4b7cbb851727893b0904c130ac7c7c8857e63f9
+Yoga Mom.png,2372975,"(1536, 1024)",decode OK,62ccee138410bcda78cbc6169e38f1adff4e8b230916b9f2df8191e3da8c2f5a
+Yuppie.png,2325841,"(1536, 1024)",decode OK,2fa4e0ab63b48edc5115db259b84edada96a1cac7d5c4e1612ea908d68609f75
