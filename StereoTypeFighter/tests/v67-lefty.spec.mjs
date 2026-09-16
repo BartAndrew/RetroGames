@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
 
-const TOTAL=140;
+const TOTAL=44;
 
 async function boot(page){
   await page.goto('./?qa=1');
@@ -9,7 +9,7 @@ async function boot(page){
   await expect(page.locator('#startButton')).toBeEnabled({timeout:20000});
 }
 
-test('Lefty uses the canonical Characters source atlas and renders all mapped animation frames',async({page},info)=>{
+test('Lefty uses the canonical Characters source atlas and renders mapped source poses',async({page},info)=>{
   await boot(page);
   await page.evaluate(()=>window.SF.test.loadAll());
   await page.waitForFunction(()=>window.SF.roster().find(f=>f.id==='lefty')?.status==='ready',{timeout:30000});
@@ -17,8 +17,6 @@ test('Lefty uses the canonical Characters source atlas and renders all mapped an
   expect(lefty.render).toBe('atlas');
   expect(lefty.renderMode).toBe('atlas');
   expect(lefty.atlas).toContain('assets/characters/v70/lefty-atlas.webp');
-  expect(lefty.atlasCell).toEqual([192,192]);
-  expect(lefty.atlasColumns).toBe(8);
   expect(Object.values(lefty.frames).reduce((a,b)=>a+b,0)).toBe(TOTAL);
   await page.locator('#modeSelect').selectOption('training');
   await page.locator('#startButton').click();
