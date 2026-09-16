@@ -9,14 +9,12 @@ const HERE=path.dirname(fileURLToPath(import.meta.url));
 const GAME=path.resolve(HERE,'..');
 const arg=(n,d)=>{const i=process.argv.indexOf(n);return i>=0?process.argv[i+1]:d};
 const SITE=path.resolve(arg('--site',path.join(GAME,'.production')));
-const CELL=192,COLS=8;
+const CELL=192,COLS=8,REF_W=1536,REF_H=1024;
 const SEQ=['idle','walk','jump','crouch','punch','kick','special','hurt','block','fall','getup','victory'];
 const json=async p=>JSON.parse(await fs.readFile(p,'utf8'));
 const exists=async p=>{try{await fs.access(p);return true}catch{return false}};
 const median=a=>{const b=[...a].sort((x,y)=>x-y);return b[Math.floor(b.length/2)]??0};
 
-// Newer full sprite sheets use the same 1536x1024 presentation grid.  Crops
-// deliberately skip labels/borders and keep only the animation strip area.
 const HD_PANELS={
   idle:[4,267,505,383,12], walk:[515,267,1021,383,10],
   jump:[4,416,681,527,16], crouch:[690,416,1023,527,8], block:[1034,416,1531,527,8],
@@ -32,14 +30,13 @@ const HD_CORE={
 };
 
 const crop=(sheet,sw,x,y,w,h)=>{const out=Buffer.alloc(w*h*4);for(let yy=0;yy<h;yy++){const src=((y+yy)*sw+x)*4;sheet.copy(out,yy*w*4,src,src+w*4)}return out};
+const scalePanel=(r,w,h)=>{const sx=w/REF_W,sy=h/REF_H;return[Math.round(r[0]*sx),Math.round(r[1]*sy),Math.round(r[2]*sx),Math.round(r[3]*sy),r[4]]};
 function cuts(panel,w,h,n){const occ=new Float64Array(w);for(let x=0;x<w;x++)for(let y=2;y<h-2;y++){const p=(y*w+x)*4,a=panel[p+3],lum=Math.max(panel[p],panel[p+1],panel[p+2]);if(a>32&&lum>42)occ[x]++}const out=[0],step=w/n;for(let i=1;i<n;i++){const center=i*step;let best=Math.round(center),score=Infinity;for(let x=Math.max(out[i-1]+8,Math.round(center-step*.32));x<Math.min(w-8,Math.round(center+step*.32));x++){const s=occ[x-1]+occ[x]+occ[x+1]+Math.abs(x-center)*.04;if(s<score){score=s;best=x}}out.push(best)}out.push(w);return out}
 function morph(mask,w,h,d){const out=new Uint8Array(mask.length);for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){let v=d?0:1;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)d?v|=mask[(y+dy)*w+x+dx]:v&=mask[(y+dy)*w+x+dx];out[y*w+x]=v}return out}
 function silhouette(data,w,h){
-  // Respect useful alpha first. Most Characters sheets are already RGBA.
   let alphaCount=0;for(let p=0;p<w*h;p++)if(data[p*4+3]>32&&data[p*4+3]<250)alphaCount++;
   const mask=new Uint8Array(w*h);
   if(alphaCount>w*h*.02){for(let p=0;p<w*h;p++)mask[p]=data[p*4+3]>32?1:0;return morph(mask,w,h,true)}
-  // Otherwise remove the interpolated panel background and retain connected art.
   for(let y=0;y<h;y++){
     const side=[[],[],[],[],[],[]];
     for(let dx=0;dx<3;dx++)for(let dy=-2;dy<=2;dy++){const yy=Math.max(0,Math.min(h-1,y+dy));for(let c=0;c<3;c++){side[c].push(data[(yy*w+dx)*4+c]);side[c+3].push(data[(yy*w+w-1-dx)*4+c])}}
@@ -64,7 +61,23 @@ async function fitFrame(f){const max=CELL-12,scale=Math.min(1,max/f.w,max/f.h);i
 function place(f,i){return{input:f.data,raw:{width:f.w,height:f.h,channels:4},left:(i%COLS)*CELL+Math.floor((CELL-f.w)/2),top:Math.floor(i/COLS)*CELL+CELL-f.h-6}}
 async function loadMattes(){try{const m=await import(pathToFileURL(path.join(GAME,'matte-v5.js')).href);return JSON.parse(gunzipSync(Buffer.from(m.encodedMattes,'base64')).toString('utf8'))}catch{return{}}}
 async function sourcePath(source){const candidates=[path.join(GAME,'Characters',source),path.join(GAME,source)];for(const p of candidates)if(await exists(p))return p;throw Error(`Missing Characters source ${source}`)}
-async function build(geo,mattes,out){const input=await sourcePath(geo.source),{data,info}=await sharp(input).ensureAlpha().raw().toBuffer({resolveWithObject:true});if(info.width!==1536||info.height!==1024)throw Error(`${geo.id}: expected 1536x1024 source, got ${info.width}x${info.height}`);const groups={};for(const s of SEQ){if(!geo.panels?.[s])throw Error(`${geo.id}: missing ${s} panel`);const raw=mattes?.[geo.id]?.[s]?.length?mattes[geo.id][s].map(r=>matte(data,info.width,r)):split(data,info.width,geo.panels[s]);groups[s]=[];for(const f of raw)groups[s].push(await fitFrame(f));if(geo.orders?.[s])groups[s]=geo.orders[s].map(i=>groups[s][i])}const flat=SEQ.flatMap(s=>groups[s]),rows=Math.ceil(flat.length/COLS);await fs.mkdir(path.dirname(out),{recursive:true});await sharp({create:{width:COLS*CELL,height:rows*CELL,channels:4,background:{r:0,g:0,b:0,alpha:0}}}).composite(flat.map(place)).webp({quality:90,alphaQuality:100,effort:5,smartSubsample:true}).toFile(out);return Object.fromEntries(SEQ.map(s=>[s,groups[s].length]))}
+async function build(geo,mattes,out){
+  const input=await sourcePath(geo.source),{data,info}=await sharp(input).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+  if(info.width<600||info.height<400)throw Error(`${geo.id}: source sheet too small ${info.width}x${info.height}`);
+  const groups={},nativeReference=info.width===REF_W&&info.height===REF_H;
+  for(const s of SEQ){
+    if(!geo.panels?.[s])throw Error(`${geo.id}: missing ${s} panel`);
+    const panel=scalePanel(geo.panels[s],info.width,info.height);
+    const stored=mattes?.[geo.id]?.[s];
+    const raw=nativeReference&&stored?.length?stored.map(r=>matte(data,info.width,r)):split(data,info.width,panel);
+    groups[s]=[];for(const f of raw)groups[s].push(await fitFrame(f));
+    if(geo.orders?.[s])groups[s]=geo.orders[s].map(i=>groups[s][i]);
+  }
+  const flat=SEQ.flatMap(s=>groups[s]),rows=Math.ceil(flat.length/COLS);
+  await fs.mkdir(path.dirname(out),{recursive:true});
+  await sharp({create:{width:COLS*CELL,height:rows*CELL,channels:4,background:{r:0,g:0,b:0,alpha:0}}}).composite(flat.map(place)).webp({quality:90,alphaQuality:100,effort:5,smartSubsample:true}).toFile(out);
+  return Object.fromEntries(SEQ.map(s=>[s,groups[s].length]));
+}
 
 const v66=await json(path.join(GAME,'tools/roster-v66.json'));
 const base=await json(path.join(GAME,'tools/roster-v5.json'));
