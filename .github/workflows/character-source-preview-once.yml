@@ -1,0 +1,60 @@
+name: Character source preview once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/character-source-preview-once.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install sharp
+        run: npm install --no-save sharp@0.34.3
+      - name: Build character source contact sheet
+        shell: bash
+        run: |
+          mkdir -p artifacts/characters
+          node <<'NODE'
+          const fs=require('fs');
+          const path=require('path');
+          const sharp=require('sharp');
+          (async()=>{
+            const dir='StereoTypeFighter/Characters';
+            const files=fs.readdirSync(dir).filter(f=>/\.png$/i.test(f)).sort();
+            const cards=[]; const meta=[];
+            for(const file of files){
+              const input=path.join(dir,file); const m=await sharp(input).metadata();
+              meta.push({file,width:m.width,height:m.height,channels:m.channels,space:m.space});
+              const thumb=await sharp(input).resize({width:440,height:270,fit:'contain',background:{r:12,g:20,b:32,alpha:1}}).png().toBuffer();
+              cards.push({file,thumb});
+            }
+            const cols=2,cardW=460,cardH=310,rows=Math.ceil(cards.length/cols);
+            const svg=(text)=>Buffer.from(`<svg width="${cardW}" height="${cardH}"><style>.t{font:20px Arial;fill:white}.s{font:14px Arial;fill:#9fd8ff}</style><text class="t" x="10" y="25">${text.replace(/&/g,'&amp;')}</text></svg>`);
+            const comps=[];
+            cards.forEach((c,i)=>{
+              const x=(i%cols)*cardW,y=Math.floor(i/cols)*cardH;
+              comps.push({input:svg(c.file),left:x,top:y});
+              comps.push({input:c.thumb,left:x+10,top:y+35});
+            });
+            await sharp({create:{width:cols*cardW,height:rows*cardH,channels:4,background:{r:8,g:13,b:22,alpha:1}}}).composite(comps).png().toFile('artifacts/characters/character-sources.png');
+            fs.writeFileSync('artifacts/characters/metadata.json',JSON.stringify(meta,null,2));
+            for(const name of ['Lefty.png','Agenda.png','GymBro.png','Bogan.png']){
+              if(fs.existsSync(path.join(dir,name))) await sharp(path.join(dir,name)).resize({width:1400,withoutEnlargement:true}).png().toFile(`artifacts/characters/${name.replace('.png','-preview.png')}`);
+            }
+            console.log(meta);
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: character-source-preview
+          path: artifacts/characters
