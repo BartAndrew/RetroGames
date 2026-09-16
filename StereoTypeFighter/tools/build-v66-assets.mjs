@@ -9,29 +9,41 @@ const HERE=path.dirname(fileURLToPath(import.meta.url));
 const GAME=path.resolve(HERE,'..');
 const arg=(n,d)=>{const i=process.argv.indexOf(n);return i>=0?process.argv[i+1]:d};
 const SITE=path.resolve(arg('--site',path.join(GAME,'.production')));
-const CELL=192,COLS=8,REF_W=1536,REF_H=1024;
+const CELL=192,COLS=8,DEFAULT_REF=[1536,1024],MODERN_REF=[1400,788];
 const SEQ=['idle','walk','jump','crouch','punch','kick','special','hurt','block','fall','getup','victory'];
 const json=async p=>JSON.parse(await fs.readFile(p,'utf8'));
 const exists=async p=>{try{await fs.access(p);return true}catch{return false}};
 const median=a=>{const b=[...a].sort((x,y)=>x-y);return b[Math.floor(b.length/2)]??0};
 
-const HD_PANELS={
-  idle:[4,267,505,383,12], walk:[515,267,1021,383,10],
-  jump:[4,416,681,527,16], crouch:[690,416,1023,527,8], block:[1034,416,1531,527,8],
-  punch:[4,560,461,666,8], kick:[948,560,1531,666,12],
-  special:[4,704,782,810,20], hurt:[790,704,1131,810,8], fall:[1139,704,1531,810,10],
-  getup:[4,844,629,946,12], victory:[639,844,1531,946,16]
+// The four newer 1672x941 Characters sheets share this presentation layout.
+// Coordinates below are measured against their 1400x788 preview space and crop
+// only the actual fighter poses, deliberately excluding titles, slogans, props
+// and neighbouring panels. Counts reflect the poses that are really drawn in
+// the source art (not decorative numbers embedded in older concept sheets).
+const MODERN_PANELS={
+  idle:[14,153,254,226,5],
+  walk:[274,153,545,226,6],
+  jump:[14,255,286,330,5],
+  crouch:[560,255,804,330,5],
+  punch:[14,360,253,438,4],
+  kick:[505,360,734,438,3],
+  special:[14,471,238,560,2],
+  hurt:[912,487,1001,559,1],
+  block:[1025,486,1108,559,1],
+  fall:[15,594,330,648,3],
+  getup:[379,590,698,650,6],
+  victory:[1140,486,1295,559,3]
 };
-const HD_CORE={
-  lefty:{source:'Lefty.png',panels:HD_PANELS},
-  agenda:{source:'Agenda.png',panels:HD_PANELS},
-  'gym-bro':{source:'GymBro.png',panels:HD_PANELS},
-  'bogan-tradie':{source:'Bogan.png',panels:HD_PANELS}
+const MODERN_CORE={
+  lefty:{source:'Lefty.png',panels:MODERN_PANELS,ref:MODERN_REF},
+  agenda:{source:'Agenda.png',panels:MODERN_PANELS,ref:MODERN_REF},
+  'gym-bro':{source:'GymBro.png',panels:MODERN_PANELS,ref:MODERN_REF},
+  'bogan-tradie':{source:'Bogan.png',panels:MODERN_PANELS,ref:MODERN_REF}
 };
 
 const crop=(sheet,sw,x,y,w,h)=>{const out=Buffer.alloc(w*h*4);for(let yy=0;yy<h;yy++){const src=((y+yy)*sw+x)*4;sheet.copy(out,yy*w*4,src,src+w*4)}return out};
-const scalePanel=(r,w,h)=>{const sx=w/REF_W,sy=h/REF_H;return[Math.round(r[0]*sx),Math.round(r[1]*sy),Math.round(r[2]*sx),Math.round(r[3]*sy),r[4]]};
-function cuts(panel,w,h,n){const occ=new Float64Array(w);for(let x=0;x<w;x++)for(let y=2;y<h-2;y++){const p=(y*w+x)*4,a=panel[p+3],lum=Math.max(panel[p],panel[p+1],panel[p+2]);if(a>32&&lum>42)occ[x]++}const out=[0],step=w/n;for(let i=1;i<n;i++){const center=i*step;let best=Math.round(center),score=Infinity;for(let x=Math.max(out[i-1]+8,Math.round(center-step*.32));x<Math.min(w-8,Math.round(center+step*.32));x++){const s=occ[x-1]+occ[x]+occ[x+1]+Math.abs(x-center)*.04;if(s<score){score=s;best=x}}out.push(best)}out.push(w);return out}
+const scalePanel=(r,w,h,ref=DEFAULT_REF)=>{const sx=w/ref[0],sy=h/ref[1];return[Math.max(0,Math.round(r[0]*sx)),Math.max(0,Math.round(r[1]*sy)),Math.min(w,Math.round(r[2]*sx)),Math.min(h,Math.round(r[3]*sy)),r[4]]};
+function cuts(panel,w,h,n){const occ=new Float64Array(w);for(let x=0;x<w;x++)for(let y=2;y<h-2;y++){const p=(y*w+x)*4,a=panel[p+3],lum=Math.max(panel[p],panel[p+1],panel[p+2]);if(a>32&&lum>42)occ[x]++}const out=[0],step=w/n;for(let i=1;i<n;i++){const center=i*step;let best=Math.round(center),score=Infinity;for(let x=Math.max(out[i-1]+8,Math.round(center-step*.24));x<Math.min(w-8,Math.round(center+step*.24));x++){const s=occ[x-1]+occ[x]+occ[x+1]+Math.abs(x-center)*.08;if(s<score){score=s;best=x}}out.push(best)}out.push(w);return out}
 function morph(mask,w,h,d){const out=new Uint8Array(mask.length);for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){let v=d?0:1;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)d?v|=mask[(y+dy)*w+x+dx]:v&=mask[(y+dy)*w+x+dx];out[y*w+x]=v}return out}
 function silhouette(data,w,h){
   let alphaCount=0;for(let p=0;p<w*h;p++)if(data[p*4+3]>32&&data[p*4+3]<250)alphaCount++;
@@ -64,11 +76,10 @@ async function sourcePath(source){const candidates=[path.join(GAME,'Characters',
 async function build(geo,mattes,out){
   const input=await sourcePath(geo.source),{data,info}=await sharp(input).ensureAlpha().raw().toBuffer({resolveWithObject:true});
   if(info.width<600||info.height<400)throw Error(`${geo.id}: source sheet too small ${info.width}x${info.height}`);
-  const groups={},nativeReference=info.width===REF_W&&info.height===REF_H;
+  const ref=geo.ref||DEFAULT_REF,nativeReference=info.width===DEFAULT_REF[0]&&info.height===DEFAULT_REF[1]&&!geo.ref,groups={};
   for(const s of SEQ){
     if(!geo.panels?.[s])throw Error(`${geo.id}: missing ${s} panel`);
-    const panel=scalePanel(geo.panels[s],info.width,info.height);
-    const stored=mattes?.[geo.id]?.[s];
+    const panel=scalePanel(geo.panels[s],info.width,info.height,ref),stored=mattes?.[geo.id]?.[s];
     const raw=nativeReference&&stored?.length?stored.map(r=>matte(data,info.width,r)):split(data,info.width,panel);
     groups[s]=[];for(const f of raw)groups[s].push(await fitFrame(f));
     if(geo.orders?.[s])groups[s]=geo.orders[s].map(i=>groups[s][i]);
@@ -82,7 +93,7 @@ async function build(geo,mattes,out){
 const v66=await json(path.join(GAME,'tools/roster-v66.json'));
 const base=await json(path.join(GAME,'tools/roster-v5.json'));
 const geometry=new Map(base.filter(x=>x.source&&x.panels).map(x=>[x.id,{...x}]));
-for(const [id,g] of Object.entries(HD_CORE))geometry.set(id,{id,...g});
+for(const [id,g] of Object.entries(MODERN_CORE))geometry.set(id,{id,...g});
 if(v66.length!==20||new Set(v66.map(x=>x.id)).size!==20)throw Error('Expected 20 fighters');
 const mattes=await loadMattes(),generated=path.join(SITE,'assets/characters/v70'),production=[];
 for(const def of v66){const geo=geometry.get(def.id);if(!geo)throw Error(`${def.id}: no Characters source geometry`);const file=`${def.id}-atlas.webp`,counts=await build(geo,mattes,path.join(generated,file)),frames=Object.values(counts).reduce((a,b)=>a+b,0);production.push({...def,render:'atlas',atlas:`./assets/characters/v70/${file}`,atlasCell:[CELL,CELL],atlasColumns:COLS,atlasCounts:counts,motionRate:def.motionRate||1.5});console.log(`Built ${def.id}: ${frames} source-art frames -> ${file}`)}
