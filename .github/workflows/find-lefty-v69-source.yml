@@ -1,0 +1,31 @@
+name: Find exact Lefty V6.9 source
+
+on:
+  push:
+    branches:
+      - fix-lefty-v69-atlas
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Compare repository PNGs with supplied Lefty sheet
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET=659179d881dce11da26f49148838121155d58e328052a63f33175ab3e11fe108
+          find StereoTypeFighter -maxdepth 2 -type f -iname '*.png' -print0 | sort -z | xargs -0 sha256sum > /tmp/png-sha.txt
+          echo 'Exact hash matches:'
+          grep "$TARGET" /tmp/png-sha.txt || true
+          echo '1536 x 1024 PNG candidates:'
+          while IFS= read -r -d '' f; do
+            info=$(file "$f")
+            if [[ "$info" == *'1536 x 1024'* ]]; then
+              sha256sum "$f"
+            fi
+          done < <(find StereoTypeFighter -maxdepth 2 -type f -iname '*.png' -print0 | sort -z)
