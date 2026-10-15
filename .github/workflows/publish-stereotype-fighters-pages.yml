@@ -36,6 +36,11 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Validate Midway 1942 source and gameplay smoke test
+        run: |
+          node --check Midway1942/game.js
+          node Midway1942/test-smoke.cjs
+
       - name: Install Stereotype Fighter QA dependencies
         working-directory: StereoTypeFighter
         run: npm install --no-audit --no-fund
