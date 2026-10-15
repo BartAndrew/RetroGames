@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111310">
-  <meta name="description" content="Andrew's browser arcade. Play Stereotype Fighters, Pacific Lightning, Sandbag Siege and Left Vs Right, including their original versions.">
+  <meta name="description" content="Andrew's browser arcade. Play Midway 1942 Reforged, Stereotype Fighters, Pacific Lightning, Sandbag Siege and Left Vs Right, including their original versions.">
   <title>RetroGames | Choose your next game</title>
   <link rel="icon" href="./arcade/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./arcade/arcade.css">
@@ -21,18 +21,18 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> INDEPENDENT BROWSER ARCADE</p>
         <h1 id="hero-title">Old-school soul.<br><span>One more round.</span></h1>
-        <p class="hero-description">Big personalities. Pixel-powered dogfights. Last-stand shootouts. A growing collection of homemade arcade games, ready to play in your browser.</p>
+        <p class="hero-description">Big personalities. Cinematic Pacific dogfights. Last-stand shootouts. A growing collection of homemade arcade games, ready to play in your browser.</p>
         <div class="hero-actions"><a class="button button-primary" href="#games">Choose your game <span aria-hidden="true">&#8595;</span></a><button class="button button-quiet" id="random-game" type="button" hidden>Pick one for me <span aria-hidden="true">&#8599;</span></button></div>
         <p class="hero-note">No account. No install. Just press play.</p>
       </div>
-      <div class="arcade-ticket" aria-label="Four game families: two fighters and two shooters">
+      <div class="arcade-ticket" aria-label="Five game families: two fighters and three shooters">
         <div class="ticket-top"><span>THE HOME ARCADE</span><span>VOL. 01</span></div>
-        <div class="ticket-number">04<span>GAME<br>FAMILIES</span></div>
-        <div class="ticket-slots"><span>01 / FIGHT</span><span>02 / FLY</span><span>03 / DEFEND</span><span>04 / REMATCH</span></div>
+        <div class="ticket-number">05<span>GAME<br>FAMILIES</span></div>
+        <div class="ticket-slots"><span>01 / FIGHT</span><span>02 / FLY</span><span>03 / DEFEND</span><span>04 / REMATCH</span><span>05 / PACIFIC</span></div>
         <div class="ticket-bottom"><span class="ticket-cross" aria-hidden="true">+</span><span>ALL SKILL LEVELS WELCOME<br><strong>HIGH SCORES NOT GUARANTEED.</strong></span></div>
       </div>
     </section>
-    <div class="info-strip"><span><b>4</b> game families</span><span><b>8</b> distinct builds</span><span>Original versions included</span><span>Made for the browser</span></div>
+    <div class="info-strip"><span><b>5</b> game families</span><span><b>9</b> distinct builds</span><span>Original versions included</span><span>Made for the browser</span></div>
 
     <section class="library" id="games" aria-labelledby="games-title">
       <div class="section-heading"><div><p class="eyebrow">PICK YOUR NEXT OBSESSION</p><h2 id="games-title">The game room<span>.</span></h2></div><p>Latest builds up front. Originals inside each card.</p></div>
@@ -42,9 +42,24 @@
       </div>
       <p id="result-count" class="result-count" role="status" aria-live="polite" hidden></p>
       <div class="game-grid" id="game-grid">
+        <article class="game-card" data-genre="shooter" data-keywords="midway 1942 reforged capcom inspired pacific arcade vertical scrolling shoot em up planes aircraft carrier fighters battleships tropical islands ww2 wwii mobile keyboard" aria-labelledby="midway-title">
+          <a class="game-art art-midway" href="./Midway1942/" aria-label="Play Midway 1942 Reforged">
+            <span class="art-label">01 / CINEMATIC AIR COMBAT</span>
+            <img class="sheet-art" src="./Midway1942/cover.svg" alt="Midway 1942 Reforged original game artwork showing a P-38 Lightning attacking enemy aircraft and a carrier over the Pacific Ocean." width="1400" height="800" decoding="async" fetchpriority="high">
+            <span class="art-caption">ORIGINAL PACIFIC BATTLE ARTWORK</span><span class="art-play" aria-hidden="true">&#9654;</span>
+          </a>
+          <div class="card-body"><div class="card-meta"><span class="tag">NEW RELEASE · SINGLE PLAYER</span><span class="version">REFORGED V1</span></div>
+            <h3 id="midway-title">Midway 1942: Reforged</h3>
+            <p class="game-description">A cinematic, original tribute to classic 1940s Pacific arcade shooters. Fly a P-38 above living ocean water and tropical islands, battle hostile formations, strike destroyers and coastal batteries, and sink the enemy carrier flagship.</p>
+            <div class="card-features"><span>Carrier boss battles</span><span>Power-ups &amp; bombs</span><span>Keyboard &amp; touch</span></div>
+            <div class="card-actions"><a class="button button-primary play-link" data-game-link href="./Midway1942/">Play Midway 1942 <span aria-hidden="true">&#8599;</span></a></div>
+            <details><summary>Controls &amp; mission intel</summary><div class="details-content"><p><strong>Fly:</strong> WASD or arrow keys. <strong>Fire:</strong> Space or J. <strong>Bomb:</strong> X or Shift. <strong>Evasive roll:</strong> Z. <strong>Pause:</strong> P or Escape.</p><p>On phones and tablets, drag on the playfield to move and automatically fire. Use the Bomb, Evade and Pause buttons. Collect W for upgraded weapon fire, + to repair, and B for bombs. Destroy each carrier to advance.</p><p>Original code and illustrated procedural graphics. An unofficial fan-inspired tribute, not affiliated with Capcom.</p><a href="https://github.com/BartAndrew/RetroGames/tree/main/Midway1942">Source code &amp; build notes &#8599;</a></div></details>
+          </div>
+        </article>
+
         <article class="game-card" data-genre="fighting" data-keywords="stereotype fighters street fighter 20 characters cpu training local multiplayer keyboard touch v7" aria-labelledby="stereotype-title">
           <a class="game-art art-fighter" href="./StereoTypeFighter/" aria-label="Play Stereotype Fighters">
-            <span class="art-label">01 / FIGHTING</span>
+            <span class="art-label">02 / FIGHTING</span>
             <img class="sheet-art" src="./StereoTypeFighter/Characters/Dave.png" alt="Dave's original Stereotype Fighters sprite sheet, showing his combat poses." width="1536" height="1024" decoding="async" fetchpriority="high">
             <span class="art-caption">ORIGINAL CHARACTER ART</span><span class="art-play" aria-hidden="true">&#9654;</span>
           </a>
@@ -59,7 +74,7 @@
 
         <article class="game-card" data-genre="shooter" data-keywords="pacific lightning pacificfighter flying planes p38 vertical shoot em up single player keyboard original v1 v2 sprites" aria-labelledby="pacific-title">
           <a class="game-art art-pacific" href="./Pacific-Lightning2/Pacific-Lightning/" aria-label="Play Pacific Lightning">
-            <span class="art-label">02 / VERTICAL SHOOTER</span>
+            <span class="art-label">03 / VERTICAL SHOOTER</span>
             <img class="sheet-art" src="./Pacific-Lightning2/Pacific-Lightning/assets/pacific-lightning-player-sprites.png" alt="Original P-38 Lightning player aircraft sprite artwork from Pacific Lightning." width="1536" height="1024" loading="lazy" decoding="async">
             <span class="art-caption">ORIGINAL AIRCRAFT ART</span><span class="art-play" aria-hidden="true">&#9654;</span>
           </a>
@@ -74,7 +89,7 @@
 
         <article class="game-card" data-genre="shooter" data-keywords="sandbag siege first person gallery defence defense single player mouse keyboard military gunship v1 v2 original" aria-labelledby="sandbag-title">
           <a class="game-art art-sandbag" href="./SandbagSiege_V2/SandbagSiege/" aria-label="Play Sandbag Siege V2">
-            <span class="art-label">03 / ARCADE SHOOTER</span>
+            <span class="art-label">04 / ARCADE SHOOTER</span>
             <span class="terrain terrain-back" aria-hidden="true"></span><span class="terrain terrain-front" aria-hidden="true"></span>
             <span class="vehicle-window"><img src="./SandbagSiege_V2/SandbagSiege/assets/modern_vehicles.svg" alt="Gunship boss sprite from Sandbag Siege V2." width="640" height="96" loading="lazy" decoding="async"></span>
             <span class="crosshair" aria-hidden="true"></span><span class="art-caption">ORIGINAL GUNSHIP ART</span><span class="art-play" aria-hidden="true">&#9654;</span>
@@ -90,7 +105,7 @@
 
         <article class="game-card" data-genre="fighting" data-keywords="left vs right parody fighter cassette jack manifesto mona prairie rose discourse diego cpu local multiplayer keyboard original v1 v2 v3" aria-labelledby="left-title">
           <a class="game-art art-left" href="./left-vs-right3/left-vs-right/" aria-label="Play Left Vs Right V3">
-            <span class="art-label">04 / PARODY FIGHTER</span><span class="versus" aria-hidden="true">VS</span>
+            <span class="art-label">05 / PARODY FIGHTER</span><span class="versus" aria-hidden="true">VS</span>
             <span class="fighter-window fighter-one"><img src="./left-vs-right3/left-vs-right/assets/sprites/cassette-jack.svg" alt="Cassette Jack's original pixel-art fighter sprite." width="1024" height="96" loading="lazy" decoding="async"></span>
             <span class="fighter-window fighter-two"><img src="./left-vs-right3/left-vs-right/assets/sprites/prairie-rose.svg" alt="Prairie Rose's original pixel-art fighter sprite." width="1024" height="96" loading="lazy" decoding="async"></span>
             <span class="art-caption">ORIGINAL FIGHTER SPRITES</span><span class="art-play" aria-hidden="true">&#9654;</span>
