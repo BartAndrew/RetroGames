@@ -1,36 +1,19 @@
-/* Dependency-free Node smoke test for Midway 1942 gameplay and render loop.
-   Run: node Midway1942/test-smoke.cjs */
-"use strict";
-const fs=require("node:fs"),path=require("node:path"),vm=require("node:vm"),assert=require("node:assert/strict");
-const elements=new Map(),globals={};let queue=[],gameTime=0;
-function grad(){return {addColorStop(){}}}
-const graphics=new Proxy({
-  createLinearGradient:grad,createRadialGradient:grad,createPattern:()=>({}),
-  createImageData:(w,h)=>({data:new Uint8ClampedArray(w*h*4)}),
-  save(){},restore(){},fillRect(){},strokeRect(){},beginPath(){},moveTo(){},lineTo(){},
-  closePath(){},fill(){},stroke(){},ellipse(){},arc(){},quadraticCurveTo(){},
-  translate(){},rotate(){},scale(){},fillText(){},putImageData(){}
-},{get(o,k){return Object.prototype.hasOwnProperty.call(o,k)?o[k]:o[k]??null},set(o,k,v){o[k]=v;return true}});
-function element(id){if(elements.has(id))return elements.get(id);const handlers={};const e={id,style:{},hidden:false,textContent:"",innerHTML:"",handlers,attrs:{},classList:{add(){},remove(){}},addEventListener(n,f){(handlers[n]??=[]).push(f)},setAttribute(n,v){this.attrs[n]=v},getBoundingClientRect(){return {left:0,top:0,width:720,height:960}},setPointerCapture(){},getContext(){return graphics}};elements.set(id,e);return e}
-const dom={getElementById:element,createElement(){return {width:0,height:0,getContext(){return graphics}}}};
-const storage=new Map(),browser={addEventListener(n,f){(globals[n]??=[]).push(f)}},sandbox={
- document:dom,window:browser,console,performance:{now:()=>0},
- matchMedia:()=>({matches:false}),
- localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v)},
- requestAnimationFrame:fn=>queue.push(fn),Uint8ClampedArray,Math
-};
-vm.runInNewContext(fs.readFileSync(path.join(__dirname,"game.js"),"utf8"),sandbox,{filename:"game.js",timeout:10000});
-assert.equal(queue.length,1,"game starts a rendering loop");
-function tick(frames){for(let i=0;i<frames;i++){gameTime+=1000/60;assert(queue.length,"animation frame scheduled");queue.shift()(gameTime)}}
-function emit(name,key){for(const f of globals[name]||[])f({key,repeat:false,preventDefault(){}})}
-tick(2);assert.equal(element("score").textContent,"000000","initial score");
-element("startButton").handlers.click[0]();assert.equal(element("overlay").hidden,true,"start hides menu");
-emit("keydown"," ");tick(150);emit("keyup"," ");
-assert.equal(element("healthBar").style.width.endsWith("%"),true,"health HUD is live");
-assert.equal(element("bombs").textContent,"◈ 03","initial ordnance");
-emit("keydown","x");assert.equal(element("bombs").textContent,"◈ 02","screen bomb decrements");
-emit("keydown","z");assert.equal(element("loops").textContent,"× 02","roll decrements");
-emit("keydown","p");assert.equal(element("overlay").hidden,false,"pause shows overlay");
-element("startButton").handlers.click[0]();assert.equal(element("overlay").hidden,true,"resume hides overlay");
-tick(75);assert.equal(queue.length,1,"animation continues after game activity");
-console.log("Midway1942 smoke test passed: render, launch, combat, bomb, roll, pause, resume.");
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const{Engine,ERAS,VERSION}=require('./core.js');let count=0;
+function test(name,fn){fn();count++;console.log('PASS '+name);}
+const step=(e,n=60,input={fire:true})=>{for(let i=0;i<n;i++){e.update(1/60,input);e.drain();}};
+test('version and five distinct eras',()=>{assert.equal(VERSION,'2.0.1');assert.equal(ERAS.length,5);assert.equal(new Set(ERAS.map(e=>e.id)).size,5);});
+test('launch, steering, autofire and boundaries',()=>{const e=new Engine();e.start();step(e,40,{x:1,y:-1,fire:true});assert(e.player.x>360);assert(e.player.y<768);assert(e.shots.length>0);step(e,200,{x:1,y:1});assert.equal(e.player.x,e.width-36);assert.equal(e.player.y,e.height-82);});
+test('pause freezes simulation and resumes',()=>{const e=new Engine();e.start();step(e,50);e.pause();const s=e.snapshot();step(e,300);assert.deepEqual(e.snapshot(),s);e.resume();step(e,1);assert(e.time>50/60);});
+test('screen bomb damages enemies and clears bullets',()=>{const e=new Engine();e.start();const foe=e.spawn('heavy',100,150);e.fireEnemy(foe);assert(e.bullets.length);assert(e.bomb());assert.equal(e.player.bombs,2);assert.equal(e.bullets.length,0);assert(foe.dead);});
+test('evasion cooldown and damage invulnerability',()=>{const e=new Engine();e.start();e.player.inv=0;assert(e.evade());assert(!e.evade());e.hurt(90);assert.equal(e.player.hp,100);step(e,380,{fire:false});assert(e.evade());});
+test('weapon, repair and shield pickups',()=>{const e=new Engine();e.start();for(let i=0;i<7;i++)e.collect({type:'power',x:0,y:0});assert.equal(e.player.power,4);e.player.hp=35;e.collect({type:'repair',x:0,y:0});assert.equal(e.player.hp,61);e.player.shield=0;e.collect({type:'shield',x:0,y:0});assert.equal(e.player.shield,35);e.player.inv=0;e.hurt(20);assert.equal(e.player.hp,61);assert.equal(e.player.shield,15);});
+test('combo, medals and guaranteed supplies',()=>{const e=new Engine();e.start();for(let i=0;i<10;i++)e.kill(e.spawn('fighter',100,100));assert.equal(e.combo,10);assert.equal(e.multiplier(),3);assert.equal(e.pickups.length,2);assert(e.medals.some(m=>m.id==='combo10'));step(e,290,{fire:false});assert.equal(e.combo,0);});
+test('five-era boss progression with chosen upgrades',()=>{const e=new Engine();e.start();for(let i=0;i<5;i++){assert.equal(e.eraIndex,i);const b=e.spawn('boss',360,160);e.kill(b);if(i<4){assert.equal(e.state,'intermission');assert(e.chooseUpgrade('power'));assert.equal(e.player.power,Math.min(4,i+2));}else assert.equal(e.state,'victory');}assert.equal(e.cleared,5);assert(e.medals.some(m=>m.id==='campaign'));});
+test('each era spawns a boss with valid projectile patterns',()=>{for(let i=0;i<5;i++){const e=new Engine();e.start({era:i});e.player.inv=999;step(e,(ERAS[i].duration+2)*60);assert(e.bossSpawned);const b=e.enemies.find(e=>e.type==='boss');assert(b);b.y=160;e.fireEnemy(b);assert(e.bullets.every(v=>Number.isFinite(v.vx)&&Number.isFinite(v.vy)));}});
+test('modern homing missiles and future piercing plasma',()=>{const m=new Engine();m.start({era:3});m.player.power=3;m.player.rocket=0;m.shoot();assert(m.shots.some(s=>s.kind==='rocket'));const f=new Engine();f.start({era:4});f.player.power=4;f.shoot();assert(f.shots.some(s=>s.kind==='plasma'&&s.pierce===2));});
+test('death, retry and invalid upgrades',()=>{const e=new Engine();e.start();e.player.inv=0;e.hurt(101);assert.equal(e.state,'gameover');assert(!e.chooseUpgrade('power'));e.start();assert.equal(e.state,'playing');assert.equal(e.player.hp,100);assert.equal(e.score,0);});
+test('same seed produces identical gameplay',()=>{const a=new Engine({seed:12}),b=new Engine({seed:12});a.start();b.start();step(a,800);step(b,800);assert.deepEqual(a.snapshot(),b.snapshot());});
+test('all approved atlas entries and artwork files exist',()=>{const data=JSON.parse(fs.readFileSync(path.join(__dirname,'assets/sprites.json')));for(const file of Object.values(data.atlases))assert(fs.statSync(path.join(__dirname,'assets',file)).size>1000);for(const e of ERAS)for(const n of['player2','enemy0','heavy0','ship','turret','boss'])assert(data.sprites[e.id+'.'+n]);assert.equal(Object.keys(data.sprites).length,96);});
+console.log('Midway Evolution: '+count+' deterministic tests passed.');

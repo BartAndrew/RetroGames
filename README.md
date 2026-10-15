@@ -8,13 +8,13 @@ The main page has artwork from each game, descriptions, controls, genre filters,
 
 ## The games
 
-### Midway 1942: Reforged
+### Midway: Evolution
 
-[<img src="Midway1942/cover.svg" alt="Midway 1942 Reforged original Pacific fighter artwork" width="600">](https://bartandrew.github.io/RetroGames/Midway1942/)
+[<img src="Midway1942/cover.svg" alt="Midway Evolution original Pacific fighter artwork" width="600">](https://bartandrew.github.io/RetroGames/Midway1942/)
 
 An original, cinematic tribute to classic Pacific vertical shooters. Pilot a twin-boom fighter over animated ocean and tropical islands; fight formations, bombers, patrol ships and coastal guns, upgrade weapons, collect repairs and bombs, then engage a flagship carrier boss before advancing to harder missions. Keyboard and touch supported, with optional synthesised sound, persistent best score and no external runtime libraries. Not an official Capcom game.
 
-**[Play Midway 1942: Reforged](https://bartandrew.github.io/RetroGames/Midway1942/)** · [Controls and development notes](Midway1942/README.md)
+**[Play Midway: Evolution](https://bartandrew.github.io/RetroGames/Midway1942/)** · [Controls and development notes](Midway1942/README.md)
 
 
 ### Stereotype Fighters
@@ -55,7 +55,7 @@ A four-character parody fighter with CPU and local two-player modes. V3 expands 
 
 | Game / version | Launch | Repository folder |
 | --- | --- | --- |
-| Midway 1942: Reforged V1 | [Play](https://bartandrew.github.io/RetroGames/Midway1942/) | `Midway1942/` |
+| Midway: Evolution V1 | [Play](https://bartandrew.github.io/RetroGames/Midway1942/) | `Midway1942/` |
 | Stereotype Fighters V5.1 | [Play](https://bartandrew.github.io/RetroGames/StereoTypeFighter/) | `StereoTypeFighter/` |
 | Pacific Lightning, sprite build | [Play](https://bartandrew.github.io/RetroGames/Pacific-Lightning2/Pacific-Lightning/) | `Pacific-Lightning2/Pacific-Lightning/` |
 | Pacific Fighter, original | [Play](https://bartandrew.github.io/RetroGames/PacificFighter/) | `PacificFighter/` |
@@ -101,9 +101,13 @@ python3 -m http.server 8080 --directory _site
 
 Add its playable folder and a card in `index.html`, using `data-game-link` on each unique launch link. Include an image from the game, meaningful alternative text, a description and controls. Set `data-genre` / `data-keywords` for filtering. Update the counts and this README, then run the checks above. The builder derives the folders to publish from those links and flags unlisted `index.html` entry points inside staged game folders.
 
-## Midway 1942: Reforged release notes
+## Midway: Evolution release notes
 
 - Independent tribute combining gameplay influences from Capcom's 1942 (1984) and 1943: The Battle of Midway (1987). No Capcom ROM, sprites, music or original-game code are used.
 - Original procedural ocean, shifting islands, aircraft and ship models, propeller details, shadows, wakes, tracers, explosions, smoke and particles. 2D Canvas illustration, not photorealistic 3D assets.
 - Supports keyboard and touch; escalating wave system, damageable carrier flagship, weapon and repair pickups, screen bombs, invulnerable barrel rolls.
 - Files: Midway1942/index.html, game.js, style.css, cover.svg, favicon.svg. No server dependencies.
+
+## Midway Evolution 2.0.1 release
+
+Five approved era atlases, fullscreen/full-window launch, smaller aircraft, distinct flagship patterns, predictable upgrades, homing missiles and piercing plasma. The renderer now uses original sprite art; its deterministic simulation is independently tested. Full controls, browser test commands and limitations are in [Midway1942/README.md](Midway1942/README.md).

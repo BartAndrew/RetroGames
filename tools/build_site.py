@@ -101,7 +101,7 @@ def stage(root: Path = ROOT) -> Path:
         shutil.rmtree(output)
     output.mkdir()
     shutil.copy2(root / 'index.html', output / 'index.html')
-    ignore = shutil.ignore_patterns('*.zip', '__pycache__', '.DS_Store', '.git')
+    ignore = shutil.ignore_patterns('*.zip', '__pycache__', '.DS_Store', '.git', 'node_modules', 'test-results', 'playwright-report', '.production')
     staged = [root / 'arcade', *folders]
     # AnimationTests contains browser-facing QA pages such as the Lefty sprite
     # inspector. Publish it through the same _site artifact as the games so the

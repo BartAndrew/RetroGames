@@ -1,51 +1,52 @@
-# Midway 1942: Reforged
+# Midway: Evolution 2.0.1
 
-**Independent playable browser arcade tribute inspired by Capcom's 1942 (1984) and 1943: The Battle of Midway (1987).** Not affiliated with or endorsed by Capcom. No original sprites, code, ROMs, or soundtrack from those games are used.
+Five-era browser arcade shooter with **96 approved original AI-generated sprite frames and icons**, smaller player craft, fullscreen launch, and evolving weapons. This release replaces the original oversized procedural aircraft. No Capcom code, ROM, soundtrack or sprites are reused. Ancient flight is intentionally fantasy, not historical simulation.
 
-## Play
+Play: https://retrogames-smoky.vercel.app/Midway1942/
 
-- [Play Midway 1942 Reforged on GitHub Pages](https://bartandrew.github.io/RetroGames/Midway1942/)
-- [RetroGames arcade](https://bartandrew.github.io/RetroGames/)
-- Requires a recent browser only, no installation or account. Sound is muted by default.
+GitHub Pages mirror: https://bartandrew.github.io/RetroGames/Midway1942/
+
+## Five eras
+
+Age of Legends (bronze gliders, ballista bolts, catapult islands, triremes) -> Dawn of Flight (WWI biplanes, zeppelins, railway fortress) -> Pacific Thunder (WWII fighters and carrier) -> Supersonic Front (jets, homing missiles, modern carrier) -> Beyond the Horizon (plasma craft and the Singularity).
+
+Each stage has an approach and a damageable flagship with era-specific attack patterns. Sinking it unlocks the next era and pauses combat for a guaranteed upgrade choice. The final boss ends the campaign. Unlocked eras can be selected for practice.
 
 ## Controls
 
-| Action | Keyboard | Touchscreen |
-| --- | --- | --- |
-| Start/restart | Enter or launch button | Launch button |
-| Fly | WASD or arrows | Drag in game area |
-| Machine guns | Hold Space or J | Automatic fire |
-| Bomb (damages all enemies and clears bullets) | X or Shift | BOMB |
-| Evasive barrel roll | Z | EVADE |
-| Pause/resume | P or Escape | Pause button |
+WASD / arrows: steer. Space: fire when auto-fire is off. Shift: precision speed. X or B: bomb. Z: evasive roll (six-second cooldown). P / Escape: pause. F: fullscreen. On touchscreens, drag relative to your current position and use the bomb/evade/pause buttons; weapons fire automatically.
 
-## Gameplay
+Launch requests native fullscreen from the click gesture. If the browser denies or does not support the API, full-window play remains active. Mobile browser chrome cannot always be hidden.
 
-- Player flies a P-38-inspired twin-boom fighter with 100 hull points, 3 bombs, 3 evasive rolls and four weapon levels.
-- Enemies include conventional fighters, weaving aces, heavy bombers, patrol destroyers, coastal gun batteries, and flagship aircraft carriers with multiple gun mounts.
-- W pickup improves weapon firing, + pickup repairs 30 hull, B pickup adds one screen bomb.
-- After approximately one minute the stage flagship arrives. Sinking it advances to progressively harder operations.
-- High score is saved in localStorage where permitted, otherwise the game still works.
+## Rewards and progression
 
-## Files
+Weapon pickups raise a four-tier, visibly expanded weapon array. Modern tiers 3-4 add homing missiles; future tiers 3-4 add piercing plasma. Every fifth defeat grants a predictable supply; timed supplies support early progress. Repair, shield and bomb drops are distinct. Skill-based kill chains raise multipliers; medals recognise concrete accomplishments. Between eras, choose weapon evolution, shielding, or repair and ordnance. No purchases, loot boxes, daily streak penalties, compulsory notifications or analytics. Best score, practice unlocks and medals are saved only on the current device.
 
-- index.html — responsive standalone game page, HUD, start/pause overlays.
-- style.css — themed layout and touch UI.
-- game.js — original dependency-free Canvas 2D engine (720x960 logical resolution), procedural terrain, boats and aircraft, bullets, AI, particles, keyboard and pointer controls, synthesized sound.
-- cover.svg — original promotional art illustration.
-- favicon.svg — original fighter icon.
+## Architecture and tests
 
-## Limitations and future upgrades
+- `core.js`: seeded deterministic simulation without DOM dependencies.
+- `game.js`: sprite renderer, fixed-step loop, input, audio, local save, accessibility and fullscreen fallback.
+- `assets/sprites.json`: exact atlas rectangles, source image names and hashes.
+- `assets/era-*.webp` and `ui.webp`: optimized transparent artwork.
+- `test-smoke.cjs`: 13 deterministic gameplay tests; no external dependencies.
+- `test-browser.cjs`: real Chromium desktop/mobile, asset loading, controls, pause and five-era progression checks; uses the arcade's existing Playwright installation.
 
-This is a playable illustrated/procedural v1, not photorealistic 3D. Future improvements could add carefully authored high-resolution aircraft models, normal-mapped lighting, WebGL/WebGPU backgrounds, atmospheric weather, gamepad controls, expanded carriers, scripted campaign missions and multiplayer.
+From the repository root:
 
-## Build and deploy
+```sh
+node --check Midway1942/core.js
+node --check Midway1942/game.js
+node Midway1942/test-smoke.cjs
+python3 tools/build_site.py
+npm install --prefix StereoTypeFighter --no-audit --no-fund
+cd StereoTypeFighter && npx playwright install chromium && cd ..
+node Midway1942/test-browser.cjs
+```
 
-Publish this folder unchanged to any static HTTP host. The parent RetroGames site validator automatically includes this folder because its homepage links to it with the data-game-link attribute. Local commands from repository root:
+Test deployment: `node Midway1942/test-browser.cjs https://retrogames-smoky.vercel.app/Midway1942/`
 
-    python3 -m unittest discover -s tools -p test_build_site.py -v
-    python3 tools/build_site.py --check
-    python3 tools/build_site.py
-    python3 -m http.server 8080 --directory _site
+`?qa=1` enables controlled browser test fixtures and disables save persistence. Normal gameplay exposes only read-only version/state diagnostics. All runtime assets are local; no account, backend, CDN library or API key is required.
 
-Then visit http://localhost:8080/Midway1942/.
+## Known boundaries
+
+This is detailed sprite-based 2D, not photorealistic 3D. Fullscreen availability is browser-dependent. Physical iPhone/Safari testing remains useful beyond Chromium mobile emulation. There is no gamepad support, online multiplayer or cross-device save.

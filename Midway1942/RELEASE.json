@@ -1,0 +1,28 @@
+{
+  "version": "2.0.1",
+  "files": {
+    "README.md": "cc7d359d7c06d36d45b15eac606f5aa77f4f83b80877a70e791fab95a8558866",
+    "assets/bronze-preview.webp": "05750424d1274fae9db1cab0e05dd0dc526a865b2ec54f8e6df6b525bb5cd8c2",
+    "assets/era-bronze.webp": "52525a136b393cc63e9e9b95c518136164dad3835ac90b592bb06ef6e02d0d9a",
+    "assets/era-future.webp": "b7f443989e2acbf59ef764ac9469e2dabd8f8963d803153eeb6f85e583cd7b1a",
+    "assets/era-modern.webp": "ea11ce29286db034634324c116585a4ad93ecf5c8f38b43d6aeaedfe4ef77f7e",
+    "assets/era-wwi.webp": "a5a8c09a875e8f61c9924b4bf7e0340e66179d80a39faf02a5ab0147ad39b6ea",
+    "assets/era-wwii.webp": "a09a974a67286337396835900b0a6a0e7752608af3438b7ef9b1af130dc95b64",
+    "assets/future-preview.webp": "940dde42fac71b26a34d641656f9348caa45f5c46159b894a03e2ceb3315c2ae",
+    "assets/menu-backdrop.webp": "fba467523d95a2b36a7fd1e52b1ecc1bbb9626ef8b03b06acf3626491a09a8a1",
+    "assets/modern-preview.webp": "0b5b4f3dd7d018099065f7729725115debad514dfdc86ed66c7314c18652e552",
+    "assets/ocean.webp": "e68f45caa8067299d316238a33f6d6a05f7aad636723de78aaf11319c0c32080",
+    "assets/sprites.json": "0d9e0e21a1448b69940aeda841da2ced96a0132e55634fc82506b8262f3e22b1",
+    "assets/ui.webp": "5fe9ca3c1602d2d2f39890a17926706c9b0e97e5a9df587954aef7ac9f82c32f",
+    "assets/wwi-preview.webp": "4b49e0eacbd02f13c18c80981704b9c44cc997efe6dc26780c738861a4664d7e",
+    "assets/wwii-preview.webp": "e54960d52905bd5fc2744988623d57e5a6dd70b19b8b9c28d28d350185e8137b",
+    "core.js": "bdfc5d62f960945d6b93642357c7051bd4b81c0d816442476477d70f557221e6",
+    "favicon.svg": "8207e9b3e35f2a4b76b41f95bb69d75057223a25a2cb35620a869689ed60d7ec",
+    "game.js": "f5499260f7a46513c6517956c1c4b39d89907e7630d685ae5acf19d49b72b510",
+    "index.html": "1288e1c508cc5dff255f61adbac5d138ad1c492a45f0a6385d7ca5c310232b3b",
+    "release-apply.cjs": "921169d1fb38951c00a0215123208434b830207f8570144affc72500e1fe90b0",
+    "style.css": "635c06690115df64aca0fb9f1462991406e8362de3b25abbd657e3c16d34c553",
+    "test-browser.cjs": "d2bdcef682775ffd094e8893b9a2aeb4294cd965486427431ce56086b8a0ec47",
+    "test-smoke.cjs": "b09267e26466f2a2153965cefcc0674f80e9ee3838b2ca7e3ce7d49350cc80e1"
+  }
+}
