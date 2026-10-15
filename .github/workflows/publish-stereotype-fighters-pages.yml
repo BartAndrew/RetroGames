@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Test site builder
         run: python3 -m unittest discover -s tools -p 'test_build_site.py' -v
@@ -36,8 +38,9 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Validate Midway 1942 source and gameplay smoke test
+      - name: Validate Midway Evolution source and deterministic gameplay
         run: |
+          node --check Midway1942/core.js
           node --check Midway1942/game.js
           node Midway1942/test-smoke.cjs
 
@@ -67,7 +70,10 @@ jobs:
         working-directory: StereoTypeFighter
         run: npx playwright install --with-deps chromium
 
-      - name: Run production browser and mobile regression suite
+      - name: Run Midway Evolution desktop and mobile browser regressions
+        run: node Midway1942/test-browser.cjs
+
+      - name: Run existing arcade production browser and mobile regression suite
         working-directory: StereoTypeFighter
         run: npm run test:browser
 
@@ -75,10 +81,11 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: stereotype-fighter-browser-qa
+          name: arcade-browser-qa
           path: |
             StereoTypeFighter/playwright-report
             StereoTypeFighter/test-results
+            Midway1942/test-results
           if-no-files-found: ignore
 
       - name: Configure GitHub Pages
