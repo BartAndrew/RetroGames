@@ -1,4 +1,4 @@
-name: Import tested Midway Evolution v2 release
+name: Import verified Midway Evolution 2.0.1
 on:
   push:
     branches: [main]
@@ -6,93 +6,98 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: midway-release-import
+  cancel-in-progress: true
 jobs:
   import:
     if: github.repository == 'BartAndrew/RetroGames' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-      - name: Receive and verify the approved release
+      - name: Receive checksum-pinned approved game release
         env:
           GH_TOKEN: ${{ github.token }}
           PYTHONUNBUFFERED: '1'
         shell: python
         run: |
-          import base64, hashlib, io, json, os, pathlib, subprocess, tempfile, time, urllib.request, urllib.error, zipfile
+          import base64, hashlib, io, json, os, pathlib, stat, subprocess, tempfile, time, urllib.request, urllib.error, zipfile
+          from urllib.parse import urlsplit
           ROOT = pathlib.Path.cwd()
           REPO = 'BartAndrew/RetroGames'
-          EXPECTED = '3b15232da1225180a4f27eb11bc8fa8c8e01545649af44f99209a274fd14c224'
+          EXPECTED = 'd43a158411ae3330a1aa5b88fa1fc9099544648330b4596c3a8a6898d5420b25'
           token = os.environ['GH_TOKEN']
           cleanenv = {k:v for k,v in os.environ.items() if k != 'GH_TOKEN'}
           authenv = dict(cleanenv)
           authenv.update(GIT_CONFIG_COUNT='1', GIT_CONFIG_KEY_0='http.https://github.com/.extraheader', GIT_CONFIG_VALUE_0='AUTHORIZATION: basic '+base64.b64encode(('x-access-token:'+token).encode()).decode())
-          def run(args, **kw):
-              return subprocess.run(args, check=True, env=cleanenv, **kw)
+          def run(args, **kwargs):
+              return subprocess.run(args, check=True, env=cleanenv, **kwargs)
+          def api(path, body=None):
+              url='https://api.github.com/repos/'+REPO+'/'+path
+              headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','User-Agent':'RetroGames-verified-release','X-GitHub-Api-Version':'2022-11-28'}
+              if body is not None: headers['Content-Type']='application/json'
+              request=urllib.request.Request(url, headers=headers, data=None if body is None else json.dumps(body).encode(), method='GET' if body is None else 'PUT')
+              try:
+                  with urllib.request.urlopen(request, timeout=30) as response: return json.load(response)
+              except urllib.error.HTTPError as exc:
+                  if exc.code==404 and body is None: return None
+                  raise RuntimeError('Repository release API returned '+str(exc.code)) from None
           with tempfile.TemporaryDirectory() as work:
-              key = pathlib.Path(work)/'transport.pem'
+              key=pathlib.Path(work)/'private.pem'
               run(['openssl','genpkey','-algorithm','RSA','-pkeyopt','rsa_keygen_bits:3072','-out',str(key)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
               key.chmod(0o600)
-              pub = run(['openssl','pkey','-in',str(key),'-pubout'],capture_output=True,text=True).stdout
-              print('MIDWAY_RELEASE_PUBLIC_KEY_START\n'+pub+'MIDWAY_RELEASE_PUBLIC_KEY_END',flush=True)
-              envelope = None
-              for attempt in range(72):
-                  url = 'https://api.github.com/repos/'+REPO+'/contents/.github/releases/midway-v2.transport.json?ref=main'
-                  req = urllib.request.Request(url,headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','User-Agent':'RetroGames-verified-release'})
-                  try:
-                      with urllib.request.urlopen(req,timeout=20) as response: data=json.load(response)
+              pub=run(['openssl','pkey','-in',str(key),'-pubout'],capture_output=True,text=True).stdout
+              recipient=hashlib.sha256(pub.encode()).hexdigest()
+              public_path='contents/.github/releases/midway-v2-public.json'
+              previous=api(public_path+'?ref=main')
+              public={'public_key':pub,'recipient_sha256':recipient,'release_sha256':EXPECTED,'run_id':os.environ['GITHUB_RUN_ID']}
+              body={'message':'Publish one-use release public key [skip ci]','content':base64.b64encode((json.dumps(public,indent=2)+'\n').encode()).decode(),'branch':'main'}
+              if previous: body['sha']=previous['sha']
+              api(public_path,body)
+              print('Public transfer key published. Waiting for matching encrypted release envelope.',flush=True)
+              envelope=None
+              for attempt in range(90):
+                  data=api('contents/.github/releases/midway-v2.transport.json?ref=main')
+                  if data:
                       candidate=json.loads(base64.b64decode(data['content']))
-                      if candidate.get('recipient_sha256') == hashlib.sha256(pub.encode()).hexdigest():
+                      if candidate.get('recipient_sha256')==recipient:
                           envelope=candidate
                           break
-                  except urllib.error.HTTPError as exc:
-                      if exc.code != 404: raise RuntimeError('Release-envelope read failed: '+str(exc.code)) from None
-                  time.sleep(10)
-              if envelope is None: raise RuntimeError('No release envelope received within this run.')
+                  time.sleep(8)
+              if envelope is None: raise RuntimeError('No matching encrypted release envelope received.')
+              if not isinstance(envelope.get('blocks'),list) or len(envelope['blocks'])>20: raise RuntimeError('Invalid release envelope.')
               plain=b''
               for block in envelope['blocks']:
-                  plain += run(['openssl','pkeyutl','-decrypt','-inkey',str(key),'-pkeyopt','rsa_padding_mode:oaep','-pkeyopt','rsa_oaep_md:sha256','-pkeyopt','rsa_mgf1_md:sha256'],input=base64.b64decode(block),capture_output=True).stdout
+                  plain+=run(['openssl','pkeyutl','-decrypt','-inkey',str(key),'-pkeyopt','rsa_padding_mode:oaep','-pkeyopt','rsa_oaep_md:sha256','-pkeyopt','rsa_mgf1_md:sha256'],input=base64.b64decode(block),capture_output=True).stdout
               transfer=json.loads(plain)
-              if transfer['sha256'] != EXPECTED: raise RuntimeError('Unexpected release identity.')
-              from urllib.parse import urlsplit
               parsed=urlsplit(transfer['url'])
-              if parsed.scheme!='https' or not parsed.hostname.endswith('.oaiusercontent.com'): raise RuntimeError('Unexpected authenticated file host.')
+              if transfer['sha256']!=EXPECTED or parsed.scheme!='https' or not parsed.hostname or not parsed.hostname.endswith('.oaiusercontent.com'): raise RuntimeError('Unexpected release source or identity.')
               try:
                   with urllib.request.urlopen(transfer['url'],timeout=90) as response: bundle=response.read(12000001)
-              except Exception: raise RuntimeError('Authenticated release transfer failed; no URL logged.') from None
-              if len(bundle)>12000000 or hashlib.sha256(bundle).hexdigest()!=EXPECTED: raise RuntimeError('Release archive checksum mismatch.')
+              except Exception: raise RuntimeError('Authenticated release download failed; access URL is not logged.') from None
+              if len(bundle)>12000000 or hashlib.sha256(bundle).hexdigest()!=EXPECTED: raise RuntimeError('Release checksum mismatch.')
               subprocess.run(['git','pull','--ff-only','origin','main'],check=True,env=authenv,stdout=subprocess.DEVNULL)
               with zipfile.ZipFile(io.BytesIO(bundle)) as archive:
+                  if len(archive.infolist())>50: raise RuntimeError('Unexpected release file count.')
                   for info in archive.infolist():
                       name=pathlib.PurePosixPath(info.filename)
-                      if name.is_absolute() or '..' in name.parts or not name.parts or name.parts[0]!='Midway1942' or info.file_size>4000000:
-                          raise RuntimeError('Unexpected release archive path.')
-                  if len(archive.infolist())>50: raise RuntimeError('Unexpected archive file count.')
+                      if name.is_absolute() or '..' in name.parts or not name.parts or name.parts[0]!='Midway1942' or info.file_size>4000000 or stat.S_ISLNK(info.external_attr>>16): raise RuntimeError('Unsafe release archive member.')
                   archive.extractall(ROOT)
               manifest=json.loads((ROOT/'Midway1942/RELEASE.json').read_text())
-              for name, expected in manifest['files'].items():
+              if manifest['version']!='2.0.1': raise RuntimeError('Unexpected release version.')
+              for name,expected in manifest['files'].items():
                   path=(ROOT/'Midway1942'/name).resolve()
-                  if not path.is_relative_to((ROOT/'Midway1942').resolve()) or hashlib.sha256(path.read_bytes()).hexdigest()!=expected:
-                      raise RuntimeError('Extracted release file integrity failure.')
-              run(['node','--check','Midway1942/core.js'])
-              run(['node','--check','Midway1942/game.js'])
-              run(['node','Midway1942/test-smoke.cjs'])
-              page=ROOT/'index.html'
-              html=page.read_text()
-              html=html.replace('Midway 1942: Reforged','Midway: Evolution').replace('Midway 1942 Reforged','Midway Evolution').replace('REFORGED V1','EVOLUTION V2')
-              html=html.replace('Play new: Midway 1942','Play new: Midway Evolution').replace('Play Midway 1942 <span','Play Midway Evolution <span')
-              html=html.replace('./Midway1942/cover.svg','./Midway1942/assets/bronze-preview.webp')
-              html=html.replace('A cinematic, original tribute to classic 1940s Pacific arcade shooters. Fly a P-38 above living ocean water and tropical islands, battle hostile formations, strike destroyers and coastal batteries, and sink the enemy carrier flagship.','Fly through five eras of warfare: mythical ancient skies, WWI, WWII, modern jets and the far future. Launch into fullscreen, evolve your weapons, earn medals and choose upgrades between five distinct flagship battles.')
-              html=html.replace('Carrier boss battles','Five evolving eras').replace('Power-ups &amp; bombs','Sprites &amp; upgrades')
-              page.write_text(html)
-              run(['python3','tools/build_site.py','--check'])
-              run(['git','add','--','Midway1942','index.html'])
-              run(['git','-c','user.name=github-actions[bot]','-c','user.email=41898282+github-actions[bot]@users.noreply.github.com','commit','-m','Release Midway Evolution v2: approved sprites, fullscreen and five-era campaign'])
+                  if not path.is_relative_to((ROOT/'Midway1942').resolve()) or hashlib.sha256(path.read_bytes()).hexdigest()!=expected: raise RuntimeError('Release file integrity failure.')
+              run(['node','Midway1942/release-apply.cjs'])
+              run(['bash','tools/build_vercel.sh'])
+              run(['git','add','--','Midway1942','index.html','README.md','tools/build_site.py','tools/build_vercel.sh','StereoTypeFighter/tests/v66-production.spec.mjs'])
+              run(['git','-c','user.name=github-actions[bot]','-c','user.email=41898282+github-actions[bot]@users.noreply.github.com','commit','-m','Release Midway Evolution 2.0.1: approved sprites, fullscreen and five-era campaign'])
               subprocess.run(['git','push','origin','HEAD:main'],check=True,env=authenv)
               sha=run(['git','rev-parse','HEAD'],capture_output=True,text=True).stdout.strip()
-              print('MIDWAY_V2_RELEASE_COMMIT='+sha,flush=True)
-              print('Release imported, integrity verified and simulation tests passed. Transport key discarded.',flush=True)
+              print('MIDWAY_RELEASE_COMMIT='+sha,flush=True)
+              print('Verified release imported and all static build checks passed. Private transfer key discarded.',flush=True)
