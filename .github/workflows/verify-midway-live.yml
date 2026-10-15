@@ -1,0 +1,42 @@
+name: Verify public Midway Evolution deployment
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/verify-midway-live.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install existing browser test dependencies
+        run: npm install --prefix StereoTypeFighter --no-audit --no-fund
+      - name: Install Chromium
+        working-directory: StereoTypeFighter
+        run: npx playwright install --with-deps chromium
+      - name: Verify anonymous Vercel gameplay
+        run: |
+          node Midway1942/test-browser.cjs https://retrogames-smoky.vercel.app/Midway1942/
+          mv Midway1942/test-results Midway1942/live-vercel
+      - name: Verify anonymous GitHub Pages gameplay
+        run: |
+          node Midway1942/test-browser.cjs https://bartandrew.github.io/RetroGames/Midway1942/
+          mv Midway1942/test-results Midway1942/live-pages
+      - name: Upload public-site screenshots and verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: midway-public-site-verification
+          path: |
+            Midway1942/live-vercel
+            Midway1942/live-pages
+            Midway1942/test-results
+          if-no-files-found: ignore
