@@ -19,7 +19,7 @@
     <div class="top-actions">
       <button id="xrayBtn" class="icon-btn" title="Engineering view">▦</button><button id="cameraBtn" class="icon-btn" title="Reset camera">⌂</button>
       <button id="soundBtn" class="icon-btn" title="Sound">♪</button>
-      <button id="helpBtn" class="icon-btn" title="How to play">?</button>
+      <button id="tutorialBtn" class="icon-btn" title="Tutorial">T</button><button id="helpBtn" class="icon-btn" title="How to play">?</button>
     </div>
   </div>
 
@@ -63,6 +63,13 @@
 
   <div id="toast" class="toast"></div>
 
+  <div id="tutorialCoach" class="tutorial-coach" hidden>
+    <div class="tutorial-step"><span id="tutorialStep">1 / 5</span><b id="tutorialTitle">Survey the structure</b></div>
+    <p id="tutorialText">Orbit around the site, then turn on Engineering View to reveal the building frame.</p>
+    <div class="tutorial-actions"><button id="tutorialSkip" class="secondary">Skip</button><button id="tutorialNext" class="primary">NEXT →</button></div>
+  </div>
+
+
   <div id="startCard" class="modal open">
     <div class="modal-card hero-card">
       <div class="hazard">DEMOLITION CONTRACT</div>
@@ -74,7 +81,7 @@
         <div><b>03</b><span>Detonate and control the fall</span></div>
       </div>
       <button id="startBtn" class="primary">ACCEPT CONTRACT <span>→</span></button>
-      <small>10 seeded contracts · endless procedural contracts after Level 10</small>
+      <small>Contract 01 includes a guided structural-demolition tutorial · 10 seeded contracts · endless procedural contracts after Level 10</small>
     </div>
   </div>
 
@@ -102,7 +109,7 @@
       <p>Orbit around the city block and study the clearances. The orange building is condemned; blue-grey buildings are protected.</p>
       <ul>
         <li><b>Engineering View:</b> reveal columns, beams, slabs and the central core.</li><li><b>Place charges:</b> click glowing structural joints. Charges sever connections rather than throwing the building outward.</li>
-        <li><b>Shape the fall:</b> remove enough support to trigger progressive collapse. Balanced plans fold the building inward; badly unbalanced plans can lean into neighbours.</li>
+        <li><b>Shape the fall:</b> remove enough support to trigger progressive collapse. Falling floors now carry impact energy into floors below, so a high-level failure can pancake downward through the structure.</li>
         <li><b>Sequence:</b> later contracts reward delayed charge groups to fold tall towers inward.</li>
         <li><b>Score:</b> fewer charges, less explosive power and zero collateral score highest.</li>
       </ul>
