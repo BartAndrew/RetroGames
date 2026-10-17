@@ -28,23 +28,28 @@
         <div class="hero-actions"><a class="button button-primary" href="./Midway1942/">Play new: Midway Evolution <span aria-hidden="true">&#8599;</span></a><a class="button button-quiet" href="#games">Browse every game <span aria-hidden="true">&#8595;</span></a><button class="button button-quiet" id="random-game" type="button" hidden>Pick one for me <span aria-hidden="true">&#8599;</span></button></div>
         <p class="hero-note">No account. No install. Just press play.</p>
       </div>
-      <div class="arcade-ticket" aria-label="Six game families: two fighters, three shooters and one puzzle">
+      <div class="arcade-ticket" aria-label="Seven game families: two fighters, three shooters and one puzzle">
         <div class="ticket-top"><span>THE HOME ARCADE</span><span>VOL. 01</span></div>
-        <div class="ticket-number">06<span>GAME<br>FAMILIES</span></div>
-        <div class="ticket-slots"><span>01 / FIGHT</span><span>02 / FLY</span><span>03 / DEFEND</span><span>04 / REMATCH</span><span>05 / PACIFIC</span><span>06 / DEMOLISH</span></div>
+        <div class="ticket-number">07<span>GAME<br>FAMILIES</span></div>
+        <div class="ticket-slots"><span>01 / FIGHT</span><span>02 / FLY</span><span>03 / DEFEND</span><span>04 / REMATCH</span><span>05 / PACIFIC</span><span>06 / DEMOLISH</span><span>07 / MANAGE</span></div>
         <div class="ticket-bottom"><span class="ticket-cross" aria-hidden="true">+</span><span>ALL SKILL LEVELS WELCOME<br><strong>HIGH SCORES NOT GUARANTEED.</strong></span></div>
       </div>
     </section>
-    <div class="info-strip"><span><b>6</b> game families</span><span><b>10</b> distinct builds</span><span>Original versions included</span><span>Made for the browser</span></div>
+    <div class="info-strip"><span><b>7</b> game families</span><span><b>11</b> distinct builds</span><span>Original versions included</span><span>Made for the browser</span></div>
 
     <section class="library" id="games" aria-labelledby="games-title">
       <div class="section-heading"><div><p class="eyebrow">PICK YOUR NEXT OBSESSION</p><h2 id="games-title">The game room<span>.</span></h2></div><p>Latest builds up front. Originals inside each card.</p></div>
       <div class="library-tools" id="library-tools" hidden>
-        <div class="filters" role="group" aria-label="Filter games by genre"><button type="button" data-filter="all" aria-pressed="true">All games</button><button type="button" data-filter="fighting" aria-pressed="false">Fighting</button><button type="button" data-filter="shooter" aria-pressed="false">Shooters</button><button type="button" data-filter="puzzle" aria-pressed="false">Puzzles</button></div>
+        <div class="filters" role="group" aria-label="Filter games by genre"><button type="button" data-filter="all" aria-pressed="true">All games</button><button type="button" data-filter="fighting" aria-pressed="false">Fighting</button><button type="button" data-filter="shooter" aria-pressed="false">Shooters</button><button type="button" data-filter="puzzle" aria-pressed="false">Puzzles</button><button type="button" data-filter="management" aria-pressed="false">Management</button></div>
         <label class="search"><span class="sr-only">Search games, versions or controls</span><span aria-hidden="true">&#8981;</span><input id="game-search" type="search" placeholder="Find your game..." autocomplete="off" aria-controls="game-grid"></label>
       </div>
       <p id="result-count" class="result-count" role="status" aria-live="polite" hidden></p>
       <div class="game-grid" id="game-grid">
+        <article class="game-card" data-genre="management" data-keywords="panelworks panel repair shop workshop tycoon insurer parts mechanics management 3d simulator cars employees painting profitability" aria-labelledby="panelworks-title">
+          <a class="game-art" href="./Panelworks/" aria-label="Play Panelworks"><span class="art-label">00 / 3D WORKSHOP TYCOON</span><img class="sheet-art" src="./Panelworks/cover.svg" alt="Panelworks isometric collision repair centre game artwork" width="1200" height="700" loading="lazy"><span class="art-caption">MANAGE THE KEYS-IN TO KEYS-OUT JOURNEY</span><span class="art-play" aria-hidden="true">&#9654;</span></a>
+          <div class="card-body"><div class="card-meta"><span class="tag">NEW RELEASE · SIMULATION</span><span class="version">V1.0</span></div><h3 id="panelworks-title">Panelworks</h3><p class="game-description">Run your own collision repair centre in 3D. Accept insurer referrals, estimate damage, order parts, dispatch technicians and move vehicles through repair, paint, assembly, QC and collection. Keep cash positive and insurers happy.</p><div class="card-features"><span>3D workshop</span><span>Staff &amp; parts</span><span>Profit &amp; insurer trust</span></div><div class="card-actions"><a class="button button-primary play-link" data-game-link href="./Panelworks/">Play Panelworks <span aria-hidden="true">&#8599;</span></a></div><details><summary>Controls &amp; management</summary><div class="details-content"><p>Click a repair job to manage it. Drag to orbit the 3D floor and scroll to zoom. Accept jobs, order parts, schedule trades, contact customers and collect payment. Toggle Foreman Assist for automatic staff assignment.</p><a href="https://github.com/BartAndrew/RetroGames/tree/main/Panelworks">Game source &#8599;</a></div></details></div>
+        </article>
+
         <article class="game-card" data-genre="puzzle" data-keywords="demolition man three js 3d physics puzzle buildings explosives charges city procedural collapse strategy" aria-labelledby="demolition-title">
           <a class="game-art" href="./DemolitionMan/" aria-label="Play Demolition Man">
             <span class="art-label">00 / 3D DEMOLITION PUZZLE</span>
