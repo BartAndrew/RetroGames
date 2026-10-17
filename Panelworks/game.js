@@ -4,7 +4,8 @@ const $ = (id) => document.getElementById(id);
 const STAGES = ['referral','intake','estimate','parts','repair','paint','assembly','detail','ready','delivered'];
 const LABEL = {referral:'NEW REFERRAL',intake:'INTAKE / QUEUED',estimate:'ESTIMATION',parts:'WAITING FOR PARTS',repair:'REMOVE & REPAIR',paint:'PREP & PAINT',assembly:'REASSEMBLY',detail:'DETAIL / QC',ready:'READY FOR COLLECTION',delivered:'COLLECTED'};
 const SHORT = {referral:'REFERRALS',intake:'INTAKE',estimate:'ESTIMATE',parts:'PARTS HOLD',repair:'REPAIR',paint:'PREP/PAINT',assembly:'ASSEMBLY',detail:'DETAIL/QC',ready:'PICKUP'};
-const CAP = {estimate:2,parts:9,repair:3,paint:2,assembly:2,detail:2,ready:5};
+const CAP = {intake:8,estimate:2,parts:9,repair:3,paint:2,assembly:2,detail:2,ready:5};
+const TARGET_WIP = 14;
 const SKILLS = {estimate:'estimator',repair:'panel',paint:'painter',assembly:'assembler',detail:'detailer'};
 const HUES = [0xe8a45b,0x6ea4ba,0xbf5a58,0x85a58a,0xc4c6ca,0x7c80b2,0xe5ca80,0x537d88];
 const CARS = [['Toyota','Corolla'],['Ford','Ranger'],['Mazda','CX-5'],['Hyundai','Tucson'],['Toyota','RAV4'],['Kia','Sportage'],['Volkswagen','Golf'],['Honda','Civic'],['Tesla','Model 3'],['Subaru','Outback'],['BMW','X3'],['Nissan','Navara']];
@@ -26,8 +27,9 @@ function pick(items){return items[Math.floor(rand()*items.length)];}
 function nowDay(){return Math.floor(S.hours/8)+1;}
 function log(msg){S.events.unshift({day:nowDay(),text:msg});S.events=S.events.slice(0,70);}
 function openState(){
- const s={version:1,hours:0,cash:85000,seed:20261018,nextId:1,nextEmployee:7,trust:78,income:0,partsCost:0,wages:0,overhead:0,completed:0,cycleSum:0,declined:0,events:[],staff:BASE_CREW.map(x=>({...x})),capacity:{...CAP},jobs:[],milestones:0,autoplay:false,auto:true};
+ const s={version:2,hours:0,cash:85000,seed:20261018,nextId:1,nextEmployee:7,trust:78,income:0,partsCost:0,wages:0,overhead:0,completed:0,cycleSum:0,declined:0,events:[],staff:BASE_CREW.map(x=>({...x})),capacity:{...CAP},jobs:[],milestones:0,autoplay:false,auto:true,reworksTotal:0,lateDeliveries:0,shiftStart:null,lastShiftReport:null};
  S=s;
+ S.shiftStart=shiftSnapshot();
  for(let i=0;i<9;i++){const j=createReferral(false); if(i<7){j.stage=['estimate','parts','parts','repair','repair','paint','ready'][i]; j.partsState=i===1||i===2?'ordered':'received';j.partsETA=i===1?9:i===2?19:null;j.progress=i===0?0.5:(i===3||i===4||i===5?1.2:0);j.created=-rand()*3;j.estimated=i!==0;j.quote=quoteFor(j); j.partCost=Math.round(j.quote*(0.22+rand()*.14)); if(j.stage==='ready')j.notified=false; }}
  selected=S.jobs[0]?.id;
  log('Doors open. Review your insurer referrals and keep vehicles moving.');
@@ -37,24 +39,27 @@ function openState(){
 function quoteFor(j){return Math.round((1600+j.severity*1750+(j.brand==='BMW'||j.brand==='Tesla'?1450:0))/50)*50;}
 function createReferral(record=true){
  const car=pick(CARS),sev=1+Math.floor(rand()*4);
- const j={id:S.nextId++,brand:car[0],model:car[1],severity:sev,insurer:pick(INSURERS),color:Math.floor(rand()*HUES.length),stage:'referral',created:nowDay(),quote:0,partCost:0,partsState:'none',partsETA:null,estimated:false,assigned:null,progress:0,rush:false,notified:false,collectETA:null,reworks:0,due:nowDay()+4+sev,loss:0};
+ const j={id:S.nextId++,brand:car[0],model:car[1],severity:sev,insurer:pick(INSURERS),color:Math.floor(rand()*HUES.length),stage:'referral',created:nowDay(),quote:0,partCost:0,partsState:'none',partsETA:null,estimated:false,assigned:null,progress:0,rush:false,notified:false,collectETA:null,reworks:0,due:nowDay()+4+sev,loss:0,priority:0,qcPassed:false};
  j.quote=quoteFor(j);j.partCost=Math.round(j.quote*(0.23+rand()*.12));S.jobs.push(j);
  if(record)log('New referral: '+j.brand+' '+j.model+' • '+j.insurer+'.');
  return j;
 }
 function load(){
- try {const data=JSON.parse(localStorage.getItem('panelworks-save-v1'));if(data && data.version===1 && Array.isArray(data.staff)&&Array.isArray(data.jobs)&&Number.isFinite(data.cash)&&typeof data.seed==='number'&&data.capacity){S=data;S.events=Array.isArray(S.events)?S.events:[];S.auto=S.auto!==false;return true;}}catch(e){}
+ try {const data=JSON.parse(localStorage.getItem('panelworks-save-v1'));if(data && (data.version===1||data.version===2) && Array.isArray(data.staff)&&Array.isArray(data.jobs)&&Number.isFinite(data.cash)&&typeof data.seed==='number'&&data.capacity){S=data;S.version=2;S.events=Array.isArray(S.events)?S.events:[];S.auto=S.auto!==false;S.reworksTotal=S.reworksTotal||0;S.lateDeliveries=S.lateDeliveries||0;S.capacity.intake=S.capacity.intake||8;S.shiftStart=S.shiftStart||shiftSnapshot();for(const j of S.jobs){j.priority=j.priority||0;j.qcPassed=j.qcPassed||false;}return true;}}catch(e){}
  openState();return false;
 }
 function save(silent=true){try{localStorage.setItem('panelworks-save-v1',JSON.stringify(S));if(!silent)log('Game saved locally.');}catch(e){if(!silent)log('Browser storage unavailable; progress will last until tab closes.');}}
 function count(stage){return S.jobs.filter(j=>j.stage===stage).length;}
+function activeWip(){return S.jobs.filter(j=>!['referral','declined','delivered'].includes(j.stage)).length;}
+function shiftSnapshot(){return {cash:S.cash,income:S.income,partsCost:S.partsCost,wages:S.wages,overhead:S.overhead,completed:S.completed,trust:S.trust,reworksTotal:S.reworksTotal||0,lateDeliveries:S.lateDeliveries||0};}
+function buildShiftReport(day){const p=S.shiftStart||shiftSnapshot();return {day,receipts:S.income-p.income,parts:S.partsCost-p.partsCost,payroll:S.wages-p.wages,overhead:S.overhead-p.overhead,cashChange:S.cash-p.cash,delivered:S.completed-p.completed,trustChange:S.trust-p.trust,reworks:(S.reworksTotal||0)-p.reworksTotal,late:(S.lateDeliveries||0)-p.lateDeliveries,wip:activeWip(),backlog:count('intake'),partsWaiting:count('parts')};}
 function isBusy(id){return S.jobs.some(j=>j.assigned===id && j.progress<duration(j));}
 function available(role){return S.staff.filter(e=>e.role===role&&!isBusy(e.id));}
 function duration(j){return {estimate:1.5,repair:3.2+j.severity*4.2,paint:1.8+j.severity*2.0,assembly:1+j.severity*1.7,detail:1.2+j.severity*.6}[j.stage]||0;}
 function targetStage(j){return ({estimate:'parts',parts:'repair',repair:'paint',paint:'assembly',assembly:'detail',detail:'ready'})[j.stage];}
 function hasSpace(stage){return !S.capacity[stage] || count(stage)<S.capacity[stage];}
 function transition(j,next){
- j.assigned=null;j.stage=next;j.progress=0;
+ j.assigned=null;j.stage=next;j.progress=0;j.qcPassed=false;
  if(next==='parts'){j.estimated=true;log('Estimate approved for '+j.brand+' '+j.model+': '+money(j.quote)+'.');}
  if(next==='ready'){log('QC passed: '+j.brand+' '+j.model+' ready for customer collection.');}
  if(next==='repair'){log('Parts released to repair: '+j.brand+' '+j.model+'.');}
@@ -62,8 +67,8 @@ function transition(j,next){
   const delay=Math.max(0,nowDay()-j.due);
   const penalty=Math.round(Math.min(j.quote*.25,delay*130));
   const billed=j.quote-penalty;
-  j.loss=penalty;S.cash+=billed;S.income+=billed;S.completed++;S.cycleSum+=Math.max(1,nowDay()-Math.floor(j.created));
-  S.trust=clamp(S.trust+(delay?0.2:1.4),0,100);
+  j.loss=penalty;S.cash+=billed;S.income+=billed;S.completed++;if(delay)S.lateDeliveries=(S.lateDeliveries||0)+1;S.cycleSum+=Math.max(1,nowDay()-Math.floor(j.created));
+  S.trust=clamp(S.trust+(delay?-.65:1.9),0,100);
   log('DELIVERED '+j.brand+' '+j.model+' • '+money(billed)+' received'+(penalty?' (late penalty '+money(penalty)+')':'')+'.');
   if(S.completed>=10 && S.milestones===0){S.milestones=1;log('★ Milestone unlocked: 10 vehicles delivered!');}
   if(S.completed>=25 && S.milestones===1){S.milestones=2;log('★ Milestone unlocked: 25 vehicles delivered!');}
@@ -72,8 +77,9 @@ function transition(j,next){
 }
 function intake(j,accept){
  if(j.stage!=='referral')return;
- if(!accept){j.stage='declined';S.declined++;S.trust=clamp(S.trust-3.6,0,100);log('Declined '+j.insurer+' referral. Insurer trust −3.6.');return;}
- j.stage='intake';S.trust=clamp(S.trust+.2,0,100);log('Accepted: '+j.brand+' '+j.model+'. Estimation queued.');
+ if(!accept){const penalty=activeWip()>=TARGET_WIP?0.5:2.2;j.stage='declined';S.declined++;S.trust=clamp(S.trust-penalty,0,100);log('Declined '+j.insurer+' referral. Insurer trust −'+penalty+' (capacity-aware).');return;}
+ if(count('intake')>=S.capacity.intake){log('INTAKE AT CAPACITY: finish estimates before accepting more cars.');return;}
+ j.stage='intake';S.trust=clamp(S.trust+.3,0,100);log('Accepted: '+j.brand+' '+j.model+'. Estimation queued.');
 }
 function orderParts(j,express){
  if(j.stage!=='parts')return;
@@ -89,7 +95,7 @@ function orderParts(j,express){
  }
 }
 function assign(j,id){
- const role=SKILLS[j.stage];if(!role || j.assigned!==null || j.progress>=duration(j) || !hasSpace(j.stage))return false;
+ const role=SKILLS[j.stage];if(!role || j.assigned!==null || j.progress>=duration(j))return false;
  const e=S.staff.find(e=>e.id===id);
  if(!e||e.role!==role||isBusy(e.id))return false;
  j.assigned=e.id;log(e.name+' assigned to '+j.brand+' '+j.model+' ('+SHORT[j.stage]+').');return true;
@@ -108,6 +114,12 @@ function hire(role){
  const e={id:S.nextEmployee++,name:pick(first)+' '+pick(last),role,skill:0.75+rand()*.24,wage:Math.round(wage*(0.92+rand()*.2))};
  S.cash-=fee;S.overhead+=fee;S.staff.push(e);log('Hired '+e.name+' ('+role+') • '+money(fee)+' recruitment.');
 }
+function train(id){
+ const e=S.staff.find(x=>x.id===id);if(!e)return;
+ if(e.skill>=.99){log(e.name+' is already fully qualified.');return;}
+ const cost=1250;if(S.cash<cost){log('Not enough cash to train '+e.name+'.');return;}
+ S.cash-=cost;S.overhead+=cost;e.skill=Math.min(.99,e.skill+.065);log('TRAINING COMPLETE: '+e.name+' skill now '+Math.round(e.skill*100)+'% for '+money(cost)+'.');
+}
 function fire(id){
  const e=S.staff.find(x=>x.id===id);if(!e)return;
  if(isBusy(id)){log('Finish '+e.name+"'s assigned work before releasing them.");return;}
@@ -116,7 +128,7 @@ function fire(id){
 }
 function manage(){
  // Admit already-accepted cars when estimation capacity frees up.
- for(const j of S.jobs.filter(x=>x.stage==='intake'))if(hasSpace('estimate'))transition(j,'estimate');
+ for(const j of S.jobs.filter(x=>x.stage==='intake').sort((a,b)=>(b.priority||0)-(a.priority||0)||a.due-b.due))if(hasSpace('estimate'))transition(j,'estimate');
  for(const j of S.jobs.filter(x=>x.stage==='parts')){
   if(j.partsState==='none'&&S.auto)orderParts(j,false);
   if(j.partsState==='received'&&hasSpace('repair'))transition(j,'repair');
@@ -124,10 +136,12 @@ function manage(){
  for(const j of S.jobs.filter(x=>SKILLS[x.stage])){
   if(j.progress>=duration(j)){
    const next=targetStage(j);
-   if(next==='ready' && j.stage==='detail'){
+   if(next==='ready' && j.stage==='detail' && !j.qcPassed){
+    j.qcPassed=true;
     if(rand()<Math.max(.025,.16-(S.staff.find(e=>e.id===j.assigned)?.skill||.82)*.11)+(j.rush?.09:0) && j.reworks<2){
-     j.reworks++;S.trust=clamp(S.trust-2,0,100);log('QC REWORK: '+j.brand+' '+j.model+' returned to paint. Insurer trust −2.');
-     transition(j,'paint');continue;
+     j.reworks++;S.reworksTotal=(S.reworksTotal||0)+1;S.trust=clamp(S.trust-2,0,100);log('QC REWORK: '+j.brand+' '+j.model+' returned to paint. Insurer trust −2.');
+     if(hasSpace('paint')){transition(j,'paint');continue;}
+     j.qcPassed=false;
     }
    }
    if(hasSpace(next))transition(j,next);
@@ -137,7 +151,7 @@ function manage(){
   if(S.auto&&!j.notified)notify(j);
   if(j.notified&&S.hours>=j.collectETA&&S.auto)transition(j,'delivered');
  }
- if(S.auto)for(const j of S.jobs.filter(x=>SKILLS[x.stage]&&x.assigned===null&&x.progress<duration(x))){
+ if(S.auto)for(const j of S.jobs.filter(x=>SKILLS[x.stage]&&x.assigned===null&&x.progress<duration(x)).sort((a,b)=>(b.priority||0)-(a.priority||0)||a.due-b.due||a.id-b.id)){
   const staff=available(SKILLS[j.stage]);if(staff.length)assign(j,staff[0].id);
  }
 }
@@ -159,8 +173,9 @@ function oneTick(h){
   if(late)S.trust=clamp(S.trust-Math.min(late*.45,2),0,100);
   const leads=clamp(Math.floor(rand()*2+0.5+S.trust/75),0,3);
   for(let i=0;i<leads;i++)if(count('referral')<8)createReferral();
-  for(const j of S.jobs.filter(j=>j.stage==='referral' && d-j.created>3)){j.stage='declined';S.trust=clamp(S.trust-1.5,0,100);log('Unanswered referral expired. Insurer trust −1.5.');}
-  log('SHIFT '+d+' • Payroll '+money(payroll)+' • Site overhead '+money(opEx)+(late?' • '+late+' overdue':'')+'.');
+  for(const j of S.jobs.filter(j=>j.stage==='referral' && d-j.created>3)){j.stage='declined';S.trust=clamp(S.trust-.8,0,100);log('Unanswered referral expired. Insurer trust −0.8.');}
+  S.lastShiftReport=buildShiftReport(d-1);S.shiftStart=shiftSnapshot();
+  log('SHIFT '+(d-1)+' CLOSE • '+S.lastShiftReport.delivered+' collected • cash '+money(S.lastShiftReport.cashChange)+' • '+late+' overdue.');
  }
  if(S.cash < -18000){running=false;log('BANKRUPTCY WARNING: your site has run out of working capital.');}
  save();
@@ -170,7 +185,7 @@ function renderBoard(){
  if(jobTab==='referral')filtered=filtered.filter(j=>j.stage==='referral');
  if(jobTab==='active')filtered=filtered.filter(j=>!['referral','ready'].includes(j.stage));
  if(jobTab==='ready')filtered=filtered.filter(j=>j.stage==='ready');
- filtered.sort((a,b)=>(a.stage==='referral'? -1:0)-(b.stage==='referral'?-1:0)||a.due-b.due||a.id-b.id);
+ filtered.sort((a,b)=>(a.stage==='referral'? -1:0)-(b.stage==='referral'?-1:0)||(b.priority||0)-(a.priority||0)||a.due-b.due||a.id-b.id);
  $('queue-count').textContent=filtered.length+' JOBS';
  $('jobs').innerHTML=filtered.length?filtered.map(j=>{
  const completion=j.stage==='referral'?0:Math.max(0,Math.round(STAGES.indexOf(j.stage)/8*100));
