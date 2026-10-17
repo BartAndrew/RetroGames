@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const{Engine,ERAS,VERSION}=require('./core.js');let count=0;
 function test(name,fn){fn();count++;console.log('PASS '+name);}
 const step=(e,n=60,input={fire:true})=>{for(let i=0;i<n;i++){e.update(1/60,input);e.drain();}};
-test('version and five distinct eras',()=>{assert.equal(VERSION,'2.0.1');assert.equal(ERAS.length,5);assert.equal(new Set(ERAS.map(e=>e.id)).size,5);});
+test('version and five distinct eras',()=>{assert.equal(VERSION,'2.1.0');assert.equal(ERAS.length,5);assert.equal(new Set(ERAS.map(e=>e.id)).size,5);});
 test('launch, steering, autofire and boundaries',()=>{const e=new Engine();e.start();step(e,40,{x:1,y:-1,fire:true});assert(e.player.x>360);assert(e.player.y<768);assert(e.shots.length>0);step(e,200,{x:1,y:1});assert.equal(e.player.x,e.width-36);assert.equal(e.player.y,e.height-82);});
 test('pause freezes simulation and resumes',()=>{const e=new Engine();e.start();step(e,50);e.pause();const s=e.snapshot();step(e,300);assert.deepEqual(e.snapshot(),s);e.resume();step(e,1);assert(e.time>50/60);});
 test('screen bomb damages enemies and clears bullets',()=>{const e=new Engine();e.start();const foe=e.spawn('heavy',100,150);e.fireEnemy(foe);assert(e.bullets.length);assert(e.bomb());assert.equal(e.player.bombs,2);assert.equal(e.bullets.length,0);assert(foe.dead);});
@@ -17,3 +17,5 @@ test('death, retry and invalid upgrades',()=>{const e=new Engine();e.start();e.p
 test('same seed produces identical gameplay',()=>{const a=new Engine({seed:12}),b=new Engine({seed:12});a.start();b.start();step(a,800);step(b,800);assert.deepEqual(a.snapshot(),b.snapshot());});
 test('all approved atlas entries and artwork files exist',()=>{const data=JSON.parse(fs.readFileSync(path.join(__dirname,'assets/sprites.json')));for(const file of Object.values(data.atlases))assert(fs.statSync(path.join(__dirname,'assets',file)).size>1000);for(const e of ERAS)for(const n of['player2','enemy0','heavy0','ship','turret','boss'])assert(data.sprites[e.id+'.'+n]);assert.equal(Object.keys(data.sprites).length,96);});
 console.log('Midway Evolution: '+count+' deterministic tests passed.');
+
+require("./test-performance.cjs");

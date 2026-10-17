@@ -1,7 +1,8 @@
 {
-  "version": "2.0.1",
+  "version": "2.1.0",
   "files": {
-    "README.md": "cc7d359d7c06d36d45b15eac606f5aa77f4f83b80877a70e791fab95a8558866",
+    "PERFORMANCE.md": "c68e7be16b8d09cae1f16b7b3dfe664394693ce894038648f0b0b8e97f11bad4",
+    "README.md": "1c1f0282c1664b5fd783d619ec266d8bf574f3b407ca6898aa6e0457bc841123",
     "assets/bronze-preview.webp": "05750424d1274fae9db1cab0e05dd0dc526a865b2ec54f8e6df6b525bb5cd8c2",
     "assets/era-bronze.webp": "52525a136b393cc63e9e9b95c518136164dad3835ac90b592bb06ef6e02d0d9a",
     "assets/era-future.webp": "b7f443989e2acbf59ef764ac9469e2dabd8f8963d803153eeb6f85e583cd7b1a",
@@ -16,13 +17,16 @@
     "assets/ui.webp": "5fe9ca3c1602d2d2f39890a17926706c9b0e97e5a9df587954aef7ac9f82c32f",
     "assets/wwi-preview.webp": "4b49e0eacbd02f13c18c80981704b9c44cc997efe6dc26780c738861a4664d7e",
     "assets/wwii-preview.webp": "e54960d52905bd5fc2744988623d57e5a6dd70b19b8b9c28d28d350185e8137b",
-    "core.js": "bdfc5d62f960945d6b93642357c7051bd4b81c0d816442476477d70f557221e6",
+    "core.js": "adf8cae462a9b2113cee562a3d8b0b4ea2db394a43cf039f0556e4d08ac42439",
     "favicon.svg": "8207e9b3e35f2a4b76b41f95bb69d75057223a25a2cb35620a869689ed60d7ec",
-    "game.js": "f5499260f7a46513c6517956c1c4b39d89907e7630d685ae5acf19d49b72b510",
-    "index.html": "1288e1c508cc5dff255f61adbac5d138ad1c492a45f0a6385d7ca5c310232b3b",
+    "game.js": "7266be479db84cfbb0368d7d0c106dbe5e242e123cb4ef4e2c20a5ccc33e014c",
+    "index.html": "c26cd8230a23a227a09f8ab96a63f3b91299434156018ced92e2e56c3953d131",
+    "performance-results.json": "72169c93651dbd0b0e896f2376ef9e8fdd5ab5b71db083e42d639500b0608c54",
+    "performance.js": "09f4e13a51786aefe76b241f6f1f1c0a7b7c0f031b817ea7ddb96da820ccdb75",
     "release-apply.cjs": "921169d1fb38951c00a0215123208434b830207f8570144affc72500e1fe90b0",
-    "style.css": "635c06690115df64aca0fb9f1462991406e8362de3b25abbd657e3c16d34c553",
-    "test-browser.cjs": "d2bdcef682775ffd094e8893b9a2aeb4294cd965486427431ce56086b8a0ec47",
-    "test-smoke.cjs": "b09267e26466f2a2153965cefcc0674f80e9ee3838b2ca7e3ce7d49350cc80e1"
+    "style.css": "a68306dcdc355c3cc65aaac6762bf249b0de16f94960a4baadcf432a560bf125",
+    "test-browser.cjs": "f695cd428711d40784d874ef86394136b4e47b85c542bc707090bc041a3acbe4",
+    "test-performance.cjs": "c5f091a1bdaefabf1940f49bd5e4815e68946ada51d2d88ab9632abba9305a28",
+    "test-smoke.cjs": "6b63165e99052a86d6072cee7f6e49956d007c8a905fe5fd53e3608988c56b4c"
   }
 }

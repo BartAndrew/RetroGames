@@ -1,0 +1,62 @@
+{
+  "version": "2.1.0",
+  "baseline": "2.0.1",
+  "method": "Earlier local headless Chromium run; future era, power 4, boss and eight heavies; 1.5 s warmup and 6 s sample; actual source/assets loaded in-memory.",
+  "limitations": [
+    "Single constrained headless sample, not user hardware.",
+    "Initial scenes match; per-frame workloads differ because old simulation discards elapsed time.",
+    "High-DPR improvement includes lower backing resolution."
+  ],
+  "results": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "before": {
+        "fps": 6.704210244033252,
+        "frames": 41,
+        "frameP95ms": 183.3,
+        "canvas": [
+          1440,
+          900
+        ]
+      },
+      "after": {
+        "fps": 60.0023399241196,
+        "frames": 360,
+        "frameP95ms": 16.7,
+        "canvas": [
+          1440,
+          900
+        ]
+      }
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "before": {
+        "fps": 1.6072002571520412,
+        "frames": 10,
+        "frameP95ms": 716.7,
+        "canvas": [
+          3840,
+          2160
+        ]
+      },
+      "after": {
+        "fps": 59.50297514875744,
+        "frames": 358,
+        "frameP95ms": 16.7,
+        "canvas": [
+          1632,
+          918
+        ]
+      }
+    }
+  ]
+}
