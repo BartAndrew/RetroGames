@@ -190,7 +190,7 @@ function setEngineeringView(on){
  const facade=level.getObjectByName('facade');if(facade)facade.children.forEach(m=>{m.material.opacity=on?.12:.72;m.material.depthWrite=!on});
  state.members.forEach(m=>{m.mesh.visible=on||m.type==='column';m.mesh.material=on?mats.steelHot:mats.steel});
  state.coreSegments.forEach(c=>{c.mesh.material.transparent=on;c.mesh.material.opacity=on?.32:1});
- state.nodes.forEach(n=>{n.mesh.visible=on&&!state.running&&!n.charge});
+ state.nodes.forEach(n=>{n.mesh.visible=!state.running&&!n.charge&&(on||state.mode==='charge')});
  $('#xrayBtn').classList.toggle('active',on);
 }
 
