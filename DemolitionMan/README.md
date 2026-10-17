@@ -29,6 +29,10 @@ Open `DemolitionMan/index.html` through a local web server or the published Retr
 
 ## Technical design
 
-The scene is Three.js. Structural debris uses cannon-es rigid bodies after detonation. The target starts as a stack of concrete chunks. Placed charges damage nearby chunks, and the aggregate charge centroid creates a directional collapse bias. Protected buildings remain static and are represented by collision volumes; debris entering those volumes is counted once as collateral damage.
+The scene is Three.js. The target is now a simplified structural skeleton made from nodes, columns, beams, thin floor slabs and a stronger central core. Charges remove structural joints rather than applying a large outward blast. Support loss propagates upward through the frame, floor cells detach when too few supports remain, and gravity plus a small inward bias creates a house-of-cards style progressive collapse. Protected buildings remain static collision volumes and debris entering those volumes is counted once as collateral damage.
+
+The city is generated road-first: streets and sidewalks are placed before lots, then buildings are restricted to those parcels so nothing can spawn in the roadway. Street lights, trees, cars, site fencing, a site office, construction equipment and a distant skyline make the playable area read as a city rather than a few isolated towers.
+
+Engineering View exposes the structural frame, core and charge vertices while the normal view retains the façade.
 
 The game intentionally uses stylised procedural geometry and an SVG cover so there are no binary art dependencies.
