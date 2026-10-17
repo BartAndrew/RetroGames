@@ -36,3 +36,12 @@ The city is generated road-first: streets and sidewalks are placed before lots, 
 Engineering View exposes the structural frame, core and charge vertices while the normal view retains the façade.
 
 The game intentionally uses stylised procedural geometry and an SVG cover so there are no binary art dependencies.
+
+
+## Tutorial and city life
+
+Contract 01 now includes an optional guided tutorial that teaches Engineering View, structural vertices, charge placement, higher-floor collapse planning, and detonation. The tutorial can be replayed from the T button.
+
+Falling debris now transfers impact energy into intact floors below. A sufficiently heavy or fast slab can detach the lower slab, damage nearby support nodes, and create a progressive pancake-style chain reaction. This allows upper-floor demolition strategies to work instead of requiring every collapse to begin at ground level.
+
+The city also has lightweight ambient animation: cars continuously travel both road axes and pedestrians walk the sidewalks with simple leg animation. These are visual city-life systems rather than collision-critical simulation, so they stay inexpensive enough to leave the structural physics budget focused on the target building.
