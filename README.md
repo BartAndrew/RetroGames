@@ -1,12 +1,20 @@
 # RetroGames
 
-**A homemade browser arcade by Andrew Bartlett.** Five game families, nine distinct playable builds, and one archived duplicate. No accounts or game installation required.
+**A homemade browser arcade by Andrew Bartlett.** Six game families, ten distinct playable builds, and one archived duplicate. No accounts or game installation required.
 
 ## [Open the RetroGames arcade](https://bartandrew.github.io/RetroGames/)
 
 The main page has artwork from each game, descriptions, controls, genre filters, search, a random-game button, and direct links to every playable version. The latest build in each family gets the main Play button. These are evolving prototypes, not finished commercial games.
 
 ## The games
+
+### Demolition Man
+
+[<img src="DemolitionMan/cover.svg" alt="Demolition Man original city demolition artwork" width="600">](https://bartandrew.github.io/RetroGames/DemolitionMan/)
+
+A 3D controlled-demolition puzzle built with Three.js and cannon-es. Survey a city block, place charges on structural nodes, tune power and firing delays, then collapse the condemned tower while protecting neighbouring property. Ten deterministic contracts lead into endlessly seeded procedural contracts, with local progress and best-score saving.
+
+**[Play Demolition Man](https://bartandrew.github.io/RetroGames/DemolitionMan/)** · [Controls and development notes](DemolitionMan/README.md)
 
 ### Midway: Evolution
 
@@ -55,6 +63,7 @@ A four-character parody fighter with CPU and local two-player modes. V3 expands 
 
 | Game / version | Launch | Repository folder |
 | --- | --- | --- |
+| Demolition Man V1 | [Play](https://bartandrew.github.io/RetroGames/DemolitionMan/) | `DemolitionMan/` |
 | Midway: Evolution V1 | [Play](https://bartandrew.github.io/RetroGames/Midway1942/) | `Midway1942/` |
 | Stereotype Fighters V5.1 | [Play](https://bartandrew.github.io/RetroGames/StereoTypeFighter/) | `StereoTypeFighter/` |
 | Pacific Lightning, sprite build | [Play](https://bartandrew.github.io/RetroGames/Pacific-Lightning2/Pacific-Lightning/) | `Pacific-Lightning2/Pacific-Lightning/` |
