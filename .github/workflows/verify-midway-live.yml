@@ -1,4 +1,5 @@
 name: Verify public Midway Evolution deployment
+# Release 2.1.0: real-browser checks for frame budgets, quality controls and responsive input.
 on:
   push:
     branches: [main]
@@ -14,7 +15,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
       - name: Install existing browser test dependencies
@@ -22,19 +23,19 @@ jobs:
       - name: Install Chromium
         working-directory: StereoTypeFighter
         run: npx playwright install --with-deps chromium
-      - name: Verify anonymous Vercel gameplay
+      - name: Verify anonymous Vercel gameplay and performance controls
         run: |
           node Midway1942/test-browser.cjs https://retrogames-smoky.vercel.app/Midway1942/
           mv Midway1942/test-results Midway1942/live-vercel
-      - name: Verify anonymous GitHub Pages gameplay
+      - name: Verify anonymous GitHub Pages gameplay and performance controls
         run: |
           node Midway1942/test-browser.cjs https://bartandrew.github.io/RetroGames/Midway1942/
           mv Midway1942/test-results Midway1942/live-pages
       - name: Upload public-site screenshots and verification reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: midway-public-site-verification
+          name: midway-2.1.0-public-site-verification
           path: |
             Midway1942/live-vercel
             Midway1942/live-pages
