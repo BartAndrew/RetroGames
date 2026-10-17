@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#15100c">
+<title>Demolition Man | RetroGames</title>
+<meta name="description" content="A 3D demolition puzzle. Place charges, control the collapse and protect the city block.">
+<link rel="icon" href="./cover.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+</head>
+<body>
+<div id="game">
+  <canvas id="view" aria-label="3D demolition site"></canvas>
+  <div class="topbar">
+    <a class="brand" href="../"><span class="brand-mark">DM</span><span><b>DEMOLITION</b><small>MAN</small></span></a>
+    <div class="mission"><span id="levelLabel">CONTRACT 01</span><b id="levelName">The Starter</b></div>
+    <div class="top-actions">
+      <button id="cameraBtn" class="icon-btn" title="Reset camera">⌂</button>
+      <button id="soundBtn" class="icon-btn" title="Sound">♪</button>
+      <button id="helpBtn" class="icon-btn" title="How to play">?</button>
+    </div>
+  </div>
+
+  <aside class="hud left-panel">
+    <div class="panel-title"><span>CONTRACT BRIEF</span><strong id="difficulty">ROOKIE</strong></div>
+    <p id="brief">Drop the condemned tower inside the marked safety zone.</p>
+    <div class="stat-row"><span>Target</span><b id="targetStat">100%</b></div>
+    <div class="meter"><i id="targetMeter"></i></div>
+    <div class="stat-row"><span>Collateral</span><b id="collateralStat">$0</b></div>
+    <div class="meter danger"><i id="collateralMeter"></i></div>
+    <div class="divider"></div>
+    <div class="mini-grid">
+      <div><small>CHARGES</small><b id="chargeCount">0 / 8</b></div>
+      <div><small>BUDGET</small><b id="budget">$24k</b></div>
+      <div><small>PAR</small><b id="par">5</b></div>
+      <div><small>BEST</small><b id="best">—</b></div>
+    </div>
+  </aside>
+
+  <aside class="hud right-panel">
+    <div class="panel-title"><span>BLAST PLAN</span><strong>LIVE</strong></div>
+    <div class="tool-row">
+      <button class="tool active" data-mode="charge"><span>✦</span>Place charge</button>
+      <button class="tool" data-mode="inspect"><span>◎</span>Inspect</button>
+    </div>
+    <label class="control-label">Charge power <b id="powerLabel">70%</b></label>
+    <input id="power" type="range" min="35" max="100" value="70">
+    <label class="control-label">Delay group <b id="delayLabel">0 ms</b></label>
+    <input id="delay" type="range" min="0" max="4" value="0">
+    <div class="sequence" id="sequence"></div>
+    <button id="detonate" class="detonate"><span>⚠</span> DETONATE</button>
+    <button id="reset" class="secondary">Reset contract</button>
+    <p class="hint">Click glowing grid nodes on the target. Click a placed charge to remove it. Drag to orbit · wheel to zoom.</p>
+  </aside>
+
+  <div class="score-strip">
+    <div><small>PROJECTED SCORE</small><b id="score">10,000</b></div>
+    <div><small>EFFICIENCY</small><b id="efficiency">100%</b></div>
+    <div><small>SAFETY</small><b id="safety">A+</b></div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <div id="startCard" class="modal open">
+    <div class="modal-card hero-card">
+      <div class="hazard">DEMOLITION CONTRACT</div>
+      <h1>Bring it down.<br><em>Nothing else.</em></h1>
+      <p>You are the blast engineer. Place the fewest charges possible, shape the collapse, and keep every neighbouring building intact.</p>
+      <div class="rules">
+        <div><b>01</b><span>Survey the block</span></div>
+        <div><b>02</b><span>Place charges on structural nodes</span></div>
+        <div><b>03</b><span>Detonate and control the fall</span></div>
+      </div>
+      <button id="startBtn" class="primary">ACCEPT CONTRACT <span>→</span></button>
+      <small>10 seeded contracts · endless procedural contracts after Level 10</small>
+    </div>
+  </div>
+
+  <div id="resultModal" class="modal">
+    <div class="modal-card result-card">
+      <div class="hazard" id="resultBadge">CONTRACT COMPLETE</div>
+      <div class="grade" id="grade">A</div>
+      <h2 id="resultTitle">Clean Drop</h2>
+      <p id="resultText">Target cleared with minimal collateral.</p>
+      <div class="result-grid">
+        <div><small>SCORE</small><b id="finalScore">8,420</b></div>
+        <div><small>CHARGES</small><b id="finalCharges">5</b></div>
+        <div><small>COLLATERAL</small><b id="finalCollateral">$0</b></div>
+      </div>
+      <div class="stars" id="stars">★★★</div>
+      <div class="modal-actions"><button id="retryBtn" class="secondary">Retry</button><button id="nextBtn" class="primary">NEXT CONTRACT →</button></div>
+    </div>
+  </div>
+
+  <div id="helpModal" class="modal">
+    <div class="modal-card help-card">
+      <button class="close" id="closeHelp">×</button>
+      <div class="hazard">SITE MANUAL</div>
+      <h2>How to play</h2>
+      <p>Orbit around the city block and study the clearances. The orange building is condemned; blue-grey buildings are protected.</p>
+      <ul>
+        <li><b>Place charges:</b> click the glowing anchor nodes on any floor.</li>
+        <li><b>Shape the fall:</b> asymmetric charges bias the collapse toward the weakened side.</li>
+        <li><b>Sequence:</b> later contracts reward delayed charge groups to fold tall towers inward.</li>
+        <li><b>Score:</b> fewer charges, less explosive power and zero collateral score highest.</li>
+      </ul>
+      <button class="primary" id="closeHelp2">GOT IT</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="./game.js"></script>
+</body>
+</html>
