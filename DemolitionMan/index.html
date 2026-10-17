@@ -17,7 +17,7 @@
     <a class="brand" href="../"><span class="brand-mark">DM</span><span><b>DEMOLITION</b><small>MAN</small></span></a>
     <div class="mission"><span id="levelLabel">CONTRACT 01</span><b id="levelName">The Starter</b></div>
     <div class="top-actions">
-      <button id="cameraBtn" class="icon-btn" title="Reset camera">⌂</button>
+      <button id="xrayBtn" class="icon-btn" title="Engineering view">▦</button><button id="cameraBtn" class="icon-btn" title="Reset camera">⌂</button>
       <button id="soundBtn" class="icon-btn" title="Sound">♪</button>
       <button id="helpBtn" class="icon-btn" title="How to play">?</button>
     </div>
@@ -30,7 +30,7 @@
     <div class="meter"><i id="targetMeter"></i></div>
     <div class="stat-row"><span>Collateral</span><b id="collateralStat">$0</b></div>
     <div class="meter danger"><i id="collateralMeter"></i></div>
-    <div class="divider"></div>
+    <div class="divider"></div><div class="stat-row"><span>Structure</span><b id="structureType">FRAME + CORE</b></div><div class="stat-row"><span>Failure risk</span><b id="failureRisk">LOW</b></div>
     <div class="mini-grid">
       <div><small>CHARGES</small><b id="chargeCount">0 / 8</b></div>
       <div><small>BUDGET</small><b id="budget">$24k</b></div>
@@ -52,7 +52,7 @@
     <div class="sequence" id="sequence"></div>
     <button id="detonate" class="detonate"><span>⚠</span> DETONATE</button>
     <button id="reset" class="secondary">Reset contract</button>
-    <p class="hint">Click glowing grid nodes on the target. Click a placed charge to remove it. Drag to orbit · wheel to zoom.</p>
+    <p class="hint">Engineering View exposes the load path. Click orange structural joints to place/remove charges. Drag to orbit · wheel to zoom.</p>
   </aside>
 
   <div class="score-strip">
@@ -101,8 +101,8 @@
       <h2>How to play</h2>
       <p>Orbit around the city block and study the clearances. The orange building is condemned; blue-grey buildings are protected.</p>
       <ul>
-        <li><b>Place charges:</b> click the glowing anchor nodes on any floor.</li>
-        <li><b>Shape the fall:</b> asymmetric charges bias the collapse toward the weakened side.</li>
+        <li><b>Engineering View:</b> reveal columns, beams, slabs and the central core.</li><li><b>Place charges:</b> click glowing structural joints. Charges sever connections rather than throwing the building outward.</li>
+        <li><b>Shape the fall:</b> remove enough support to trigger progressive collapse. Balanced plans fold the building inward; badly unbalanced plans can lean into neighbours.</li>
         <li><b>Sequence:</b> later contracts reward delayed charge groups to fold tall towers inward.</li>
         <li><b>Score:</b> fewer charges, less explosive power and zero collateral score highest.</li>
       </ul>
