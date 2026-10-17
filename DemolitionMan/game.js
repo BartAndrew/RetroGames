@@ -59,7 +59,8 @@ const mats={
 const state={
  level:1,data:null,targetOrigin:new THREE.Vector3(18,0,18),charges:[],nodes:[],members:[],slabs:[],coreSegments:[],
  protected:[],bodies:[],debris:[],running:false,finished:false,mode:'charge',power:.7,delay:0,collateral:0,
- targetIntegrity:1,maxCharges:8,par:5,budget:24000,audio:true,xray:false,collapseTimers:[],failedNodes:new Set()
+ targetIntegrity:1,maxCharges:8,par:5,budget:24000,audio:true,xray:false,collapseTimers:[],failedNodes:new Set(),
+ ambient:[],pedestrians:[],impactHits:new Set(),tutorial:{active:false,step:0}
 };
 const seeded=seed=>{let s=(seed>>>0)||1;return()=>((s=Math.imul(1664525,s)+1013904223>>>0)/4294967296)};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -86,8 +87,37 @@ function cyl(group,r,h,x,y,z,material){
 
 function clearLevel(){
  state.collapseTimers.forEach(clearTimeout);state.collapseTimers=[];
- state.bodies.forEach(b=>world.removeBody(b));state.bodies=[];state.debris=[];state.charges=[];state.nodes=[];state.members=[];state.slabs=[];state.coreSegments=[];state.protected=[];state.failedNodes.clear();
+ state.bodies.forEach(b=>world.removeBody(b));state.bodies=[];state.debris=[];state.charges=[];state.nodes=[];state.members=[];state.slabs=[];state.coreSegments=[];state.protected=[];state.ambient=[];state.pedestrians=[];state.impactHits.clear();state.failedNodes.clear();
  ['city','level'].forEach(name=>{const o=scene.getObjectByName(name);if(o)scene.remove(o)});
+}
+
+
+function makeMovingCar(group,axis,lane,offset,speed,color,dir=1){
+ const cg=new THREE.Group(),cm=mat(color,.45,.25);
+ box(cg,3.25,.65,1.45,0,.52,0,cm);box(cg,1.75,.55,1.22,-.1,1.02,0,mats.glass);
+ for(const x of[-1,1])for(const z of[-.64,.64])cyl(cg,.26,.16,x,.28,z,mat(0x111111,.8));
+ if(axis==='z')cg.rotation.y=Math.PI/2;
+ group.add(cg);
+ state.ambient.push({mesh:cg,type:'car',axis,lane,offset,speed,dir});
+}
+function makePedestrian(group,axis,lane,offset,speed,color,dir=1){
+ const pg=new THREE.Group(),shirt=mat(color,.85),skin=mat(0xb9896d,.9),pants=mat(0x2e3337,.9);
+ cyl(pg,.18,.72,0,.98,0,shirt);const head=new THREE.Mesh(new THREE.SphereGeometry(.19,8,7),skin);head.position.y=1.48;pg.add(head);
+ const l1=cyl(pg,.07,.62,-.1,.38,0,pants),l2=cyl(pg,.07,.62,.1,.38,0,pants);l1.userData.leg=1;l2.userData.leg=-1;
+ group.add(pg);state.pedestrians.push({mesh:pg,legs:[l1,l2],axis,lane,offset,speed,dir,phase:Math.random()*6});
+}
+function addAmbientMotion(group,seed){
+ const r=seeded(seed+771);
+ const carColors=[0x9c4f42,0x425d74,0xb5a047,0x777a78,0x3e5960];
+ makeMovingCar(group,'x',-3.1,-44,5.5,carColors[0],1);
+ makeMovingCar(group,'x',3.1,34,4.4,carColors[1],-1);
+ makeMovingCar(group,'z',-3.1,-28,4.9,carColors[2],1);
+ makeMovingCar(group,'z',3.1,46,5.2,carColors[3],-1);
+ for(let i=0;i<10;i++){
+   const horizontal=i%2===0,side=i%4<2?-1:1;
+   const lane=side*(8.8+r()*1.2),offset=-48+r()*96,speed=.75+r()*.65,dir=i%3?1:-1;
+   makePedestrian(group,horizontal?'x':'z',lane,offset,speed,[0x705148,0x40556b,0x6b6844,0x59476b][i%4],dir);
+ }
 }
 
 function addRoadCity(seed){
@@ -111,6 +141,7 @@ function addRoadCity(seed){
  treePts.forEach(p=>{cyl(g,.18,1.7,p[0],.85,p[1],mats.trunk);const crown=new THREE.Mesh(new THREE.IcosahedronGeometry(1.1,1),mats.tree);crown.position.set(p[0],2.2,p[1]);g.add(crown)});
  const cars=[[-15,-3,0],[-28,-3,0],[-41,3,Math.PI],[15,3,Math.PI],[31,3,Math.PI],[3,-20,Math.PI/2],[-3,-33,-Math.PI/2],[-3,27,-Math.PI/2]];
  cars.forEach((p,i)=>{const cg=new THREE.Group();const cm=mat([C.car,0x425d74,0x6d6d68,0xb7a14b][i%4],.45,.25);box(cg,3.5,.7,1.55,0,.55,0,cm);box(cg,1.9,.6,1.35,-.15,1.08,0,mats.glass);for(const x of[-1.1,1.1])for(const z of[-.7,.7])cyl(cg,.28,.18,x,.3,z,mat(0x111111,.8));cg.rotation.y=p[2];cg.position.set(p[0],0,p[1]);g.add(cg)});
+ addAmbientMotion(g,seed);
  // distant cheap skyline outside playable block
  for(let i=0;i<42;i++){const side=i%4,along=-55+r()*110,dist=64+r()*18,w=5+r()*8,d=5+r()*8,h=8+r()*34;let x=0,z=0;if(side===0){x=along;z=-dist}else if(side===1){x=dist;z=along}else if(side===2){x=along;z=dist}else{x=-dist;z=along}box(g,w,h,d,x,h/2,z,mat(0x343b3d,.9,.04),false)}
  // protected buildings inside parcels, never roads
@@ -216,7 +247,7 @@ canvas.addEventListener('click',pickNode);
 
 function addCharge(node){
  const g=new THREE.Group();const pack=box(g,.38,.5,.2,0,0,0,mats.charge);const lamp=new THREE.PointLight(0xff5a20,.65,2);lamp.position.set(0,.1,.15);g.add(lamp);g.position.copy(node.pos);scene.getObjectByName('level').add(g);
- const c={node,mesh:g,power:state.power,delay:state.delay};node.charge=c;state.charges.push(c);node.mesh.visible=false;updateHUD();forecast();
+ const c={node,mesh:g,power:state.power,delay:state.delay};node.charge=c;state.charges.push(c);node.mesh.visible=false;updateHUD();forecast();if(state.tutorial.active&&state.tutorial.step===2)setTimeout(()=>tutorialAdvance(),250);
 }
 function removeCharge(node){const c=node.charge;if(!c)return;scene.getObjectByName('level').remove(c.mesh);state.charges=state.charges.filter(x=>x!==c);node.charge=null;node.mesh.visible=state.xray;updateHUD();forecast()}
 
@@ -290,12 +321,40 @@ function updateIntegrity(){
 }
 
 function detonate(){
- if(!state.charges.length||state.running)return;state.running=true;setEngineeringView(true);updateHUD();toast('STRUCTURAL SEQUENCE ARMED');
+ if(!state.charges.length||state.running)return;if(state.tutorial.active&&state.tutorial.step<4){state.tutorial.step=4;renderTutorial();}state.running=true;setEngineeringView(true);updateHUD();toast('STRUCTURAL SEQUENCE ARMED');
  const ordered=[...state.charges].sort((a,b)=>a.delay-b.delay);
  ordered.forEach(c=>{const t=setTimeout(()=>{failNode(c.node,c.power);if(state.audio)beep(72,.09,.08,'sawtooth');},c.delay*420);state.collapseTimers.push(t)});
  const maxDelay=Math.max(...ordered.map(c=>c.delay));
  for(let s=0;s<state.data.floors+4;s++){const t=setTimeout(()=>cascadeStep(s),700+maxDelay*420+s*260);state.collapseTimers.push(t)}
  state.collapseTimers.push(setTimeout(finishSimulation,4600+maxDelay*420+state.data.floors*260));
+}
+
+
+function transferImpactEnergy(){
+ for(const falling of state.debris){
+   if(!falling.body||falling.body.velocity.y>-1.6)continue;
+   const p=falling.body.position,sourceFloor=falling.f||0;
+   for(const slab of state.slabs){
+     if(slab.detached||slab.f>=sourceFloor)continue;
+     const key=state.debris.indexOf(falling)+'-'+slab.f+'-'+slab.ix+'-'+slab.iz;
+     if(state.impactHits.has(key))continue;
+     const q=slab.mesh.position;
+     if(Math.abs(p.x-q.x)<slab.w*.58&&Math.abs(p.z-q.z)<slab.d*.58&&p.y>q.y&&p.y-q.y<1.25){
+       state.impactHits.add(key);
+       const impact=Math.abs(falling.body.velocity.y)*(falling.body.mass||20);
+       if(impact>85){
+         detachSlab(slab,.09+Math.min(.18,impact/900));
+         const baseFloor=Math.max(0,slab.f-1);
+         const nearby=state.nodes.filter(n=>n.f===baseFloor&&!n.failed&&Math.abs(n.pos.x-q.x)<slab.w*.7&&Math.abs(n.pos.z-q.z)<slab.d*.7);
+         nearby.sort((a,b)=>a.pos.distanceTo(q)-b.pos.distanceTo(q));
+         const failures=Math.min(impact>220?2:1,nearby.length);
+         for(let i=0;i<failures;i++)failNode(nearby[i],.45);
+         spawnBurst(new THREE.Vector3(q.x,q.y,q.z),.45);
+         toast('IMPACT CASCADE · FLOOR '+slab.f);
+       }
+     }
+   }
+ }
 }
 
 function detectCollateral(){
@@ -312,16 +371,55 @@ function finishSimulation(){
  $('#grade').textContent=grade;$('#resultBadge').textContent=pass?'CONTRACT COMPLETE':'CONTRACT FAILED';$('#resultTitle').textContent=!pass?(destroyed<=.68?'Structure Still Standing':'Collateral Breach'):(state.collateral===0?'House of Cards':'Controlled Collapse');
  $('#resultText').textContent=pass?Math.round(destroyed*100)+'% structural collapse. '+(state.collateral===0?'Protected property untouched.':'Some collateral was recorded.'):'Revise the structural plan and try a better support-loss pattern.';
  $('#finalScore').textContent=score.toLocaleString();$('#finalCharges').textContent=state.charges.length;$('#finalCollateral').textContent='$'+Math.round(state.collateral).toLocaleString();$('#stars').textContent='★'.repeat(stars)+'☆'.repeat(3-stars);$('#nextBtn').style.display=pass?'block':'none';
+ if(state.level===1)localStorage.setItem('dm-tutorial-seen','1');state.tutorial.active=false;renderTutorial();
  const key='dm-best-'+state.level,prev=+(localStorage.getItem(key)||0);if(score>prev){localStorage.setItem(key,score);$('#best').textContent=score.toLocaleString()}
  localStorage.setItem('dm-level',Math.max(+(localStorage.getItem('dm-level')||1),pass?state.level+1:state.level));$('#resultModal').classList.add('open');
 }
+
+const tutorialSteps=[
+ {title:'Survey the structure',text:'Orbit the site, then use Engineering View to reveal columns, beams, slabs and the core.'},
+ {title:'Find a structural joint',text:'Orange vertices are charge points. Higher-floor charges can create a falling mass that smashes into floors below.'},
+ {title:'Place a charge',text:'Click an orange joint. For this lesson, try a joint above the middle of the building rather than only at ground level.'},
+ {title:'Plan the collapse',text:'Add one or two more charges if you want. Falling slabs now transfer impact into lower floors and can trigger a chain reaction.'},
+ {title:'Detonate',text:'Fire the sequence and watch for secondary floor failures. The best result stays inside the fenced demolition footprint.'}
+];
+function renderTutorial(){
+ const t=state.tutorial;if(!t.active){$('#tutorialCoach').hidden=true;return}
+ const step=tutorialSteps[t.step];$('#tutorialCoach').hidden=false;$('#tutorialStep').textContent=(t.step+1)+' / '+tutorialSteps.length;$('#tutorialTitle').textContent=step.title;$('#tutorialText').textContent=step.text;$('#tutorialNext').textContent=t.step===tutorialSteps.length-1?'DONE':'NEXT →';
+}
+function startTutorial(){
+ state.tutorial.active=true;state.tutorial.step=0;renderTutorial();setEngineeringView(false);toast('TRAINING CONTRACT');
+}
+function tutorialAdvance(force=false){
+ if(!state.tutorial.active)return;
+ const i=state.tutorial.step;
+ if(i===0&&!state.xray&&!force){toast('Turn on Engineering View first');return}
+ if(i===2&&!state.charges.length&&!force){toast('Place a charge on a structural joint');return}
+ if(i<tutorialSteps.length-1){state.tutorial.step++;if(state.tutorial.step===1)setEngineeringView(true);renderTutorial()}
+ else{state.tutorial.active=false;renderTutorial();toast('TUTORIAL COMPLETE')}
+}
+
 function beep(freq=80,dur=.1,vol=.05,type='sine'){try{const ctx=beep.ctx||(beep.ctx=new (AudioContext||webkitAudioContext)()),o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(vol,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur)}catch{}}
 let toastTimer;function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),1300)}
 
 function animate(){
  requestAnimationFrame(animate);const dt=Math.min(.033,animate.last?(performance.now()-animate.last)/1000:.016);animate.last=performance.now();
- if(state.running||state.finished){world.step(1/60,dt,3);state.debris.forEach(d=>{if(d.body){d.mesh.position.copy(d.body.position);d.mesh.quaternion.copy(d.body.quaternion)}});detectCollateral()}
+ if(state.running||state.finished){world.step(1/60,dt,3);state.debris.forEach(d=>{if(d.body){d.mesh.position.copy(d.body.position);d.mesh.quaternion.copy(d.body.quaternion)}});transferImpactEnergy();detectCollateral()}
  const level=scene.getObjectByName('level');if(level){for(const p of[...level.children])if(p.userData.particle){p.userData.life-=dt;p.position.addScaledVector(p.userData.vel,dt);p.userData.vel.y-=2.4*dt;p.material.opacity=clamp(p.userData.life,0,1);if(p.userData.life<=0)level.remove(p)}}
+
+ const t=performance.now()/1000;
+ state.ambient.forEach(a=>{
+   const span=108,pos=((a.offset+a.dir*t*a.speed+54)%108+108)%108-54;
+   if(a.axis==='x'){a.mesh.position.set(pos,.03,a.lane);a.mesh.rotation.y=a.dir<0?Math.PI:0}
+   else{a.mesh.position.set(a.lane,.03,pos);a.mesh.rotation.y=a.dir<0?-Math.PI/2:Math.PI/2}
+ });
+ state.pedestrians.forEach(p=>{
+   const span=96,pos=((p.offset+p.dir*t*p.speed+48)%96+96)%96-48;
+   if(p.axis==='x'){p.mesh.position.set(pos,.02,p.lane);p.mesh.rotation.y=p.dir<0?Math.PI:0}
+   else{p.mesh.position.set(p.lane,.02,pos);p.mesh.rotation.y=p.dir<0?-Math.PI/2:Math.PI/2}
+   const swing=Math.sin(t*5*p.speed+p.phase)*.48;p.legs[0].rotation.x=swing;p.legs[1].rotation.x=-swing;
+ });
+
  state.nodes.forEach(n=>{if(n.mesh.visible&&!n.failed)n.mesh.scale.setScalar(1+Math.sin(performance.now()*.004+n.f)*.16)});
  controls.update();renderer.render(scene,camera);
 }
@@ -331,8 +429,8 @@ $('#power').addEventListener('input',e=>{state.power=+e.target.value/100;$('#pow
 $('#delay').addEventListener('input',e=>{state.delay=+e.target.value;$('#delayLabel').textContent=state.delay*420+' ms';document.querySelectorAll('.sequence i').forEach((x,i)=>x.classList.toggle('active',i<=state.delay))});
 for(let i=0;i<5;i++){const x=document.createElement('i');$('#sequence').append(x)}$('#sequence i').classList.add('active');
 document.querySelectorAll('.tool').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));b.classList.add('active');state.mode=b.dataset.mode;if(state.mode==='inspect')setEngineeringView(true);toast(state.mode==='inspect'?'ENGINEERING VIEW':'CHARGE MODE')});
-$('#xrayBtn').onclick=()=>setEngineeringView(!state.xray);$('#detonate').onclick=detonate;$('#reset').onclick=()=>loadLevel(state.level);$('#cameraBtn').onclick=resetCamera;
+$('#xrayBtn').onclick=()=>{setEngineeringView(!state.xray);if(state.tutorial.active&&state.tutorial.step===0&&state.xray)setTimeout(()=>tutorialAdvance(),250)};$('#detonate').onclick=detonate;$('#reset').onclick=()=>loadLevel(state.level);$('#cameraBtn').onclick=resetCamera;
 $('#soundBtn').onclick=()=>{state.audio=!state.audio;$('#soundBtn').textContent=state.audio?'♪':'×';toast(state.audio?'SOUND ON':'SOUND OFF')};$('#helpBtn').onclick=()=>$('#helpModal').classList.add('open');$('#closeHelp').onclick=$('#closeHelp2').onclick=()=>$('#helpModal').classList.remove('open');
-$('#startBtn').onclick=()=>{$('#startCard').classList.remove('open');toast('CONTRACT ACTIVE')};$('#retryBtn').onclick=()=>loadLevel(state.level);$('#nextBtn').onclick=()=>loadLevel(state.level+1);
+$('#startBtn').onclick=()=>{$('#startCard').classList.remove('open');toast('CONTRACT ACTIVE');if(state.level===1&&!localStorage.getItem('dm-tutorial-seen'))startTutorial()};$('#tutorialBtn').onclick=startTutorial;$('#tutorialNext').onclick=()=>tutorialAdvance();$('#tutorialSkip').onclick=()=>{state.tutorial.active=false;localStorage.setItem('dm-tutorial-seen','1');renderTutorial();toast('TUTORIAL SKIPPED')};$('#retryBtn').onclick=()=>loadLevel(state.level);$('#nextBtn').onclick=()=>loadLevel(state.level+1);
 
 loadLevel(+(localStorage.getItem('dm-level')||1));animate();
