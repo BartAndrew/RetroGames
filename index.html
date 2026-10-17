@@ -28,14 +28,14 @@
         <div class="hero-actions"><a class="button button-primary" href="./Midway1942/">Play new: Midway Evolution <span aria-hidden="true">&#8599;</span></a><a class="button button-quiet" href="#games">Browse every game <span aria-hidden="true">&#8595;</span></a><button class="button button-quiet" id="random-game" type="button" hidden>Pick one for me <span aria-hidden="true">&#8599;</span></button></div>
         <p class="hero-note">No account. No install. Just press play.</p>
       </div>
-      <div class="arcade-ticket" aria-label="Five game families: two fighters and three shooters">
+      <div class="arcade-ticket" aria-label="Six game families: two fighters, three shooters and one puzzle">
         <div class="ticket-top"><span>THE HOME ARCADE</span><span>VOL. 01</span></div>
-        <div class="ticket-number">05<span>GAME<br>FAMILIES</span></div>
-        <div class="ticket-slots"><span>01 / FIGHT</span><span>02 / FLY</span><span>03 / DEFEND</span><span>04 / REMATCH</span><span>05 / PACIFIC</span></div>
+        <div class="ticket-number">06<span>GAME<br>FAMILIES</span></div>
+        <div class="ticket-slots"><span>01 / FIGHT</span><span>02 / FLY</span><span>03 / DEFEND</span><span>04 / REMATCH</span><span>05 / PACIFIC</span><span>06 / DEMOLISH</span></div>
         <div class="ticket-bottom"><span class="ticket-cross" aria-hidden="true">+</span><span>ALL SKILL LEVELS WELCOME<br><strong>HIGH SCORES NOT GUARANTEED.</strong></span></div>
       </div>
     </section>
-    <div class="info-strip"><span><b>5</b> game families</span><span><b>9</b> distinct builds</span><span>Original versions included</span><span>Made for the browser</span></div>
+    <div class="info-strip"><span><b>6</b> game families</span><span><b>10</b> distinct builds</span><span>Original versions included</span><span>Made for the browser</span></div>
 
     <section class="library" id="games" aria-labelledby="games-title">
       <div class="section-heading"><div><p class="eyebrow">PICK YOUR NEXT OBSESSION</p><h2 id="games-title">The game room<span>.</span></h2></div><p>Latest builds up front. Originals inside each card.</p></div>
@@ -45,6 +45,21 @@
       </div>
       <p id="result-count" class="result-count" role="status" aria-live="polite" hidden></p>
       <div class="game-grid" id="game-grid">
+        <article class="game-card" data-genre="puzzle" data-keywords="demolition man three js 3d physics puzzle buildings explosives charges city procedural collapse strategy" aria-labelledby="demolition-title">
+          <a class="game-art" href="./DemolitionMan/" aria-label="Play Demolition Man">
+            <span class="art-label">00 / 3D DEMOLITION PUZZLE</span>
+            <img class="sheet-art" src="./DemolitionMan/cover.svg" alt="Demolition Man original cover artwork showing a condemned orange tower collapsing inside a city block." width="1200" height="700" decoding="async" fetchpriority="high">
+            <span class="art-caption">ORIGINAL GAME ARTWORK</span><span class="art-play" aria-hidden="true">&#9654;</span>
+          </a>
+          <div class="card-body"><div class="card-meta"><span class="tag">NEW RELEASE · 3D PUZZLE</span><span class="version">V1.0</span></div>
+            <h3 id="demolition-title">Demolition Man</h3>
+            <p class="game-description">Plan a controlled implosion inside a crowded city block. Place charges on structural nodes, tune power and firing delays, then bring the target down without touching neighbouring buildings. Ten fixed contracts lead into endlessly seeded procedural jobs.</p>
+            <div class="card-features"><span>Three.js city</span><span>Physics collapse</span><span>Procedural contracts</span></div>
+            <div class="card-actions"><a class="button button-primary play-link" data-game-link href="./DemolitionMan/">Play Demolition Man <span aria-hidden="true">&#8599;</span></a></div>
+            <details><summary>Controls &amp; contract rules</summary><div class="details-content"><p><strong>Survey:</strong> drag to orbit and use the wheel to zoom. <strong>Charges:</strong> click glowing structural nodes to add or remove explosives. <strong>Sequence:</strong> choose power and delay group before placing each charge.</p><p>Score rewards low explosive use, complete target removal and zero collateral damage. Progress and best scores are saved locally.</p><a href="https://github.com/BartAndrew/RetroGames/tree/main/DemolitionMan">Game source &amp; full notes &#8599;</a></div></details>
+          </div>
+        </article>
+
         <article class="game-card" data-genre="shooter" data-keywords="midway 1942 reforged capcom inspired pacific arcade vertical scrolling shoot em up planes aircraft carrier fighters battleships tropical islands ww2 wwii mobile keyboard" aria-labelledby="midway-title">
           <a class="game-art art-midway" href="./Midway1942/" aria-label="Play Midway Evolution">
             <span class="art-label">01 / CINEMATIC AIR COMBAT</span>
