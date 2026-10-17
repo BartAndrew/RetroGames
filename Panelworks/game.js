@@ -149,7 +149,7 @@ function manage(){
  }
  for(const j of S.jobs.filter(x=>x.stage==='ready')){
   if(S.auto&&!j.notified)notify(j);
-  if(j.notified&&S.hours>=j.collectETA&&S.auto)transition(j,'delivered');
+  if(j.notified&&S.hours>=j.collectETA)transition(j,'delivered');
  }
  if(S.auto)for(const j of S.jobs.filter(x=>SKILLS[x.stage]&&x.assigned===null&&x.progress<duration(x)).sort((a,b)=>(b.priority||0)-(a.priority||0)||a.due-b.due||a.id-b.id)){
   const staff=available(SKILLS[j.stage]);if(staff.length)assign(j,staff[0].id);
@@ -199,13 +199,15 @@ function renderInspector(){
  if(view==='crew'){
   el.innerHTML='<div class="section-label">YOUR ROSTER · '+S.staff.length+' STAFF</div>'+S.staff.map(e=>{
    const job=S.jobs.find(j=>j.assigned===e.id && j.progress<duration(j));
-   return '<div class="crew-row"><div class="job-row"><strong>'+e.name+'</strong><span class="badge">'+Math.round(e.skill*100)+' SKILL</span></div><small>'+e.role.toUpperCase()+' · '+money(e.wage)+'/DAY · '+(job?('JOB #'+job.id):'AVAILABLE')+'</small><div style="margin-top:8px"><button data-act="fire" data-id="'+e.id+'" '+(job||S.staff.filter(x=>x.role===e.role).length<2?'disabled':'')+'>RELEASE STAFF</button></div></div>';
+   return '<div class="crew-row"><div class="job-row"><strong>'+e.name+'</strong><span class="badge">'+Math.round(e.skill*100)+' SKILL</span></div><small>'+e.role.toUpperCase()+' · '+money(e.wage)+'/DAY · '+(job?('JOB #'+job.id):'AVAILABLE')+'</small><div style="margin-top:8px"><button data-act="fire" data-id="'+e.id+'" '+(job||S.staff.filter(x=>x.role===e.role).length<2?'disabled':'')+'>RELEASE STAFF</button><button data-act="train" data-id="'+e.id+'" '+(e.skill>=.99||S.cash<1250?'disabled':'')+'>↑ TRAIN · $1,250</button></div></div>';
   }).join('')+'<div class="section-label" style="margin-top:19px">RECRUIT & EXPAND</div><label class="field">New employee role<select id="hire-role"><option value="panel">Panel technician</option><option value="estimator">Estimator</option><option value="painter">Spray painter</option><option value="assembler">Assembler</option><option value="detailer">Detail / QC</option></select></label><button class="primary" data-act="hire" style="width:100%">HIRE TEAM MEMBER · $1,000</button><p class="callout">Employees cost wages every shift, including idle time. More people only help when your bays can support them.</p>';
   return;
  }
  if(view==='finance'){
   const gp=S.income-S.partsCost-S.wages;const op=gp-S.overhead;
-  el.innerHTML='<div class="section-label">REPAIR CENTRE P&L · TO DATE</div><div class="budget">'+infoRow('Repair revenue',money(S.income),'positive')+infoRow('Parts & consumables','−'+money(S.partsCost))+infoRow('Direct labour','−'+money(S.wages))+infoRow('GROSS PROFIT',money(gp),gp>=0?'positive':'negative')+infoRow('Facility overhead / investment','−'+money(S.overhead))+infoRow('OPERATING PROFIT',money(op),op>=0?'positive':'negative')+infoRow('Bank cash',money(S.cash),S.cash>=0?'positive':'negative')+'</div><div class="section-label">EXPAND PRODUCTION</div><label class="field">Add one workshop bay<select id="expand-stage"><option value="estimate">Estimation · $6,000</option><option value="repair">Remove & repair · $13,000</option><option value="paint">Prep / paint · $18,000</option><option value="assembly">Assembly · $8,500</option><option value="detail">Detail / QC · $6,500</option><option value="ready">Collection · $3,500</option></select></label><button class="primary" data-act="expand" style="width:100%">INVEST IN ANOTHER BAY</button><p class="callout">Cash pays for parts when ordered. Revenue comes in after customer handover. Gross profit excludes site overhead; operating profit includes it.</p>';
+  const report=S.lastShiftReport;
+  const reportHtml=report?'<div class="section-label" style="margin-top:17px">LAST SHIFT · DAY '+report.day+'</div><div class="budget">'+infoRow('Vehicles delivered',String(report.delivered))+infoRow('Cash movement',money(report.cashChange),report.cashChange>=0?'positive':'negative')+infoRow('Receipts',money(report.receipts))+infoRow('Parts ordered',money(report.parts))+infoRow('Payroll',money(report.payroll))+infoRow('Overhead',money(report.overhead))+infoRow('Trust movement',report.trustChange.toFixed(1)+' pts')+infoRow('QC reworks',String(report.reworks))+infoRow('WIP / intake',report.wip+' / '+report.backlog)+'</div>':'';
+  el.innerHTML='<div class="section-label">REPAIR CENTRE P&L · TO DATE</div><div class="budget">'+infoRow('Repair revenue',money(S.income),'positive')+infoRow('Parts & consumables','−'+money(S.partsCost))+infoRow('Direct labour','−'+money(S.wages))+infoRow('GROSS PROFIT',money(gp),gp>=0?'positive':'negative')+infoRow('Facility overhead / investment','−'+money(S.overhead))+infoRow('OPERATING PROFIT',money(op),op>=0?'positive':'negative')+infoRow('Bank cash',money(S.cash),S.cash>=0?'positive':'negative')+'</div>'+reportHtml+'<div class="section-label">EXPAND PRODUCTION</div><label class="field">Add one workshop bay<select id="expand-stage"><option value="estimate">Estimation · $6,000</option><option value="repair">Remove & repair · $13,000</option><option value="paint">Prep / paint · $18,000</option><option value="assembly">Assembly · $8,500</option><option value="detail">Detail / QC · $6,500</option><option value="ready">Collection · $3,500</option></select></label><button class="primary" data-act="expand" style="width:100%">INVEST IN ANOTHER BAY</button><p class="callout">Cash pays for parts when ordered. Revenue comes in after customer handover. Gross profit excludes site overhead; operating profit includes it.</p>';
   return;
  }
  const j=S.jobs.find(x=>x.id===selected);
@@ -227,6 +229,7 @@ function renderInspector(){
  }
  const details=j.stage==='parts'?(j.partsState==='none'?'Parts not yet ordered. Repair work is blocked.':j.partsState==='ordered'?'Parts in transit • ETA '+Math.ceil((j.partsETA-S.hours)/8*10)/10+' shop days.':'All parts delivered. Awaiting repair bay.'):(worker?worker.name+' · '+SKILLS[j.stage]+' assigned.':'Waiting for a free specialist or workshop bay.');
  const percent=SKILLS[j.stage]?Math.round(j.progress/Math.max(duration(j),.1)*100):0;
+ if(j.stage!=='referral')actions+='<button data-act="priority">'+((j.priority||0)?'★ REMOVE PRIORITY':'☆ PRIORITY DISPATCH')+'</button>';
  el.innerHTML='<div class="section-label">REPAIR ORDER #PW-'+String(j.id).padStart(3,'0')+'</div><div class="car-title">'+j.brand+' '+j.model+'</div><div class="subline">'+j.insurer+'<br>Damage severity: '+['','Low','Moderate','High','Severe'][j.severity]+' · Due day '+j.due+'</div><div class="detail-grid"><div class="detail-cell"><label>Approved repair value</label><b class="highlight">'+money(j.quote)+'</b></div><div class="detail-cell"><label>Est. parts spend</label><b>'+money(j.partCost)+'</b></div><div class="detail-cell"><label>Current work stage</label><b>'+SHORT[j.stage]+'</b></div><div class="detail-cell"><label>Job progress</label><b>'+percent+'%</b></div></div><div class="stepper">'+['estimate','repair','paint','assembly','detail','ready'].map(x=>'<span class="'+(STAGES.indexOf(j.stage)>STAGES.indexOf(x)?'done':j.stage===x?'current':'')+'"></span>').join('')+'</div><div class="section-label">DISPATCH ACTION</div><p class="subline">'+details+(j.reworks?'<br>QC rework: '+j.reworks+' time(s).':'')+'</p><div class="action-stack">'+actions+'</div>'+(nowDay()>j.due?'<div class="callout">OVERDUE: delays reduce insurer trust and may reduce final payment.</div>':'');
 }
 function renderStats(){
@@ -237,7 +240,8 @@ function renderStats(){
  $('trust').textContent=Math.round(S.trust)+'%';
  $('trust-status').textContent=S.trust>=75?'Preferred repairer':S.trust>=50?'Watch cycle time':'Referral volume falling';
  const active=S.jobs.filter(j=>!['referral','declined','delivered'].includes(j.stage));
- $('wip').textContent=active.length;$('wip-caption').textContent=count('ready')+' ready for pickup';
+ $('wip').textContent=active.length;$('wip-caption').textContent=count('intake')+' awaiting estimate · '+count('ready')+' ready';
+ $('wip').className=active.length>TARGET_WIP?'negative':'';
  $('delivered').textContent=S.completed;$('avgcycle').textContent=S.completed?(S.cycleSum/S.completed).toFixed(1)+'d average cycle time':'Target: under 6 days';
  $('day').textContent='DAY '+nowDay();
  $('clock').textContent=String(8+Math.floor(S.hours%8)).padStart(2,'0')+':'+String(Math.floor((S.hours%1)*60)).padStart(2,'0')+' · SHIFT';
@@ -245,6 +249,8 @@ function renderStats(){
  $('play-btn').textContent=running?'Ⅱ PAUSE SHOP':'▶ RUN SHIFT';
  $('auto').checked=!!S.auto;
  $('mission').textContent=S.completed>=10?'MILESTONE ACHIEVED! '+S.completed+' vehicles delivered. Keep growing profitably.':'Deliver 10 vehicles. '+S.completed+'/10 delivered · Insurer trust '+Math.round(S.trust)+'%.';
+ const hint=active.length>TARGET_WIP?'⚠ WIP OVERLOAD: slow acceptance and clear jobs.':count('intake')>=S.capacity.intake?'⚠ INTAKE FULL: clear estimates before accepting.':count('parts')>6?'⚠ PARTS BOTTLENECK: check deliveries and repair bays.':'WORKSHOP HEALTH: '+active.length+' active WIP · '+S.completed+' delivered';
+ $('health-alert').textContent=hint;$('health-alert').className='health-alert '+(hint.startsWith('⚠')?'warning':'');
  for(const b of document.querySelectorAll('[data-tab]'))b.setAttribute('aria-pressed',String(b.dataset.tab===jobTab));
  for(const b of document.querySelectorAll('[data-view]'))b.setAttribute('aria-pressed',String(b.dataset.view===view));
  const stations=['estimate','parts','repair','paint','assembly','detail','ready'];
@@ -262,6 +268,8 @@ function action(type,arg){
  if(type==='contact'&&j)notify(j);if(type==='collect'&&j&&j.notified)transition(j,'delivered');
  if(type==='expand')expand($('expand-stage')?.value);
  if(type==='hire')hire($('hire-role')?.value);
+ if(type==='train')train(Number(arg));
+ if(type==='priority'&&j){j.priority=(j.priority||0)?0:1;log('Job #PW-'+j.id+(j.priority?' marked PRIORITY.':' back to standard dispatch.'));}
  if(type==='fire')fire(Number(arg));
  manage();save();drawUI();
 }
@@ -372,7 +380,7 @@ async function initThree(){
   g.userData.job=j.id;g.traverse(o=>{o.userData.job=j.id;});scene.add(g);return g;
  }
  function syncCars(){
-  const visible=S.jobs.filter(j=>!['declined','delivered'].includes(j.stage));
+  const visible=S.jobs.filter(j=>!['declined','delivered'].includes(j.stage)).slice(0,27);
   const ids=new Set(visible.map(j=>j.id));
   for(const [id,g] of carMeshes)if(!ids.has(id)){scene.remove(g);g.traverse(o=>{if(o.geometry)o.geometry.dispose();});carMeshes.delete(id);}
   for(const j of visible){
