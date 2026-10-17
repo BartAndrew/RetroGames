@@ -2,3 +2,12 @@
 .structural-key{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0;font-size:9px;color:var(--muted)}
 .structural-key span{display:flex;align-items:center;gap:6px}
 .structural-key i{width:8px;height:8px;border-radius:50%;display:inline-block;background:var(--orange);box-shadow:0 0 8px var(--orange)}
+
+.tutorial-coach{position:absolute;left:50%;top:88px;transform:translateX(-50%);width:min(420px,calc(100vw - 30px));padding:14px 16px;background:rgba(16,16,14,.96);border:1px solid var(--orange);box-shadow:var(--shadow);z-index:15;backdrop-filter:blur(10px)}
+.tutorial-step{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.tutorial-step span{font-size:9px;letter-spacing:.14em;color:var(--orange);font-weight:900}
+.tutorial-step b{font-size:13px}
+.tutorial-coach p{margin:8px 0 10px;color:var(--muted);font-size:11px;line-height:1.45}
+.tutorial-actions{display:grid;grid-template-columns:1fr 1.5fr;gap:6px}
+.tutorial-actions .secondary,.tutorial-actions .primary{margin:0;padding:9px 10px;font-size:10px}
+@media(max-width:620px){.tutorial-coach{top:68px;width:calc(100vw - 18px)}}
