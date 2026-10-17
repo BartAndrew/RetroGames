@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#151513"/><stop offset="1" stop-color="#050505"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-opacity=".6"/></filter></defs>
+<rect width="1200" height="700" fill="url(#g)"/>
+<g opacity=".5" fill="#202321"><rect x="40" y="250" width="220" height="330"/><rect x="930" y="180" width="220" height="400"/><rect x="750" y="310" width="150" height="270"/></g>
+<g filter="url(#s)" transform="translate(410 100)"><path fill="#d65f19" d="M95 0h280l58 450H26z"/><g fill="#10100f" opacity=".48"><path d="M70 78h330l6 42H64zM59 158h357l6 42H53zM48 238h379l6 42H42zM37 318h401l6 42H31z"/></g><path d="M40 393l393-124-14 77L48 456z" fill="#ff7a1a" opacity=".85"/></g>
+<g fill="#ffd24a"><circle cx="411" cy="470" r="10"/><circle cx="525" cy="435" r="10"/><circle cx="646" cy="397" r="10"/></g>
+<text x="70" y="90" fill="#ff7a1a" font-family="Arial Black,Arial" font-size="28" letter-spacing="8">RETROGAMES CONTRACT SERIES</text>
+<text x="70" y="620" fill="#f7f2e8" font-family="Arial Black,Arial" font-size="92" letter-spacing="-5">DEMOLITION</text>
+<text x="795" y="620" fill="#ff7a1a" font-family="Arial Black,Arial" font-size="92" letter-spacing="-5">MAN</text>
+<text x="75" y="662" fill="#8e8e87" font-family="Arial,Helvetica" font-size="21" letter-spacing="4">BRING IT DOWN. NOTHING ELSE.</text>
+</svg>
