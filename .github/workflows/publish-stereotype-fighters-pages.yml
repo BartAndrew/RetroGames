@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - demolition-man-playtest-v1
   workflow_dispatch:
 
 permissions:
@@ -70,6 +71,9 @@ jobs:
         working-directory: StereoTypeFighter
         run: npx playwright install --with-deps chromium
 
+      - name: Run Demolition Man browser playtest
+        run: node DemolitionMan/test-browser.cjs
+
       - name: Run Midway Evolution desktop and mobile browser regressions
         run: node Midway1942/test-browser.cjs
 
@@ -86,16 +90,20 @@ jobs:
             StereoTypeFighter/playwright-report
             StereoTypeFighter/test-results
             Midway1942/test-results
+            DemolitionMan/test-results
           if-no-files-found: ignore
 
       - name: Configure GitHub Pages
+        if: github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v5
 
       - name: Upload complete arcade site
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v4
         with:
           path: './_site'
 
       - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
         id: deployment
         uses: actions/deploy-pages@v4

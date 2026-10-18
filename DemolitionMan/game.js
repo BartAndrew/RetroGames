@@ -5,7 +5,7 @@ import * as CANNON from 'https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cann
 const $=s=>document.querySelector(s);
 const canvas=$('#view');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));
 renderer.shadowMap.enabled=true;
 renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -28,7 +28,7 @@ scene.add(new THREE.HemisphereLight(0xc9d8dc,0x40382d,1.9));
 const sun=new THREE.DirectionalLight(0xffecd0,3.5);
 sun.position.set(-45,55,22);
 sun.castShadow=true;
-sun.shadow.mapSize.set(2048,2048);
+sun.shadow.mapSize.set(1024,1024);
 sun.shadow.camera.left=-80;sun.shadow.camera.right=80;sun.shadow.camera.top=80;sun.shadow.camera.bottom=-80;
 scene.add(sun);
 
@@ -79,10 +79,10 @@ function levelPreset(n){
 }
 
 function box(group,w,h,d,x,y,z,material,cast=true){
- const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);m.position.set(x,y,z);m.castShadow=cast;m.receiveShadow=true;group.add(m);return m;
+ const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);m.position.set(x,y,z);m.castShadow=cast&&h>1.5;m.receiveShadow=true;group.add(m);return m;
 }
 function cyl(group,r,h,x,y,z,material){
- const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,10),material);m.position.set(x,y,z);m.castShadow=true;group.add(m);return m;
+ const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,8),material);m.position.set(x,y,z);m.castShadow=h>3;group.add(m);return m;
 }
 
 function clearLevel(){
@@ -143,7 +143,7 @@ function addRoadCity(seed){
  cars.forEach((p,i)=>{const cg=new THREE.Group();const cm=mat([C.car,0x425d74,0x6d6d68,0xb7a14b][i%4],.45,.25);box(cg,3.5,.7,1.55,0,.55,0,cm);box(cg,1.9,.6,1.35,-.15,1.08,0,mats.glass);for(const x of[-1.1,1.1])for(const z of[-.7,.7])cyl(cg,.28,.18,x,.3,z,mat(0x111111,.8));cg.rotation.y=p[2];cg.position.set(p[0],0,p[1]);g.add(cg)});
  addAmbientMotion(g,seed);
  // distant cheap skyline outside playable block
- for(let i=0;i<42;i++){const side=i%4,along=-55+r()*110,dist=64+r()*18,w=5+r()*8,d=5+r()*8,h=8+r()*34;let x=0,z=0;if(side===0){x=along;z=-dist}else if(side===1){x=dist;z=along}else if(side===2){x=along;z=dist}else{x=-dist;z=along}box(g,w,h,d,x,h/2,z,mat(0x343b3d,.9,.04),false)}
+ for(let i=0;i<24;i++){const side=i%4,along=-55+r()*110,dist=64+r()*18,w=5+r()*8,d=5+r()*8,h=8+r()*34;let x=0,z=0;if(side===0){x=along;z=-dist}else if(side===1){x=dist;z=along}else if(side===2){x=along;z=dist}else{x=-dist;z=along}box(g,w,h,d,x,h/2,z,mat(0x343b3d,.9,.04),false)}
  // protected buildings inside parcels, never roads
  const lots=[
   [-28,-28,[-38,-38,-20,-20]],[-28,28,[-38,18,-20,38]],[28,-28,[18,-38,38,-20]],[28,28,[18,18,38,38]]
@@ -168,7 +168,7 @@ function addRoadCity(seed){
 function addProtected(group,x,z,w,d,floors,index){
  const h=floors*2.05;const mesh=box(group,w,h,d,x,h/2,z,mats.protected);
  const edge=new THREE.LineSegments(new THREE.EdgesGeometry(mesh.geometry),new THREE.LineBasicMaterial({color:0xaab7b9,transparent:true,opacity:.2}));edge.position.copy(mesh.position);group.add(edge);
- const rows=Math.max(2,Math.floor(floors*.7)),cols=Math.max(2,Math.floor(w/2.6));
+ const rows=Math.max(2,Math.floor(floors*.45)),cols=Math.max(2,Math.floor(w/3.5));
  for(let ry=0;ry<rows;ry++)for(let cx=0;cx<cols;cx++){const win=new THREE.Mesh(new THREE.PlaneGeometry(.75,.58),mats.glass);win.position.set(x-w/2+.9+cx*(w-1.8)/Math.max(1,cols-1),1.2+ry*(h-2.4)/Math.max(1,rows-1),z+d/2+.01);group.add(win)}
  state.protected.push({x,z,w,d,h,index,damage:0});
  const body=new CANNON.Body({mass:0,shape:new CANNON.Box(new CANNON.Vec3(w/2,h/2,d/2)),position:new CANNON.Vec3(x,h/2,z)});world.addBody(body);state.bodies.push(body);
@@ -219,8 +219,8 @@ function addTargetStructure(group,data){
 function setEngineeringView(on){
  state.xray=on;const level=scene.getObjectByName('level');if(!level)return;
  const facade=level.getObjectByName('facade');if(facade)facade.children.forEach(m=>{m.material.opacity=on?.12:.72;m.material.depthWrite=!on});
- state.members.forEach(m=>{m.mesh.visible=on||m.type==='column';m.mesh.material=on?mats.steelHot:mats.steel});
- state.coreSegments.forEach(c=>{c.mesh.material.transparent=on;c.mesh.material.opacity=on?.32:1});
+ state.members.forEach(m=>{m.mesh.visible=!m.failed&&(on||m.type==='column');if(!m.failed)m.mesh.material=on?mats.steelHot:mats.steel});
+ state.coreSegments.forEach(c=>{c.mesh.material=mats.core.clone();c.mesh.material.transparent=on;c.mesh.material.opacity=on?.32:1});
  state.nodes.forEach(n=>{n.mesh.visible=!state.running&&!n.charge&&(on||state.mode==='charge')});
  $('#xrayBtn').classList.toggle('active',on);
 }
@@ -235,11 +235,15 @@ function loadLevel(n){
 }
 function resetCamera(){const h=(state.data?.floors||8)*2.15;camera.position.set(state.targetOrigin.x+34,Math.max(25,h*.78),state.targetOrigin.z+38);controls.target.set(state.targetOrigin.x,Math.min(h*.46,22),state.targetOrigin.z);controls.update()}
 
-const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
+const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let pointerStart=null;
+canvas.addEventListener('pointerdown',e=>{pointerStart={x:e.clientX,y:e.clientY}});
 function pickNode(e){
  if(state.running||state.finished||state.mode!=='charge')return;
+ if(pointerStart&&Math.hypot(e.clientX-pointerStart.x,e.clientY-pointerStart.y)>6)return;
  const rect=canvas.getBoundingClientRect();pointer.x=(e.clientX-rect.left)/rect.width*2-1;pointer.y=-(e.clientY-rect.top)/rect.height*2+1;raycaster.setFromCamera(pointer,camera);
- const hits=raycaster.intersectObjects(state.nodes.map(n=>n.mesh),false);if(!hits.length)return;
+ const charged=state.charges.map(c=>c.mesh);const hitCharges=raycaster.intersectObjects(charged,true);
+ if(hitCharges.length){const mesh=hitCharges[0].object;const charge=state.charges.find(c=>{let m=mesh;while(m){if(m===c.mesh)return true;m=m.parent}return false});if(charge){removeCharge(charge.node);return}}
+ const hits=raycaster.intersectObjects(state.nodes.filter(n=>n.mesh.visible).map(n=>n.mesh),false);if(!hits.length)return;
  const id=hits[0].object.userData.nodeId,node=state.nodes.find(n=>n.id===id);if(!node)return;
  if(node.charge){removeCharge(node);return}if(state.charges.length>=state.maxCharges){toast('Charge limit reached');return}addCharge(node);
 }
@@ -249,7 +253,7 @@ function addCharge(node){
  const g=new THREE.Group();const pack=box(g,.38,.5,.2,0,0,0,mats.charge);const lamp=new THREE.PointLight(0xff5a20,.65,2);lamp.position.set(0,.1,.15);g.add(lamp);g.position.copy(node.pos);scene.getObjectByName('level').add(g);
  const c={node,mesh:g,power:state.power,delay:state.delay};node.charge=c;state.charges.push(c);node.mesh.visible=false;updateHUD();forecast();if(state.tutorial.active&&state.tutorial.step===2)setTimeout(()=>tutorialAdvance(),250);
 }
-function removeCharge(node){const c=node.charge;if(!c)return;scene.getObjectByName('level').remove(c.mesh);state.charges=state.charges.filter(x=>x!==c);node.charge=null;node.mesh.visible=state.xray;updateHUD();forecast()}
+function removeCharge(node){const c=node.charge;if(!c)return;scene.getObjectByName('level').remove(c.mesh);state.charges=state.charges.filter(x=>x!==c);node.charge=null;node.mesh.visible=state.xray||state.mode==='charge';updateHUD();forecast()}
 
 function forecast(){
  if(!state.charges.length){$('#failureRisk').textContent='LOW';return}
@@ -333,13 +337,13 @@ function detonate(){
 function transferImpactEnergy(){
  for(const falling of state.debris){
    if(!falling.body||falling.body.velocity.y>-1.6)continue;
-   const p=falling.body.position,sourceFloor=falling.f||0;
+   const p=falling.body.position,sourceFloor=falling.f||0,prev=falling._previousY??p.y;
    for(const slab of state.slabs){
      if(slab.detached||slab.f>=sourceFloor)continue;
      const key=state.debris.indexOf(falling)+'-'+slab.f+'-'+slab.ix+'-'+slab.iz;
      if(state.impactHits.has(key))continue;
      const q=slab.mesh.position;
-     if(Math.abs(p.x-q.x)<slab.w*.58&&Math.abs(p.z-q.z)<slab.d*.58&&p.y>q.y&&p.y-q.y<1.25){
+     if(Math.abs(p.x-q.x)<slab.w*.58&&Math.abs(p.z-q.z)<slab.d*.58&&prev>=q.y&&p.y<=q.y+1.5){
        state.impactHits.add(key);
        const impact=Math.abs(falling.body.velocity.y)*(falling.body.mass||20);
        if(impact>85){
@@ -354,6 +358,7 @@ function transferImpactEnergy(){
        }
      }
    }
+   falling._previousY=p.y;
  }
 }
 
@@ -396,7 +401,7 @@ function tutorialAdvance(force=false){
  if(i===0&&!state.xray&&!force){toast('Turn on Engineering View first');return}
  if(i===2&&!state.charges.length&&!force){toast('Place a charge on a structural joint');return}
  if(i<tutorialSteps.length-1){state.tutorial.step++;if(state.tutorial.step===1)setEngineeringView(true);renderTutorial()}
- else{state.tutorial.active=false;renderTutorial();toast('TUTORIAL COMPLETE')}
+ else{state.tutorial.active=false;localStorage.setItem('dm-tutorial-seen','1');renderTutorial();toast('TUTORIAL COMPLETE')}
 }
 
 function beep(freq=80,dur=.1,vol=.05,type='sine'){try{const ctx=beep.ctx||(beep.ctx=new (AudioContext||webkitAudioContext)()),o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(vol,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur)}catch{}}
@@ -433,4 +438,34 @@ $('#xrayBtn').onclick=()=>{setEngineeringView(!state.xray);if(state.tutorial.act
 $('#soundBtn').onclick=()=>{state.audio=!state.audio;$('#soundBtn').textContent=state.audio?'♪':'×';toast(state.audio?'SOUND ON':'SOUND OFF')};$('#helpBtn').onclick=()=>$('#helpModal').classList.add('open');$('#closeHelp').onclick=$('#closeHelp2').onclick=()=>$('#helpModal').classList.remove('open');
 $('#startBtn').onclick=()=>{$('#startCard').classList.remove('open');toast('CONTRACT ACTIVE');if(state.level===1&&!localStorage.getItem('dm-tutorial-seen'))startTutorial()};$('#tutorialBtn').onclick=startTutorial;$('#tutorialNext').onclick=()=>tutorialAdvance();$('#tutorialSkip').onclick=()=>{state.tutorial.active=false;localStorage.setItem('dm-tutorial-seen','1');renderTutorial();toast('TUTORIAL SKIPPED')};$('#retryBtn').onclick=()=>loadLevel(state.level);$('#nextBtn').onclick=()=>loadLevel(state.level+1);
 
+
+// Expose a read-only snapshot and explicit QA-only controls for automated browser playtests.
+if(new URLSearchParams(location.search).has('qa')){
+ window.DemolitionQA={
+  ready:()=>!!state.data,
+  snapshot:()=>({
+   level:state.level,name:state.data?.name,
+   active:state.running,finished:state.finished,
+   chargeCount:state.charges.length,
+   chargeNodes:state.charges.map(c=>({floor:c.node.f,ix:c.node.ix,iz:c.node.iz})),
+   xray:state.xray,detached:state.slabs.filter(s=>s.detached).length,
+   coresDetached:state.coreSegments.filter(c=>c.failed).length,
+   slabs:state.slabs.length,integrity:state.targetIntegrity,
+   failedNodes:state.failedNodes.size,collateral:state.collateral,
+   tutorial:{...state.tutorial},
+   pedestrianPositions:state.pedestrians.slice(0,3).map(p=>p.mesh.position.toArray()),
+   vehiclePositions:state.ambient.slice(0,3).map(a=>a.mesh.position.toArray()),
+   protected:state.protected.map(b=>({x:b.x,z:b.z,w:b.w,d:b.d,h:b.h})),
+   origin:state.targetOrigin.toArray(),
+   camera:camera.position.toArray()
+  }),
+  projectNode:(f,ix,iz)=>{const node=state.nodes.find(n=>n.f===f&&n.ix===ix&&n.iz===iz);if(!node)return null;
+   const p=node.pos.clone().project(camera),r=canvas.getBoundingClientRect();return{x:r.left+(p.x+1)*r.width/2,y:r.top+(1-p.y)*r.height/2,visible:node.mesh.visible};},
+  loadLevel:n=>loadLevel(n),
+  place:(f,ix,iz,power=.7,delay=0)=>{if(state.running)return false;const node=state.nodes.find(n=>n.f===f&&n.ix===ix&&n.iz===iz);if(!node||node.charge)return false;state.power=power;state.delay=delay;addCharge(node);return true},
+  remove:(f,ix,iz)=>{const node=state.nodes.find(n=>n.f===f&&n.ix===ix&&n.iz===iz);if(!node||!node.charge)return false;removeCharge(node);return true},
+  detonate,
+  reset:()=>loadLevel(state.level)
+ };
+}
 loadLevel(+(localStorage.getItem('dm-level')||1));animate();
