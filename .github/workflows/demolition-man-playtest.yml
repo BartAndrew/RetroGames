@@ -1,0 +1,32 @@
+name: Demolition Man browser playtest
+on:
+  push:
+    branches:
+      - demolition-man-playtest-v1
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  playtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install dependencies
+        working-directory: StereoTypeFighter
+        run: npm install --no-audit --no-fund
+      - name: Build staged arcade
+        run: python3 tools/build_site.py
+      - name: Install Playwright Chromium
+        working-directory: StereoTypeFighter
+        run: npx playwright install --with-deps chromium
+      - name: Play Demolition Man in Chromium
+        run: node DemolitionMan/test-browser.cjs
+      - name: Upload game screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: demolition-man-playtest
+          path: DemolitionMan/test-results
+          if-no-files-found: ignore
