@@ -5,7 +5,7 @@ import * as CANNON from 'https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cann
 const $=s=>document.querySelector(s);
 const canvas=$('#view');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));
 renderer.shadowMap.enabled=true;
 renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -28,7 +28,7 @@ scene.add(new THREE.HemisphereLight(0xc9d8dc,0x40382d,1.9));
 const sun=new THREE.DirectionalLight(0xffecd0,3.5);
 sun.position.set(-45,55,22);
 sun.castShadow=true;
-sun.shadow.mapSize.set(2048,2048);
+sun.shadow.mapSize.set(1024,1024);
 sun.shadow.camera.left=-80;sun.shadow.camera.right=80;sun.shadow.camera.top=80;sun.shadow.camera.bottom=-80;
 scene.add(sun);
 
@@ -79,10 +79,10 @@ function levelPreset(n){
 }
 
 function box(group,w,h,d,x,y,z,material,cast=true){
- const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);m.position.set(x,y,z);m.castShadow=cast;m.receiveShadow=true;group.add(m);return m;
+ const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);m.position.set(x,y,z);m.castShadow=cast&&h>1.5;m.receiveShadow=true;group.add(m);return m;
 }
 function cyl(group,r,h,x,y,z,material){
- const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,10),material);m.position.set(x,y,z);m.castShadow=true;group.add(m);return m;
+ const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,8),material);m.position.set(x,y,z);m.castShadow=h>3;group.add(m);return m;
 }
 
 function clearLevel(){
@@ -143,7 +143,7 @@ function addRoadCity(seed){
  cars.forEach((p,i)=>{const cg=new THREE.Group();const cm=mat([C.car,0x425d74,0x6d6d68,0xb7a14b][i%4],.45,.25);box(cg,3.5,.7,1.55,0,.55,0,cm);box(cg,1.9,.6,1.35,-.15,1.08,0,mats.glass);for(const x of[-1.1,1.1])for(const z of[-.7,.7])cyl(cg,.28,.18,x,.3,z,mat(0x111111,.8));cg.rotation.y=p[2];cg.position.set(p[0],0,p[1]);g.add(cg)});
  addAmbientMotion(g,seed);
  // distant cheap skyline outside playable block
- for(let i=0;i<42;i++){const side=i%4,along=-55+r()*110,dist=64+r()*18,w=5+r()*8,d=5+r()*8,h=8+r()*34;let x=0,z=0;if(side===0){x=along;z=-dist}else if(side===1){x=dist;z=along}else if(side===2){x=along;z=dist}else{x=-dist;z=along}box(g,w,h,d,x,h/2,z,mat(0x343b3d,.9,.04),false)}
+ for(let i=0;i<24;i++){const side=i%4,along=-55+r()*110,dist=64+r()*18,w=5+r()*8,d=5+r()*8,h=8+r()*34;let x=0,z=0;if(side===0){x=along;z=-dist}else if(side===1){x=dist;z=along}else if(side===2){x=along;z=dist}else{x=-dist;z=along}box(g,w,h,d,x,h/2,z,mat(0x343b3d,.9,.04),false)}
  // protected buildings inside parcels, never roads
  const lots=[
   [-28,-28,[-38,-38,-20,-20]],[-28,28,[-38,18,-20,38]],[28,-28,[18,-38,38,-20]],[28,28,[18,18,38,38]]
@@ -168,7 +168,7 @@ function addRoadCity(seed){
 function addProtected(group,x,z,w,d,floors,index){
  const h=floors*2.05;const mesh=box(group,w,h,d,x,h/2,z,mats.protected);
  const edge=new THREE.LineSegments(new THREE.EdgesGeometry(mesh.geometry),new THREE.LineBasicMaterial({color:0xaab7b9,transparent:true,opacity:.2}));edge.position.copy(mesh.position);group.add(edge);
- const rows=Math.max(2,Math.floor(floors*.7)),cols=Math.max(2,Math.floor(w/2.6));
+ const rows=Math.max(2,Math.floor(floors*.45)),cols=Math.max(2,Math.floor(w/3.5));
  for(let ry=0;ry<rows;ry++)for(let cx=0;cx<cols;cx++){const win=new THREE.Mesh(new THREE.PlaneGeometry(.75,.58),mats.glass);win.position.set(x-w/2+.9+cx*(w-1.8)/Math.max(1,cols-1),1.2+ry*(h-2.4)/Math.max(1,rows-1),z+d/2+.01);group.add(win)}
  state.protected.push({x,z,w,d,h,index,damage:0});
  const body=new CANNON.Body({mass:0,shape:new CANNON.Box(new CANNON.Vec3(w/2,h/2,d/2)),position:new CANNON.Vec3(x,h/2,z)});world.addBody(body);state.bodies.push(body);
