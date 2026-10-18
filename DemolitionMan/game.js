@@ -433,4 +433,34 @@ $('#xrayBtn').onclick=()=>{setEngineeringView(!state.xray);if(state.tutorial.act
 $('#soundBtn').onclick=()=>{state.audio=!state.audio;$('#soundBtn').textContent=state.audio?'♪':'×';toast(state.audio?'SOUND ON':'SOUND OFF')};$('#helpBtn').onclick=()=>$('#helpModal').classList.add('open');$('#closeHelp').onclick=$('#closeHelp2').onclick=()=>$('#helpModal').classList.remove('open');
 $('#startBtn').onclick=()=>{$('#startCard').classList.remove('open');toast('CONTRACT ACTIVE');if(state.level===1&&!localStorage.getItem('dm-tutorial-seen'))startTutorial()};$('#tutorialBtn').onclick=startTutorial;$('#tutorialNext').onclick=()=>tutorialAdvance();$('#tutorialSkip').onclick=()=>{state.tutorial.active=false;localStorage.setItem('dm-tutorial-seen','1');renderTutorial();toast('TUTORIAL SKIPPED')};$('#retryBtn').onclick=()=>loadLevel(state.level);$('#nextBtn').onclick=()=>loadLevel(state.level+1);
 
+
+// Expose a read-only snapshot and explicit QA-only controls for automated browser playtests.
+if(new URLSearchParams(location.search).has('qa')){
+ window.DemolitionQA={
+  ready:()=>!!state.data,
+  snapshot:()=>({
+   level:state.level,name:state.data?.name,
+   active:state.running,finished:state.finished,
+   chargeCount:state.charges.length,
+   chargeNodes:state.charges.map(c=>({floor:c.node.f,ix:c.node.ix,iz:c.node.iz})),
+   xray:state.xray,detached:state.slabs.filter(s=>s.detached).length,
+   coresDetached:state.coreSegments.filter(c=>c.failed).length,
+   slabs:state.slabs.length,integrity:state.targetIntegrity,
+   failedNodes:state.failedNodes.size,collateral:state.collateral,
+   tutorial:{...state.tutorial},
+   pedestrianPositions:state.pedestrians.slice(0,3).map(p=>p.mesh.position.toArray()),
+   vehiclePositions:state.ambient.slice(0,3).map(a=>a.mesh.position.toArray()),
+   protected:state.protected.map(b=>({x:b.x,z:b.z,w:b.w,d:b.d,h:b.h})),
+   origin:state.targetOrigin.toArray(),
+   camera:camera.position.toArray()
+  }),
+  projectNode:(f,ix,iz)=>{const node=state.nodes.find(n=>n.f===f&&n.ix===ix&&n.iz===iz);if(!node)return null;
+   const p=node.pos.clone().project(camera),r=canvas.getBoundingClientRect();return{x:r.left+(p.x+1)*r.width/2,y:r.top+(1-p.y)*r.height/2,visible:node.mesh.visible};},
+  loadLevel:n=>loadLevel(n),
+  place:(f,ix,iz,power=.7,delay=0)=>{if(state.running)return false;const node=state.nodes.find(n=>n.f===f&&n.ix===ix&&n.iz===iz);if(!node||node.charge)return false;state.power=power;state.delay=delay;addCharge(node);return true},
+  remove:(f,ix,iz)=>{const node=state.nodes.find(n=>n.f===f&&n.ix===ix&&n.iz===iz);if(!node||!node.charge)return false;removeCharge(node);return true},
+  detonate,
+  reset:()=>loadLevel(state.level)
+ };
+}
 loadLevel(+(localStorage.getItem('dm-level')||1));animate();
