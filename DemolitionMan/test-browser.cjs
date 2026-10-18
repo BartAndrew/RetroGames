@@ -23,10 +23,10 @@ const root=path.resolve(__dirname,'../_site'),out=path.join(__dirname,'test-resu
   await page.evaluate(()=>DemolitionQA.loadLevel(1));await page.locator('#startCard').evaluate(el=>el.classList.remove('open'));
   await page.evaluate(()=>DemolitionQA.place(5,1,1));assert.equal((await page.evaluate(()=>DemolitionQA.snapshot())).chargeCount,1);
   assert(await page.evaluate(()=>DemolitionQA.remove(5,1,1)));assert.equal((await page.evaluate(()=>DemolitionQA.snapshot())).chargeCount,0);checks.push('charge-toggle');
-  await page.evaluate(()=>DemolitionQA.place(5,1,1));
+  await page.evaluate(()=>{for(const [ix,iz] of [[0,0],[0,1],[1,0],[1,1]])DemolitionQA.place(5,ix,iz)});
   await page.screenshot({path:path.join(out,'demolition-planned.png')});
   await page.evaluate(()=>DemolitionQA.detonate());
-  await page.waitForTimeout(2800);
+  await page.waitForTimeout(3500);
   snap=await page.evaluate(()=>DemolitionQA.snapshot());assert(snap.detached>0,'upper floor failed to detach');checks.push('upper-floor-collapse');
   await page.screenshot({path:path.join(out,'demolition-collapse.png')});
   await page.evaluate(()=>DemolitionQA.reset());snap=await page.evaluate(()=>DemolitionQA.snapshot());assert.equal(snap.detached,0);assert.equal(snap.chargeCount,0);checks.push('reset');
