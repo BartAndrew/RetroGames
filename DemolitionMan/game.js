@@ -219,8 +219,8 @@ function addTargetStructure(group,data){
 function setEngineeringView(on){
  state.xray=on;const level=scene.getObjectByName('level');if(!level)return;
  const facade=level.getObjectByName('facade');if(facade)facade.children.forEach(m=>{m.material.opacity=on?.12:.72;m.material.depthWrite=!on});
- state.members.forEach(m=>{m.mesh.visible=on||m.type==='column';m.mesh.material=on?mats.steelHot:mats.steel});
- state.coreSegments.forEach(c=>{c.mesh.material.transparent=on;c.mesh.material.opacity=on?.32:1});
+ state.members.forEach(m=>{m.mesh.visible=!m.failed&&(on||m.type==='column');if(!m.failed)m.mesh.material=on?mats.steelHot:mats.steel});
+ state.coreSegments.forEach(c=>{c.mesh.material=mats.core.clone();c.mesh.material.transparent=on;c.mesh.material.opacity=on?.32:1});
  state.nodes.forEach(n=>{n.mesh.visible=!state.running&&!n.charge&&(on||state.mode==='charge')});
  $('#xrayBtn').classList.toggle('active',on);
 }
@@ -235,11 +235,15 @@ function loadLevel(n){
 }
 function resetCamera(){const h=(state.data?.floors||8)*2.15;camera.position.set(state.targetOrigin.x+34,Math.max(25,h*.78),state.targetOrigin.z+38);controls.target.set(state.targetOrigin.x,Math.min(h*.46,22),state.targetOrigin.z);controls.update()}
 
-const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
+const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let pointerStart=null;
+canvas.addEventListener('pointerdown',e=>{pointerStart={x:e.clientX,y:e.clientY}});
 function pickNode(e){
  if(state.running||state.finished||state.mode!=='charge')return;
+ if(pointerStart&&Math.hypot(e.clientX-pointerStart.x,e.clientY-pointerStart.y)>6)return;
  const rect=canvas.getBoundingClientRect();pointer.x=(e.clientX-rect.left)/rect.width*2-1;pointer.y=-(e.clientY-rect.top)/rect.height*2+1;raycaster.setFromCamera(pointer,camera);
- const hits=raycaster.intersectObjects(state.nodes.map(n=>n.mesh),false);if(!hits.length)return;
+ const charged=state.charges.map(c=>c.mesh);const hitCharges=raycaster.intersectObjects(charged,true);
+ if(hitCharges.length){const mesh=hitCharges[0].object;const charge=state.charges.find(c=>{let m=mesh;while(m){if(m===c.mesh)return true;m=m.parent}return false});if(charge){removeCharge(charge.node);return}}
+ const hits=raycaster.intersectObjects(state.nodes.filter(n=>n.mesh.visible).map(n=>n.mesh),false);if(!hits.length)return;
  const id=hits[0].object.userData.nodeId,node=state.nodes.find(n=>n.id===id);if(!node)return;
  if(node.charge){removeCharge(node);return}if(state.charges.length>=state.maxCharges){toast('Charge limit reached');return}addCharge(node);
 }
@@ -249,7 +253,7 @@ function addCharge(node){
  const g=new THREE.Group();const pack=box(g,.38,.5,.2,0,0,0,mats.charge);const lamp=new THREE.PointLight(0xff5a20,.65,2);lamp.position.set(0,.1,.15);g.add(lamp);g.position.copy(node.pos);scene.getObjectByName('level').add(g);
  const c={node,mesh:g,power:state.power,delay:state.delay};node.charge=c;state.charges.push(c);node.mesh.visible=false;updateHUD();forecast();if(state.tutorial.active&&state.tutorial.step===2)setTimeout(()=>tutorialAdvance(),250);
 }
-function removeCharge(node){const c=node.charge;if(!c)return;scene.getObjectByName('level').remove(c.mesh);state.charges=state.charges.filter(x=>x!==c);node.charge=null;node.mesh.visible=state.xray;updateHUD();forecast()}
+function removeCharge(node){const c=node.charge;if(!c)return;scene.getObjectByName('level').remove(c.mesh);state.charges=state.charges.filter(x=>x!==c);node.charge=null;node.mesh.visible=state.xray||state.mode==='charge';updateHUD();forecast()}
 
 function forecast(){
  if(!state.charges.length){$('#failureRisk').textContent='LOW';return}
@@ -333,13 +337,13 @@ function detonate(){
 function transferImpactEnergy(){
  for(const falling of state.debris){
    if(!falling.body||falling.body.velocity.y>-1.6)continue;
-   const p=falling.body.position,sourceFloor=falling.f||0;
+   const p=falling.body.position,sourceFloor=falling.f||0,prev=falling._previousY??p.y;
    for(const slab of state.slabs){
      if(slab.detached||slab.f>=sourceFloor)continue;
      const key=state.debris.indexOf(falling)+'-'+slab.f+'-'+slab.ix+'-'+slab.iz;
      if(state.impactHits.has(key))continue;
      const q=slab.mesh.position;
-     if(Math.abs(p.x-q.x)<slab.w*.58&&Math.abs(p.z-q.z)<slab.d*.58&&p.y>q.y&&p.y-q.y<1.25){
+     if(Math.abs(p.x-q.x)<slab.w*.58&&Math.abs(p.z-q.z)<slab.d*.58&&prev>=q.y&&p.y<=q.y+1.5){
        state.impactHits.add(key);
        const impact=Math.abs(falling.body.velocity.y)*(falling.body.mass||20);
        if(impact>85){
@@ -354,6 +358,7 @@ function transferImpactEnergy(){
        }
      }
    }
+   falling._previousY=p.y;
  }
 }
 
@@ -396,7 +401,7 @@ function tutorialAdvance(force=false){
  if(i===0&&!state.xray&&!force){toast('Turn on Engineering View first');return}
  if(i===2&&!state.charges.length&&!force){toast('Place a charge on a structural joint');return}
  if(i<tutorialSteps.length-1){state.tutorial.step++;if(state.tutorial.step===1)setEngineeringView(true);renderTutorial()}
- else{state.tutorial.active=false;renderTutorial();toast('TUTORIAL COMPLETE')}
+ else{state.tutorial.active=false;localStorage.setItem('dm-tutorial-seen','1');renderTutorial();toast('TUTORIAL COMPLETE')}
 }
 
 function beep(freq=80,dur=.1,vol=.05,type='sine'){try{const ctx=beep.ctx||(beep.ctx=new (AudioContext||webkitAudioContext)()),o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(vol,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur)}catch{}}
