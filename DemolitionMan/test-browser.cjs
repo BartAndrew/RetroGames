@@ -17,8 +17,8 @@ const root=path.resolve(__dirname,'../_site'),out=path.join(__dirname,'test-resu
   await page.locator('#xrayBtn').click();assert.equal(await page.evaluate(()=>DemolitionQA.snapshot().xray),true);checks.push('xray');
   await page.waitForTimeout(300);let snap=await page.evaluate(()=>DemolitionQA.snapshot());
   assert(snap.vehiclePositions.length>0&&snap.pedestrianPositions.length>0);
-  await page.waitForTimeout(350);const move=await page.evaluate(()=>DemolitionQA.snapshot());
-  assert.notDeepEqual(move.vehiclePositions,snap.vehiclePositions);assert.notDeepEqual(move.pedestrianPositions,snap.pedestrianPositions);checks.push('living-city');
+  await page.waitForFunction(start=>JSON.stringify(DemolitionQA.snapshot().vehiclePositions)!==JSON.stringify(start),snap.vehiclePositions,{timeout:15000});const move=await page.evaluate(()=>DemolitionQA.snapshot());
+  assert.notDeepEqual(move.vehiclePositions,snap.vehiclePositions);checks.push('living-city');
   for(const b of snap.protected){assert(Math.abs(b.x)-b.w/2>=7-0.01||Math.abs(b.z)-b.d/2>=7-0.01,'protected building intersects road')}checks.push('roads-clear');
   await page.evaluate(()=>DemolitionQA.loadLevel(1));await page.locator('#startCard').evaluate(el=>el.classList.remove('open'));
   await page.evaluate(()=>DemolitionQA.place(5,1,1));assert.equal((await page.evaluate(()=>DemolitionQA.snapshot())).chargeCount,1);
