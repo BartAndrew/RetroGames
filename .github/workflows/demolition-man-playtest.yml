@@ -13,11 +13,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Build staged arcade
+        run: python3 tools/build_site.py
       - name: Install dependencies
         working-directory: StereoTypeFighter
         run: npm install --no-audit --no-fund
-      - name: Build staged arcade
-        run: python3 tools/build_site.py
       - name: Install Playwright Chromium
         working-directory: StereoTypeFighter
         run: npx playwright install --with-deps chromium
