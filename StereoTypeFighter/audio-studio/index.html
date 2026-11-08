@@ -107,7 +107,7 @@ const oldInspector=renderInspector;
 renderInspector=function(){oldInspector();let s=state.sounds.find(x=>x.id===current);if(!s)return;let root=$("inspector");let info=document.createElement("div");info.className="source";info.style.marginTop="14px";let url=s.sourceUrl||"",label=s.remote?"Streaming directly from publisher · not locally bundled":"Imported / generated sound";
 info.innerHTML='<strong>Sound source & provenance</strong><p>'+esc(label)+'</p><p>'+esc(s.description||s.notes||"")+'</p><div class="tiny">Author: '+esc(s.author||"Unspecified")+' · Licence: '+esc(s.licence||"Unverified")+'</div>'+(url?'<p><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Visit original sound source ↗</a></p>':'');
 root.insertBefore(info,root.firstChild);let field=document.createElement("div");field.innerHTML='<label class="sub">Original source URL</label><input class="field" id="editSourceUrl" type="url" style="width:100%;margin:7px 0" value="'+esc(url)+'"><label class="sub">Source description</label><textarea id="editSourceDescription" class="field" rows="2" style="width:100%;margin:7px 0">'+esc(s.description||"")+'</textarea>';
-root.insertBefore(field,root.querySelector("#saveSound"));let oldSave=$("saveSound").onclick;$("saveSound").onclick=()=>{s.sourceUrl=$("editSourceUrl").value.trim();s.description=$("editSourceDescription").value.trim();oldSave()};
+root.insertBefore(field,root.querySelector("#saveSound").parentElement);let oldSave=$("saveSound").onclick;$("saveSound").onclick=()=>{s.sourceUrl=$("editSourceUrl").value.trim();s.description=$("editSourceDescription").value.trim();oldSave()};
 };
 const oldSourceRender=renderSources;
 renderSources=function(){
