@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111310">
+  <meta name="description" content="Stereotype Fighters Build 12 playtest hub: availability, controls and bug reporting.">
+  <title>Stereotype Fighters | Build 12 Playtest | RetroGames</title>
+  <link rel="icon" href="../../arcade/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../arcade/arcade.css">
+  <style>
+    .test-hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(230px,.75fr);gap:48px;align-items:center;padding:64px 0 34px}
+    .test-hero h1{font-size:clamp(38px,5.5vw,72px);font-weight:900;line-height:1.04;letter-spacing:-.055em;margin:0 0 22px}
+    .test-hero h1 span{display:block;color:var(--accent)}
+    .test-hero p.lead{font-size:18px;max-width:670px;color:var(--muted)}
+    .test-art{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);background:radial-gradient(ellipse at 30% 40%,#6f9434 0%,transparent 42%),linear-gradient(145deg,#252d1d,#0b0d0a);position:relative;overflow:hidden}
+    .test-art .versus{font:900 clamp(72px,10vw,150px)/1 var(--sans);color:var(--accent);letter-spacing:-.09em;text-shadow:8px 8px 0 #111310;transform:skew(-10deg) rotate(-9deg)}
+    .test-art::before,.test-art::after{content:"";width:31%;height:64%;position:absolute;bottom:-18%;background:#0a0d09;border:3px solid #809a52;transform:rotate(-20deg);border-radius:40% 40% 10% 10%}
+    .test-art::before{left:6%;transform:rotate(17deg)}.test-art::after{right:6%}
+    .test-art .versus{position:relative;z-index:1}
+    .status-panel{border:1px solid #758b45;border-left:5px solid var(--accent);padding:22px 25px;margin:20px 0 35px;background:#20271a}
+    .status-panel h2{font-size:20px;margin:0 0 6px}.status-panel p{margin:0;color:var(--muted)}
+    .status-panel strong{color:var(--ink)}
+    .test-actions{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 0}
+    .test-actions .button{min-height:50px}
+    .unavailable{color:#b9bcae;background:#22251f;border:1px dashed #606456;padding:12px 17px;display:inline-flex;align-items:center;font-weight:750;font-size:13px}
+    .test-sections{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:0 0 68px}
+    .test-panel{border:1px solid var(--line);background:var(--panel);padding:30px}
+    .test-panel h2{font-size:26px;letter-spacing:-.03em;line-height:1.15;margin:0 0 12px}
+    .test-panel p,.test-panel li{color:var(--muted)}.test-panel ol{padding-left:22px}.test-panel li{margin:0 0 11px}
+    .test-panel strong{color:var(--ink)}.test-panel a:not(.button){color:var(--accent);text-decoration:underline}
+    .micro{font-size:13px}.test-kicker{color:var(--accent);font:700 11px var(--mono);letter-spacing:.1em}
+    @media(max-width:780px){.test-hero{grid-template-columns:1fr;gap:26px;padding-top:36px}.test-art{aspect-ratio:16/9}.test-sections{grid-template-columns:1fr}.test-panel{padding:23px}.test-hero h1{letter-spacing:-.04em}}
+    @media(prefers-reduced-motion:reduce){.test-art .versus{transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to playtest information</a>
+  <header class="site-header wrap">
+    <a class="brand" href="../../" aria-label="RetroGames arcade home"><span class="brand-mark" aria-hidden="true">R<span>G</span></span>RETRO<span>GAMES</span></a>
+    <nav aria-label="Page navigation"><a href="../../">All games</a><a href="../">Current fighter game</a><a href="#feedback">Feedback</a></nav>
+  </header>
+  <main class="wrap" id="content">
+    <section class="test-hero" aria-labelledby="playtest-title">
+      <div>
+        <p class="eyebrow">STEREOTYPE FIGHTERS / COMMUNITY PLAYTEST</p>
+        <h1 id="playtest-title">Ready to fight?<span>Build 12.</span></h1>
+        <p class="lead">This is the dedicated Stereotype Fighters Build 12 testing page. Once the actual Build 12 package is supplied and verified, this page will provide its launch or download link.</p>
+        <p class="test-kicker">PLAYTEST TRACKER · BUILD 12</p>
+        <div class="test-actions">
+          <span class="unavailable" aria-label="Build 12 is not yet available">Build 12 launch / download — pending</span>
+          <a class="button button-quiet" href="../">Play the existing V6.8 browser build <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      </div>
+      <div class="test-art" role="img" aria-label="Arcade-styled versus artwork for the Stereotype Fighters playtest"><span class="versus" aria-hidden="true">VS</span></div>
+    </section>
+    <section class="status-panel" role="status" aria-label="Build 12 availability" data-build-status="pending">
+      <h2>Build 12 is not uploaded yet</h2>
+      <p><strong>Release status:</strong> Awaiting the Build 12 game files. The V6.8 link above is an older, playable browser version for comparison; it is <strong>not</strong> Build 12. The page is ready for testers, but the new build itself is not available.</p>
+    </section>
+    <div class="test-sections">
+      <section class="test-panel" aria-labelledby="checklist-title">
+        <p class="test-kicker">01 / WHAT TO TEST</p>
+        <h2 id="checklist-title">Playtest checklist</h2>
+        <ol>
+          <li>Check startup, loading, and the main menu.</li>
+          <li>Choose fighters and an arena; check previews and animations.</li>
+          <li>Try movement, jumps, block, punch, kick and special attacks.</li>
+          <li>Play a full round; check hits, health, meter, timer and knockouts.</li>
+          <li>Try pause, resume, rematch, CPU, local multiplayer and training where available.</li>
+          <li>Record visual glitches, crashes, slowdowns and controller issues.</li>
+        </ol>
+      </section>
+      <section class="test-panel" id="feedback" aria-labelledby="feedback-title">
+        <p class="test-kicker">02 / HELP IMPROVE THE GAME</p>
+        <h2 id="feedback-title">Report what you find</h2>
+        <p>When reporting a problem, include the <strong>exact build you tested</strong>, your device and input method, the fighters and stage, plus steps to reproduce. Screenshots or a short recording help.</p>
+        <div class="test-actions"><a class="button button-primary" href="https://github.com/BartAndrew/RetroGames/issues/new?title=%5BStereotype%20Fighters%5D%20Playtest%20feedback&amp;body=**Build%20tested%3A**%20Build%2012%20%2F%20V6.8%20browser%20baseline%20(please%20specify)%0A%0A**Operating%20system%20and%20browser%20(or%20Windows%20build)%3A**%0A%0A**Input%20device%3A**%0A%0A**Fighter(s)%20and%20arena%3A**%0A%0A**Steps%20to%20reproduce%3A**%0A%0A1.%20%0A%0A2.%20%0A%0A3.%20%0A%0A**Expected%20behaviour%3A**%0A%0A**Actual%20behaviour%3A**%0A%0A**Screenshot%20or%20recording%20(optional)%3A**%0A%0A**Other%20feedback%3A**" target="_blank" rel="noopener noreferrer">Report a bug or send feedback <span aria-hidden="true">&#8599;</span></a></div>
+        <p class="micro">Feedback opens a pre-filled GitHub issue. You will need a GitHub account to submit it. Do not report the V6.8 browser baseline as Build 12.</p>
+        <p class="micro"><strong>Controls for the existing V6.8 browser build:</strong> P1 uses WASD, E to block, F/G to attack and H for special; P2 uses arrows, I to block, J/K to attack and L for special. P or Escape pauses. Build 12 controls will be confirmed with its release.</p>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="../../">RETRO<span>GAMES</span></a><span>Stereotype Fighters / Build 12 Playtest</span><a href="https://github.com/BartAndrew/RetroGames">Source &#8599;</a></footer>
+</body>
+</html>

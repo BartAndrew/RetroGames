@@ -67,6 +67,11 @@ jobs:
         working-directory: StereoTypeFighter
         run: node tools/verify-v66-assets.mjs --site ../_site/StereoTypeFighter
 
+      - name: Check Build 12 playtest page survives production pruning
+        run: |
+          test -s _site/StereoTypeFighter/build-12/index.html
+          grep -q 'Build 12 is not uploaded yet' _site/StereoTypeFighter/build-12/index.html
+
       - name: Install Chromium
         working-directory: StereoTypeFighter
         run: npx playwright install --with-deps chromium

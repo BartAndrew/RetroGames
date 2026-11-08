@@ -29,9 +29,9 @@ An original, cinematic tribute to classic Pacific vertical shooters. Pilot a twi
 
 [<img src="StereoTypeFighter/Dave.png" alt="Dave's original Stereotype Fighters sprite sheet" width="480">](https://bartandrew.github.io/RetroGames/StereoTypeFighter/)
 
-An 18-character retro fighter using original character artwork. Play against the CPU at three difficulties, challenge a friend on one keyboard, or use Practice mode. The current arena is the procedural Neon Quarter. Some animation poses are fallbacks, and specials currently share a short-range implementation.
+A 20-character retro fighter using original character artwork across six selectable arenas. Play against the CPU at three difficulties, challenge a friend locally, or use Training mode. The currently published browser runtime identifies itself as V6.8.
 
-**[Play Stereotype Fighters](https://bartandrew.github.io/RetroGames/StereoTypeFighter/)** · [Controls and development notes](StereoTypeFighter/README.md)
+**[Play Stereotype Fighters V6.8](https://bartandrew.github.io/RetroGames/StereoTypeFighter/)** · **[Build 12 playtest page (game pending)](https://bartandrew.github.io/RetroGames/StereoTypeFighter/build-12/)** · [Controls and development notes](StereoTypeFighter/README.md)
 
 ### Pacific Lightning
 
@@ -65,7 +65,7 @@ A four-character parody fighter with CPU and local two-player modes. V3 expands 
 | --- | --- | --- |
 | Demolition Man V1 | [Play](https://bartandrew.github.io/RetroGames/DemolitionMan/) | `DemolitionMan/` |
 | Midway: Evolution V1 | [Play](https://bartandrew.github.io/RetroGames/Midway1942/) | `Midway1942/` |
-| Stereotype Fighters V5.1 | [Play](https://bartandrew.github.io/RetroGames/StereoTypeFighter/) | `StereoTypeFighter/` |
+| Stereotype Fighters V6.8 | [Play](https://bartandrew.github.io/RetroGames/StereoTypeFighter/) | `StereoTypeFighter/` |
 | Pacific Lightning, sprite build | [Play](https://bartandrew.github.io/RetroGames/Pacific-Lightning2/Pacific-Lightning/) | `Pacific-Lightning2/Pacific-Lightning/` |
 | Pacific Fighter, original | [Play](https://bartandrew.github.io/RetroGames/PacificFighter/) | `PacificFighter/` |
 | Pacific Fighter, archived duplicate | [Play](https://bartandrew.github.io/RetroGames/PacificFighter/Pacific-Lightning/Pacific-Lightning/) | `PacificFighter/Pacific-Lightning/Pacific-Lightning/` |
