@@ -49,4 +49,105 @@ $('trackArena').onclick=()=>musicSketch(false);$('trackBoss').onclick=()=>musicS
 const extraStyle=document.createElement('style');extraStyle.textContent='.mixLayer{display:flex;gap:12px;align-items:center;padding:14px;margin:9px 0;background:#202638;border:1px solid #40465b;border-radius:10px}.mixFields{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:9px}.mixFields label{display:inline-flex;gap:7px;align-items:center;font-size:12px;color:#b8c4dc}.mixFields input[type=number]{max-width:65px}.mixFields select{max-width:250px}.mixFields input[type=range]{width:85px}.fighter-grid .fighter{padding:8px}.fighter-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr))}';document.head.appendChild(extraStyle);
 render();
 </script>
+
+<script>
+/* Audio Forge v2.1: provenance-aware, remote-linked CC0 additions and bulk ingestion */
+(()=>{
+const externalPacks=[
+ {name:"Various Sound Effects — Spring Spring",url:"https://opengameart.org/content/various-sound-effects-0",licence:"CC0",description:"Original recordings and game SFX by Spring Spring, including hits, explosions, vocal reactions, footsteps and teleport effects."},
+ {name:"Male Death & Pain Grunts",url:"https://opengameart.org/content/grunts-male-death-and-pain",licence:"CC0",description:"Recorded long-form vocal pain and defeat grunts, including multiple variations by thebardofblasphemy."},
+ {name:"Short Battle Loop",url:"https://opengameart.org/content/short-battle-loop",licence:"CC0",description:"Blippy looping combat music by Some Weirdo, with editable LMMS project on the source page."},
+ {name:"Male Grunt/Yelling Sounds",url:"https://opengameart.org/content/male-gruntyelling-sounds",licence:"CC0",description:"Four male vocalists, each recording around ten to twelve screams and grunts; downloadable ZIP (not embedded)."},
+ {name:"Kenney Impact Sounds",url:"https://kenney.nl/assets/impact-sounds",licence:"CC0",description:"A 130-sound impact and foley pack; download and import the folder."},
+ {name:"Battle Sound Effects",url:"https://opengameart.org/content/battle-sound-effects",licence:"CC0 option",description:"Three swishes and a bow sound, archive download."}
+];
+const remote=[
+// Direct publisher-hosted audio URLs, not mirrored or redistributed by Audio Forge.
+ ["Player Hit","reaction","player_hit.wav",.25],
+ ["Splatter Hit","attack","snd_splathit.wav",.08],
+ ["Impact Burst","attack","bangs.wav",1.7],
+ ["Stone Break","attack","break_stone.wav",.93],
+ ["Crush","attack","crush.wav",.29],
+ ["Death Reaction","voice","death.wav",1.2],
+ ["Low Explosion","special","dull_explosion.wav",1.4],
+ ["Fall / Knockdown","reaction","fall.wav",.83],
+ ["Vocal Moan","voice","moan.wav",.3],
+ ["Short Grunt","voice","uff.wav",.75],
+ ["Rock Impact","attack","small_rock_impact.wav",.21],
+ ["Step Loop","movement","snd_footsteps1.wav",.13],
+ ["Enemy Scream","voice","snd_enemyscream.wav",.37],
+ ["Sword Swing","attack","snd_enemysword.wav",.32],
+ ["Jump","movement","snd_enemyjump.wav",.66],
+ ["Landing","movement","snd_enemyland.wav",.57],
+ ["Throw","attack","snd_throw1.wav",.09],
+ ["Teleport","special","teleport.wav",1.5],
+ ["Energy Fill","special","snd_fillenergy.wav",.016],
+ ["Splatter","attack","snd_splat.wav",.10],
+ ["Laser / Warp In","special","snd_warp_in.wav",.69],
+ ["Menu Select","system","snd_menu_select.wav",.105],
+ ["NPC Message","voice","snd_npc_message.wav",.029]
+].map(([name,category,file,mb],i)=>({
+ id:"oga-spring-"+file.replace(/[^a-z0-9]/gi,"-"),
+ name,category,pack:"Various Sound Effects — Spring Spring",
+ licence:"CC0",author:"Spring Spring",sourceUrl:"https://opengameart.org/content/various-sound-effects-0",
+ mediaUrl:"https://opengameart.org/sites/default/files/"+encodeURIComponent(file),
+ description:"Publisher-hosted source WAV, approximately "+mb+" MB. Click to stream; import a local copy for reliable offline layering.",
+ size:Math.round(mb*1048576),rating:0,rejected:false,notes:"Remote reference; publisher may block hotlink playback.",remote:true
+}));
+remote.push({id:"oga-grunts-voice",name:"Male Death & Pain Grunts — Full Recording",category:"voice",pack:"Male Death & Pain Grunts",licence:"CC0",author:"thebardofblasphemy",sourceUrl:"https://opengameart.org/content/grunts-male-death-and-pain",mediaUrl:"https://opengameart.org/sites/default/files/death%20pain%20grunts.wav",description:"A longer 4.4 MB vocal recording with multiple injured/dying expressions.",size:4400000,rating:0,rejected:false,notes:"Long recording, locate and trim individual reactions after importing a local copy.",remote:true});
+remote.push({id:"oga-battleloop",name:"Short Battle Loop — Full Music",category:"ambience",pack:"Short Battle Loop",licence:"CC0",author:"Some Weirdo",sourceUrl:"https://opengameart.org/content/short-battle-loop",mediaUrl:"https://opengameart.org/sites/default/files/battleloop.wav",description:"12.1 MB original battle music recording; may contain intentional subsonic content.",size:12100000,rating:0,rejected:false,notes:"Long music source. Review loudness before enabling in-game.",remote:true});
+for(const p of externalPacks)if(!sources.some(s=>s[0]===p.name))sources.push([p.name,p.licence,p.url,p.description]);
+for(const entry of remote){if(!state.sounds.some(s=>s.id===entry.id))state.sounds.push(entry)}
+save();
+const priorFileFor=fileFor;
+fileFor=function(id,cb){const s=state.sounds.find(x=>x.id===id);if(s?.remote){cb(s.mediaUrl);return}return priorFileFor(id,cb)};
+const priorGetBuffer=getBufferV2;
+getBufferV2=async function(id,ac){const s=state.sounds.find(x=>x.id===id);if(s?.remote){const response=await fetch(s.mediaUrl,{mode:"cors"});if(!response.ok)throw new Error("Publisher blocked direct fetch (HTTP "+response.status+"). Download and import the WAV for editing.");return ac.decodeAudioData(await response.arrayBuffer())}return priorGetBuffer(id,ac)};
+const oldInspector=renderInspector;
+renderInspector=function(){oldInspector();let s=state.sounds.find(x=>x.id===current);if(!s)return;let root=$("inspector");let info=document.createElement("div");info.className="source";info.style.marginTop="14px";let url=s.sourceUrl||"",label=s.remote?"Streaming directly from publisher · not locally bundled":"Imported / generated sound";
+info.innerHTML='<strong>Sound source & provenance</strong><p>'+esc(label)+'</p><p>'+esc(s.description||s.notes||"")+'</p><div class="tiny">Author: '+esc(s.author||"Unspecified")+' · Licence: '+esc(s.licence||"Unverified")+'</div>'+(url?'<p><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Visit original sound source ↗</a></p>':'');
+root.insertBefore(info,root.firstChild);let field=document.createElement("div");field.innerHTML='<label class="sub">Original source URL</label><input class="field" id="editSourceUrl" type="url" style="width:100%;margin:7px 0" value="'+esc(url)+'"><label class="sub">Source description</label><textarea id="editSourceDescription" class="field" rows="2" style="width:100%;margin:7px 0">'+esc(s.description||"")+'</textarea>';
+root.insertBefore(field,root.querySelector("#saveSound"));let oldSave=$("saveSound").onclick;$("saveSound").onclick=()=>{s.sourceUrl=$("editSourceUrl").value.trim();s.description=$("editSourceDescription").value.trim();oldSave()};
+};
+const oldSourceRender=renderSources;
+renderSources=function(){
+ oldSourceRender();
+ const list=$("sourceList");
+ const panel=document.createElement("div");panel.className="source";
+ panel.innerHTML='<h3>Loaded recordings grouped by source</h3><p>These are <b>real CC0 file entries linked directly to the original publisher</b>, not hosted copies. Streaming requires the publisher to allow it; download and import to work offline.</p><div id="sourceGroups"></div>';
+ list.prepend(panel);
+ const packs=[...new Set(state.sounds.map(s=>s.pack))].sort();
+ $("sourceGroups").innerHTML=packs.map(pack=>{
+ const matches=state.sounds.filter(s=>s.pack===pack),p=externalPacks.find(x=>x.name===pack)||sources.find(x=>x[0]===pack),url=p?.url||p?.[2]||matches.find(x=>x.sourceUrl)?.sourceUrl||"";
+ return '<details style="padding:10px;border-bottom:1px solid #343b4d"><summary style="cursor:pointer"><b>'+esc(pack)+'</b> · '+matches.length+' sounds</summary><p>'+esc(p?.description||p?.[3]||matches[0]?.description||"Personal library")+'</p>'+(url?'<p><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Source website ↗</a></p>':'')+matches.slice(0,200).map(s=>'<div class="row" style="padding:5px 0;justify-content:space-between"><span>'+esc(s.name)+'</span><button class="btn" data-packsound="'+esc(s.id)+'">▶ Preview</button></div>').join('')+'</details>';
+ }).join('');
+ list.querySelectorAll("[data-packsound]").forEach(b=>b.onclick=()=>play(b.dataset.packsound));
+};
+function ensureBulkControls(){
+ const head=document.querySelector("header .row");if(!head||document.getElementById("packWizard"))return;
+ let button=document.createElement("button");button.className="btn";button.id="packWizard";button.textContent="＋ Import source pack";head.append(button);
+ const box=document.createElement("dialog");box.id="packDialog";box.style.cssText="background:#151b2a;color:white;border:1px solid #6b5586;border-radius:14px;padding:23px;max-width:520px;width:calc(100vw - 30px)";
+ box.innerHTML='<h3>Add a complete sound pack</h3><p class="hint">Import a directory of audio files and preserve the original author, website, licence and pack description for every file.</p><div style="display:grid;gap:12px"><input id="packName" class="field" placeholder="Pack name (e.g. Kenney Impact Sounds)"><input id="packAuthor" class="field" placeholder="Creator / publisher"><input id="packUrl" class="field" type="url" placeholder="https:// original source page"><input id="packLicense" class="field" placeholder="Licence (e.g. CC0)"><textarea id="packDesc" class="field" rows="3" placeholder="Short description of this sound pack"></textarea><label class="btn primary">Choose audio directory<input id="packFiles" type="file" webkitdirectory directory multiple hidden></label><label class="btn">Choose individual sound files<input id="packIndividual" type="file" multiple accept="audio/*,.wav,.mp3,.ogg,.flac" hidden></label><p id="packNotice" class="hint"></p><button class="btn" id="packClose">Close</button></div>';
+ document.body.append(box);button.onclick=()=>box.showModal();$("packClose").onclick=()=>box.close();
+ const add=async files=>{
+ const pack=$("packName").value.trim();if(!pack){$("packNotice").textContent="Enter a pack name first.";return}
+ const info={name:pack,url:$("packUrl").value.trim(),licence:$("packLicense").value.trim()||"Unverified",description:$("packDesc").value.trim(),author:$("packAuthor").value.trim()};
+ let candidates=[...files].filter(f=>/\.(wav|ogg|mp3|flac|m4a|aac|webm)$/i.test(f.name));
+ for(const file of candidates){
+ const path=file.webkitRelativePath||file.name,id="pack-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,9);
+ state.sounds.push({id,name:file.name,path,pack,category:"uncategorised",rating:0,rejected:false,notes:"",licence:info.licence,author:info.author,sourceUrl:info.url,description:info.description,size:file.size});
+ storeFile(id,file)
+ }
+ if(!sources.some(x=>x[0]===pack))sources.push([pack,info.licence,info.url,info.description]);
+ try{let all=JSON.parse(localStorage.getItem("sf-audio-source-packs")||"[]");all=all.filter(x=>x.name!==pack);all.push(info);localStorage.setItem("sf-audio-source-packs",JSON.stringify(all))}catch(e){}
+ save();render();$("packNotice").textContent=candidates.length+" sound files imported to '"+pack+"' with provenance saved.";toast(candidates.length+" audio files imported");
+ };
+ $("packFiles").onchange=e=>add(e.target.files);$("packIndividual").onchange=e=>add(e.target.files);
+}
+try{JSON.parse(localStorage.getItem("sf-audio-source-packs")||"[]").forEach(p=>{if(!sources.some(x=>x[0]===p.name))sources.push([p.name,p.licence,p.url,p.description])})}catch(e){}
+ensureBulkControls();
+const inject=document.createElement("style");inject.textContent="#sourceGroups details summary:hover{color:#d6aaff}#packDialog::backdrop{background:#050712c9}#sourceList a:hover{text-decoration:underline}";document.head.append(inject);
+render();
+})();
+</script>
 </body></html>
