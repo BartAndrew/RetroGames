@@ -79,6 +79,10 @@ The archived Pacific Fighter copy has identical game code to the original and is
 
 **Not yet playable:** the root `preview.html` describes Star Scrapper '84, but its referenced `game.js` and `styles.css` are absent. It is deliberately excluded from the playable directory.
 
+## Pixel FX skill
+
+The repo includes the [pixelfx](https://github.com/patch-gg/pixelfx) library (MIT, by Patch) in `tools/pixelfx/`: 244 pixel art effects as code (fire, explosions, impacts, magic, weather, UI, pickups, transitions) plus sprite sheet export. The matching Claude Code skill is `.claude/skills/pixelfx/`; ask Claude things like "add a hit spark to AshenRealms2" or "make a punchier explosion for Midway". Upstream commit and licence notices are in `tools/pixelfx/`.
+
 ## Run locally
 
 Serve the repository over HTTP (required for Stereotype Fighters' ES modules):

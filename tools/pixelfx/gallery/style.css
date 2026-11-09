@@ -1,0 +1,201 @@
+/* layout: one dark play field. A sticky bar (mark, name, categories, search) over a grid of live stages;
+   a sheet opens over the field for one effect. Play is black in every theme, so the page is single-theme. */
+@font-face {
+  font-family: "Patch Pixel";
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/PatchPixel-Regular.woff2) format("woff2");
+}
+:root {
+  --ground: #000000;
+  --panel: #111111;
+  --stage: #15131d;
+  --ink: #ffffff;
+  --quiet: #999999;
+  --line: #333333;
+  --patch: #f53cd1;
+  --display: "Patch Pixel", ui-monospace, "SFMono-Regular", monospace;
+  --text: "Funnel Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Red Hat Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--ground); }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 15px/1.5 var(--text);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--ground);
+}
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* head */
+.head {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-block: 32px 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.title { display: flex; gap: 18px; align-items: flex-start; }
+.mark { width: 42px; height: 42px; flex: none; image-rendering: pixelated; margin-top: 4px; }
+h1 { margin: 0; font: 400 54px/66px var(--display); letter-spacing: 0; }
+.sub { margin: 4px 0 0; font: 500 17px/1.4 var(--text); color: var(--quiet); text-wrap: balance; }
+.links { display: flex; gap: 20px; font: 500 13px/1 var(--mono); letter-spacing: 0.04em; }
+.links a { text-decoration: none; color: var(--quiet); padding: 6px 0; border-bottom: 1px solid var(--line); }
+.links a:hover { color: var(--ink); border-color: var(--ink); }
+
+/* bar */
+.bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: var(--ground);
+  border-bottom: 1px solid var(--line);
+}
+.bar-in { max-width: 1240px; margin: 0 auto; display: flex; gap: 12px; align-items: center; padding-block: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; flex: 1; min-width: 0; padding-block: 2px; }
+.chips::-webkit-scrollbar { display: none; }
+.chip {
+  flex: none;
+  border: 1px solid var(--line);
+  background: none;
+  padding: 6px 10px;
+  font: 500 12px/1 var(--mono);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chip span { color: var(--quiet); margin-left: 6px; font-variant-numeric: tabular-nums; }
+.chip:hover { border-color: var(--quiet); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+.chip[aria-pressed="true"] span { color: #555; }
+#q {
+  flex: none;
+  width: 108px;
+  max-width: 40vw;
+  background: none;
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  font: 400 13px/1 var(--mono);
+}
+#q::placeholder { color: var(--quiet); }
+
+/* grid */
+/* a link to #ice opens at the top of the page, header and category title in view, not scrolled under the bar */
+main section { scroll-margin-top: 480px; }
+main { max-width: 1240px; margin: 0 auto; }
+.section-head { display: flex; align-items: baseline; gap: 12px; padding-block: 28px 12px; flex-wrap: wrap; }
+.section-head h2 { margin: 0; font: 400 27px/33px var(--display); }
+.section-head p { margin: 0; color: var(--quiet); font: 400 14px/1.4 var(--text); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); grid-auto-flow: dense; gap: 12px; }
+.tile { margin: 0; cursor: pointer; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+/* big effects (explosions, weather, full-screen transitions) get four cells, so their 1 px lines survive */
+.tile.big { grid-column: span 2; grid-row: span 2; }
+.tile.screen .stage, .sheet .big.screen { aspect-ratio: 16 / 9; }
+.tile .stage { background: var(--stage); aspect-ratio: 6 / 5; overflow: hidden; border: 1px solid transparent; }
+.tile:hover .stage, .tile:focus-visible .stage { border-color: var(--quiet); }
+.tile canvas, .detail canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+.tile figcaption { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; min-width: 0; }
+.tile b { font: 500 14px/1.3 var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.tile small { font: 400 11px/1.3 var(--mono); color: var(--quiet); white-space: nowrap; letter-spacing: 0.04em; }
+.empty { color: var(--quiet); padding-block: 40px; }
+
+/* detail */
+.detail {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  color: var(--ink);
+}
+.detail::backdrop { background: transparent; }
+.sheet {
+  max-width: 1240px;
+  margin: 0 auto;
+  min-height: 100%;
+  padding: max(20px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 32px max(16px, env(safe-area-inset-left, 0px));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  align-content: start;
+}
+.sheet .big { background: var(--stage); aspect-ratio: 16 / 10; position: relative; }
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 1px solid var(--line);
+  background: var(--ground);
+  padding: 6px 10px;
+  font: 500 12px/1 var(--mono);
+  cursor: pointer;
+}
+.info h2 { margin: 0; font: 400 36px/44px var(--display); }
+.info .id { font: 400 12px/1.4 var(--mono); color: var(--quiet); margin: 4px 0 12px; letter-spacing: 0.04em; }
+.info p { margin: 0 0 16px; color: #ddd; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; font: 400 12px/1.5 var(--mono); margin: 0 0 20px; }
+.facts dt { color: var(--quiet); }
+.facts dd { margin: 0; font-variant-numeric: tabular-nums; }
+.controls { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.row label { font: 400 11px/1 var(--mono); color: var(--quiet); width: 64px; letter-spacing: 0.04em; }
+.btn {
+  border: 1px solid var(--line);
+  background: none;
+  padding: 6px 9px;
+  font: 500 12px/1 var(--mono);
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--quiet); }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+select.btn { padding: 5px 6px; background: var(--ground); }
+pre {
+  margin: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 12px;
+  font: 400 12px/1.5 var(--mono);
+  overflow-x: auto;
+  white-space: pre;
+}
+.code-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font: 400 11px/1 var(--mono); color: var(--quiet); letter-spacing: 0.04em; }
+.sheetout { grid-column: 1 / -1; }
+.sheetout img { image-rendering: pixelated; max-width: 100%; background: repeating-conic-gradient(#1a1a1a 0% 25%, #111 0% 50%) 0 0 / 16px 16px; display: block; }
+.sheetout p { font: 400 12px/1.4 var(--mono); color: var(--quiet); margin: 8px 0 0; }
+
+@media (max-width: 900px) {
+  .sheet { grid-template-columns: minmax(0, 1fr); }
+  h1 { font-size: 36px; line-height: 44px; }
+  .mark { width: 28px; height: 28px; margin-top: 4px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+}
+@media (max-width: 520px) {
+  .bar-in { flex-wrap: wrap; }
+  /* 20 categories won't fit a phone's bar: they scroll in one row there */
+  .chips { flex-wrap: nowrap; flex: 1 1 100%; overflow-x: auto; scrollbar-width: none; }
+  #q { width: 100%; max-width: none; }
+}
+@media (max-width: 330px) {
+  .tile.big { grid-column: auto; grid-row: auto; }
+}
