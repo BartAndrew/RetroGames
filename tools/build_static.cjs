@@ -31,4 +31,14 @@ function cp(source,target){
 if(fs.existsSync(path.join(root,'AnimationTests')))folders.add('AnimationTests');
 for(const folder of folders)cp(path.join(root,folder),path.join(dest,folder));
 fs.writeFileSync(path.join(dest,'.nojekyll'),'');
+
+// Vendored, open-licensed audio. Fetch during production build; fall back to Web Audio if an upstream is unreachable.
+const https=require('node:https');
+const audioAssets=[
+ {file:'ShadowKombat/assets/heavy-battle-2.ogg',url:'https://opengameart.org/sites/default/files/heavy_battle_2_bpm185_0.ogg'},
+ {file:'ShadowKombat/assets/whoosh.wav',url:'https://opengameart.org/sites/default/files/whoosh2_0.wav'}
+];
+function download(url,redirects=3){return new Promise((resolve,reject)=>{https.get(url,{headers:{'User-Agent':'RetroGames-AssetBuild/1.0'}},res=>{if(res.statusCode>=300&&res.statusCode<400&&res.headers.location&&redirects>0){res.resume();return resolve(download(res.headers.location,redirects-1))}if(res.statusCode!==200){res.resume();return reject(Error('HTTP '+res.statusCode))}const chunks=[];res.on('data',d=>chunks.push(d));res.on('end',()=>resolve(Buffer.concat(chunks)));res.on('error',reject)}).on('error',reject)})}
+Promise.all(audioAssets.map(async a=>{try{const bytes=await download(a.url);if(bytes.length<10000)throw Error('Truncated asset');const target=path.join(dest,a.file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,bytes);console.log('Licensed audio bundled: '+a.file+' ('+bytes.length+' bytes)')}catch(err){console.warn('Optional audio unavailable: '+a.file+' '+err.message)}})).catch(err=>console.warn(err.message));
+
 console.log('RetroGames build complete. Games: '+folders.size+' | Launch links: '+linked.length);
