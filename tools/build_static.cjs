@@ -23,7 +23,7 @@ function cp(source,target){
  if(st.isDirectory()){
   fs.mkdirSync(target,{recursive:true});
   for(const name of fs.readdirSync(source)){
-   if(ignored.has(name)||/\.(?:zip|log)$/i.test(name))continue;
+   if(ignored.has(name)||/\.(?:zip|log|md)$/i.test(name)||name==='prompts-v7.json'||name==='tests')continue;
    cp(path.join(source,name),path.join(target,name));
   }
  }else{fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(source,target);}
