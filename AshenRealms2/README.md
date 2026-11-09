@@ -1,6 +1,6 @@
 # Ashen Realms 2: Crown of Cinders
 
-A second pass on the Ashen Realms fantasy beat 'em up. The art, music, three stages and three champions are the same as [V1.5](../AshenRealms/); what changed is how the fights play. This folder is self-contained and does not depend on `AshenRealms/`.
+A second pass on the Ashen Realms fantasy beat 'em up. Backdrops, music, enemies and the three stages come from [V1.5](../AshenRealms/); V2.0 reworked how fights play and V2.1 replaced the heroes with new rig-animated characters and a combo system. This folder is self-contained and does not depend on `AshenRealms/`.
 
 Open `index.html` (any static server works: `python3 -m http.server 8080`, then visit `/AshenRealms2/`).
 
@@ -9,14 +9,26 @@ Open `index.html` (any static server works: `python3 -m http.server 8080`, then 
 | Action | Keyboard | Gamepad |
 | --- | --- | --- |
 | Move | WASD / arrows | Left stick / D-pad |
-| Attack | J | A |
-| Heavy attack | K | X |
+| Attack (tap to chain) | J | A |
+| Heavy attack / finisher | K | X |
 | Magic | L | B |
 | Dodge | Space | Y |
 | Pause | P / Esc | |
 | Mute | M | |
 
 Touch buttons appear automatically on touch devices.
+
+## What's new in V2.1
+
+- **Astrid, a new spear-wielding lead.** Long reach, fast thrusts and a red-pennon spear. She is the first card and the default hero.
+- **Combos.** Tap attack to chain L1, L2 and L3. Press heavy after two lights (J, J, K) for a hero-specific finisher. Inputs are buffered, moves cancel into the next one part-way through, and a dodge can cancel any move once it has landed.
+  - Astrid: L3 Whirlwind, heavy Vault Strike, finisher Dawn Flurry (four thrusts), magic Spear Rain.
+  - Iron Warden: L3 overhead chop, heavy Crown Breaker, finisher Shield Breaker (bash then rising cut), magic Sunfall.
+  - Ash Berserker: L3 Whirling Axe, heavy Cleave, finisher Earthbreaker (shockwave), magic War Cry.
+  - Moonblade: L3 Twin Cut, heavy Dash Slash, finisher Moonfall (triple spin), magic Lunar Wave.
+- **Rig-based animation.** All four heroes are drawn by `rig.js`: a skeleton with two-bone IK legs and arms, keyframed anticipation / strike / recovery for every move, and cloth, scarf and hair that trail behind. The result is pixelated to match the backdrops. Heroes also get walk cycles driven by distance moved, a hurt flinch, a roll, and a death animation.
+- **Feedback.** Weapon trails, dodge afterimages, per-hero magic effects, and hits land on the strike frame rather than on the button press.
+- Heroes now plant their feet while attacking (slower movement, locked facing), so combos commit you.
 
 ## What's new in V2.0
 
@@ -31,10 +43,10 @@ Touch buttons appear automatically on touch devices.
 
 ## Tuning
 
-Balance values live at the top of `game.js`: the `foe` table (hp, reach, wind-up frames, damage, speed, attack cooldown, points) and the constants `MAX_ATTACKERS`, `CHAIN_WINDOW`, `DODGE_TOTAL` and `PAR_FRAMES` (the time-bonus par, in frames at 60 Hz).
+Balance values live at the top of `game.js`: the `MOVES` table (per-hero damage, reach, hit timing, lunge and cancel point), the `foe` table (hp, reach, wind-up frames, damage, speed, attack cooldown, points) and the constants `MAX_ATTACKERS`, `CHAIN_WINDOW`, `DODGE_TOTAL` and `PAR_FRAMES` (the time-bonus par, in frames at 60 Hz).
 
 Opening the page with `?debug` exposes `window.ASHEN2_DEBUG` for testing from the console.
 
 ## Credits
 
-Sprites, backdrops, music and sound effects are unchanged from V1.5; see [credits.html](credits.html).
+Heroes are procedural (`rig.js`). Enemy sprites, backdrops, music and sound effects are from V1.5; see [credits.html](credits.html).

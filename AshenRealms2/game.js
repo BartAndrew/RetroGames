@@ -1,7 +1,8 @@
-/* Ashen Realms 2 — game logic (V2.0)
- * Same art, audio and hero roster as V1.5. What changed is how fights play:
- * telegraphed enemy attacks, an attacker limit, hit-chain scoring, a dodge
- * cooldown, boss enrage, stage bonuses, hit-stop and floating damage numbers.
+/* Ashen Realms 2 — game logic (V2.1)
+ * V2.0: telegraphed enemy attacks, attacker limit, hit-chain scoring, dodge cooldown,
+ * boss enrage, stage bonuses, hit-stop and floating damage numbers.
+ * V2.1: rig-animated heroes (rig.js), a new spear-wielding lead (Astrid) and a real
+ * combo system: light chain L1-L2-L3, heavy, a finisher after two lights, and magic.
  */
 (()=>{'use strict';
 const $=s=>document.querySelector(s);
@@ -20,11 +21,54 @@ const stages=[
 ],world=2500;
 
 const heroes=[
- {id:'warden',name:'IRON WARDEN',role:'Knight · Balanced',pack:'hero',filter:'none',power:1,speed:3.55,defense:1,magic:1,stats:[7,6,7,5],bio:'A veteran knight with balanced swordplay and dependable armour.'},
- {id:'berserker',name:'ASH BERSERKER',role:'Champion · Heavy',pack:'boss',filter:'sepia(.22) saturate(1.35)',power:1.42,speed:2.85,defense:.82,magic:.8,stats:[10,4,8,3],bio:'Devastating blows and heavy armour at the cost of speed.'},
- {id:'moonblade',name:'MOONBLADE',role:'Spellblade · Swift',pack:'hero',filter:'hue-rotate(92deg) saturate(1.5) brightness(1.15)',power:.82,speed:4.65,defense:1.25,magic:1.5,stats:[6,10,4,10],bio:'An agile spellblade whose strong magic offsets light armour.'}
+ {id:'astrid',name:'ASTRID',role:'Spear Maiden · Reach',power:.95,speed:4.2,defense:1.1,magic:1.1,stats:[7,8,6,7],trail:'#d6f4f2',fx:['#ffd9a0','#bff3ee'],bio:'Dawnspear heir of the fallen frontier. Her spear keeps foes at range, and her combos end in a whirlwind or a four-thrust flurry.'},
+ {id:'warden',name:'IRON WARDEN',role:'Knight · Balanced',power:1,speed:3.55,defense:1,magic:1,stats:[7,6,7,5],trail:'#fff0c8',fx:['#ffe39a','#fff6d8'],bio:'A veteran knight with balanced swordplay, a shield bash and dependable armour.'},
+ {id:'berserker',name:'ASH BERSERKER',role:'Champion · Heavy',power:1.42,speed:2.85,defense:.82,magic:.8,stats:[10,4,8,3],trail:'#ffb27a',fx:['#ff8a4a','#ffd2a0'],bio:'Devastating axe blows and heavy armour at the cost of speed. Slow swings, huge impact.'},
+ {id:'moonblade',name:'MOONBLADE',role:'Spellblade · Swift',power:.82,speed:4.65,defense:1.25,magic:1.5,stats:[6,10,4,10],trail:'#c9b8ff',fx:['#98a6ff','#ecd8ff'],bio:'An agile spellblade with rapid cuts, a dash slash and strong magic to offset light armour.'}
 ];
-let selectedHero=0,chosenHero=heroes[0];
+const hit=(p,reach,dmg,o={})=>({p,reach,dmg,back:o.back??25,yt:o.yt??50,kb:o.kb??18,heavy:!!o.heavy,ring:!!o.ring});
+const spin=o=>({back:140,...o});
+// Per-hero move tables. dur = frames at tempo 1; hits fire when the move's progress p passes hit.p
+// (timed to the rig's strike keyframes); lunge = [p0,p1,distance]; cancel = progress after which a buffered input may begin the next move.
+const MOVES={
+ astrid:{
+  L1:{dur:24,hits:[hit(.40,158,22,{yt:46})],lunge:[.25,.45,16],cancel:.56},
+  L2:{dur:24,hits:[hit(.42,158,24,{yt:46})],lunge:[.25,.45,16],cancel:.56},
+  L3:{dur:46,name:'WHIRLWIND',hits:[hit(.30,150,13,spin()),hit(.50,150,13,spin()),hit(.80,160,24,spin({heavy:true,kb:28}))],cancel:.9},
+  H:{dur:40,name:'VAULT STRIKE',hits:[hit(.42,180,44,{heavy:true,kb:30,yt:46})],lunge:[.25,.42,55],cancel:.8},
+  F:{dur:58,name:'DAWN FLURRY',hits:[hit(.12,155,12,{yt:46}),hit(.30,155,12,{yt:46}),hit(.50,155,14,{yt:46}),hit(.78,185,24,{heavy:true,kb:30,yt:46})],lunge:[.55,.78,40],cancel:1},
+  M:{dur:52,name:'SPEAR RAIN',hitAt:.45,range:[260,110]}
+ },
+ warden:{
+  L1:{dur:26,hits:[hit(.42,128,24)],lunge:[.3,.45,12],cancel:.58},
+  L2:{dur:26,hits:[hit(.42,128,24)],lunge:[.3,.45,12],cancel:.58},
+  L3:{dur:36,hits:[hit(.45,138,35,{heavy:true,kb:24})],cancel:.75},
+  H:{dur:44,name:'CROWN BREAKER',hits:[hit(.42,142,46,{heavy:true,kb:30})],lunge:[.3,.42,10],cancel:.8},
+  F:{dur:62,name:'SHIELD BREAKER',hits:[hit(.22,108,16,{kb:36}),hit(.68,138,44,{heavy:true,kb:26})],lunge:[.15,.3,16],cancel:1},
+  M:{dur:52,name:'SUNFALL',hitAt:.5,range:[250,110]}
+ },
+ berserker:{
+  L1:{dur:32,hits:[hit(.45,138,26,{kb:22})],lunge:[.3,.45,12],cancel:.64},
+  L2:{dur:32,hits:[hit(.45,138,26,{kb:22})],lunge:[.3,.45,12],cancel:.64},
+  L3:{dur:52,name:'WHIRLING AXE',hits:[hit(.30,140,18,spin()),hit(.50,140,18,spin()),hit(.85,150,34,spin({heavy:true,kb:30}))],cancel:.92},
+  H:{dur:52,name:'CLEAVE',hits:[hit(.45,152,46,{heavy:true,kb:32})],lunge:[.3,.45,14],cancel:.85},
+  F:{dur:66,name:'EARTHBREAKER',hits:[hit(.52,175,58,{back:115,yt:60,heavy:true,kb:36,ring:true})],cancel:1},
+  M:{dur:56,name:'WAR CRY',hitAt:.48,range:[250,110]}
+ },
+ moonblade:{
+  L1:{dur:20,hits:[hit(.40,128,22)],lunge:[.25,.42,14],cancel:.52},
+  L2:{dur:20,hits:[hit(.42,128,22)],lunge:[.25,.42,14],cancel:.52},
+  L3:{dur:28,name:'TWIN CUT',hits:[hit(.30,132,17),hit(.60,138,20,{kb:24})],lunge:[.25,.6,22],cancel:.74},
+  H:{dur:34,name:'DASH SLASH',hits:[hit(.42,150,38,{heavy:true,kb:28})],lunge:[.2,.42,82],cancel:.78},
+  F:{dur:56,name:'MOONFALL',hits:[hit(.28,135,14,spin({back:135})),hit(.50,135,14,spin({back:135})),hit(.80,150,26,spin({back:135,heavy:true,kb:30}))],cancel:1},
+  M:{dur:48,name:'LUNAR WAVE',hitAt:.46,range:[340,110],fwd:true}
+ }
+};
+for(const tbl of Object.values(MOVES))for(const m of Object.values(tbl)){
+ if(m.hits)m.tr=[Math.max(0,m.hits[0].p-.24),Math.min(1,m.hits[m.hits.length-1].p+.1)];
+ else m.tr=[m.hitAt-.2,m.hitAt+.15];
+}
+let selectedHero=0,chosenHero=heroes[0],heroSt=null,trail=[],ghosts=[],stepDt=0;
 
 // Enemy tuning. wind = telegraph frames before the strike lands, reach = strike range (px),
 // cd = frames between attacks, pts = score for the kill (before chain multiplier).
@@ -36,8 +80,9 @@ const foe=[
 ];
 const MAX_ATTACKERS=2,CHAIN_WINDOW=150,DODGE_TOTAL=44,PAR_FRAMES=4800;
 
-const player={x:120,y:485,hp:100,max:100,mana:100,face:1,attack:0,attackKind:'normal',combo:0,cool:0,stun:0,inv:0,dodge:0,dodgeCool:0,anim:0,score:0,chain:0,chainTimer:0,moving:false};
 const rnd=(a,b)=>a+Math.random()*(b-a),clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+for(const h of heroes)h.tempo=clamp(3.55/h.speed,.75,1.25);
+const player={x:120,y:485,hp:100,max:100,mana:100,face:1,atk:null,buf:null,step:0,strT:0,gait:0,dying:0,pa:'',mixT:1,prevPose:null,lastPose:null,ghostT:0,stun:0,inv:0,dodge:0,dodgeCool:0,anim:0,score:0,chain:0,chainTimer:0,moving:false};
 const multiplier=()=>1+Math.min(4,Math.floor(player.chain/5));
 
 function makeEnemy(type,x,y){
@@ -48,7 +93,8 @@ function reset(l=0){
  level=l;clock=0;frame=0;camera=0;kills=0;hitstop=0;
  enemies=[];drops=[];particles=[];floaters=[];rings=[];
  if(l===0){player.score=0;maxChain=0;totalKills=0;runTime=0}
- Object.assign(player,{x:120,y:480,hp:l===0?100:Math.min(100,player.hp+28),mana:100,face:1,attack:0,attackKind:'normal',combo:0,cool:0,stun:0,inv:0,dodge:0,dodgeCool:0,anim:0,chain:0,chainTimer:0,moving:false});
+ Object.assign(player,{x:120,y:480,hp:l===0?100:Math.min(100,player.hp+28),mana:100,face:1,atk:null,buf:null,step:0,strT:0,gait:0,dying:0,pa:'',mixT:1,prevPose:null,lastPose:null,ghostT:0,stun:0,inv:0,dodge:0,dodgeCool:0,anim:0,chain:0,chainTimer:0,moving:false});
+ trail=[];ghosts=[];heroSt=window.AshenRig?window.AshenRig.makeState(chosenHero.id):null;
  for(let i=0;i<12+l*3;i++)enemies.push(makeEnemy(i%5===0?2:i%3===0?1:0,350+i*145+rnd(-30,30),rnd(410,535)));
  enemies.push(makeEnemy(3,world-210,473));
 }
@@ -120,7 +166,7 @@ function backdrop(){
 }
 
 // ---------- Sprite sheets (CC0 strips bundled as data URIs) ----------
-const sheetPacks={hero:window.ASHEN_HERO,boss:window.ASHEN_BOSS,...window.ASHEN_MONSTERS};
+const sheetPacks={boss:window.ASHEN_BOSS,...window.ASHEN_MONSTERS};
 const sheetCache={};let sheetsLoaded=0,sheetsExpected=0;
 for(const [character,animations] of Object.entries(sheetPacks)){
  sheetCache[character]={};
@@ -143,59 +189,99 @@ for(const [character,animations] of Object.entries(sheetPacks)){
      entry.bounds.push({left:minX,right:maxX,top:minY,bottom:maxY});
     }
    }catch(e){console.warn('Sprite bounds unavailable',e)}
-   entry.ready=true;sheetsLoaded++;paintPortraits();
+   entry.ready=true;sheetsLoaded++;
   };
   img.onerror=()=>{entry.failed=true;sheetsLoaded++};
   img.src=info.src;
  }
 }
-function sprite(e,hero=false){
- const boss=!hero&&e.type===3;
- const character=hero?chosenHero.pack:boss?'boss':e.type===0?'goblin':e.type===1?'skeleton':'mushroom';
+function sprite(e){
+ const boss=e.type===3;
+ const character=boss?'boss':e.type===0?'goblin':e.type===1?'skeleton':'mushroom';
  const pack=sheetCache[character];if(!pack)return;
- const dead=!hero&&e.hp<=0,hurt=!hero?e.stun>0:player.stun>0,attacking=e.attack>0,moving=!!e.moving;
- const winding=!hero&&e.windup>0;
- const comboAnim=hero&&chosenHero.pack==='hero'&&player.combo===2?'attackAlt':'attack';
- const requested=dead?'death':hurt?'hurt':attacking?(hero?(player.attackKind==='heavy'?'heavy':comboAnim):boss?(e.attackVariant?'heavy':'attack'):'attack'):moving?'walk':'idle';
+ const dead=e.hp<=0,hurt=e.stun>0,attacking=e.attack>0,moving=!!e.moving,winding=e.windup>0;
+ const requested=dead?'death':hurt?'hurt':attacking?(boss&&e.attackVariant?'heavy':'attack'):moving?'walk':'idle';
  const st=pack[requested]?.ready?requested:'idle';
  const a=pack[st];if(!a?.ready)return;
  const total=a.frames,rate=a.fps||10;
  let index;
  if(st==='death')index=Math.min(total-1,Math.floor(e.dead*rate/60));
  else if(st==='hurt')index=Math.min(total-1,Math.floor((17-e.stun)*rate/60));
- else if(st==='attack'||st==='heavy'||st==='attackAlt'){
-  const duration=hero?(player.attackKind==='heavy'?22:14):23;
-  index=Math.min(total-1,Math.max(0,Math.floor((duration-e.attack)/duration*total)));
- }else index=Math.floor((hero?player.anim:e.walk)*rate/60)%total;
- const visualClock=hero?player.anim:e.walk,poseTime=visualClock*rate/60;
- const blend=(st==='walk'||st==='idle')?(poseTime-Math.floor(poseTime)):0;
+ else if(st==='attack'||st==='heavy')index=Math.min(total-1,Math.max(0,Math.floor((23-e.attack)/23*total)));
+ else index=Math.floor(e.walk*rate/60)%total;
+ const poseTime=e.walk*rate/60,blend=(st==='walk'||st==='idle')?(poseTime-Math.floor(poseTime)):0;
  const cellW=a.img.naturalWidth/total,cellH=a.img.naturalHeight;
- const scale=hero?(chosenHero.pack==='boss'?2.65:2.8):boss?3.1:2.7;
- const x=e.x-camera,y=e.y;
+ const scale=boss?3.1:2.7,x=e.x-camera,y=e.y;
  g.save();g.translate(Math.round(x),Math.round(y));
- g.fillStyle='#04080ab0';g.beginPath();g.ellipse(0,4,boss?46:hero?34:28,boss?11:7,0,0,Math.PI*2);g.fill();
- if(hero&&e.inv>0&&Math.floor(frame/4)%2)g.globalAlpha=.5;
+ g.fillStyle='#04080ab0';g.beginPath();g.ellipse(0,4,boss?46:28,boss?11:7,0,0,Math.PI*2);g.fill();
  if(dead)g.globalAlpha=Math.max(0,1-e.dead/80);
  g.scale(e.face||1,1);g.imageSmoothingEnabled=false;
  const bounds=a.bounds?.[index]||{bottom:cellH-1,left:0,right:cellW-1,top:0};
- const groundOffset=boss?2:hero?1:0,footY=-(bounds.bottom+1)*scale+groundOffset;
- if(hero&&chosenHero.filter!=='none')g.filter=chosenHero.filter;
- if(!hero&&e.enraged&&!dead)g.filter='saturate(1.7) hue-rotate(-18deg) brightness(1.08)';
+ const footY=-(bounds.bottom+1)*scale+(boss?2:0);
+ if(e.enraged&&!dead)g.filter='saturate(1.7) hue-rotate(-18deg) brightness(1.08)';
  if(winding){g.translate(-5,0);if(Math.floor(frame/3)%2)g.filter='brightness(1.35) saturate(1.4)'}
- if(moving&&!dead)g.translate(0,Math.sin(visualClock*.24)*1.3);
- if(attacking&&!hurt)g.rotate((hero?.025:.015)*Math.sin((hero?player.attack:e.attack)*.18));
+ if(moving&&!dead)g.translate(0,Math.sin(e.walk*.24)*1.3);
+ if(attacking&&!hurt)g.rotate(.015*Math.sin(e.attack*.18));
  const left=Math.round(-cellW*scale/2),sizeW=Math.round(cellW*scale),sizeH=Math.round(cellH*scale);
  g.drawImage(a.img,index*cellW,0,cellW,cellH,left,Math.round(footY),sizeW,sizeH);
  if(blend>.13&&blend<.87&&!dead&&!hurt&&st!=='attack'){
-  const next=(index+1)%total,nb=a.bounds?.[next],ny=-(nb?.bottom+1||cellH)*scale+groundOffset;
+  const next=(index+1)%total,nb=a.bounds?.[next],ny=-(nb?.bottom+1||cellH)*scale+(boss?2:0);
   g.save();g.globalAlpha*=Math.min(.11,blend*(1-blend)*.45);
   g.drawImage(a.img,next*cellW,0,cellW,cellH,left,Math.round(ny),sizeW,sizeH);g.restore();
  }
  g.filter='none';
- if((hero||boss)&&e.attack>0&&e.attack<11){g.strokeStyle=hero?'#fbe9b8a8':'#ff795b99';g.lineWidth=5;g.beginPath();g.arc(25,-95,70,-1.15,.45);g.stroke()}
+ if(boss&&e.attack>0&&e.attack<11){g.strokeStyle='#ff795b99';g.lineWidth=5;g.beginPath();g.arc(25,-95,70,-1.15,.45);g.stroke()}
  g.restore();
- if(!hero&&e.stun>0){for(let i=0;i<3;i++)ellipse(x+Math.sin(i*2+frame*.1)*19,y-132+Math.cos(i*2+frame*.1)*9,3,3,'#ffb761')}
+ if(e.stun>0){for(let i=0;i<3;i++)ellipse(x+Math.sin(i*2+frame*.1)*19,y-132+Math.cos(i*2+frame*.1)*9,3,3,'#ffb761')}
 }
+// ---------- Hero (procedural rig, see rig.js) ----------
+function drawHero(){
+ const R=window.AshenRig;if(!R)return;
+ const h=chosenHero,p=player,a=p.atk;
+ let anim,pp;
+ if(p.dying>0){anim='death';pp=Math.min(1,p.dying/62)}
+ else if(p.stun>0){anim='hurt';pp=clamp(1-p.stun/12,0,.999)}
+ else if(p.dodge>0){anim='roll';pp=clamp(1-p.dodge/15,0,1)}
+ else if(a){anim=a.id;pp=clamp(a.t/a.dur,0,1)}
+ else if(p.moving&&p.walking){anim='walk';pp=((p.gait%1)+1)%1}
+ else{anim='idle';pp=(p.anim/100)%1}
+ let P=R.pose(h.id,anim,pp);
+ if(anim!==p.pa){p.prevPose=p.lastPose||P;p.pa=anim;p.mixT=0}
+ if(p.mixT<1&&p.prevPose){const u=p.mixT;P=R.mix(p.prevPose,P,u*u*(3-2*u))}
+ p.lastPose=P;
+ const out=R.render(h.id,P,heroSt,{ex:p.x,ey:p.y,face:p.face,dt:stepDt}),S=R.S;
+ const x=Math.round(p.x-camera),y=Math.round(p.y);
+ // dodge afterimages (snapshot straight after render, while the shared canvas still holds this frame)
+ if(p.dodge>0&&stepDt>0){p.ghostT+=stepDt;if(p.ghostT>=3){p.ghostT=0;ghosts.push({c:R.snapshot(),x:p.x,y:p.y,face:p.face,life:12})}}
+ g.save();g.translate(x,y);
+ g.fillStyle='#04080ab0';g.beginPath();g.ellipse(0,4,34,8,0,0,Math.PI*2);g.fill();g.restore();
+ for(const gh of ghosts){g.save();g.globalAlpha=gh.life/12*.38;g.translate(Math.round(gh.x-camera),Math.round(gh.y));g.scale(gh.face,1);g.imageSmoothingEnabled=false;g.filter='saturate(.4) brightness(1.5)';g.drawImage(gh.c,-OXS(R),-OYS(R),R.S*176,R.S*136);g.restore()}
+ g.save();g.translate(x,y);g.scale(p.face,1);g.imageSmoothingEnabled=false;
+ if(p.inv>0&&p.dying<=0&&Math.floor(frame/4)%2)g.globalAlpha=.55;
+ g.drawImage(out.canvas,-out.ox*S,-out.oy*S,out.w*S,out.h*S);
+ g.restore();
+ // weapon trail + magic glow
+ const tw=(r)=>({x:p.x+p.face*r.x*S,y:p.y+r.y*S});
+ if(a&&a.m.tr&&stepDt>0){
+  const q=a.t/a.dur;
+  if(q>=a.m.tr[0]&&q<=a.m.tr[1]){const t1=tw(out.tip),m1=tw(out.mid);trail.push({tx:t1.x,ty:t1.y,mx:m1.x,my:m1.y,age:0,brk:trail.length===0||trail[trail.length-1].age>2})}
+ }
+ if(trail.length){
+  g.save();g.fillStyle=h.trail;
+  for(let i=1;i<trail.length;i++){
+   const a0=trail[i-1],b0=trail[i];if(b0.brk)continue;
+   g.globalAlpha=clamp(1-b0.age/9,0,1)*.62;
+   g.beginPath();g.moveTo(a0.tx-camera,a0.ty);g.lineTo(b0.tx-camera,b0.ty);g.lineTo(b0.mx-camera,b0.my);g.lineTo(a0.mx-camera,a0.my);g.closePath();g.fill();
+  }
+  g.restore();
+ }
+ if(P.glow>.05){
+  const c=tw(out.glow),r=34+P.glow*20,gr=g.createRadialGradient(c.x-camera,c.y,2,c.x-camera,c.y,r);
+  gr.addColorStop(0,h.fx[1]+'cc');gr.addColorStop(1,h.fx[0]+'00');
+  g.save();g.globalAlpha=P.glow*.85;g.fillStyle=gr;g.fillRect(c.x-camera-r,c.y-r,r*2,r*2);g.restore();
+ }
+}
+const OXS=R=>88*R.S,OYS=R=>112*R.S;
 // Warning ring on the ground + "!" over the head while an enemy winds up.
 function telegraph(e){
  const f=foe[e.type],total=f.wind*(e.enraged?.7:1),p=clamp(1-e.windup/total,0,1),x=e.x-camera,y=e.y,top=e.type===3?232:180;
@@ -212,33 +298,88 @@ function spawnBurst(x,y,color,count=15){for(let i=0;i<count;i++)particles.push({
 function floater(x,y,text,color='#ffe3a6',life=48,size=20){floaters.push({x,y,text,color,life,max:life,size})}
 const attackers=()=>enemies.reduce((n,e)=>n+(e.type!==3&&e.hp>0&&(e.windup>0||e.attack>0)?1:0),0);
 
-function attack(heavy=false,magic=false){
- if(state!=='playing'||player.stun>0||player.cool>0)return;
- if(magic){
-  const cost=Math.round(35/chosenHero.magic);if(player.mana<cost)return;
-  player.mana-=cost;player.attack=22;player.attackKind='heavy';player.cool=45;shake=14;hitstop=Math.max(hitstop,4);
-  sfx('magic',.45);blip(460,.5,'triangle',.16);
-  for(let i=0;i<75;i++){const a=rnd(-Math.PI,Math.PI),r=rnd(10,170);particles.push({x:player.x+Math.cos(a)*r*.55,y:player.y-60+Math.sin(a)*r*.35,vx:Math.cos(a)*rnd(2,11),vy:Math.sin(a)*rnd(2,7),life:rnd(20,45),color:i%2?'#98a6ff':'#ecd8ff',size:rnd(3,10)})}
-  for(const e of enemies)if(e.hp>0&&Math.abs(e.x-player.x)<250&&Math.abs(e.y-player.y)<110)damage(e,Math.round(80*chosenHero.power*chosenHero.magic),player.x,true);
-  return;
- }
- player.combo=(player.combo%3)+1;player.attack=heavy?22:14;player.attackKind=heavy?'heavy':'normal';
- player.cool=(heavy?32:19)*(3.55/chosenHero.speed);
- const reach=heavy?130:108,dmg=Math.round((heavy?44:player.combo===3?33:23)*chosenHero.power);
- blip(heavy?130:240,.14,'sawtooth',.09);sfx(heavy?'chop':'slash',.22);
- let impacted=false;
- for(const e of enemies){
-  const d=(e.x-player.x)*player.face;
-  if(e.hp>0&&d>-35&&d<reach&&Math.abs(e.y-player.y)<52){damage(e,dmg,player.x,heavy);impacted=true}
- }
- if(impacted){shake=Math.max(shake,heavy?9:5);hitstop=Math.max(hitstop,heavy?4:1.5);sfx(heavy?'heavy':'hit',.32)}
+const axisX=()=>{let mx=(keys.has('ArrowRight')||keys.has('KeyD')?1:0)-(keys.has('ArrowLeft')||keys.has('KeyA')?1:0);const gp=navigator.getGamepads?.()[0];if(gp&&Math.abs(gp.axes[0])>.2)mx+=gp.axes[0];return clamp(mx,-1,1)};
+// Input is buffered for ~16 frames so a press just before a move ends still chains.
+function pressAttack(kind){
+ if(state!=='playing'||player.dying>0)return;
+ player.buf={kind,t:16};
 }
-function damage(e,n,from,heavy=false){
+const attack=(heavy=false,magic=false)=>pressAttack(magic?'M':heavy?'H':'L');
+function pickMove(kind){
+ if(kind==='M'){
+  const cost=Math.round(35/chosenHero.magic);
+  if(player.mana<cost){floater(player.x,player.y-170,'NO MANA','#9fb0ff',34,16);return null}
+  player.mana-=cost;return 'M';
+ }
+ if(kind==='H')return player.step===2&&player.strT>0?'F':'H';
+ return 'L'+((player.strT>0?player.step:0)%3+1);
+}
+function startMove(id){
+ const m=MOVES[chosenHero.id][id],ax=axisX();
+ if(ax)player.face=ax>0?1:-1;
+ player.atk={id,m,t:0,dur:m.dur*chosenHero.tempo,i:0,done:false};
+ player.step=id[0]==='L'?+id[1]:0;player.strT=99;trail.length=0;
+ const heavy=id==='H'||id==='F'||id==='L3';
+ blip(heavy?130:240,.14,'sawtooth',.09);sfx(heavy?'chop':'slash',.22);
+ if(m.name)floater(player.x,player.y-195,m.name,id==='M'?chosenHero.fx[1]:'#ffd27a',46,id==='L3'?19:22);
+}
+function strikeHit(h){
+ const dmg=Math.round(h.dmg*chosenHero.power);let n=0;
+ for(const e of enemies){
+  if(e.hp<=0)continue;
+  const d=(e.x-player.x)*player.face;
+  if(d>-h.back&&d<h.reach&&Math.abs(e.y-player.y)<h.yt+(e.type===3?12:0)){damage(e,dmg,player.x,h.heavy,h.kb);n++}
+ }
+ if(h.ring)rings.push({x:player.x+player.face*70,y:player.y,t:0,r:170,color:'#ffb066'});
+ if(h.ring)shake=Math.max(shake,16);
+ if(n){shake=Math.max(shake,h.heavy?9:5);hitstop=Math.max(hitstop,h.heavy?4:1.5);sfx(h.heavy?'heavy':'hit',.32)}
+ return n;
+}
+function magicBlast(m){
+ const h=chosenHero,c=h.fx;
+ shake=14;hitstop=Math.max(hitstop,4);sfx('magic',.45);blip(460,.5,'triangle',.16);
+ const f=player.face;
+ if(h.id==='astrid'){
+  for(let i=0;i<34;i++){const life=rnd(14,22),vy=15,tx=player.x+f*rnd(-40,230)+rnd(-60,60),ty=player.y+rnd(-14,24);
+   particles.push({x:tx,y:ty-vy*life-.075*life*life,vx:rnd(-.5,.5),vy,life,color:i%2?c[0]:c[1],size:rnd(3,6),streak:true})}
+ }else if(h.id==='moonblade'){
+  for(let i=0;i<46;i++){const k=rnd(0,1);particles.push({x:player.x+f*rnd(20,60),y:player.y-rnd(20,110),vx:f*rnd(10,18),vy:rnd(-1.5,1.5),life:rnd(14,26),color:k>.5?c[0]:c[1],size:rnd(3,8),streak:true})}
+ }
+ for(let i=0;i<60;i++){const a=rnd(-Math.PI,Math.PI),r=rnd(10,170);particles.push({x:player.x+Math.cos(a)*r*.55,y:player.y-60+Math.sin(a)*r*.35,vx:Math.cos(a)*rnd(2,11),vy:Math.sin(a)*rnd(2,7),life:rnd(20,45),color:i%2?c[0]:c[1],size:rnd(3,10)})}
+ rings.push({x:player.x+(m.fwd?f*60:0),y:player.y,t:0,r:m.range[0]*.9,color:c[0]});
+ let n=0;
+ for(const e of enemies){
+  if(e.hp<=0||Math.abs(e.y-player.y)>=m.range[1])continue;
+  const d=(e.x-player.x)*f;
+  if(m.fwd?(d>-50&&d<m.range[0]):Math.abs(e.x-player.x)<m.range[0]){damage(e,Math.round(80*h.power*h.magic),player.x,true,26);n++}
+ }
+ return n;
+}
+// Advance the current move: start buffered input, lunge, fire hit frames, finish.
+function stepAttack(dt){
+ let a=player.atk;const b=player.buf;
+ if(b&&player.stun<=0&&player.dodge<=0&&(!a||a.t/a.dur>=a.m.cancel)){
+  player.buf=null;
+  const id=pickMove(b.kind);
+  if(id){startMove(id);a=player.atk}
+ }
+ if(!a)return;
+ const prev=a.t/a.dur;a.t+=dt;const p=a.t/a.dur,m=a.m;
+ if(m.lunge){
+  const [p0,p1,d]=m.lunge,ease=u=>1-Math.pow(1-u,2);
+  const u0=clamp((prev-p0)/(p1-p0),0,1),u1=clamp((p-p0)/(p1-p0),0,1);
+  player.x+=player.face*d*(ease(u1)-ease(u0));
+ }
+ if(m.hits){while(a.i<m.hits.length&&p>=m.hits[a.i].p){const n=strikeHit(m.hits[a.i]);a.i++;a.done=true;if(n&&a.i===m.hits.length&&m.hits.length>1)floater(player.x+player.face*60,player.y-175,'FINISH','#ffd27a',30,16)}}
+ else if(!a.done&&p>=m.hitAt){a.done=true;magicBlast(m)}
+ if(a.t>=a.dur){player.atk=null;player.strT=26}
+}
+function damage(e,n,from,heavy=false,kb=18){
  if(e.hp<=0)return;
  e.hp=Math.max(0,e.hp-n);
  // The boss shrugs off light hits (no stagger, no interrupt); heavy hits and magic break its wind-up.
  if(e.type!==3||heavy){e.stun=17;e.windup=0}
- e.x+=Math.sign(e.x-from||1)*(e.type===3?6:18);
+ e.x+=Math.sign(e.x-from||1)*(e.type===3?6:kb);
  spawnBurst(e.x,e.y-80,e.type===3?'#ffba70':'#dca35c',17);
  player.chain++;player.chainTimer=CHAIN_WINDOW;maxChain=Math.max(maxChain,player.chain);
  const mult=multiplier();player.score+=5*mult;
@@ -252,9 +393,9 @@ function damage(e,n,from,heavy=false){
  }
 }
 function hurtPlayer(n){
- if(player.inv>0||player.dodge>0)return false;
+ if(player.inv>0||player.dodge>0||player.dying>0)return false;
  const dmg=Math.max(1,Math.round(n*chosenHero.defense));
- player.hp=Math.max(0,player.hp-dmg);player.stun=12;player.inv=35;player.chain=0;player.chainTimer=0;shake=Math.max(shake,11);
+ player.hp=Math.max(0,player.hp-dmg);player.stun=12;player.inv=35;player.atk=null;player.buf=null;player.step=0;player.strT=0;player.chain=0;player.chainTimer=0;shake=Math.max(shake,11);
  spawnBurst(player.x,player.y-65,'#e65d47',20);sfx('hit',.34);blip(90,.23,'sawtooth',.18);
  floater(player.x,player.y-160,'-'+dmg,'#ff8c75',46,24);
  return true;
@@ -313,8 +454,9 @@ function enemyAI(e,dt){
  e.x=clamp(e.x,30,world-25);e.y=clamp(e.y,415,550);
 }
 function dodge(){
- if(state!=='playing'||player.dodge>0||player.dodgeCool>0||player.stun>0)return;
- player.dodge=15;player.inv=Math.max(player.inv,17);player.dodgeCool=DODGE_TOTAL;blip(350,.12,'triangle');
+ if(state!=='playing'||player.dying>0||player.dodge>0||player.dodgeCool>0||player.stun>0)return;
+ if(player.atk&&!player.atk.done)return; // a dodge can cancel a move only after it has landed
+ player.atk=null;player.buf=null;player.step=0;player.strT=0;player.dodge=15;player.inv=Math.max(player.inv,17);player.dodgeCool=DODGE_TOTAL;blip(350,.12,'triangle');
 }
 
 // ---------- Update ----------
@@ -324,12 +466,18 @@ function stageBonus(){
 }
 const fmtTime=f=>{const s=Math.floor(f/60);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
 function update(dt){
+ stepDt=0;
  if(state!=='playing')return;
  soundtrack();
  if(hitstop>0){hitstop-=dt;return}
+ stepDt=dt;
  clock+=dt;runTime+=dt;frame+=dt;
- for(const k of ['stun','inv','dodge','dodgeCool','cool','attack'])player[k]=Math.max(0,player[k]-dt);
- player.anim+=dt;
+ for(const k of ['stun','inv','dodge','dodgeCool'])player[k]=Math.max(0,player[k]-dt);
+ player.anim+=dt;player.mixT=Math.min(1,player.mixT+dt/5);
+ if(player.buf){player.buf.t-=dt;if(player.buf.t<=0)player.buf=null}
+ if(player.strT>0&&!player.atk){player.strT-=dt;if(player.strT<=0)player.step=0}
+ for(const t of trail)t.age+=dt;trail=trail.filter(t=>t.age<9);
+ for(const gh of ghosts)gh.life-=dt;ghosts=ghosts.filter(gh=>gh.life>0);
  if(player.chainTimer>0){player.chainTimer-=dt;if(player.chainTimer<=0)player.chain=0}
  if(banner){banner.t-=dt;if(banner.t<=0)banner=null}
  let mx=(keys.has('ArrowRight')||keys.has('KeyD')?1:0)-(keys.has('ArrowLeft')||keys.has('KeyA')?1:0),
@@ -340,11 +488,19 @@ function update(dt){
   for(let i=0;i<4;i++){const b=gp.buttons[i]?.pressed||false;if(b&&!gpLast[i])i===0?attack():i===2?attack(true):i===1?attack(false,true):dodge();gpLast[i]=b}
   if(gp.buttons[14]?.pressed)mx=-1;if(gp.buttons[15]?.pressed)mx=1;if(gp.buttons[12]?.pressed)my=-1;if(gp.buttons[13]?.pressed)my=1;
  }
- player.moving=!!(mx||my);
- if(player.stun<=0){
-  const speed=player.dodge>0?chosenHero.speed*2.15:chosenHero.speed;
-  player.x+=clamp(mx,-1,1)*speed*dt;player.y+=clamp(my,-1,1)*speed*.75*dt;
-  if(mx)player.face=mx>0?1:-1;
+ player.moving=!!(mx||my);player.walking=false;
+ if(player.dying>0){player.dying+=dt}
+ else{
+  stepAttack(dt);
+  if(player.dodge>0){if(!mx)mx=player.face;else player.face=mx>0?1:-1}
+  if(player.stun<=0){
+   const atk=player.atk,speed=player.dodge>0?chosenHero.speed*2.15:atk?chosenHero.speed*.4:chosenHero.speed;
+   const ox=player.x,oy=player.y;
+   player.x+=clamp(mx,-1,1)*speed*dt;player.y+=clamp(my,-1,1)*speed*.75*dt;
+   if(mx&&!atk&&player.dodge<=0)player.face=mx>0?1:-1;
+   const moved=Math.hypot(player.x-ox,(player.y-oy)/.75);
+   if(moved>.2&&!atk&&player.dodge<=0){player.gait+=moved/108;player.walking=true}
+  }
  }
  player.x=clamp(player.x,30,world-36);player.y=clamp(player.y,413,550);
  camera+=(clamp(player.x-355,0,world-W)-camera)*Math.min(.12*dt,1);
@@ -361,8 +517,9 @@ function update(dt){
   }
  }
  drops=drops.filter(d=>!d.gone);shake*=Math.pow(.84,dt);
- if(player.hp<=0){end(false);return}
- if(enemies.every(e=>e.hp<=0)&&player.x>world-400){
+ if(player.hp<=0&&!(player.dying>0)){player.dying=.01;player.atk=null;player.buf=null;player.stun=0;shake=16;hitstop=Math.max(hitstop,8);sfx('death',.3);banner=null}
+ if(player.dying>=78){end(false);return}
+ if(player.dying<=0&&enemies.every(e=>e.hp<=0)&&player.x>world-400){
   const b=stageBonus(),cleared=level;player.score+=b.hp+b.time;
   if(level===2){end(true,b);return}
   reset(level+1);state='interlude';
@@ -428,16 +585,11 @@ function render(){
  }
  const entities=[...enemies.filter(e=>e.dead<80),player].sort((a,b)=>a.y-b.y);
  for(const e of entities){
-  if(e===player)sprite(e,true);else sprite(e);
+  if(e===player)drawHero();else sprite(e);
   if(e!==player&&e.hp>0&&e.hp<e.max){g.fillStyle='#190d14';g.fillRect(e.x-camera-28,e.y-159,56,5);g.fillStyle='#d75b42';g.fillRect(e.x-camera-28,e.y-159,56*e.hp/e.max,5)}
   if(e!==player&&e.hp>0&&e.windup>0)telegraph(e);
  }
- if(player.attack>0&&sheetsLoaded>=sheetsExpected){
-  const x=player.x-camera,y=player.y-83;g.save();g.translate(x,y);g.scale(player.face,1);
-  g.strokeStyle='#fff6d4aa';g.lineWidth=7;g.beginPath();g.arc(15,-6,85,-.9,.65);g.stroke();
-  g.strokeStyle='#f8bd6688';g.lineWidth=13;g.stroke();g.restore();
- }
- for(const p of particles){g.globalAlpha=Math.min(1,p.life/17);ellipse(p.x-camera,p.y,p.size,p.size*.8,p.color)}
+  for(const p of particles){g.globalAlpha=Math.min(1,p.life/17);if(p.streak){g.strokeStyle=p.color;g.lineWidth=p.size;g.lineCap='round';g.beginPath();g.moveTo(p.x-camera,p.y);g.lineTo(p.x-camera-p.vx*2.2,p.y-p.vy*2.2);g.stroke()}else ellipse(p.x-camera,p.y,p.size,p.size*.8,p.color)}
  g.globalAlpha=1;
  if(window.drawAshenForeground)window.drawAshenForeground(g,level,camera,frame,W,H,player.x-camera);
  for(const f of floaters){
@@ -466,18 +618,14 @@ function handleMenuPad(t){
 }
 function loop(t){
  const dt=Math.min(2.5,(t-last)/16.667||1);last=t;
- handleMenuPad(t);window.ASHEN_AUDIO?.update(level,state);update(dt);render();requestAnimationFrame(loop);
+ handleMenuPad(t);window.ASHEN_AUDIO?.update(level,state);update(dt);render();if(state==='select')paintPortraits(t);requestAnimationFrame(loop);
 }
-function paintPortraits(){
- if(!choiceCards)return;
+let lastPaint=0;
+function paintPortraits(t=performance.now()){
+ if(!choiceCards||!window.AshenRig||t-lastPaint<45)return;lastPaint=t;
  choiceCards.querySelectorAll('[data-preview]').forEach(cv=>{
-  const hero=heroes[+cv.dataset.preview],entry=sheetCache[hero.pack]?.idle,ctx=cv.getContext('2d');
-  ctx.clearRect(0,0,cv.width,cv.height);
-  if(!entry?.ready)return;
-  const fw=entry.img.width/entry.frames,fh=entry.img.height,b=entry.bounds?.[0];
-  const visibleHeight=(b?.bottom??fh)-(b?.top??0)+1,scale=Math.min(2.2,140/visibleHeight);
-  ctx.imageSmoothingEnabled=false;ctx.filter=hero.filter;
-  ctx.drawImage(entry.img,0,0,fw,fh,Math.round(cv.width/2-fw*scale/2),Math.round(cv.height-12-(b?.bottom??fh)*scale),Math.round(fw*scale),Math.round(fh*scale));ctx.filter='none';
+  const hero=heroes[+cv.dataset.preview];
+  window.AshenRig.portrait(hero.id,cv.getContext('2d'),cv.width,cv.height,t+(+cv.dataset.preview)*430);
  });
 }
 function showCharacterSelect(){state='select';O.hidden=true;choicePanel.hidden=false;setHeroChoice(selectedHero)}
@@ -485,7 +633,7 @@ function backToTitle(){choicePanel.hidden=true;O.hidden=false;state='menu'}
 function setHeroChoice(i){
  selectedHero=(i+heroes.length)%heroes.length;
  choiceCards.querySelectorAll('[data-hero]').forEach((b,j)=>{const active=j===selectedHero;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',active?'true':'false')});
- $('#selectedBio').textContent=heroes[selectedHero].bio;paintPortraits();
+ $('#selectedBio').textContent=heroes[selectedHero].bio;lastPaint=0;paintPortraits();
 }
 function beginSelectedGame(){chosenHero=heroes[selectedHero];choicePanel.hidden=true;reset(0);startPlaying()}
 function startPlaying(){
@@ -543,7 +691,7 @@ document.querySelectorAll('[data-key]').forEach(b=>{
 
 // Test hook: only exists when the page is opened with ?debug
 if(typeof location!=='undefined'&&/[?&]debug\b/.test(location.search||'')){
- window.ASHEN2_DEBUG={get state(){return state},set state(v){state=v},get level(){return level},get enemies(){return enemies},get hitstop(){return hitstop},get banner(){return banner},get maxChain(){return maxChain},player,heroes,foe,reset,attack,damage,dodge,enemyAI,hurtPlayer,update,render,end,loop,beginSelectedGame,attackers,get floaters(){return floaters},get rings(){return rings}};
+ window.ASHEN2_DEBUG={get state(){return state},set state(v){state=v},get level(){return level},get enemies(){return enemies},get hitstop(){return hitstop},get banner(){return banner},get maxChain(){return maxChain},player,heroes,foe,MOVES,reset,attack,pressAttack,damage,dodge,enemyAI,hurtPlayer,update,render,end,loop,beginSelectedGame,attackers,get floaters(){return floaters},get trail(){return trail},get ghosts(){return ghosts},get heroSt(){return heroSt},set chosen(i){chosenHero=heroes[i]},get rings(){return rings}};
 }
-reset();state='menu';paintPortraits();requestAnimationFrame(loop);
+reset();state='menu';requestAnimationFrame(loop);
 })();
