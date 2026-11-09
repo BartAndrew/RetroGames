@@ -82,14 +82,21 @@ def main():
     full = blobs
     for a, b in blobs.items():
         if len(b) != jobs[a][1]: print(f'WARNING {a}: found {len(b)} poses, expected {jobs[a][1]}')
-    refb = blobs.get(ref) or next(iter(blobs.values()))
-    if ref not in blobs: print(f'note: no {ref} strip given, scaling from the first strip')
-    scale = target / float(np.median([b[0][3] - b[0][1] for b in refb]))
-    print(f'{fid}: scale {scale:.3f} (reference height {np.median([b[0][3]-b[0][1] for b in refb]):.0f}px -> {target:.0f})')
+    mpath0 = os.path.join(ROOT, 'art', 'manifest.json')
+    man0 = json.load(open(mpath0)) if os.path.exists(mpath0) else {}
+    saved = (man0.get(fid) or {}).get('importScale')
+    if ref in blobs or not saved:
+        refb = blobs.get(ref) or next(iter(blobs.values()))
+        if ref not in blobs: print(f'note: no {ref} strip given, scaling from the first strip')
+        scale = target / float(np.median([b[0][3] - b[0][1] for b in refb]))
+    else:
+        scale = saved; print(f'using the scale saved from this fighter\'s idle import ({scale:.3f})')
+    print(f'{fid}: scale {scale:.3f}')
     mpath = os.path.join(ROOT, 'art', 'manifest.json')
     man = json.load(open(mpath)) if os.path.exists(mpath) else {}
     ent = man.get(fid) or dict(path='art/{id}/{anim}/{n}.png', portrait='art/{id}/portrait.png', anchor=[AX, BASE], scale=0.38, anims={})
     ent.setdefault('anims', {})
+    if ref in blobs or not saved: ent['importScale'] = round(float(scale), 4)
     for a, (p, n, rg) in jobs.items():
         im, bs = keyed[a], blobs[a][rg[0] - 1:rg[1]]
         out = os.path.join(ROOT, 'art', fid, a); os.makedirs(out, exist_ok=True)

@@ -36,7 +36,8 @@
         "frames": 1,
         "fps": 8
       }
-    }
+    },
+    "importScale": 0.955
   },
   "yuppie": {
     "path": "art/{id}/{anim}/{n}.png",
@@ -57,7 +58,8 @@
       "hk": {
         "frames": 8
       }
-    }
+    },
+    "importScale": 0.901
   },
   "bogan-tradie": {
     "path": "art/{id}/{anim}/{n}.png",
@@ -79,6 +81,7 @@
         "frames": 8,
         "fps": 14
       }
-    }
+    },
+    "importScale": 0.972
   }
 }

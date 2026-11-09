@@ -427,6 +427,187 @@ def build():
       "- Injuries in the post-fight scenes are bruises and torn clothing only: warm, not gory.\n")
     return data, manifest, '\n'.join(md), total
 
+# ------------------------------------------------- per-fighter prompt files (art/<id>/PROMPTS.md)
+# Each strip: (file name, poses, [(anim, first, last), ...], [pose beats...]).  8 poses unless noted (special is 6).
+STRIPS = [
+  ('idle', 8, [('idle', 1, 8)], [
+    "relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred",
+    "chest rises as he breathes in, shoulders lift slightly",
+    "highest point of the bounce, guard unchanged, head level",
+    "settles, weight shifts a touch onto the rear foot",
+    "lowest point of the bounce, knees bending a little deeper",
+    "returns up, tiny head tilt, eyes on the opponent",
+    "shoulders roll slightly, fists loosen then re-tighten",
+    "back to the starting stance so the loop is seamless"]),
+  ('walk', 8, [('walk', 1, 8)], [
+    "walking contact pose: lead foot lands heel-first, rear heel lifting, guard up",
+    "weight moves onto the lead leg, rear knee swings forward",
+    "passing pose: rear leg passes beside the lead leg, body at its highest",
+    "rear foot reaches forward, lead foot pushes off",
+    "rear foot lands, lead leg lifts, guard up",
+    "weight moves onto the new lead leg, other knee swings forward",
+    "passing pose again, mirrored, body at its highest",
+    "lead foot reaches forward, ready to loop back to pose 1"]),
+  ('guard_hit', 8, [('block', 1, 2), ('blockLow', 3, 4), ('hurt', 5, 6), ('hurtLow', 7, 8)], [
+    "standing block: both forearms raised to cover face and chest, elbows tucked in",
+    "standing block braced: shoulders hunched behind the guard, grimacing",
+    "crouching block: dropped low, forearms covering shins and body",
+    "crouching block braced: head tucked behind the guard",
+    "standing hit reaction: head snapping back, eyes squeezed shut, torso recoiling",
+    "standing hit reaction: stumbling backward, guard dropped, grimacing",
+    "crouching hit reaction: crouched, wincing, one leg buckling",
+    "crouching hit reaction: crouched and stumbling, hand dropping to the knee"]),
+  ('down', 8, [('launched', 1, 3), ('knockdown', 4, 4), ('ko', 5, 5), ('getup', 6, 8)], [
+    "launched: lifted off the ground, torso arched back, limbs flailing",
+    "mid-air, nearly horizontal, tumbling backward",
+    "falling, arms out, about to land",
+    "slamming onto the back, arms thrown out, small puff of dust",
+    "lying flat on the back, completely limp, eyes closed",
+    "rolling to the side, propping up on one elbow",
+    "pushing up onto one knee",
+    "rising into a crouch, one fist coming up into guard"]),
+  ('lp_lk', 8, [('lp', 1, 4), ('lk', 5, 8)], [
+    "light punch 1: guard stance, eyes locked on the opponent",
+    "light punch 2: lead shoulder dips, lead fist pulls back slightly",
+    "light punch 3 IMPACT: lead arm snapping straight at chin height, torso twisting forward",
+    "light punch 4: fist retracting to the guard",
+    "low kick 1: guard stance",
+    "low kick 2: lifts the lead knee, chambering the kick",
+    "low kick 3 IMPACT: lead shin snaps out low at thigh height, torso leaning back slightly",
+    "low kick 4: leg retracts and plants, back to guard"]),
+  ('hp', 8, [('hp', 1, 8)], [
+    "heavy punch 1: guard stance",
+    "rear fist drawn back by the hip, weight loading onto the rear leg",
+    "torso coiled, hips beginning to rotate",
+    "hips rotating, rear shoulder driving forward",
+    "IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean",
+    "follow-through leaning far forward, weight over the front knee",
+    "recovering, arm coming back",
+    "back to guard"]),
+  ('hk', 8, [('hk', 1, 8)], [
+    "heavy kick 1: guard stance",
+    "small hop, lead knee rising",
+    "knee high, chambering the kick",
+    "leg swung high above the head, body leaning back",
+    "leg at its peak, torso tilting forward, heel leading",
+    "IMPACT: heel driving down at head height, standing leg bent",
+    "landing, knees absorbing",
+    "recovering to guard"]),
+  ('launcher_sweep', 8, [('launcher', 1, 4), ('sweep', 5, 8)], [
+    "uppercut 1: dropping into a deep crouch, rear fist by the hip, eyes on the opponent's chin",
+    "uppercut 2: explosive rise, rear fist driving upward",
+    "uppercut 3 IMPACT: arm fully extended skyward, legs extended on tiptoes, head back",
+    "uppercut 4: coming down, recovering to guard",
+    "sweep 1: dropping low, one hand reaching toward the ground",
+    "sweep 2: body pivoting, lead leg beginning to extend",
+    "sweep 3 IMPACT: lead leg fully extended along the ground at ankle height, torso low, hand on the ground",
+    "sweep 4: leg slides back as he rises into a crouch guard"]),
+  ('air', 8, [('airP', 1, 4), ('airK', 5, 8)], [
+    "jump punch 1: mid-jump, fist cocked back",
+    "jump punch 2: diving diagonally, lead fist starting forward",
+    "jump punch 3 IMPACT: arm fully extended forward and down, legs tucked",
+    "jump punch 4: follow-through while descending",
+    "jump kick 1: mid-jump, knees tucked",
+    "jump kick 2: one leg extending diagonally downward",
+    "jump kick 3 IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance",
+    "jump kick 4: leg retracting while descending"]),
+  ('dash', 8, [('dashF', 1, 4), ('dashB', 5, 8)], [
+    "forward dash 1: low lunge start, torso leaning forward about 25 degrees, rear foot driving",
+    "forward dash 2: full stride, almost airborne, torso low, arms tucked back",
+    "forward dash 3: landing slide, front foot planted, speed streaks behind him",
+    "forward dash 4: recovering to a guard stance",
+    "back dash 1: pushing off the front foot, leaning back, guard up",
+    "back dash 2: hop backward, both feet off the ground, guard up",
+    "back dash 3: landing on the rear foot, knees absorbing, eyes on the opponent",
+    "back dash 4: settling into guard"]),
+  ('jump', 8, [('prejump', 1, 2), ('jumpUp', 3, 4), ('jumpApex', 5, 5), ('jumpDown', 6, 6), ('land', 7, 7)], [
+    "pre-jump: deep knee bend, arms swung back, about to spring",
+    "coiled, rising slightly onto the toes",
+    "launching: legs extending, arms driving up",
+    "rising: knees tucking, fists near the chin",
+    "at the top of the jump, knees tucked, fists up, body compact",
+    "descending, legs stretching downward, arms guarding",
+    "landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground",
+    "standing back up into guard"]),
+]
+BATCHES = [("Batch 1: movement basics", ['idle', 'walk', 'guard_hit']),
+           ("Batch 2: knockdown and first attacks", ['down', 'lp_lk', 'hp']),
+           ("Batch 3: heavy attacks, launcher, sweep, air attacks", ['hk', 'launcher_sweep', 'air']),
+           ("Batch 4: dashes, jump, special", ['dash', 'jump', 'special']),
+           ("Batch 5: super and personality", ['super', 'victory_intro'])]
+# what the artwork we already have actually looks like (overrides the generic lock for the 3 imported fighters)
+ART_LOCK = {
+  'gym-bro': "Tyler, very muscular young American gym-goer, short styled brown hair, earbud, dark navy tank top, grey drawstring shorts with white side stripes, white trainers with navy ticks and striped socks, black wrist wraps",
+  'yuppie': "Preston, athletic American finance professional, styled brown hair, white shirt with rolled sleeves, red tie, navy pinstripe trousers, brown leather shoes, steel wristwatch",
+  'bogan-tradie': "Gaz, stocky Australian tradesman with a brown mullet and sunglasses pushed up on his head, yellow sleeveless hi-vis vest with grey reflective bands, tool belt with hammer and tape measure, dirty navy work shorts, tan steel-capped boots, black fingerless gloves, Australian flag shoulder tattoo",
+}
+MAGENTA = "Solid flat magenta (#FF00FF) background, no text, no logo, no shadow, nothing floating loose."
+
+def strips_for(fid):
+    f = FIGHTERS[fid]
+    sp = list(f['special'])
+    sup = ["crouching to gather power, " + f['charge'], "charge peak: " + f['charge'] + ", energy flaring",
+           "explosive launch into the flurry, " + f['fa'], "IMPACT: " + f['fb'], "IMPACT: " + f['fc'],
+           "finisher windup: " + f['fin_wind'], "FINISHER IMPACT: " + f['fin_hit'], "recovering, breathing hard, shoulders heaving"]
+    vi = ["intro 1: stepping into frame with confidence", "intro 2 taunt: " + f['intro_a'], "intro 3 taunt: " + f['intro_b'],
+          "intro 4: settling into a guard stance with a smirk",
+          "victory 1: straightening up, breathing hard", "victory 2: raising the lead fist overhead",
+          "victory 3: arm fully raised in triumph, chest out", "victory 4 signature: " + f['victory']]
+    out = {s[0]: s for s in STRIPS}
+    out['special'] = ('special', len(sp), [('special', 1, len(sp))], sp)
+    out['super'] = ('super', 8, [('super', 1, 8)], sup)
+    out['victory_intro'] = ('victory_intro', 8, [('intro', 1, 4), ('victory', 5, 8)], vi)
+    return out
+
+def fighter_prompt_file(fid, done_anims):
+    f = FIGHTERS[fid]; lock = ART_LOCK.get(fid, f['lock'])
+    has_art = fid in ART_LOCK
+    st = strips_for(fid)
+    L = []
+    L.append(f"# {f['name']} ({f['nick']}): sprite strip prompts\n")
+    L.append("Every strip below is one image. Generate them one at a time, then save each as "
+             f"`art/{fid}/strips/<name>.png` and import with the command under it.\n")
+    if has_art:
+        L.append("**Reference to attach to every prompt:** your existing idle strip for this fighter (same face, outfit, proportions, lighting).\n")
+    else:
+        L.append("**Step 0, before any strips:** generate the reference sheet (prompt below), pick one result and attach it to every strip prompt.\n")
+        L.append("```\n" + sheet_prompt(fid) + "\n```\n")
+    L.append(f"**Character:** {lock}.\n")
+    L.append("**Header: paste at the start of every strip prompt**\n")
+    head = ("Use the attached image as the exact character reference: same face, hair, outfit, proportions, art style and lighting. "
+            f"{lock}. Photorealistic fighting-game sprite strip, side view, character facing right. "
+            "{N} equal-size poses in one horizontal row with a wide empty gap between poses, so no limb, fist or weapon ever crosses into a neighbouring pose. "
+            "Same camera height, distance and scale in every pose; feet on the same ground line unless the pose is airborne. " + MAGENTA + " Poses left to right:")
+    L.append("```\n" + head + "\n```\n")
+    L.append("Replace `{N}` with the pose count shown on each strip (8, or 6 for the special).\n")
+    L.append("**Status**: ✅ = already imported from your first upload, ⬜ = still to make. A ✅ strip can be skipped, or redone for a better take.\n")
+    n = 0
+    for title, names in BATCHES:
+        L.append(f"\n---\n\n## {title} (3 strips)\n")
+        for name in names:
+            _, np_, cuts, beats = st[name]; n += 1
+            done = all(a in done_anims for a, _, _ in cuts)
+            L.append(f"### {n}. `{name}`: {np_} poses {'✅' if done else '⬜'}\n")
+            L.append("```\n" + '\n'.join(f"{i}) {b}" for i, b in enumerate(beats, 1)) + "\n```\n")
+            args = ' '.join(f"{a}=art/{fid}/strips/{name}.png:{np_}" + (f":{x}-{y}" if (x, y) != (1, np_) else '') for a, x, y in cuts)
+            L.append(f"Import: `python3 tools/cut-v7-strips.py {fid} {args}`\n")
+    L.append("\n---\n\n## Notes\n")
+    L.append("- Import `idle` first (or in the same command as the others). It sets this fighter's scale, so every later strip matches.\n"
+             "- If a strip comes back with the wrong number of poses or poses that overlap, regenerate it; clean gaps give the cleanest cuts.\n"
+             "- Back-walk uses the walk strip played in reverse, so there is no separate strip.\n"
+             "- Keep strip images under `art/<id>/strips/` so imports can be repeated if the cutter improves.\n")
+    return '\n'.join(L)
+
+def emit_fighter_prompt_files():
+    mp = os.path.join(ART, 'manifest.json')
+    man = json.load(open(mp)) if os.path.exists(mp) else {}
+    for fid in FIGHTERS:
+        done = set((man.get(fid) or {}).get('anims', {}).keys())
+        d = os.path.join(ART, fid); os.makedirs(os.path.join(d, 'strips'), exist_ok=True)
+        with open(os.path.join(d, 'PROMPTS.md'), 'w') as fh: fh.write(fighter_prompt_file(fid, done))
+        keep = os.path.join(d, 'strips', '.gitkeep')
+        if not os.path.exists(keep): open(keep, 'w').close()
+
 def emit_cast_js():
     """Writes cast-v7.js: playable data + story lines for all fighters (consumed by roster-v7.js and story-v7.js)."""
     cs = cast_data.CAST
@@ -458,5 +639,6 @@ if __name__ == '__main__':
     with open(os.path.join(ART, 'prompts-v7.json'), 'w') as fh: json.dump(data, fh, indent=1)
     with open(os.path.join(ART, 'manifest.v7.template.json'), 'w') as fh: json.dump(manifest, fh, indent=2)
     emit_cast_js()
+    emit_fighter_prompt_files()
     strips = sum(len(v['strips']) for v in data['fighters'].values())
     print(f"fighters={len(data['fighters'])} strips={strips} frames={total} scenes={len(data['scenes'])}")
