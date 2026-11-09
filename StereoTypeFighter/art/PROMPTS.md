@@ -643,9 +643,3528 @@ Photorealistic fighting-game character art, cinematic studio quality, believable
 
 ---
 
+## Lefty Liberal (Sam), id `lefty`
+
+**Locked description:** Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing round glasses, tired but determined friendly face. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/lefty/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face, round glasses, tired but determined friendly face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/lefty/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, megaphone clipped to the belt. 2) pulls the megaphone up, lead foot planting. 3) raises the megaphone to their mouth, chest swelling with a breath. 4) bellows into the megaphone, a visible cyan shockwave leaving the horn. 5) second blast, bigger, the air rippling. 6) lowers the megaphone, slightly hoarse, back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, raises the megaphone high, a cyan glow gathering and a crowd silhouette rising behind. 2) charge peak: raises the megaphone high, a cyan glow gathering and a crowd silhouette rising behind, energy flaring. 3) explosive launch into the flurry, clipboard chop. 4) IMPACT: clipboard chop. 5) windup for tote-bag swing. 6) IMPACT: tote-bag swing. 7) IMPACT: rapid enamel-pin jabs. 8) again: clipboard chop. 9) again: tote-bag swing. 10) finisher windup: raising the megaphone overhead with both hands, a huge crowd of silhouettes behind. 11) FINISHER IMPACT: blasting a massive cyan soundwave straight forward from the megaphone. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: raises the megaphone overhead and grins, tote bag swinging. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Sam, an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: checks a clipboard and nods seriously. 3) taunt: clears their throat into the megaphone. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Agenda Fluid (Rowan), id `agenda`
+
+**Locked description:** Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing expressive mobile face, knowing half-smile. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/agenda/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings, expressive mobile face, knowing half-smile. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/agenda/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, weight light on the toes. 2) shoulders feint left, eyes tracking right. 3) a quick sidestep, jacket trailing behind. 4) darts forward in a blur, body angled low. 5) reappears beside the opponent, striking from the new angle. 6) slides to a halt, jacket settling, a small grin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, arms spread, a swirl of violet light and shifting after-images around them. 2) charge peak: arms spread, a swirl of violet light and shifting after-images around them, energy flaring. 3) explosive launch into the flurry, feint jab. 4) IMPACT: feint jab. 5) windup for pivot kick. 6) IMPACT: pivot kick. 7) IMPACT: curveball cross. 8) again: feint jab. 9) again: pivot kick. 10) finisher windup: crouching with a dozen after-images fanned behind them, one hand glowing. 11) FINISHER IMPACT: striking from above in a burst of violet, after-images scattering like paper. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: spins once and takes a bow, jacket flaring. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rowan, an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: tilts their head and raises an eyebrow, as if they know something. 3) taunt: slow-claps twice with a faint smirk. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Bimbo Babe (Tiffani), id `bimbo-babe`
+
+**Locked description:** Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing bright wide eyes, glossy lips, a knowing sparkle. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/bimbo-babe/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag, bright wide eyes, glossy lips, a knowing sparkle. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/bimbo-babe/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, handbag on the rear arm. 2) hair whips as she rotates her shoulders, knee rising. 3) spins on one foot, hair and skirt flaring in a pink blur. 4) mid-spin, heel extending in a sweeping kick. 5) second rotation, a pink whirlwind ripping up from the floor. 6) lands the spin in a pose, hair settling. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, drops her handbag and flings her arms wide, pink light and shopping bags swirling around her. 2) charge peak: drops her handbag and flings her arms wide, pink light and shopping bags swirling around her, energy flaring. 3) explosive launch into the flurry, handbag swing. 4) IMPACT: handbag swing. 5) windup for heel flick. 6) IMPACT: heel flick. 7) IMPACT: pose jab. 8) again: handbag swing. 9) again: heel flick. 10) finisher windup: spinning high with the handbag extended, sale tags fluttering behind her. 11) FINISHER IMPACT: slamming the handbag down in a burst of pink confetti and tags. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: strikes a perfect pose with a hand on hip and winks. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Tiffani, an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: flips her hair and checks her reflection in a compact mirror. 3) taunt: blows a kiss to the crowd. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Douchebag Dave (Dave), id `douchebag-dave`
+
+**Locked description:** Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing smug half-smile, perfectly styled blond hair. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/douchebag-dave/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile, smug half-smile, perfectly styled blond hair. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/douchebag-dave/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, chin high, smirking. 2) adjusts his sunglasses with the lead hand, rear fist dropping low. 3) steps in, the rear fist coiling at hip height. 4) rises on his toes, driving a rising uppercut with a wake-shaped splash of light. 5) arm fully extended upward, loafers off the ground. 6) lands, adjusting his cuffs as if nothing happened. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, arms spread, golden light and sports-car and yacht silhouettes flashing behind him. 2) charge peak: arms spread, golden light and sports-car and yacht silhouettes flashing behind him, energy flaring. 3) explosive launch into the flurry, showboat cross. 4) IMPACT: showboat cross. 5) windup for loafer high kick. 6) IMPACT: loafer high kick. 7) IMPACT: country-club jab. 8) again: showboat cross. 9) again: loafer high kick. 10) finisher windup: crouching with a clenched fist low, champagne bubbles streaming around him. 11) FINISHER IMPACT: an enormous rising uppercut, a splash of champagne and gold light bursting skyward. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: pops a champagne bottle and sprays it, grinning. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dave, an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: slides his sunglasses down his nose and looks over them. 3) taunt: checks his watch and sighs, bored. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Junkie (Mickey), id `junkie`
+
+**Locked description:** Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing tired sharp eyes, scruffy beard, a lopsided grin. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/junkie/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references, tired sharp eyes, scruffy beard, a lopsided grin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/junkie/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, weight bouncing erratically. 2) twitches left, then right, feet shuffling. 3) fakes a lunge, body snapping back. 4) darts forward at a sharp angle, jacket flaring. 5) switches direction mid-dash, striking from a new line. 6) skids to a stop, wobbling, then back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, shaking all over, eyes wide, a jittery static-like aura around his whole body. 2) charge peak: shaking all over, eyes wide, a jittery static-like aura around his whole body, energy flaring. 3) explosive launch into the flurry, wild haymaker. 4) IMPACT: wild haymaker. 5) windup for trolley kick. 6) IMPACT: trolley kick. 7) IMPACT: scrap jab. 8) again: wild haymaker. 9) again: trolley kick. 10) finisher windup: spinning wildly with a bent shopping trolley handle held overhead. 11) FINISHER IMPACT: slamming the trolley handle down in a burst of green static. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: looks around in surprise, then does a small relieved fist-pump. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Mickey, an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: shuffles in, checking his pockets and finding a spare spanner. 3) taunt: rolls his shoulders and shakes out his hands like a boxer. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Rap Thug (Marcus), id `rapthug`
+
+**Locked description:** Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing confident expression, dark brown skin, a quick smirk, strong brow. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/rapthug/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature, confident expression, dark brown skin, a quick smirk, strong brow. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/rapthug/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, shoulders rolling with a beat. 2) lifts the lead foot, hands low at the sides. 3) raises one knee high, shoulders loaded. 4) stomps down hard on the beat, a ground-hugging shockwave ripple leaving his heel. 5) second stomp, bigger, golden bass rings radiating along the floor. 6) settles with a head nod, shoulders still pulsing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, arms wide, a golden bass-wave aura with speaker silhouettes thumping behind him. 2) charge peak: arms wide, a golden bass-wave aura with speaker silhouettes thumping behind him, energy flaring. 3) explosive launch into the flurry, backbeat cross. 4) IMPACT: backbeat cross. 5) windup for boot stomp kick. 6) IMPACT: boot stomp kick. 7) IMPACT: downbeat jab. 8) again: backbeat cross. 9) again: boot stomp kick. 10) finisher windup: arms thrown wide, one hand clutching a microphone, a platinum record glowing behind him. 11) FINISHER IMPACT: a huge microphone uppercut sending a ring of golden shockwaves upward. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: freeze-frames in an album-cover pose with arms crossed and chin raised. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Marcus, an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: nods his head to an imaginary beat, hands moving like he is mixing. 3) taunt: taps an invisible microphone and drops it. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Killwood Rat (Rae), id `killwoodrat`
+
+**Locked description:** Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing dark eyeliner, sarcastic half-smile, one raised eyebrow. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/killwoodrat/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile, dark eyeliner, sarcastic half-smile, one raised eyebrow. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/killwoodrat/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, shoulders low. 2) drops the lead shoulder, one boot dragging back. 3) coils like a spring, a faint crackle of metallic light at her boots. 4) launches into a spinning rush, a jagged metallic soundwave trailing behind. 5) mid-spin, elbow and boot flicking out in a fast arc. 6) skids to a halt, grinning slightly, back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, lights go dark, amp stacks looming, a jagged metallic red glow tracing her body. 2) charge peak: lights go dark, amp stacks looming, a jagged metallic red glow tracing her body, energy flaring. 3) explosive launch into the flurry, razor elbow. 4) IMPACT: razor elbow. 5) windup for boot stomp. 6) IMPACT: boot stomp. 7) IMPACT: elbow jab. 8) again: razor elbow. 9) again: boot stomp. 10) finisher windup: spinning with both fists clenched, the arena going black around her. 11) FINISHER IMPACT: a brutal spinning kick, the lights flicking back on with a flash. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: smirks and flips off an imaginary crowd, then pretends not to care. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Rae, an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: rolls her eyes and pulls a tape cassette from her pocket, snapping it into a player. 3) taunt: cracks her neck and mouths along to a song nobody can hear. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Sk8r Boi (Jonno), id `sk8r-boi`
+
+**Locked description:** Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing sunburnt nose, apologetic cheeky grin, loose hair under the beanie. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/sk8r-boi/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin, sunburnt nose, apologetic cheeky grin, loose hair under the beanie. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/sk8r-boi/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, one foot lightly on the board. 2) stomps the tail of the skateboard, board popping up. 3) kickflip, board spinning mid-air by his feet. 4) leaps and uses the rebound, lead heel extending into a flying kick. 5) mid-air heel strike, body horizontal, board flashing by. 6) lands and catches the board, grinning. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, drops into a manual, the board glowing with a blue trail and a half-pipe silhouette behind him. 2) charge peak: drops into a manual, the board glowing with a blue trail and a half-pipe silhouette behind him, energy flaring. 3) explosive launch into the flurry, grind jab. 4) IMPACT: grind jab. 5) windup for ollie kick. 6) IMPACT: ollie kick. 7) IMPACT: heelflip axe. 8) again: grind jab. 9) again: ollie kick. 10) finisher windup: leaping off a half-pipe, board under his feet, both arms flung wide. 11) FINISHER IMPACT: a flying board-assisted dropkick, the board snapping back under his feet. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: hops on the skateboard and does a little kickflip. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Jonno, an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: drops the board, steps on, and rolls in lazily. 3) taunt: flicks the beanie up and shrugs apologetically. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Club Doll (Margaux), id `club-doll`
+
+**Locked description:** Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing poised faintly unimpressed expression, perfect eyeliner, hoop earrings. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/club-doll/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression, poised faintly unimpressed expression, perfect eyeliner, hoop earrings. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/club-doll/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, one heel lifted. 2) pivots on the standing foot, hair swinging. 3) spins fast, a glowing velvet-rope arc forming around her. 4) leg extended in a sweeping heel kick, rope arc streaking after it. 5) second rotation, a glowing pink velvet vortex around her legs. 6) stops mid-pose, hair settling, a faint smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, lights dropping to neon strobes, a glowing velvet rope swirling in a ring around her. 2) charge peak: lights dropping to neon strobes, a glowing velvet rope swirling in a ring around her, energy flaring. 3) explosive launch into the flurry, clutch jab. 4) IMPACT: clutch jab. 5) windup for platform kick. 6) IMPACT: platform kick. 7) IMPACT: stiletto axe. 8) again: clutch jab. 9) again: platform kick. 10) finisher windup: spinning high with one heel extended, strobe lights flaring behind her. 11) FINISHER IMPACT: a final stiletto axe kick, neon strobe flash bursting around her. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: strikes a pose and gestures for an imaginary photographer. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Margaux, an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: checks a gold clutch and sighs at the lighting. 3) taunt: air-kisses the crowd with total disdain. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Grunge (Ash), id `grunge`
+
+**Locked description:** Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing long messy hair, weary dry expression, tired eyes. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/grunge/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression, long messy hair, weary dry expression, tired eyes. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/grunge/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, shoulders slumped. 2) leans forward, one hand sweeping across invisible strings. 3) raises both arms, feedback visibly distorting the air in front of them. 4) slams both fists down, a violet feedback shockwave erupting forward. 5) second burst, a wall of distorted soundwave ripples. 6) lowers their arms, ringing ears, a tiny wince. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, hunched over a glowing amp, violet feedback and static swelling around them. 2) charge peak: hunched over a glowing amp, violet feedback and static swelling around them, energy flaring. 3) explosive launch into the flurry, power chord cross. 4) IMPACT: power chord cross. 5) windup for boot stomp. 6) IMPACT: boot stomp. 7) IMPACT: barre chord jab. 8) again: power chord cross. 9) again: boot stomp. 10) finisher windup: a phantom crowd surging behind them, arms thrown wide, hair whipping. 11) FINISHER IMPACT: a huge shoulder check into the crowd surge, a violet shockwave rippling forward. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: shrugs, mutters something, and cracks a tiny smile. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ash, an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: shoulders a battered guitar and gives the crowd a slow disinterested look. 3) taunt: kicks over an amp with a tired sigh. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Fat Gamer (Dennis), id `fat-gamer`
+
+**Locked description:** Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing black rectangular glasses, confident competitive grin. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/fat-gamer/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect, black rectangular glasses, confident competitive grin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/fat-gamer/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, planted wide, immovable. 2) cracks both knuckles, glasses glinting. 3) braces, a ring of pixel sparks forming around his fists. 4) swings both fists forward in a huge strike, pixels flying. 5) follow-through, a green LEVEL UP style glow washing over his body. 6) stands tall, glowing, grinning. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, squares up as a GAME OVER screen-like glow floods the arena, green pixel rings around him. 2) charge peak: squares up as a GAME OVER screen-like glow floods the arena, green pixel rings around him, energy flaring. 3) explosive launch into the flurry, combo breaker cross. 4) IMPACT: combo breaker cross. 5) windup for stomping kick. 6) IMPACT: stomping kick. 7) IMPACT: button-mash jabs. 8) again: combo breaker cross. 9) again: stomping kick. 10) finisher windup: arms crossed against a huge incoming hit, a raid-boss health bar glowing in the air. 11) FINISHER IMPACT: an enormous double-fist slam with a burst of green pixels and a victory fanfare glow. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: raises a game controller overhead like a trophy. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Dennis, an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: cracks his knuckles one by one and adjusts his glasses. 3) taunt: slides the headset over his ears and nods slowly. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Influencer (Kayla), id `influencer`
+
+**Locked description:** Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing flawless camera-ready smile, long brown hair, bright eyes. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/influencer/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile, flawless camera-ready smile, long brown hair, bright eyes. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/influencer/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, phone in the rear hand. 2) raises the phone like a camera, lead foot planting. 3) a ring light glow flashing on her fingers. 4) a bright flash bursts from the phone, a pink ring of light rushing forward. 5) follow-through spin into a camera-ready kick. 6) lowers the phone, checks the screen, smirks. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, a huge ring-light halo behind her, hearts and comment bubbles streaming around her. 2) charge peak: a huge ring-light halo behind her, hearts and comment bubbles streaming around her, energy flaring. 3) explosive launch into the flurry, selfie jab. 4) IMPACT: selfie jab. 5) windup for tripod kick. 6) IMPACT: tripod kick. 7) IMPACT: phone swing. 8) again: selfie jab. 9) again: tripod kick. 10) finisher windup: holding the phone high overhead, a halo of hearts and follower counters spinning around her. 11) FINISHER IMPACT: a perfectly framed final strike, a camera flash bursting and hearts raining down. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: holds up the phone for a selfie with a peace sign. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kayla, an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: turns on a ring light, checks her angles and smiles into the lens. 3) taunt: waves at her followers and winks. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Yoga Mom (Brooke), id `yoga-mom`
+
+**Locked description:** Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing calm radiant expression, loose bun, soft smile. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/yoga-mom/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression, calm radiant expression, loose bun, soft smile. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/yoga-mom/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, centred, palms soft. 2) closes her eyes and breathes in, palms rising together. 3) centres herself, a faint teal glow gathering at her palms. 4) thrusts both palms forward, a teal shockwave pulsing out. 5) second palm, a ring of light rolling across the floor. 6) lowers her hands in a calm bow, eyes open. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, sits in a lotus pose, floating, a glowing ring of teal chakra-like light spinning around her. 2) charge peak: sits in a lotus pose, floating, a glowing ring of teal chakra-like light spinning around her, energy flaring. 3) explosive launch into the flurry, warrior palm. 4) IMPACT: warrior palm. 5) windup for lotus sweep. 6) IMPACT: lotus sweep. 7) IMPACT: flowing palm jab. 8) again: warrior palm. 9) again: lotus sweep. 10) finisher windup: arms spread in a flowing wheel pose, glowing rings spiralling around her. 11) FINISHER IMPACT: a final spinning kick that sends rings of teal light cascading outward. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: presses her palms together in a bow with a serene smile. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Brooke, an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: breathes in slowly with eyes closed, arms raised. 3) taunt: opens one eye and smiles, dangerously calm. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## E-Girl (Kai), id `e-girl`
+
+**Locked description:** Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing deadpan smirk, purple-streaked hair, bright knowing eyes. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/e-girl/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk, deadpan smirk, purple-streaked hair, bright knowing eyes. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/e-girl/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, body bouncing to a beat. 2) flickers left, a faint glitch outline tearing at the edges. 3) stutters, the body smearing into purple pixels. 4) reappears several metres forward in a glitch burst, already striking. 5) second flicker, an after-image of pixels trailing. 6) settles into guard, a small pixel cloud dissipating. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, a storm of neon hearts, emotes and glitch graphics swirling around them, RGB lights pulsing. 2) charge peak: a storm of neon hearts, emotes and glitch graphics swirling around them, RGB lights pulsing, energy flaring. 3) explosive launch into the flurry, combo jab. 4) IMPACT: combo jab. 5) windup for glitch kick. 6) IMPACT: glitch kick. 7) IMPACT: controller slam. 8) again: combo jab. 9) again: glitch kick. 10) finisher windup: arms thrown wide, a screen of cat emotes and hearts exploding behind them. 11) FINISHER IMPACT: a frantic final strike with a cat-ear victory pose, a flood of neon hearts and pixels bursting out. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: holds up a peace sign beside a cat-ear headset and mouths GG. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Kai, an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: adjusts the cat-ear headset and mutters a one-word deadpan greeting to chat. 3) taunt: stares at an invisible screen and rolls their eyes. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Cheerleader (Ashlyn), id `cheerleader`
+
+**Locked description:** Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing bright intense smile, high ponytail, focused athletic eyes. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/cheerleader/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile, bright intense smile, high ponytail, focused athletic eyes. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/cheerleader/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, pom-poms low by her hips. 2) winds her arms back, ponytail swinging. 3) begins to spin, pom-poms trailing a red-and-white spiral. 4) mid-spin, kicking out in a high arc, the spiral swirling around her. 5) second rotation, a red-and-white cyclone lifting dust. 6) lands in a pose, pom-poms raised, smiling. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, a red-and-white whirlwind of pom-poms spinning around her, stadium lights flaring. 2) charge peak: a red-and-white whirlwind of pom-poms spinning around her, stadium lights flaring, energy flaring. 3) explosive launch into the flurry, pom-pom jab. 4) IMPACT: pom-pom jab. 5) windup for toe-touch kick. 6) IMPACT: toe-touch kick. 7) IMPACT: heel stretch axe. 8) again: pom-pom jab. 9) again: toe-touch kick. 10) finisher windup: a high tumbling pass, mid-flip with pom-poms flaring, stadium floodlights behind her. 11) FINISHER IMPACT: a spectacular aerial finishing strike with a burst of red-and-white confetti. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: leaps and lands in a V pose with both pom-poms raised. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Ashlyn, an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: shakes both pom-poms once, hard, like a warning. 3) taunt: cracks her neck and bounces on her toes. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Punk Princess (Roxy), id `punk-princess`
+
+**Locked description:** Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing bright pink mohawk, defiant grin, bold eyeliner. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/punk-princess/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin, bright pink mohawk, defiant grin, bold eyeliner. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/punk-princess/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, shoulders squared, chin high. 2) drops the lead shoulder, one boot scraping back. 3) coils like a spring, a crowd of silhouettes forming behind her. 4) charges forward with a shoulder and knee combination, crowd silhouettes surging with her. 5) knee drives up as the shoulder lands, a pink spray flaring. 6) skids to a stop, boot stomp, grinning. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, guitar feedback screaming, graffiti slogans without readable text bursting across the arena, a roaring crowd silhouette behind her. 2) charge peak: guitar feedback screaming, graffiti slogans without readable text bursting across the arena, a roaring crowd silhouette behind her, energy flaring. 3) explosive launch into the flurry, elbow drop. 4) IMPACT: elbow drop. 5) windup for boot stomp. 6) IMPACT: boot stomp. 7) IMPACT: stud jab. 8) again: elbow drop. 9) again: boot stomp. 10) finisher windup: a roaring crowd of silhouettes behind her, fist raised, graffiti flares around her. 11) FINISHER IMPACT: a huge boot stomp with a shockwave of pink paint and distorted guitar light. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: raises a boot on a crate and pumps a fist, mohawk wild. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Roxy, an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: spits on her palm and slaps the flyer onto a wall. 3) taunt: kicks a crate over and climbs on it. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
+## Neckbeard Nate (Nate), id `neckbeard-nate`
+
+**Locked description:** Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately.
+
+### 1. Reference sheet
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Character reference sheet: five full-body views in one row on a plain grey background (front, three-quarter front, side facing right, three-quarter back, back), neutral relaxed stance, plus a row of three face close-ups below (neutral, determined, grinning) showing rectangular glasses, short beard, earnest self-important expression. Identical costume, proportions and lighting in every view. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 2. Portrait (`art/neckbeard-nate/portrait.png`)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately, rectangular glasses, short beard, earnest self-important expression. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+### 3. Animation strips (`art/neckbeard-nate/<anim>/NN.png`)
+
+**`idle`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'idle': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) relaxed fighting stance, knees slightly bent, lead fist at the chin, rear fist by the jaw, weight centred. 2) chest rises slightly as he breathes in, shoulders lift. 3) highest point of the bounce, guard unchanged, head level. 4) settles, weight shifts a touch onto the rear foot. 5) lowest point of the bounce, knees bending a little deeper. 6) returns toward the first pose with a tiny head tilt. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walk`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'walk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) contact pose: lead foot lands heel first, rear heel lifting, guard up. 2) weight transfers onto the lead leg, rear knee swings forward. 3) passing pose: rear leg passes beside the lead leg, body at its highest. 4) rear foot reaches forward, lead foot pushes off the ground. 5) rear foot lands, lead leg lifts, guard still up. 6) second passing pose mirrored, body at its highest. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`walkBack`** (6 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'walkBack': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) retreating, lead foot slides backward, torso leaning back slightly, guard high. 2) rear foot steps back, weight over the rear leg. 3) passing pose retreating, both legs close together, guard high. 4) lead foot pushes backward, rear leg planting. 5) rear foot lands, lead foot slides back again. 6) settling into a wider stance, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashF`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'dashF': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) low lunge start, torso leaning forward about 25 degrees, rear foot driving. 2) full stride, almost airborne, torso low, arms tucked back. 3) landing slide, front foot planted, motion-blur streaks behind him. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`dashB`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'dashB': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) pushes off the front foot, leaning back, guard up. 2) hop backward with both feet off the ground, guard up. 3) landing on the rear foot, knees absorbing, eyes on the opponent. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`crouch`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'crouch': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) dropping into a crouch, hands guarding the face. 2) full crouch, thighs parallel to the ground, guard at the face. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`block`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'block': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) raising both forearms to cover face and chest, elbows tucked in. 2) braced behind the guard, shoulders hunched, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`blockLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'blockLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching with forearms low, covering the shins and body. 2) braced in the crouch, head tucked behind the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`prejump`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'prejump': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) deep knee bend, arms swung back, about to spring upward. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpUp`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'jumpUp': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) launching: legs extending, arms driving up. 2) rising: knees tucking, fists near the chin. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpApex`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'jumpApex': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) at the top of the jump, knees tucked, fists up, body compact. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`jumpDown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'jumpDown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) descending, legs stretching downward, arms guarding. 2) about to land, feet pointing down, knees soft. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`land`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'land': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) landing crouch, knees deeply bent absorbing the impact, one hand brushing the ground. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lp`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'lp': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, eyes locked on the opponent. 2) lead shoulder dips and the lead fist pulls back slightly. 3) IMPACT: lead arm snapping straight, fist at chin height, torso twisting forward. 4) arm fully extended with a small follow-through, rear hand guarding the jaw. 5) fist retracts toward the guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`lk`** (5 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'lk': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) lifts the lead knee, chambering the kick. 3) IMPACT: lead shin snaps out low toward thigh height, torso leaning back slightly. 4) leg fully extended with the foot flat, arms balancing. 5) leg retracts and plants, returning to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hp`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'hp': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) rear fist drawn back by the hip, weight loading onto the rear leg, torso coiled. 3) hips rotating, rear shoulder driving forward. 4) IMPACT: rear arm fully extended, torso rotated, front foot planted, big forward lean. 5) follow-through leaning far forward, weight over the front knee. 6) recovering back to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hk`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'hk': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) small hop, lead knee rising. 3) leg swung high above the head, body leaning back. 4) leg descending, torso tilting forward, heel leading. 5) IMPACT: heel driving down at head height, standing leg bent. 6) lands and recovers to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launcher`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'launcher': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping into a deep crouch, rear fist by the hip. 3) coiled low, eyes on the opponent's chin. 4) explosive rise, rear fist driving upward. 5) IMPACT: arm fully extended skyward, legs extended on tiptoes, head back. 6) coming down, recovering to guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`sweep`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'sweep': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance. 2) dropping low, one hand reaching toward the ground. 3) body pivoting, lead leg beginning to extend. 4) IMPACT: lead leg fully extended along the ground at ankle height, torso low and leaning away, hand on the ground. 5) leg slides back as he starts to rise. 6) back in a crouch guard. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airP`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'airP': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, fist cocked back. 2) diving diagonally, lead fist starting forward. 3) IMPACT: arm fully extended forward and down, legs tucked. 4) follow-through while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`airK`** (4 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'airK': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) mid-jump, knees tucked. 2) one leg extending diagonally downward. 3) IMPACT: leg fully extended in a diagonal flying kick, torso leaning back, arms out for balance. 4) leg retracting while descending. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurt`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'hurt': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) head snapping back from a hit, eyes squeezed shut, torso recoiling. 2) stumbling backward, guard dropped, grimacing. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`hurtLow`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'hurtLow': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouched, hit low, wincing, one leg buckling. 2) crouched and stumbling, hand dropping to the knee. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`launched`** (3 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'launched': 3 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lifted off the ground, torso arched back, limbs flailing. 2) mid-air, nearly horizontal, tumbling backward. 3) falling, arms out, about to land. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`knockdown`** (2 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'knockdown': 2 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) slamming onto his back, a puff of dust, arms thrown out. 2) lying flat, dazed, head turned slightly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`ko`** (1 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'ko': 1 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying flat on his back, completely limp, eyes closed. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`getup`** (5 frames, once)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'getup': 5 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) lying on his back, groaning. 2) rolling to the side, propping on one elbow. 3) pushing up onto one knee. 4) rising into a crouch. 5) standing up straight into a guard stance. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`special`** (6 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'special': 6 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) guard stance, planted wide, glasses glinting. 2) raises one finger, as if about to correct someone. 3) inhales deeply, a speech bubble forming in the air in front of him. 4) snaps the finger forward, a giant glowing correction bubble blasting out. 5) second bubble, bigger, ripples rolling across the floor. 6) lowers the finger, satisfied, adjusting his fedora. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`super`** (12 frames, attack)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'super': 12 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) crouching to gather power, a swirl of forum posts and glowing speech bubbles around him, keyboard-smash symbols without readable text. 2) charge peak: a swirl of forum posts and glowing speech bubbles around him, keyboard-smash symbols without readable text, energy flaring. 3) explosive launch into the flurry, keyboard jab. 4) IMPACT: keyboard jab. 5) windup for footnote cross. 6) IMPACT: footnote cross. 7) IMPACT: sneaker kick. 8) again: keyboard jab. 9) again: footnote cross. 10) finisher windup: tipping the fedora while a flurry of cane-like feints and keyboard-smash sparkles surround him. 11) FINISHER IMPACT: one unexpectedly clean finishing strike, sparkles and the fedora spinning into the air. 12) recovering, breathing hard, shoulders heaving. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`victory`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'victory': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) straightening up, breathing hard. 2) raising the lead fist overhead. 3) arm fully raised in triumph, chest out. 4) signature celebration: tips his fedora with a flourish and nods solemnly. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+**`intro`** (4 frames, loop)
+
+```
+Photorealistic fighting-game character art, cinematic studio quality, believable anatomy and fabric, Nate, an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately. Animation sprite strip for 'intro': 4 frames in one horizontal row, equal spacing, identical camera, scale and lighting, feet on one shared baseline, character facing right. Frames left to right: 1) stepping into frame with confidence. 2) taunt: pushes his glasses up his nose with one finger. 3) taunt: clears his throat and lifts a finger to begin a lecture. 4) settling into a guard stance with a smirk. Soft key light from upper left with a subtle cool rim light, sharp focus, consistent face and costume, plain flat mid-grey background (for easy cut-out), no text, no logo, no watermark, no extra limbs, no cropped limbs, no outfit changes.
+```
+
+
+---
+
 ## 4. Cutscene illustrations (`art/scenes/<name>.png`)
 
-Set `"scenes": true` in `art/manifest.json` (already set in the template). Several story scenes share one image, so there are 15 images, not 18.
+Set `"scenes": true` in `art/manifest.json` (already set in the template). Several story scenes share one image. Pairings without their own face-off or aftermath image use the staged portraits (no art needed).
 
 ### `prologue-bogan-tradie.png`
 
@@ -765,6 +4284,414 @@ Attach reference sheets: `gym-bro`
 
 ```
 Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: empty gym at 3 a.m., soft overhead light and a single neon sign. An empty 24/7 gym at 3 a.m. Tyler (an original fictional American gym-goer in his mid-20s, very muscular with broad shoulders, short dark hair, white sweatband, neon-green tank top, black training shorts, white trainers, a clear shaker bottle with green contents, friendly intense expression) sits on a bench, exhausted, trophy beside him, looking relieved. In the foreground a shaker bottle has rolled under the squat rack.
+```
+
+### `prologue-lefty.png`
+
+Attach reference sheets: `lefty`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: comic. Light: warm fluorescent hall light. A cluttered community hall with folding chairs and a hand-painted banner. Sam (an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face) stands on a stool with a megaphone, mid-speech, holding a clipboard, looking determined and slightly overwhelmed.
+```
+
+### `ending-lefty.png`
+
+Attach reference sheets: `lefty`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: soft golden evening light through tall windows. Sam (an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face) sits alone on a folding chair in the emptied hall, megaphone resting on their knees, trophy beside them, laughing quietly at the ceiling.
+```
+
+### `pre-lefty-douchebag-dave.png`
+
+Attach reference sheets: `lefty`, `douchebag-dave`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Sam (an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face) on the left in a ready stance, Dave (an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-agenda.png`
+
+Attach reference sheets: `agenda`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: calm. Light: cool dusk with violet and amber city glow. A rooftop at dusk. Rowan (an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings) sits on the ledge folding a paper star, glancing at the camera with a knowing, amused look, a few paper stars drifting in the wind.
+```
+
+### `ending-agenda.png`
+
+Attach reference sheets: `agenda`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: soft pink-gold dawn. Rowan (an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings) stands on the rooftop at dawn, trophy in one hand, a paper star in the other, smiling openly at the sunrise for once.
+```
+
+### `pre-agenda-lefty.png`
+
+Attach reference sheets: `agenda`, `lefty`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Rowan (an original fictional American performance artist in their late 20s, lithe athletic build, short asymmetric lavender-tinted hair, expressive mobile face, long violet jacket worn open over a black fitted top, slim dark trousers, silver boots, mismatched earrings) on the left in a ready stance, Sam (an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-bimbo-babe.png`
+
+Attach reference sheets: `bimbo-babe`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: comic. Light: bright pink-white mall lighting, sparkles. A glittering mall atrium with a fountain and neon sale signs. Tiffani (an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag) stands in the middle with a pile of shopping bags, reading a tournament flyer through oversized sunglasses pushed up on her head, amused.
+```
+
+### `ending-bimbo-babe.png`
+
+Attach reference sheets: `bimbo-babe`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: soft pink after-hours light, fountain glowing. Tiffani (an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag) sits on the edge of the empty fountain after closing, shoes off, trophy beside her, reading a thick paperback with a smile.
+```
+
+### `pre-bimbo-babe-club-doll.png`
+
+Attach reference sheets: `bimbo-babe`, `club-doll`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Tiffani (an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag) on the left in a ready stance, Margaux (an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-douchebag-dave.png`
+
+Attach reference sheets: `douchebag-dave`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: comic. Light: bright sunny golden light, white yachts. A marina clubhouse terrace with white yachts behind. Dave (an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile) lounges in a deckchair with a cocktail, sunglasses on, reading a tournament entry form held out at arm's length as if it were beneath him.
+```
+
+### `ending-douchebag-dave.png`
+
+Attach reference sheets: `douchebag-dave`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: soft golden dusk, calm water. Dave (an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile) sits on the end of a plain wooden jetty at dusk, shoes off, feet in the water, trophy beside him, genuinely relaxed with a small real smile.
+```
+
+### `pre-douchebag-dave-yuppie.png`
+
+Attach reference sheets: `douchebag-dave`, `yuppie`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Dave (an original fictional wealthy American man in his early 30s, athletic build, styled blond hair, black sunglasses pushed up on his head, pink polo shirt with a navy sweater tied around his shoulders, white chinos, brown leather loafers, a gold wristwatch, a smug half-smile) on the left in a ready stance, Preston (an original fictional American finance professional in his mid-30s, lean athletic build, sharp jaw, slicked-back dark hair, tailored navy suit jacket and trousers, crisp white shirt, red tie, polished black leather shoes, brown leather briefcase, steel wristwatch) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-junkie.png`
+
+Attach reference sheets: `junkie`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: calm. Light: warm sodium streetlight, soft rain. A back-lane service alley at night, a repaired shopping trolley parked nearby. Mickey (an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references) crouches beside it, tools laid out on a flattened box, reading a crumpled tournament flyer by the light of a window.
+```
+
+### `ending-junkie.png`
+
+Attach reference sheets: `junkie`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: warm morning light through a small window. Mickey (an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references) sits at a small table in a warm kitchen eating a bowl of soup, trophy on the table, a sleeping cat on a chair, eyes soft and grateful.
+```
+
+### `pre-junkie-killwoodrat.png`
+
+Attach reference sheets: `junkie`, `killwoodrat`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Mickey (an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references) on the left in a ready stance, Rae (an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-rapthug.png`
+
+Attach reference sheets: `rapthug`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: warm streetlamp glow with brick shadows. A back-alley cypher with brick walls, a small ring of onlookers blurred behind. Marcus (an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature) stands in the middle with a microphone, mid-verse, eyes closed, one hand slicing the air.
+```
+
+### `ending-rapthug.png`
+
+Attach reference sheets: `rapthug`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: warm amber studio glow. Marcus (an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature) sits alone in a small recording booth with headphones around his neck, the trophy on the console, a soft proud smile as he listens to a playback.
+```
+
+### `pre-rapthug-junkie.png`
+
+Attach reference sheets: `rapthug`, `junkie`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Marcus (an original fictional Black American rapper in his early 30s, athletic heavyweight build, black cap, black hoodie, loose dark jeans, heavy gold chain, tan work boots, confident expression, dignified and realistic portrayal without caricature) on the left in a ready stance, Mickey (an original fictional weathered street-smart man in his 40s, wiry build, black knit beanie, scruffy beard, layered dark jacket over a grey hoodie, distressed jeans, worn boots, fingerless gloves, tired but sharp resourceful eyes, portrayed with dignity, no drug references) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-killwoodrat.png`
+
+Attach reference sheets: `killwoodrat`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: dim neon red from a venue sign. A back-lane venue door covered in peeling gig posters. Rae (an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile) leans on the wall with arms crossed, eyeing a freshly stuck tournament flyer with disdain, one boot against the bricks.
+```
+
+### `ending-killwoodrat.png`
+
+Attach reference sheets: `killwoodrat`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: warm low stage lights, dust in the air. Rae (an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile) sits on the edge of a tiny empty stage after closing, boots dangling, trophy beside her, a half-smile she is trying very hard to hide.
+```
+
+### `pre-killwoodrat-grunge.png`
+
+Attach reference sheets: `killwoodrat`, `grunge`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Rae (an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile) on the left in a ready stance, Ash (an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-sk8r-boi.png`
+
+Attach reference sheets: `sk8r-boi`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: comic. Light: warm golden hour sun, long shadows. A concrete skatepark at golden hour, ramps and graffiti behind. Jonno (an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin) sits at the top of a ramp with the board across his knees, reading a tournament flyer, chewing the string of his beanie.
+```
+
+### `ending-sk8r-boi.png`
+
+Attach reference sheets: `sk8r-boi`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: fresh golden sunrise, long soft shadows. Jonno (an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin) stands at the lip of a newly built half-pipe at sunrise, trophy at his feet, kids from the neighbourhood already skating behind him.
+```
+
+### `pre-sk8r-boi-bogan-tradie.png`
+
+Attach reference sheets: `sk8r-boi`, `bogan-tradie`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Jonno (an original fictional young Australian skater in his early 20s, lean athletic build, green beanie, white raglan skate shirt, loose brown cargo trousers, black skate shoes, sun-weathered skin, a skateboard, an apologetic cheeky grin) on the left in a ready stance, Gaz (an original fictional Australian tradesman in his mid-30s, stocky athletic build, weathered friendly face with light stubble, short brown hair under a yellow hard hat, orange hi-vis vest with two yellow reflective bands over a grey work shirt with rolled sleeves, navy cargo work trousers, brown steel-capped boots, worn leather work gloves tucked into his belt) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-club-doll.png`
+
+Attach reference sheets: `club-doll`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: purple and pink neon, velvet shadows. A velvet-rope nightclub entrance at midnight, a long queue blurred behind. Margaux (an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression) stands at the rope in a pink dress holding a tournament flyer between two fingers like it is something she found on her shoe.
+```
+
+### `ending-club-doll.png`
+
+Attach reference sheets: `club-doll`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: soft pink dawn light, quiet city below. Margaux (an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression) sits on a rooftop terrace chair at dawn with her heels in her lap and her trophy beside her, hair loose, genuinely smiling at the sunrise.
+```
+
+### `pre-club-doll-bimbo-babe.png`
+
+Attach reference sheets: `club-doll`, `bimbo-babe`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Margaux (an original fictional French nightlife queen in her late 20s, athletic build, styled platinum-blonde waves, glamorous pink mini dress cut for movement, hoop earrings, a delicate necklace, pink platform heels, poised faintly unimpressed expression) on the left in a ready stance, Tiffani (an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-grunge.png`
+
+Attach reference sheets: `grunge`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: dim tungsten bulb, haze of dust. A cramped basement rehearsal room with peeling posters and tangled cables. Ash (an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression) sits on an amp with a battered guitar across the knees, staring at a tournament flyer taped to the wall.
+```
+
+### `ending-grunge.png`
+
+Attach reference sheets: `grunge`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: warm stage-light glow in the basement. Ash (an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression) sits on an amp in the rehearsal basement, now freshly painted with a proud banner, trophy on the floor, kids setting up instruments around them.
+```
+
+### `pre-grunge-killwoodrat.png`
+
+Attach reference sheets: `grunge`, `killwoodrat`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Ash (an original fictional British grunge musician in their late 20s, lanky build, long messy brown hair, faded red flannel shirt over a dark band tee, ripped jeans, worn black boots, a weary dry expression) on the left in a ready stance, Rae (an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-fat-gamer.png`
+
+Attach reference sheets: `fat-gamer`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: comic. Light: blue-green monitor glow in a dark room. A cluttered gaming den with three glowing monitors, a retro PC and snack wrappers. Dennis (an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect) sits in a gaming chair with a headset around his neck, reading chat on a monitor and smiling smugly.
+```
+
+### `ending-fat-gamer.png`
+
+Attach reference sheets: `fat-gamer`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: warm morning light through opened curtains. Dennis (an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect) sits in his gaming chair with the curtains open for the first time, sunlight on the room, trophy on the desk, a small relaxed smile.
+```
+
+### `pre-fat-gamer-neckbeard-nate.png`
+
+Attach reference sheets: `fat-gamer`, `neckbeard-nate`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Dennis (an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect) on the left in a ready stance, Nate (an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-influencer.png`
+
+Attach reference sheets: `influencer`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: comic. Light: bright white ring light with a pink glow. A bright loft apartment with a ring light and a city view. Kayla (an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile) films herself on a phone mounted on a tripod, mid-smile, holding a tournament flyer up to the lens as if it were a sponsored product.
+```
+
+### `ending-influencer.png`
+
+Attach reference sheets: `influencer`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: soft city-light glow through the windows, no ring light. Kayla (an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile) sits cross-legged on the floor of her loft with the ring light switched off and the phone face-down beside the trophy, smiling at the city lights.
+```
+
+### `pre-influencer-bimbo-babe.png`
+
+Attach reference sheets: `influencer`, `bimbo-babe`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Kayla (an original fictional American social-media influencer in her mid-20s, athletic build, long brown hair, purple athletic crop top and leggings, white sneakers, a smartphone in hand, a flawless camera-ready smile) on the left in a ready stance, Tiffani (an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-yoga-mom.png`
+
+Attach reference sheets: `yoga-mom`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: calm. Light: soft warm window light, green plants. A bright wellness studio with plants, mats and a kombucha bar. Brooke (an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression) sits cross-legged on a mat with a tournament flyer balanced on one knee, a faint, slightly frightening smile.
+```
+
+### `ending-yoga-mom.png`
+
+Attach reference sheets: `yoga-mom`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: warm dusk light through the windows, plants glowing. Brooke (an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression) sits on a mat in the quiet studio at dusk, trophy beside her, sipping tea, grinning in a way that is more mischievous than serene.
+```
+
+### `pre-yoga-mom-lefty.png`
+
+Attach reference sheets: `yoga-mom`, `lefty`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Brooke (an original fictional American yoga studio owner and mother in her late 30s, fit build, blonde hair in a loose bun, green tank top, purple yoga leggings, barefoot, calm radiant expression) on the left in a ready stance, Sam (an original fictional American community organiser in their early 30s, lean athletic build, short tousled dark-blond hair, round glasses, teal canvas jacket with a few enamel pins over a grey tee, olive cargo trousers, white canvas high-top shoes, a canvas tote bag, tired but determined friendly face) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-e-girl.png`
+
+Attach reference sheets: `e-girl`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: comic. Light: purple and cyan RGB lighting. A bedroom stream setup flooded with purple and cyan RGB lights, monitors, a cat-ear headset. Kai (an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk) sits in a gaming chair staring blankly at the camera, a tournament flyer taped to a screen.
+```
+
+### `ending-e-girl.png`
+
+Attach reference sheets: `e-girl`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: warm lamp light, monitors dark. Kai (an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk) sits cross-legged on the bedroom floor with the monitors switched off and one warm lamp on, trophy in their lap, smiling at nobody.
+```
+
+### `pre-e-girl-fat-gamer.png`
+
+Attach reference sheets: `e-girl`, `fat-gamer`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Kai (an original fictional Canadian streamer in their mid-20s, slim athletic build, black hair with purple streaks, a cat-ear gaming headset, black and purple crop top, pleated skirt, striped thigh-high socks, chunky boots, a deadpan smirk) on the left in a ready stance, Dennis (an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-cheerleader.png`
+
+Attach reference sheets: `cheerleader`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: comic. Light: warm dusk with bright stadium floodlights. A football field at dusk with floodlights switching on. Ashlyn (an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile) stands on the grass with a clipboard in one hand and a pom-pom in the other, studying the tournament flyer like a battle plan.
+```
+
+### `ending-cheerleader.png`
+
+Attach reference sheets: `cheerleader`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: soft single floodlight in an empty stadium. Ashlyn (an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile) sits alone on the stadium turf in the glow of a single floodlight, pom-poms in her lap, trophy beside her, her usual big smile softened into something calmer.
+```
+
+### `pre-cheerleader-bimbo-babe.png`
+
+Attach reference sheets: `cheerleader`, `bimbo-babe`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Ashlyn (an original fictional American competitive cheerleader in her mid-20s, powerful athletic build, a high blonde ponytail with a ribbon, red-and-white cheer uniform, red pom-poms, white athletic shoes, a bright intense smile) on the left in a ready stance, Tiffani (an original fictional American woman in her mid-20s, athletic build, long wavy blonde hair, bright pink crop top and short pink athletic skirt, fluffy pink leg warmers, chunky pink trainers, glossy lips, sparkling earrings, a small pink handbag) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-punk-princess.png`
+
+Attach reference sheets: `punk-princess`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: pink neon and orange sodium light. A graffiti-covered alley behind a gig venue. Roxy (an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin) stands on a crate with a spray can, pasting a tournament flyer upside down on the wall with one defiant boot on the crate's edge.
+```
+
+### `ending-punk-princess.png`
+
+Attach reference sheets: `punk-princess`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: warm low stage lights, pink glow. Roxy (an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin) sits on the edge of a venue stage after the crowd has left, mohawk drooping, trophy beside her, guitar across her knee, smiling softly.
+```
+
+### `pre-punk-princess-killwoodrat.png`
+
+Attach reference sheets: `punk-princess`, `killwoodrat`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Roxy (an original fictional British punk woman in her mid-20s, athletic build, a bright pink mohawk, black leather jacket with studs and chains over a tartan top, fishnets, combat boots, a defiant grin) on the left in a ready stance, Rae (an original fictional Canadian alt woman in her mid-20s, athletic build, short choppy black hair, dark eyeliner, black crop top and distressed shorts, fishnet sleeves, combat boots, a spiked wristband, a sarcastic half-smile) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
+```
+
+### `prologue-neckbeard-nate.png`
+
+Attach reference sheets: `neckbeard-nate`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: comic. Light: cool monitor glow with warm lamp light. A cluttered basement with monitors, old hardware and a corkboard of printouts. Nate (an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately) sits at the desk in a fedora, lecturing a very patient cat, with a tournament flyer taped to the monitor.
+```
+
+### `ending-neckbeard-nate.png`
+
+Attach reference sheets: `neckbeard-nate`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: triumph. Light: warm lamp light, monitors off. Nate (an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately) sits at a quiet desk with the fedora hung on a hook, trophy next to a small cup of tea, the cat on his lap, smiling shyly.
+```
+
+### `pre-neckbeard-nate-fat-gamer.png`
+
+Attach reference sheets: `neckbeard-nate`, `fat-gamer`
+
+```
+Cinematic photoreal film still, 16:9 wide (1920x1080), shallow depth of field, natural skin and fabric detail. Keep the bottom 28% of the frame visually quiet (floor, sky, shadow or blur) because the dialogue box covers it; keep faces and key action in the top 70%. No text, no logos, no watermark. Mood: tense. Light: neon laneway arena, purple and teal light, hazy air. Face-off in a neon-lit city laneway arena, crowd blurred in the background. Nate (an original fictional heavyset American internet hobbyist in his early 30s, rectangular glasses, a short beard, a black fedora, a black plain tee (no readable text), khaki cargo shorts, white sneakers, an earnest self-important expression, portrayed affectionately) on the left in a ready stance, Dennis (an original fictional heavyset American pro gamer in his early 30s, strong broad build, black rectangular glasses, a headset around his neck, a plain black tee, grey sweatpants, white sneakers, a confident competitive grin, portrayed with respect) on the right sizing them up, low camera angle, the two looking directly at each other, neon reflecting on wet ground.
 ```
 
 

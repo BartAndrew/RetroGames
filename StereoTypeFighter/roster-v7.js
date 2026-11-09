@@ -1,6 +1,7 @@
-// V7 vertical-slice roster: Bogan Tradie, Yuppie, Gym Bro.
+// V7 roster: 3 hand-tuned originals, then the remaining 17 from cast-v7.js (generated from tools/cast_data.py).
 // Each fighter has its own move tuning, special and super so no two play the same.
 import { baseMoves } from './combat-v7.js';
+import { CAST_ROSTER } from './cast-v7.js';
 
 export const ROSTER = [
   {
@@ -46,5 +47,11 @@ export const ROSTER = [
     }),
   },
 ];
+
+// Order follows the original V6.8 select screen: slice fighters first, then the rest.
+for (const c of CAST_ROSTER) {
+  const { tweaks, ...def } = c;
+  ROSTER.push({ ...def, moves: baseMoves(tweaks) });
+}
 
 export const byId = id => ROSTER.find(r => r.id === id);

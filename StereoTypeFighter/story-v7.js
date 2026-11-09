@@ -6,6 +6,8 @@
 //   who: fighter id, or 'narrator'. left/right: fighter ids shown in the scene (right may be null).
 //   mood: 'calm' | 'tense' | 'comic' | 'triumph' | 'defeat'
 
+import { CAST_STORY, SCENE_ART } from './cast-v7.js';
+
 const L = (who, text) => ({ who, text });
 
 export const TITLE_CARD = {
@@ -185,6 +187,36 @@ export const SCENES = {
   },
 };
 
+// ---- the 17 additional fighters: prologue + ending are written per fighter (cast_data.py)
+for (const [id, c] of Object.entries(CAST_STORY)) {
+  if (!c.prologue) continue;
+  const map = ls => ls.map(([k, t]) => (k === 'me' ? L(id, t) : L('narrator', t)));
+  SCENES[`prologue:${id}`] = { mood: c.prologue.mood, art: SCENE_ART.has(`prologue-${id}`) ? `prologue-${id}` : null, left: id, right: null, place: c.prologue.place, lines: map(c.prologue.lines) };
+  SCENES[`ending:${id}`] = { mood: c.ending.mood, art: SCENE_ART.has(`ending-${id}`) ? `ending-${id}` : null, left: id, right: null, place: c.ending.place, lines: map(c.ending.lines) };
+}
+
+const fill = (t, opp) => t.replace(/\{opp\}/g, opp);
+
+// Pre/post scenes for any pair are built from each fighter's own voice lines, so 20 fighters need 20 voices, not 380 scripts.
+// Hand-written scenes in SCENES (the original three against each other) win over these.
+export function getScene(id) {
+  if (SCENES[id]) return SCENES[id];
+  const [kind, a, b] = id.split(':');
+  const A = CAST_STORY[a], B = CAST_STORY[b];
+  if (!A || !B) return null;
+  if (kind === 'pre') {
+    const art = [`pre-${a}-${b}`, `pre-${b}-${a}`].find(x => SCENE_ART.has(x)) || null;
+    return { mood: 'tense', art, left: a, right: b, place: 'Arena floor, Neon Laneway',
+      lines: [L(a, fill(A.taunt, B.nick)), L(b, fill(B.answer, A.nick)), L(a, fill(A.quip, B.nick)), L(b, fill(B.ready, A.nick))] };
+  }
+  if (kind === 'post') { // a = winner, b = loser
+    return { mood: 'triumph', art: null, left: a, right: b, place: 'After the bell',
+      lines: [L(a, fill(A.win, B.nick)), L(b, fill(B.lose, A.nick)), L(b, fill(B.respect, A.nick)),
+              L('narrator', `${A.nick} and ${B.nick} walk out together. Both were told what the other one was like. Both got it wrong.`)] };
+  }
+  return null;
+}
+
 export const sceneId = {
   prologue: id => `prologue:${id}`,
   pre: (a, b) => `pre:${a}:${b}`,
@@ -192,7 +224,10 @@ export const sceneId = {
   ending: id => `ending:${id}`,
 };
 
-// Story-mode ladder: each fighter faces the other two, then gets an ending.
+// Story-mode ladder: each fighter's own rivals (from cast_data.py), in order, so the 20-fighter story is a 4-fight run.
 export function ladderFor(id, roster) {
-  return roster.filter(r => r.id !== id).map(r => r.id);
+  const have = new Set(roster.map(r => r.id));
+  const rivals = ((CAST_STORY[id] && CAST_STORY[id].rivals) || []).filter(x => have.has(x) && x !== id);
+  const rest = roster.map(r => r.id).filter(x => x !== id && !rivals.includes(x));
+  return rivals.concat(rest).slice(0, 4);
 }

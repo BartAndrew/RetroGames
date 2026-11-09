@@ -6,7 +6,9 @@ Writes: art/PROMPTS.md, art/prompts-v7.json, art/manifest.v7.template.json
 
 Edit the data below (locks, frame beats, scenes) and re-run to regenerate everything consistently.
 """
-import json, os
+import json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import cast_data
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ART = os.path.join(HERE, '..', 'art')
@@ -100,6 +102,14 @@ FIGHTERS = {
     prop="shaker",
   ),
 }
+
+# ---- the 17 additional fighters come from cast_data.py (single source of truth for look, moves, art beats and story)
+for _id in cast_data.NEW_IDS:
+    c = cast_data.CAST[_id]
+    FIGHTERS[_id] = dict(name=c['name'], nick=c['nick'], lock=c['lock'], face=c['face'], victory=c['victory'],
+        intro_a=c['intro_a'], intro_b=c['intro_b'], special_name=c['special'], special=c['special_beats'],
+        super_name=c['superName'], charge=c['charge'], fa=c['fa'], fb=c['fb'], fc=c['fc'],
+        fin_wind=c['fin_wind'], fin_hit=c['fin_hit'], prop=c['prop'])
 
 # ------------------------------------------------------------ animation beats
 # (name, kind, frames[...]) kind: loop | attack | once. Lead = hand/foot nearest the opponent. Fighter faces right.
@@ -310,7 +320,22 @@ SCENES = [
   ('ending-gym-bro', 'triumph', "empty gym at 3 a.m., soft overhead light and a single neon sign",
    "An empty 24/7 gym at 3 a.m. {gym} sits on a bench, exhausted, trophy beside him, looking relieved. In the foreground a shaker bottle has rolled under the squat rack.",
    ['gym-bro']),
+
 ]
+
+# --- generated scenes for the 17 additional fighters: prologue, ending, and one face-off vs their first rival
+def _extra_scenes():
+    out = []
+    for fid in cast_data.NEW_IDS:
+        c = cast_data.CAST[fid]
+        out.append(('prologue-' + fid, c['prologue']['mood'], c['prologue']['light'], c['prologue']['body'].replace('{me}', '{%s}' % fid), [fid]))
+        out.append(('ending-' + fid, c['ending']['mood'], c['ending']['light'], c['ending']['body'].replace('{me}', '{%s}' % fid), [fid]))
+        r = c['rivals'][0]
+        out.append(('pre-%s-%s' % (fid, r), 'tense', 'neon laneway arena, purple and teal light, hazy air',
+            "Face-off in a neon-lit city laneway arena, crowd blurred in the background. {%s} on the left in a ready stance, {%s} on the right sizing them up, "
+            "low camera angle, the two looking directly at each other, neon reflecting on wet ground." % (fid, r), [fid, r]))
+    return out
+SCENES += _extra_scenes()
 
 PORTRAIT = ("Three-quarter body portrait for a character-select screen, standing in a confident guard stance facing right, "
             "knees to head visible with a little room above, transparent or plain flat grey background, 2:3 portrait, ")
@@ -385,10 +410,11 @@ def build():
             w(f"**`{name}`** ({len(frames)} frames, {kind})\n")
             w("```\n" + strip + "\n```\n")
     w("\n---\n\n## 4. Cutscene illustrations (`art/scenes/<name>.png`)\n")
-    w("Set `\"scenes\": true` in `art/manifest.json` (already set in the template). Several story scenes share one image, so there are 15 images, not 18.\n")
+    w("Set `\"scenes\": true` in `art/manifest.json` (already set in the template). Several story scenes share one image. Pairings without their own face-off or aftermath image use the staged portraits (no art needed).\n")
     lookup = {k: v['lock'] for k, v in FIGHTERS.items()}
     def tag(fid, nick): return nick + " (" + lookup[fid].split(', ', 1)[1] + ")"
     fmt = dict(bogan=tag('bogan-tradie', 'Gaz'), yuppie=tag('yuppie', 'Preston'), gym=tag('gym-bro', 'Tyler'))
+    for _k, _v in FIGHTERS.items(): fmt[_k] = tag(_k, _v['nick'])
     for art, mood, light, body, who in SCENES:
         p = scene_prompt(art, mood, light, body.format(**fmt))
         data['scenes'][art] = dict(prompt=p, fighters=who)
@@ -401,11 +427,36 @@ def build():
       "- Injuries in the post-fight scenes are bruises and torn clothing only: warm, not gory.\n")
     return data, manifest, '\n'.join(md), total
 
+def emit_cast_js():
+    """Writes cast-v7.js: playable data + story lines for all fighters (consumed by roster-v7.js and story-v7.js)."""
+    cs = cast_data.CAST
+    def lines(ls): return [[k, t] for k, t in ls]
+    roster = []
+    for fid in cast_data.NEW_IDS:
+        c = cs[fid]
+        roster.append(dict(id=fid, name=c['name'], nick=c['nick'], country=c['country'], accent=c['accent'], accent2='#1b1b2e', style=c['style'], bio=c['bio'],
+            hp=c['hp'], speed=c['speed'], jump=c['jump'], special=c['special'], superName=c['superName'], look=c['look'], specialSpec=c['specialSpec'], tweaks=c['tweaks']))
+    story = {}
+    for fid, c in cs.items():
+        e = dict(nick=c['nick'], taunt=c['taunt'], answer=c['answer'], quip=c['quip'], ready=c['ready'], win=c['win'], lose=c['lose'], respect=c['respect'], rivals=c['rivals'])
+        if not c.get('original'):
+            for k in ('prologue', 'ending'):
+                e[k] = dict(place=c[k]['place'], mood=c[k]['mood'], lines=lines(c[k]['lines']))
+        story[fid] = e
+    arts = sorted(a for a, *_ in SCENES)
+    out = ("// GENERATED by tools/build-v7-prompts.py from tools/cast_data.py. Do not edit by hand; edit cast_data.py and re-run.\n"
+           "export const CAST_ROSTER = " + json.dumps(roster, indent=1) + ";\n\n"
+           "export const CAST_STORY = " + json.dumps(story, indent=1) + ";\n\n"
+           "// Scene illustration ids that have a prompt (so the cutscene only asks for art that is meant to exist).\n"
+           "export const SCENE_ART = new Set(" + json.dumps(arts) + ");\n")
+    with open(os.path.join(HERE, '..', 'cast-v7.js'), 'w') as fh: fh.write(out)
+
 if __name__ == '__main__':
     data, manifest, md, total = build()
     os.makedirs(ART, exist_ok=True)
     with open(os.path.join(ART, 'PROMPTS.md'), 'w') as fh: fh.write(md)
     with open(os.path.join(ART, 'prompts-v7.json'), 'w') as fh: json.dump(data, fh, indent=1)
     with open(os.path.join(ART, 'manifest.v7.template.json'), 'w') as fh: json.dump(manifest, fh, indent=2)
+    emit_cast_js()
     strips = sum(len(v['strips']) for v in data['fighters'].values())
     print(f"fighters={len(data['fighters'])} strips={strips} frames={total} scenes={len(data['scenes'])}")

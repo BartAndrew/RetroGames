@@ -3,7 +3,7 @@ import { createMatch, stepMatch, aiInput, STAGE } from './combat-v7.js';
 import { ROSTER, byId } from './roster-v7.js';
 import { ArtStore, drawMatch, drawPortrait, pushFx } from './renderer-v7.js';
 import { Cutscene } from './cutscene-v7.js';
-import { SCENES, sceneId, ladderFor, TITLE_CARD } from './story-v7.js';
+import { getScene, sceneId, ladderFor, TITLE_CARD } from './story-v7.js';
 
 const canvas = document.getElementById('game'), ctx = canvas.getContext('2d');
 const W = 960, H = 540;
@@ -63,6 +63,15 @@ function readInput(i) {
   return o;
 }
 
+// roster grid: up to 10 per row, tiles shrink as the roster grows
+const GRID_COLS = 10;
+function tileRect(i) {
+  const n = ROSTER.length, cols = Math.min(GRID_COLS, n), tw = Math.min(220, Math.floor(920 / cols) - 6), th = n > 10 ? 150 : 210;
+  const row = Math.floor(i / cols), col = i % cols, inRow = Math.min(cols, n - row * cols);
+  const x = 480 + (col - (inRow - 1) / 2) * (tw + 6) - tw / 2;
+  return { x, y: (n > 10 ? 176 : 290) + row * (th + 28), w: tw, h: th, cx: x + tw / 2 };
+}
+
 // ------------------------------------------------------------------ flow
 function go(screen) { G.screen = screen; sfx('menu'); }
 function startMode(mode) {
@@ -91,7 +100,7 @@ function scenesThenMatch(a, b, story = false) {
   playScene(sceneId.pre(ROSTER[a].id, ROSTER[b].id), () => launchMatch(a, b, { story }));
 }
 function playScene(id, done) {
-  const scene = SCENES[id];
+  const scene = getScene(id);
   if (!scene) { done(); return; }
   G.cut = new Cutscene(scene, store, () => { G.cut = null; done(); });
   G.screen = 'cutscene';
@@ -132,6 +141,8 @@ function onKey(code) {
   } else if (G.screen === 'select') {
     if (code === 'ArrowLeft' || code === 'KeyA') { G.cursor = (G.cursor + ROSTER.length - 1) % ROSTER.length; sfx('menu'); }
     if (code === 'ArrowRight' || code === 'KeyD') { G.cursor = (G.cursor + 1) % ROSTER.length; sfx('menu'); }
+    if ((code === 'ArrowUp' || code === 'KeyW') && ROSTER.length > GRID_COLS) { G.cursor = (G.cursor + ROSTER.length - GRID_COLS) % ROSTER.length; sfx('menu'); }
+    if ((code === 'ArrowDown' || code === 'KeyS') && ROSTER.length > GRID_COLS) { G.cursor = (G.cursor + GRID_COLS) % ROSTER.length; sfx('menu'); }
     if (code === 'Enter' || code === 'Space' || code === 'KeyF') confirmPick();
     if (code === 'Escape') { if (G.pickSlot === 1) { G.pickSlot = 0; G.cursor = G.picks[0]; } else go('title'); }
   } else if (G.screen === 'cutscene' && G.cut) {
@@ -151,7 +162,7 @@ function onClick(x, y) {
     MODES.forEach((m, i) => { if (x > 300 && x < 660 && y > 250 + i * 50 && y < 292 + i * 50) { G.menu = i; startMode(m.id); } });
     if (y > 470 && y < 500 && x > 330 && x < 630) { G.diff = (G.diff + 1) % 3; sfx('menu'); }
   } else if (G.screen === 'select') {
-    ROSTER.forEach((r, i) => { const cx = 480 + (i - (ROSTER.length - 1) / 2) * 250; if (Math.abs(x - cx) < 110 && y > 300 && y < 500) { if (G.cursor === i) confirmPick(); else { G.cursor = i; sfx('menu'); } } });
+    ROSTER.forEach((r, i) => { const t = tileRect(i); if (x > t.x && x < t.x + t.w && y > t.y && y < t.y + t.h) { if (G.cursor === i) confirmPick(); else { G.cursor = i; sfx('menu'); } } });
   } else if (G.screen === 'cutscene' && G.cut) G.cut.advance();
   else if (G.screen === 'result') { if (x > 330 && x < 630) { if (y > 300 && y < 350) afterResult(0); if (y > 360 && y < 410) afterResult(1); } }
 }
@@ -183,20 +194,22 @@ function drawSelect() {
   drawBackdrop(G.tick);
   const slot = G.mode === 'story' ? 'CHOOSE YOUR STEREOTYPE' : G.mode === 'training' ? (G.pickSlot ? 'TRAINING PARTNER' : 'YOUR FIGHTER') : `PLAYER ${G.pickSlot + 1}: CHOOSE YOUR FIGHTER`;
   text(slot, W / 2, 52, 28, '#fff', 'center', 900, true);
+  const big = ROSTER.length <= 10;
   ROSTER.forEach((r, i) => {
-    const cx = 480 + (i - (ROSTER.length - 1) / 2) * 250, sel = i === G.cursor, y0 = 290;
-    ctx.fillStyle = sel ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.35)'; ctx.fillRect(cx - 110, y0, 220, 210);
-    ctx.strokeStyle = sel ? r.accent : 'rgba(255,255,255,0.2)'; ctx.lineWidth = sel ? 3 : 1; ctx.strokeRect(cx - 110, y0, 220, 210);
-    ctx.save(); ctx.beginPath(); ctx.rect(cx - 109, 80, 218, 210 + 209 - 0); ctx.clip();
-    drawPortrait(ctx, r, store, cx, y0 + 196 - (sel ? 0 : 0), sel ? 1.55 : 1.3, G.tick, 'idle'); ctx.restore();
-    text(r.name.toUpperCase(), cx, y0 - 8 + 0, 16, sel ? r.accent : '#fff', 'center', 800);
+    const t = tileRect(i), sel = i === G.cursor;
+    ctx.fillStyle = sel ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.35)'; ctx.fillRect(t.x, t.y, t.w, t.h);
+    ctx.strokeStyle = sel ? r.accent : 'rgba(255,255,255,0.2)'; ctx.lineWidth = sel ? 3 : 1; ctx.strokeRect(t.x, t.y, t.w, t.h);
+    ctx.save(); ctx.beginPath(); ctx.rect(t.x + 1, t.y - (big ? 210 : 0), t.w - 2, t.h + (big ? 209 : -1)); ctx.clip();
+    drawPortrait(ctx, r, store, t.cx, t.y + t.h - 14, big ? (sel ? 1.55 : 1.3) : (sel ? 0.95 : 0.82), G.tick, 'idle'); ctx.restore();
+    if (big) text(r.name.toUpperCase(), t.cx, t.y - 8, 16, sel ? r.accent : '#fff', 'center', 800);
+    else text(r.nick.toUpperCase(), t.cx, t.y + t.h + 15, 11, sel ? r.accent : 'rgba(255,255,255,0.8)', 'center', 800);
   });
   const r = ROSTER[G.cursor];
   text(`${r.style} · ${r.country}`, W / 2, 84, 15, r.accent, 'center', 700);
-  text(r.bio, W / 2, 106, 14, 'rgba(255,255,255,0.8)', 'center', 500, true);
+  text(r.bio, W / 2, 106, r.bio.length > 120 ? 11 : r.bio.length > 95 ? 12 : 14, 'rgba(255,255,255,0.8)', 'center', 500, true);
   text(`Special: ${r.special}   ·   Super: ${r.superName}`, W / 2, 128, 14, '#fff', 'center', 700);
   const mv = r.moves; text(`Signature moves: ${mv.hp.name} · ${mv.launcher.name} · ${mv.sweep.name}`, W / 2, 150, 12, 'rgba(255,255,255,0.6)', 'center', 500);
-  text('← → choose · Enter confirm · Esc back', W / 2, 526, 12, 'rgba(255,255,255,0.5)', 'center', 500);
+  text('← → ↑ ↓ choose · Enter confirm · Esc back', W / 2, 536, 11, 'rgba(255,255,255,0.5)', 'center', 500);
 }
 function drawResult() {
   drawBackdrop(G.tick); const r = G.result;
