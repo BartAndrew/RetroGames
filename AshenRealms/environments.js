@@ -29,39 +29,55 @@
     ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
     ctx.drawImage(image,-travel,-H*.078,drawW,drawH);ctx.restore();
   }
-  function foreground(ctx,stage,camera,frame,W,H){
+  function foreground(ctx,stage,camera,frame,W,H,heroX=W*.38){
     if(!parallaxOn())return;
     const pack=layers[stage];if(!pack)return;
     const floor=pack.floor,edge=pack.edge;
-    const shift=camera*1.04;
     ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    // V1.5 foreground is a shallow foreground band, not a full-height tinted
+    // image. The combat lane (y < 554) is fully unobscured.
+    const band=H*.128,top=H-band;
+    ctx.beginPath();ctx.rect(0,top,W,band);ctx.clip();
     if(ready(floor)){
-      // Three contiguous strips prevent gaps while the camera traverses the full 2500px world.
-      const fw=W*1.15,fh=H*.29;
-      const start=-((shift%fw+fw)%fw);
-      ctx.globalAlpha=.57;
-      for(let n=-1;n<3;n++)ctx.drawImage(floor,start+n*fw,H-fh+8,fw,fh);
+      const width=W*.92, height=H*.23;
+      const offset=-(((camera*1.13)%width+width)%width);
+      // Feathered image foreground, dimmer than last release to keep foot
+      // contact shadows and pickup UI visible.
+      ctx.globalAlpha=.38;
+      for(let n=-1;n<4;n++)ctx.drawImage(floor,offset+n*width,H-height+20,width,height);
     }
+    ctx.restore();
     if(ready(edge)){
-      // Generated cropped architecture/roots with feathered transparency; this passes
-      // in front of the playable sprites but never changes collisions or ground anchors.
-      const ew=W*.34,eh=H*.84;
-      for(let i=0;i<5;i++){
-        const worldX=i*690+(i%2)*70-150;
-        const x=worldX-camera*1.30;
-        if(x>W+ew||x<-ew)continue;
-        ctx.save();ctx.globalAlpha=stage===1?.43:.37;
-        if(i%2){ctx.translate(x+ew,0);ctx.scale(-1,1);ctx.drawImage(edge,0,H-eh,ew,eh)}
-        else ctx.drawImage(edge,x,H-eh,ew,eh);
+      // Decorative ruined architecture lives mostly at the outer screen edges
+      // rather than covering player attacks in the middle of the screen.
+      // Each object fades as the camera approaches it to avoid hard occlusion.
+      const ew=W*.17,eh=H*.56;
+      ctx.save();
+      ctx.beginPath();ctx.rect(0,0,W*.20,H);ctx.rect(W*.80,0,W*.20,H);ctx.clip();
+      for(let i=0;i<7;i++){
+        const xx=i*480-160-camera*1.18;
+        if(xx>W+ew||xx<-ew)continue;
+        const dist=Math.abs(xx+ew*.5-heroX);
+        const fade=Math.max(.10,Math.min(1,(dist-90)/230));
+        ctx.save();ctx.globalAlpha=(stage===1?.35:.28)*fade;
+        if(i%2){ctx.translate(xx+ew,0);ctx.scale(-1,1);ctx.drawImage(edge,0,H-eh,ew,eh)}
+        else ctx.drawImage(edge,xx,H-eh,ew,eh);
         ctx.restore();
       }
+      ctx.restore();
     }
-    // Very faint screen-near drifting accents strengthen the camera movement.
-    ctx.globalAlpha=.47;
-    for(let i=0;i<13;i++){
-      const x=wrap(i*317-camera*1.23+frame*(reduced()?.012:.12)*(1+i%3),W+70)-35;
-      const y=H-18-(i%4)*14;
-      elliptical(ctx,x,y,1.3+i%3,1.4,stage===1?'#779d8a77':'#c8814b77');
+    // The nearest ground details scroll faster than the battlefield.
+    ctx.save();ctx.beginPath();ctx.rect(0,H-65,W,65);ctx.clip();
+    const drift=reduced()?0:frame*.10;
+    for(let i=0;i<28;i++){
+      const x=wrap(i*167-camera*1.23+drift*(1+i%3),W+90)-45;
+      const y=H-7-(i%5)*10;
+      const tint=stage===1?'#618e72':stage===2?'#a56b48':'#8f7960';
+      elliptical(ctx,x,y,2.2+i%3,1.3+i%2,tint+'55');
+      if(i%4===0){
+        line(ctx,x,y,x-6,y-7-i%3*5,tint+'79',1.1);
+        line(ctx,x,y,x+5,y-5,tint+'6a',1);
+      }
     }
     ctx.restore();
   }
