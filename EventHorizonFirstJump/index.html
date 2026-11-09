@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Horizon: The First Jump</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #050508;
+            font-family: 'Share Tech Mono', monospace;
+            color: #d1d5db;
+            user-select: none;
+            overflow: hidden;
+        }
+        
+        canvas {
+            image-rendering: pixelated;
+            box-shadow: 0 0 30px rgba(180, 20, 20, 0.25);
+            background: #000;
+        }
+
+        /* CRT Screen Effect Overlay */
+        .crt-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .crt-vignette {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.85) 100%);
+            pointer-events: none;
+            z-index: 21;
+        }
+
+        /* Glitch animations for Low Sanity */
+        .sanity-glitch {
+            animation: glitch 0.2s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-3px, 3px) }
+            40% { transform: translate(-3px, -3px) }
+            60% { transform: translate(3px, 3px) }
+            80% { transform: translate(3px, -3px) }
+            100% { transform: translate(0) }
+        }
+
+        /* Custom Scrollbar for Terminals */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #991b1b; border-radius: 3px; }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col items-center justify-center relative">
+
+    <!-- CRT Overlay visuals -->
+    <div class="crt-overlay"></div>
+    <div class="crt-vignette"></div>
+
+    <!-- UI Overlay for Menus / Dialogs -->
+    <div id="ui-container" class="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+        <!-- Start / Title Screen -->
+        <div id="start-screen" class="bg-black/90 border border-red-900/50 p-8 rounded-lg max-w-lg w-full text-center shadow-2xl pointer-events-auto">
+            <h1 class="text-4xl font-bold text-red-600 tracking-wider mb-2 animate-pulse">EVENT HORIZON</h1>
+            <h2 class="text-xl text-gray-400 tracking-widest mb-6 border-b border-red-900/40 pb-2">THE FIRST JUMP</h2>
+            <p class="text-sm text-gray-300 mb-6 leading-relaxed">
+                Year 2040. Maiden voyage of the experimental starship <span class="text-red-400 font-bold">Event Horizon</span>. 
+                You are Chief Engineer Miller. As the experimental Gravity Drive activates, reality breaks down around you.
+                Survive the madness, activate emergency locks, and escape the fold.
+            </p>
+            <div class="bg-gray-900/80 p-4 rounded text-left text-xs mb-6 border border-gray-800 space-y-1 text-gray-400">
+                <p><span class="text-yellow-500">A / D or Left/Right:</span> Move</p>
+                <p><span class="text-yellow-500">W / Space:</span> Jump / Wall Jump</p>
+                <p><span class="text-yellow-500">Shift:</span> Dash / Dodge</p>
+                <p><span class="text-yellow-500">J / Left Click:</span> Plasma Cutter</p>
+                <p><span class="text-yellow-500">K / Right Click:</span> EMP Pulse / Flashlight</p>
+                <p><span class="text-yellow-500">E:</span> Interact with Terminals & Airlocks</p>
+            </div>
+            <button id="btn-start" class="w-full py-3 bg-red-800 hover:bg-red-700 text-white font-bold tracking-widest rounded border border-red-500 transition-all shadow-lg hover:shadow-red-900/50">
+                INITIALIZE CORE JUMP
+            </button>
+        </div>
+
+        <!-- Terminal Audio Log Modal -->
+        <div id="terminal-modal" class="hidden bg-gray-950/95 border-2 border-cyan-800 p-6 rounded-lg max-w-md w-full shadow-2xl pointer-events-auto">
+            <div class="flex justify-between items-center border-b border-cyan-900 pb-2 mb-4">
+                <span class="text-cyan-400 text-sm font-bold tracking-wider">DATALOG TERMINAL // ACCESS LEVEL 3</span>
+                <span class="text-xs text-gray-500" id="terminal-id">LOG-8832</span>
+            </div>
+            <div id="terminal-body" class="text-sm text-gray-300 space-y-3 mb-6 max-h-60 overflow-y-auto leading-relaxed">
+                <!-- Dynamic Content -->
+            </div>
+            <button id="btn-close-terminal" class="w-full py-2 bg-cyan-950 hover:bg-cyan-900 text-cyan-300 font-bold rounded border border-cyan-700 text-xs tracking-wider transition">
+                ACKNOWLEDGE & CLOSE [E]
+            </button>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameover-screen" class="hidden bg-black/95 border border-red-900 p-8 rounded-lg max-w-md w-full text-center shadow-2xl pointer-events-auto">
+            <h2 class="text-4xl font-bold text-red-600 tracking-wider mb-2">LIBERATE TUTEMET</h2>
+            <p class="text-gray-400 text-sm mb-6">Your mind was consumed by the void beyond physical reality.</p>
+            <button id="btn-restart" class="w-full py-3 bg-red-900 hover:bg-red-800 text-white font-bold tracking-widest rounded border border-red-600 transition">
+                RESTART FROM SECTOR CHECKPOINT
+            </button>
+        </div>
+
+        <!-- Victory Screen -->
+        <div id="victory-screen" class="hidden bg-black/95 border border-yellow-600 p-8 rounded-lg max-w-md w-full text-center shadow-2xl pointer-events-auto">
+            <h2 class="text-3xl font-bold text-yellow-500 tracking-wider mb-2">WARP FOLD CONTAINED</h2>
+            <p class="text-gray-300 text-sm mb-4">You triggered the emergency jettison of the Gravity Core before it tore reality apart completely...</p>
+            <p class="text-xs text-red-400 italic mb-6">"Where we are going, we won't need eyes to see."</p>
+            <button id="btn-replay" class="w-full py-3 bg-yellow-700 hover:bg-yellow-600 text-white font-bold tracking-widest rounded border border-yellow-500 transition">
+                PLAY AGAIN
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Game Canvas Container -->
+    <div id="game-wrapper" class="relative w-full max-w-5xl aspect-[16/9] flex justify-center items-center">
+        <!-- HUD Canvas Overlay -->
+        <div id="hud-bar" class="absolute top-3 left-4 right-4 z-10 flex justify-between items-center pointer-events-none text-xs tracking-widest">
+            <!-- Left: Health & Sanity -->
+            <div class="flex flex-col gap-2 w-48 bg-black/60 p-2 border border-gray-800 rounded">
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-red-500 font-bold">VITAL SIGNS</span>
+                        <span id="txt-health" class="text-red-400">100%</span>
+                    </div>
+                    <div class="w-full bg-gray-950 h-2 rounded-full overflow-hidden border border-red-900/40">
+                        <div id="bar-health" class="bg-red-600 h-full w-full transition-all duration-200"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-purple-400 font-bold">SANITY INDEX</span>
+                        <span id="txt-sanity" class="text-purple-300">100%</span>
+                    </div>
+                    <div class="w-full bg-gray-950 h-2 rounded-full overflow-hidden border border-purple-900/40">
+                        <div id="bar-sanity" class="bg-purple-600 h-full w-full transition-all duration-200"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle: Sector & Objective -->
+            <div class="bg-black/60 p-2 border border-gray-800 rounded text-center max-w-xs">
+                <div id="txt-sector" class="text-cyan-400 font-bold text-sm mb-0.5">SECTOR 1: ENGINEERING DECK</div>
+                <div id="txt-objective" class="text-gray-400 text-[10px] truncate">Restore Power Node A-01</div>
+            </div>
+
+            <!-- Right: Plasma Energy & EMP Cooldown -->
+            <div class="flex flex-col gap-2 w-48 bg-black/60 p-2 border border-gray-800 rounded text-right">
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-yellow-500 font-bold">PLASMA CHARGE</span>
+                        <span id="txt-ammo" class="text-yellow-400">100%</span>
+                    </div>
+                    <div class="w-full bg-gray-950 h-2 rounded-full overflow-hidden border border-yellow-900/40">
+                        <div id="bar-ammo" class="bg-yellow-500 h-full w-full transition-all duration-100"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-cyan-400 font-bold">EMP PULSE</span>
+                        <span id="txt-emp" class="text-cyan-300">READY</span>
+                    </div>
+                    <div class="w-full bg-gray-950 h-2 rounded-full overflow-hidden border border-cyan-900/40">
+                        <div id="bar-emp" class="bg-cyan-500 h-full w-full transition-all duration-100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas" width="960" height="540" class="w-full h-full border border-red-950 rounded"></canvas>
+    </div>
+
+    <!-- Game Engine Logic -->
+    <script>
+        /**
+         * EVENT HORIZON: THE FIRST JUMP - Game Engine
+         * Built in modern pure JavaScript with HTML5 Canvas & Web Audio API
+         */
+
+        // --- AUDIO SYNTHESIS ENGINE (No external audio files required) ---
+        class SoundEngine {
+            constructor() {
+                this.ctx = null;
+                this.isInit = false;
+            }
+
+            init() {
+                if (this.isInit) return;
+                try {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                    this.isInit = true;
+                } catch (e) {
+                    console.error("Audio synth initialization failed", e);
+                }
+            }
+
+            playShot() {
+                if (!this.isInit) return;
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(800, now);
+                osc.frequency.exponentialRampToValueAtTime(100, now + 0.15);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.15);
+            }
+
+            playEMP() {
+                if (!this.isInit) return;
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(150, now);
+                osc.frequency.linearRampToValueAtTime(600, now + 0.3);
+                gain.gain.setValueAtTime(0.4, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.4);
+            }
+
+            playHit() {
+                if (!this.isInit) return;
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(120, now);
+                osc.frequency.exponentialRampToValueAtTime(30, now + 0.1);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            }
+
+            playWhisper() {
+                if (!this.isInit) return;
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(60 + Math.random() * 40, now);
+                osc.frequency.linearRampToValueAtTime(90 + Math.random() * 50, now + 0.5);
+                gain.gain.setValueAtTime(0.05, now);
+                gain.gain.linearRampToValueAtTime(0.15, now + 0.25);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.5);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.5);
+            }
+
+            playTerminal() {
+                if (!this.isInit) return;
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(1200, now);
+                osc.frequency.setValueAtTime(1800, now + 0.05);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            }
+        }
+
+        const SFX = new SoundEngine();
+
+        // --- GAME STATE & CONSTANTS ---
+        const CANVAS_WIDTH = 960;
+        const CANVAS_HEIGHT = 540;
+        const GRAVITY = 0.45;
+        const FRICTION = 0.82;
+
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let gameState = 'START'; // START, PLAYING, TERMINAL, GAMEOVER, VICTORY
+        let currentSector = 1;
+        let activeTerminalData = null;
+
+        // Key tracking
+        const keys = {
+            left: false, right: false, up: false, down: false,
+            jump: false, dash: false, shoot: false, emp: false, interact: false
+        };
+
+        // --- PARTICLE SYSTEM ---
+        class Particle {
+            constructor(x, y, vx, vy, color, size, life, type = 'normal') {
+                this.x = x; this.y = y;
+                this.vx = vx; this.vy = vy;
+                this.color = color;
+                this.size = size;
+                this.maxLife = life;
+                this.life = life;
+                this.type = type; // 'normal', 'blood', 'void', 'spark'
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life--;
+                if (this.type === 'blood') this.vy += 0.15; // Gravity on blood
+                if (this.type === 'spark') this.vy += 0.05;
+            }
+
+            draw(ctx, camera) {
+                const alpha = Math.max(0, this.life / this.maxLife);
+                ctx.save();
+                ctx.globalAlpha = alpha;
+                ctx.fillStyle = this.color;
+                if (this.type === 'void') {
+                    ctx.beginPath();
+                    ctx.arc(this.x - camera.x, this.y - camera.y, this.size * (1 + (1 - alpha)), 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    ctx.fillRect(this.x - camera.x, this.y - camera.y, this.size, this.size);
+                }
+                ctx.restore();
+            }
+        }
+
+        let particles = [];
+
+        function spawnParticles(x, y, count, color, type = 'normal', speedMult = 1) {
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = (Math.random() * 3 + 0.5) * speedMult;
+                const vx = Math.cos(angle) * speed;
+                const vy = Math.sin(angle) * speed;
+                const size = type === 'void' ? Math.random() * 6 + 4 : Math.random() * 3 + 1.5;
+                const life = Math.random() * 20 + 15;
+                particles.push(new Particle(x, y, vx, vy, color, size, life, type));
+            }
+        }
+
+        // --- PLAYER CLASS ---
+        class Player {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.width = 24; this.height = 42;
+                this.vx = 0; this.vy = 0;
+                this.speed = 3.8;
+                this.jumpForce = -9.8;
+                this.isGrounded = false;
+                this.isWallSliding = false;
+                this.wallDir = 0;
+                this.facing = 1; // 1: Right, -1: Left
+
+                // Stats
+                this.maxHealth = 100; this.health = 100;
+                this.maxSanity = 100; this.sanity = 100;
+                this.plasmaAmmo = 100; // Recovers over time
+                this.empCooldown = 0; // Frames
+
+                // Abilities
+                this.dashCooldown = 0;
+                this.isDashing = false;
+                this.dashTimer = 0;
+
+                // Visual Effects
+                this.invulnerableFrames = 0;
+            }
+
+            update(map) {
+                if (this.invulnerableFrames > 0) this.invulnerableFrames--;
+                if (this.dashCooldown > 0) this.dashCooldown--;
+                if (this.empCooldown > 0) this.empCooldown--;
+
+                // Recharge Plasma Ammo slowly
+                if (this.plasmaAmmo < 100) this.plasmaAmmo = Math.min(100, this.plasmaAmmo + 0.35);
+
+                // Handle Dash
+                if (this.isDashing) {
+                    this.dashTimer--;
+                    this.vy = 0;
+                    this.vx = this.facing * 9.5;
+                    if (this.dashTimer <= 0) this.isDashing = false;
+                    spawnParticles(this.x + this.width / 2, this.y + this.height / 2, 2, '#38bdf8', 'spark');
+                } else {
+                    // Normal Movement Controls (Invert controls if extreme low sanity)
+                    const inv = player.sanity < 25 && Math.random() < 0.15 ? -1 : 1;
+                    if (keys.left) { this.vx = -this.speed * inv; this.facing = -1; }
+                    else if (keys.right) { this.vx = this.speed * inv; this.facing = 1; }
+                    else { this.vx *= FRICTION; }
+
+                    // Gravity
+                    this.vy += GRAVITY;
+
+                    // Dash action
+                    if (keys.dash && this.dashCooldown <= 0) {
+                        this.isDashing = true;
+                        this.dashTimer = 10;
+                        this.dashCooldown = 45;
+                        SFX.playShot();
+                    }
+                }
+
+                // Horizontal Collisions
+                this.x += this.vx;
+                map.checkCollision(this, 'horizontal');
+
+                // Wall slide detection
+                this.isWallSliding = false;
+                if (!this.isGrounded && map.touchingWall(this)) {
+                    this.isWallSliding = true;
+                    if (this.vy > 1.5) this.vy = 1.5; // Friction down wall
+                }
+
+                // Vertical Collisions & Jumping
+                this.y += this.vy;
+                this.isGrounded = false;
+                map.checkCollision(this, 'vertical');
+
+                if (keys.jump) {
+                    if (this.isGrounded) {
+                        this.vy = this.jumpForce;
+                        this.isGrounded = false;
+                        spawnParticles(this.x + this.width / 2, this.y + this.height, 4, '#64748b');
+                    } else if (this.isWallSliding) {
+                        this.vy = this.jumpForce * 0.9;
+                        this.vx = -this.facing * 5.5;
+                        this.facing = -this.facing;
+                        spawnParticles(this.x + (this.facing > 0 ? 0 : this.width), this.y + this.height / 2, 5, '#94a3b8');
+                    }
+                }
+
+                // Sanity drain near hazards / void
+                map.checkSanityDrain(this);
+
+                // Low sanity hallucination sounds
+                if (this.sanity < 40 && Math.random() < 0.015) {
+                    SFX.playWhisper();
+                }
+            }
+
+            takeDamage(amount) {
+                if (this.invulnerableFrames > 0) return;
+                this.health -= amount;
+                this.invulnerableFrames = 30;
+                SFX.playHit();
+                spawnParticles(this.x + this.width/2, this.y + this.height/2, 10, '#b91c1c', 'blood');
+                if (this.health <= 0) {
+                    this.health = 0;
+                    triggerGameOver();
+                }
+            }
+
+            draw(ctx, camera) {
+                if (this.invulnerableFrames % 4 >= 2) return; // Flash effect
+
+                const screenX = this.x - camera.x;
+                const screenY = this.y - camera.y;
+
+                ctx.save();
+
+                // Player Body Sprite (Engineer Suit)
+                ctx.fillStyle = '#334155'; // Dark suit base
+                ctx.fillRect(screenX, screenY, this.width, this.height);
+
+                // Armor Highlights
+                ctx.fillStyle = '#64748b';
+                ctx.fillRect(screenX + 3, screenY + 8, this.width - 6, 18);
+
+                // Visor (Glowing Cyan)
+                ctx.fillStyle = '#06b6d4';
+                const visorX = this.facing === 1 ? screenX + 13 : screenX + 3;
+                ctx.fillRect(visorX, screenY + 4, 8, 5);
+
+                // Plasma Cutter Gun Model
+                ctx.fillStyle = '#f59e0b';
+                const gunX = this.facing === 1 ? screenX + this.width : screenX - 8;
+                ctx.fillRect(gunX, screenY + 18, 8, 4);
+
+                // Flashlight Beam Emission
+                ctx.fillStyle = 'rgba(254, 240, 138, 0.08)';
+                ctx.beginPath();
+                ctx.moveTo(gunX, screenY + 20);
+                ctx.lineTo(gunX + (this.facing * 180), screenY - 25);
+                ctx.lineTo(gunX + (this.facing * 180), screenY + 65);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.restore();
+            }
+        }
+
+        // --- PROJECTILES ---
+        class Projectile {
+            constructor(x, y, dirX, dirY, isEnemy = false) {
+                this.x = x; this.y = y;
+                this.vx = dirX * 10;
+                this.vy = dirY * 10;
+                this.radius = 4;
+                this.isEnemy = isEnemy;
+                this.life = 100;
+            }
+
+            update(map) {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life--;
+
+                // Hit tile wall check
+                const tile = map.getTileAt(this.x, this.y);
+                if (tile && tile.solid) {
+                    this.life = 0;
+                    spawnParticles(this.x, this.y, 6, this.isEnemy ? '#a855f7' : '#f59e0b', 'spark');
+                }
+            }
+
+            draw(ctx, camera) {
+                ctx.save();
+                ctx.fillStyle = this.isEnemy ? '#a855f7' : '#fbbf24';
+                ctx.shadowColor = this.isEnemy ? '#7e22ce' : '#f59e0b';
+                ctx.shadowBlur = 8;
+                ctx.beginPath();
+                ctx.arc(this.x - camera.x, this.y - camera.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        let projectiles = [];
+
+        // --- ENEMIES & HAZARDS ---
+        class Enemy {
+            constructor(x, y, type) {
+                this.x = x; this.y = y;
+                this.type = type; // 'possessed', 'void_entity'
+                this.width = type === 'possessed' ? 24 : 30;
+                this.height = type === 'possessed' ? 40 : 30;
+                this.vx = 0; this.vy = 0;
+                this.health = type === 'possessed' ? 45 : 30;
+                this.stunned = 0;
+                this.facing = 1;
+                this.attackCooldown = 0;
+            }
+
+            update(player, map) {
+                if (this.stunned > 0) {
+                    this.stunned--;
+                    return;
+                }
+
+                if (this.attackCooldown > 0) this.attackCooldown--;
+
+                const dx = (player.x + player.width / 2) - (this.x + this.width / 2);
+                const dy = (player.y + player.height / 2) - (this.y + this.height / 2);
+                const dist = Math.hypot(dx, dy);
+
+                if (this.type === 'possessed') {
+                    // Aggressive chasing mutated crew member
+                    if (dist < 280) {
+                        this.facing = dx > 0 ? 1 : -1;
+                        this.vx = this.facing * 2.2;
+                    } else {
+                        this.vx = 0;
+                    }
+
+                    this.vy += GRAVITY;
+                    this.x += this.vx;
+                    map.checkCollision(this, 'horizontal');
+                    this.y += this.vy;
+                    map.checkCollision(this, 'vertical');
+
+                    // Melee Damage
+                    if (checkOverlap(this, player)) {
+                        player.takeDamage(12);
+                    }
+                } else if (this.type === 'void_entity') {
+                    // Floating cosmic shadow anomaly
+                    if (dist < 320) {
+                        this.vx = (dx / dist) * 1.5;
+                        this.vy = (dy / dist) * 1.5;
+
+                        // Drain player sanity passively when near
+                        if (dist < 150) player.sanity = Math.max(0, player.sanity - 0.2);
+
+                        // Ranged Void Projectile attack
+                        if (this.attackCooldown <= 0 && dist < 240) {
+                            projectiles.push(new Projectile(
+                                this.x + this.width / 2, this.y + this.height / 2,
+                                dx / dist, dy / dist, true
+                            ));
+                            this.attackCooldown = 110;
+                        }
+                    }
+
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    // Emit subtle dark void particles
+                    if (Math.random() < 0.4) {
+                        spawnParticles(this.x + Math.random() * this.width, this.y + Math.random() * this.height, 1, '#581c87', 'void');
+                    }
+                }
+            }
+
+            draw(ctx, camera) {
+                const screenX = this.x - camera.x;
+                const screenY = this.y - camera.y;
+
+                ctx.save();
+                if (this.stunned > 0) {
+                    ctx.fillStyle = '#38bdf8'; // Blue stun hue
+                } else if (this.type === 'possessed') {
+                    ctx.fillStyle = '#7f1d1d'; // Twisted blood red
+                } else {
+                    ctx.fillStyle = '#1e1b4b'; // Deep void color
+                }
+
+                if (this.type === 'possessed') {
+                    // Possessed Mutated Crew Silhouette
+                    ctx.fillRect(screenX, screenY, this.width, this.height);
+                    // Glowing corrupted eyes
+                    ctx.fillStyle = '#ef4444';
+                    const eyeX = this.facing === 1 ? screenX + 16 : screenX + 4;
+                    ctx.fillRect(eyeX, screenY + 6, 4, 4);
+                } else {
+                    // Void Floating Blob
+                    ctx.beginPath();
+                    ctx.arc(screenX + this.width/2, screenY + this.height/2, this.width/2, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = '#c084fc';
+                    ctx.beginPath();
+                    ctx.arc(screenX + this.width/2, screenY + this.height/2, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        let enemies = [];
+
+        // --- LEVEL / MAP SYSTEM ---
+        const TILE_SIZE = 32;
+
+        class TileMap {
+            constructor() {
+                this.cols = 0;
+                this.rows = 0;
+                this.grid = [];
+                this.terminals = [];
+                this.hazards = [];
+                this.airlock = null;
+            }
+
+            loadSector(sectorId) {
+                projectiles = [];
+                particles = [];
+                enemies = [];
+                this.terminals = [];
+                this.hazards = [];
+
+                if (sectorId === 1) {
+                    // Sector 1: Engineering Deck
+                    this.cols = 40; this.rows = 20;
+                    this.grid = this.generateSector1Grid();
+                    player.x = 80; player.y = 450;
+                    
+                    // Terminals & Objectives
+                    this.terminals.push({ x: 450, y: 480, id: 'LOG-101', text: "LOG 101 - Chief Engineer Miller:\nMaiden jump of the Event Horizon. The magnetic gravity core is spinning up. Sensors reporting unusual spatial resonance, but Captain thinks it's baseline noise. God help us.", triggerSector: false });
+                    this.terminals.push({ x: 950, y: 320, id: 'LOG-102', text: "EMERGENCY POWER NODE A-01 OVERRIDE:\nPower restored to Gravity Core Door Access. Warning: Temporal anomaly localized around core chamber.", unlockDoor: true });
+                    
+                    // Enemies
+                    enemies.push(new Enemy(550, 480, 'possessed'));
+                    enemies.push(new Enemy(800, 320, 'possessed'));
+                    enemies.push(new Enemy(1050, 480, 'void_entity'));
+
+                    // Air/Steam Hazards
+                    this.hazards.push({ x: 700, y: 480, type: 'spark' });
+
+                    this.airlock = { x: 1200, y: 480, locked: true };
+                } 
+                else if (sectorId === 2) {
+                    // Sector 2: Gravity Drive Core
+                    this.cols = 45; this.rows = 20;
+                    this.grid = this.generateSector2Grid();
+                    player.x = 80; player.y = 450;
+
+                    this.terminals.push({ x: 500, y: 220, id: 'LOG-201', text: "LOG 204 - Dr. Weir:\nIt worked... but where did it go? The core opened a gateway. Not to another sector... but outside our dimension. I can hear it calling. Beautiful nightmare...", triggerSector: false });
+                    this.terminals.push({ x: 1100, y: 480, id: 'LOG-202', text: "GRAVITY FIELD OVERRIDE:\nPrimary Gateway Containment Fields offline. Airlock to Command Bridge Primed.", unlockDoor: true });
+
+                    enemies.push(new Enemy(400, 480, 'possessed'));
+                    enemies.push(new Enemy(650, 200, 'void_entity'));
+                    enemies.push(new Enemy(850, 380, 'void_entity'));
+                    enemies.push(new Enemy(1000, 480, 'possessed'));
+
+                    this.hazards.push({ x: 600, y: 480, type: 'void_rift' });
+                    this.airlock = { x: 1350, y: 480, locked: true };
+                } 
+                else if (sectorId === 3) {
+                    // Sector 3: Command Bridge / Core Breach Climax
+                    this.cols = 45; this.rows = 20;
+                    this.grid = this.generateSector3Grid();
+                    player.x = 80; player.y = 450;
+
+                    this.terminals.push({ x: 1200, y: 480, id: 'CORE-OVERRIDE', text: "CORE EMERGENCY JETTISON TERMINAL:\nPressing override will purge the Gravity Core and collapse the dimension fold before ship hull collapses completely!", isVictory: true });
+
+                    enemies.push(new Enemy(400, 480, 'possessed'));
+                    enemies.push(new Enemy(600, 350, 'void_entity'));
+                    enemies.push(new Enemy(750, 250, 'possessed'));
+                    enemies.push(new Enemy(950, 480, 'void_entity'));
+                    enemies.push(new Enemy(1100, 480, 'possessed'));
+
+                    this.hazards.push({ x: 450, y: 480, type: 'void_rift' });
+                    this.hazards.push({ x: 800, y: 480, type: 'void_rift' });
+                    this.airlock = null;
+                }
+            }
+
+            getTileAt(x, y) {
+                const col = Math.floor(x / TILE_SIZE);
+                const row = Math.floor(y / TILE_SIZE);
+                if (col < 0 || col >= this.cols || row < 0 || row >= this.rows) return { solid: true };
+                return this.grid[row][col];
+            }
+
+            checkCollision(entity, axis) {
+                const startCol = Math.floor(entity.x / TILE_SIZE);
+                const endCol = Math.floor((entity.x + entity.width) / TILE_SIZE);
+                const startRow = Math.floor(entity.y / TILE_SIZE);
+                const endRow = Math.floor((entity.y + entity.height) / TILE_SIZE);
+
+                for (let r = startRow; r <= endRow; r++) {
+                    for (let c = startCol; c <= endCol; c++) {
+                        if (r >= 0 && r < this.rows && c >= 0 && c < this.cols) {
+                            const tile = this.grid[r][c];
+                            if (tile.solid) {
+                                if (axis === 'horizontal') {
+                                    if (entity.vx > 0) entity.x = c * TILE_SIZE - entity.width;
+                                    else if (entity.vx < 0) entity.x = (c + 1) * TILE_SIZE;
+                                    entity.vx = 0;
+                                } else if (axis === 'vertical') {
+                                    if (entity.vy > 0) {
+                                        entity.y = r * TILE_SIZE - entity.height;
+                                        entity.isGrounded = true;
+                                    } else if (entity.vy < 0) {
+                                        entity.y = (r + 1) * TILE_SIZE;
+                                    }
+                                    entity.vy = 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            touchingWall(entity) {
+                const checkX = entity.facing === 1 ? entity.x + entity.width + 2 : entity.x - 2;
+                const tile = this.getTileAt(checkX, entity.y + entity.height / 2);
+                return tile && tile.solid;
+            }
+
+            checkSanityDrain(player) {
+                // Check distance to void rift hazards
+                this.hazards.forEach(h => {
+                    const dist = Math.hypot(player.x - h.x, player.y - h.y);
+                    if (dist < 140) {
+                        player.sanity = Math.max(0, player.sanity - 0.18);
+                    }
+                });
+            }
+
+            generateSector1Grid() {
+                let g = Array(this.rows).fill(null).map(() => Array(this.cols).fill({ solid: false, type: 'empty' }));
+                // Floor & Ceiling
+                for (let c = 0; c < this.cols; c++) {
+                    g[0][c] = { solid: true, type: 'wall' };
+                    g[this.rows - 1][c] = { solid: true, type: 'floor' };
+                    g[this.rows - 2][c] = { solid: true, type: 'floor' };
+                }
+                // Walls
+                for (let r = 0; r < this.rows; r++) {
+                    g[r][0] = { solid: true, type: 'wall' };
+                    g[r][this.cols - 1] = { solid: true, type: 'wall' };
+                }
+                // Platforms
+                for (let c = 10; c < 18; c++) g[13][c] = { solid: true, type: 'platform' };
+                for (let c = 22; c < 32; c++) g[11][c] = { solid: true, type: 'platform' };
+                return g;
+            }
+
+            generateSector2Grid() {
+                let g = Array(this.rows).fill(null).map(() => Array(this.cols).fill({ solid: false, type: 'empty' }));
+                for (let c = 0; c < this.cols; c++) {
+                    g[0][c] = { solid: true, type: 'wall' };
+                    g[this.rows - 1][c] = { solid: true, type: 'floor' };
+                }
+                for (let r = 0; r < this.rows; r++) {
+                    g[r][0] = { solid: true, type: 'wall' };
+                    g[r][this.cols - 1] = { solid: true, type: 'wall' };
+                }
+                // Floating Core Platforms
+                for (let c = 8; c < 14; c++) g[14][c] = { solid: true, type: 'platform' };
+                for (let c = 15; c < 22; c++) g[10][c] = { solid: true, type: 'platform' };
+                for (let c = 25; c < 32; c++) g[14][c] = { solid: true, type: 'platform' };
+                for (let c = 33; c < 39; c++) g[11][c] = { solid: true, type: 'platform' };
+                return g;
+            }
+
+            generateSector3Grid() {
+                let g = Array(this.rows).fill(null).map(() => Array(this.cols).fill({ solid: false, type: 'empty' }));
+                for (let c = 0; c < this.cols; c++) {
+                    g[0][c] = { solid: true, type: 'wall' };
+                    g[this.rows - 1][c] = { solid: true, type: 'floor' };
+                }
+                for (let r = 0; r < this.rows; r++) {
+                    g[r][0] = { solid: true, type: 'wall' };
+                    g[r][this.cols - 1] = { solid: true, type: 'wall' };
+                }
+                // Sector 3 Bridge Layout Platforms
+                for (let c = 12; c < 20; c++) g[13][c] = { solid: true, type: 'platform' };
+                for (let c = 22; c < 28; c++) g[10][c] = { solid: true, type: 'platform' };
+                for (let c = 30; c < 38; c++) g[14][c] = { solid: true, type: 'platform' };
+                return g;
+            }
+
+            draw(ctx, camera) {
+                for (let r = 0; r < this.rows; r++) {
+                    for (let c = 0; c < this.cols; c++) {
+                        const tile = this.grid[r][c];
+                        if (tile.solid) {
+                            const x = c * TILE_SIZE - camera.x;
+                            const y = r * TILE_SIZE - camera.y;
+
+                            // Draw Metallic Corridor Panels
+                            ctx.fillStyle = '#1e293b';
+                            ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+                            ctx.strokeStyle = '#0f172a';
+                            ctx.strokeRect(x, y, TILE_SIZE, TILE_SIZE);
+
+                            // Panel rivet detail
+                            ctx.fillStyle = '#475569';
+                            ctx.fillRect(x + 2, y + 2, 2, 2);
+                            ctx.fillRect(x + TILE_SIZE - 4, y + 2, 2, 2);
+                        }
+                    }
+                }
+
+                // Render Terminals
+                this.terminals.forEach(term => {
+                    const x = term.x - camera.x;
+                    const y = term.y - camera.y;
+                    ctx.fillStyle = '#0284c7';
+                    ctx.fillRect(x, y, 20, 28);
+                    ctx.fillStyle = '#38bdf8'; // Glowing Screen
+                    ctx.fillRect(x + 3, y + 4, 14, 12);
+
+                    // Prompt if near player
+                    if (Math.hypot(player.x - term.x, player.y - term.y) < 40) {
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '10px "Share Tech Mono"';
+                        ctx.fillText('[E] INTERACT', x - 15, y - 8);
+                    }
+                });
+
+                // Render Hazards
+                this.hazards.forEach(h => {
+                    const x = h.x - camera.x;
+                    const y = h.y - camera.y;
+                    if (h.type === 'void_rift') {
+                        ctx.fillStyle = 'rgba(147, 51, 234, 0.4)';
+                        ctx.beginPath();
+                        ctx.arc(x, y, 35 + Math.sin(Date.now() * 0.005) * 5, 0, Math.PI * 2);
+                        ctx.fill();
+                        spawnParticles(h.x, h.y, 1, '#a855f7', 'void');
+                    } else if (h.type === 'spark') {
+                        if (Math.random() < 0.3) {
+                            spawnParticles(h.x, h.y, 2, '#f59e0b', 'spark');
+                        }
+                    }
+                });
+
+                // Render Airlock Door
+                if (this.airlock) {
+                    const x = this.airlock.x - camera.x;
+                    const y = this.airlock.y - camera.y;
+                    ctx.fillStyle = this.airlock.locked ? '#991b1b' : '#15803d';
+                    ctx.fillRect(x, y - 32, 16, 64);
+                    if (Math.hypot(player.x - this.airlock.x, player.y - this.airlock.y) < 45) {
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '10px "Share Tech Mono"';
+                        const text = this.airlock.locked ? 'LOCKED - OVERRIDE REQUIRED' : '[E] ENTER AIRLOCK';
+                        ctx.fillText(text, x - 50, y - 40);
+                    }
+                }
+            }
+        }
+
+        // --- CAMERA SYSTEM ---
+        const camera = {
+            x: 0, y: 0,
+            update(target) {
+                this.x += (target.x - CANVAS_WIDTH / 2 - this.x) * 0.1;
+                this.y += (target.y - CANVAS_HEIGHT / 2 - this.y) * 0.1;
+                this.x = Math.max(0, this.x);
+                this.y = Math.max(0, this.y);
+            }
+        };
+
+        // --- INSTANTIATE ENGINE OBJECTS ---
+        const player = new Player(80, 450);
+        const map = new TileMap();
+
+        // --- HELPER FUNCTIONS ---
+        function checkOverlap(a, b) {
+            return a.x < b.x + b.width &&
+                   a.x + a.width > b.x &&
+                   a.y < b.y + b.height &&
+                   a.y + a.height > b.y;
+        }
+
+        function triggerGameOver() {
+            gameState = 'GAMEOVER';
+            document.getElementById('gameover-screen').classList.remove('hidden');
+        }
+
+        function triggerVictory() {
+            gameState = 'VICTORY';
+            document.getElementById('victory-screen').classList.remove('hidden');
+        }
+
+        function openTerminalModal(term) {
+            gameState = 'TERMINAL';            activeTerminalData = term;
+            SFX.playTerminal();
+            const modal = document.getElementById('terminal-modal');
+            document.getElementById('terminal-id').innerText = term.id;
+            document.getElementById('terminal-body').innerText = term.text;
+            modal.classList.remove('hidden');
+
+            if (term.unlockDoor && map.airlock) {
+                map.airlock.locked = false;
+                document.getElementById('txt-objective').innerText = "Airlock Unlocked. Proceed to Next Sector.";
+            }
+
+            if (term.isVictory) {
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    triggerVictory();
+                }, 2500);
+            }
+        }
+
+        function closeTerminalModal() {
+            document.getElementById('terminal-modal').classList.add('hidden');
+            gameState = 'PLAYING';
+        }
+
+        // --- INPUT EVENT LISTENERS ---
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'KeyA' || e.code === 'ArrowLeft') keys.left = true;
+            if (e.code === 'KeyD' || e.code === 'ArrowRight') keys.right = true;
+            if (e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') keys.jump = true;
+            if (e.code === 'KeyS' || e.code === 'ArrowDown') keys.down = true;
+            if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') keys.dash = true;
+            if (e.code === 'KeyJ') handleAttack();
+            if (e.code === 'KeyK') handleEMP();
+            if (e.code === 'KeyE') handleInteract();
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (e.code === 'KeyA' || e.code === 'ArrowLeft') keys.left = false;
+            if (e.code === 'KeyD' || e.code === 'ArrowRight') keys.right = false;
+            if (e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') keys.jump = false;
+            if (e.code === 'KeyS' || e.code === 'ArrowDown') keys.down = false;
+            if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') keys.dash = false;
+        });
+
+        canvas.addEventListener('mousedown', (e) => {
+            if (gameState !== 'PLAYING') return;
+            if (e.button === 0) handleAttack(); // Left click
+            if (e.button === 2) handleEMP();    // Right click
+        });
+
+        canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+        function handleAttack() {
+            if (gameState !== 'PLAYING' || player.plasmaAmmo < 15) return;
+            player.plasmaAmmo -= 15;
+            SFX.playShot();
+            projectiles.push(new Projectile(
+                player.x + (player.facing === 1 ? player.width + 5 : -5),
+                player.y + 18,
+                player.facing, 0, false
+            ));
+        }
+
+        function handleEMP() {
+            if (gameState !== 'PLAYING' || player.empCooldown > 0) return;
+            player.empCooldown = 180; // 3 sec cooldown
+            SFX.playEMP();
+
+            // Stun surrounding enemies
+            enemies.forEach(en => {
+                const dist = Math.hypot((player.x + player.width/2) - (en.x + en.width/2), (player.y + player.height/2) - (en.y + en.height/2));
+                if (dist < 220) {
+                    en.stunned = 120; // Stun for 2s
+                    spawnParticles(en.x + en.width/2, en.y + en.height/2, 8, '#38bdf8', 'spark');
+                }
+            });
+            spawnParticles(player.x + player.width/2, player.y + player.height/2, 20, '#38bdf8', 'spark', 2);
+        }
+
+        function handleInteract() {
+            if (gameState === 'TERMINAL') {
+                closeTerminalModal();
+                return;
+            }
+            if (gameState !== 'PLAYING') return;
+
+            // Check Terminal interaction
+            map.terminals.forEach(term => {
+                if (Math.hypot(player.x - term.x, player.y - term.y) < 45) {
+                    openTerminalModal(term);
+                }
+            });
+
+            // Check Airlock interaction
+            if (map.airlock && !map.airlock.locked) {
+                if (Math.hypot(player.x - map.airlock.x, player.y - map.airlock.y) < 45) {
+                    currentSector++;
+                    if (currentSector <= 3) {
+                        map.loadSector(currentSector);
+                        document.getElementById('txt-sector').innerText = `SECTOR ${currentSector}: ${currentSector === 2 ? 'GRAVITY DRIVE CORE' : 'COMMAND BRIDGE'}`;
+                        document.getElementById('txt-objective').innerText = currentSector === 2 ? 'Locate Gravity Field Override' : 'Purge Core at Central Terminal';
+                    }
+                }
+            }
+        }
+
+        // --- BUTTON EVENT BINDINGS ---
+        document.getElementById('btn-start').addEventListener('click', () => {
+            SFX.init();
+            document.getElementById('start-screen').classList.add('hidden');
+            gameState = 'PLAYING';
+            map.loadSector(1);
+        });
+
+        document.getElementById('btn-close-terminal').addEventListener('click', closeTerminalModal);
+
+        document.getElementById('btn-restart').addEventListener('click', () => {
+            document.getElementById('gameover-screen').classList.add('hidden');
+            player.health = 100;
+            player.sanity = 100;
+            gameState = 'PLAYING';
+            map.loadSector(currentSector);
+        });
+
+        document.getElementById('btn-replay').addEventListener('click', () => {
+            document.getElementById('victory-screen').classList.add('hidden');
+            player.health = 100;
+            player.sanity = 100;
+            currentSector = 1;
+            gameState = 'PLAYING';
+            map.loadSector(1);
+        });
+
+        // --- HUD UPDATE LOOP ---
+        function updateHUD() {
+            document.getElementById('bar-health').style.width = `${Math.max(0, player.health)}%`;
+            document.getElementById('txt-health').innerText = `${Math.ceil(player.health)}%`;
+
+            document.getElementById('bar-sanity').style.width = `${Math.max(0, player.sanity)}%`;
+            document.getElementById('txt-sanity').innerText = `${Math.ceil(player.sanity)}%`;
+
+            document.getElementById('bar-ammo').style.width = `${Math.max(0, player.plasmaAmmo)}%`;
+            document.getElementById('txt-ammo').innerText = `${Math.ceil(player.plasmaAmmo)}%`;
+
+            const empPct = Math.max(0, 100 - (player.empCooldown / 180) * 100);
+            document.getElementById('bar-emp').style.width = `${empPct}%`;
+            document.getElementById('txt-emp').innerText = player.empCooldown <= 0 ? 'READY' : 'RECHARGING';
+
+            // Visual Screen Distortions for Low Sanity
+            const canvasEl = document.getElementById('gameCanvas');
+            if (player.sanity < 35) {
+                canvasEl.classList.add('sanity-glitch');
+            } else {
+                canvasEl.classList.remove('sanity-glitch');
+            }
+        }
+
+        // --- MAIN GAME LOOP ---
+        function gameLoop() {
+            ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+            if (gameState === 'PLAYING' || gameState === 'TERMINAL') {
+                if (gameState === 'PLAYING') {
+                    player.update(map);
+                    camera.update(player);
+
+                    // Update Projectiles
+                    projectiles.forEach((p, idx) => {
+                        p.update(map);
+                        if (p.life <= 0) projectiles.splice(idx, 1);
+
+                        // Player hit by enemy projectile
+                        if (p.isEnemy && Math.hypot(p.x - (player.x + player.width/2), p.y - (player.y + player.height/2)) < 15) {
+                            player.takeDamage(10);
+                            player.sanity = Math.max(0, player.sanity - 8);
+                            projectiles.splice(idx, 1);
+                        }
+
+                        // Enemies hit by plasma bolt
+                        if (!p.isEnemy) {
+                            enemies.forEach((en, eIdx) => {
+                                if (checkOverlap({ x: p.x - 4, y: p.y - 4, width: 8, height: 8 }, en)) {
+                                    en.health -= 25;
+                                    spawnParticles(en.x + en.width/2, en.y + en.height/2, 6, '#f59e0b', 'spark');
+                                    projectiles.splice(idx, 1);
+                                    if (en.health <= 0) {
+                                        spawnParticles(en.x + en.width/2, en.y + en.height/2, 14, '#b91c1c', 'blood');
+                                        enemies.splice(eIdx, 1);
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                    // Update Enemies
+                    enemies.forEach(en => en.update(player, map));
+
+                    // Update Particles
+                    particles.forEach((p, idx) => {
+                        p.update();
+                        if (p.life <= 0) particles.splice(idx, 1);
+                    });
+
+                    updateHUD();
+                }
+
+                // Rendering
+                map.draw(ctx, camera);
+                enemies.forEach(en => en.draw(ctx, camera));
+                projectiles.forEach(p => p.draw(ctx, camera));
+                particles.forEach(p => p.draw(ctx, camera));
+                player.draw(ctx, camera);
+
+                // Hallucination Shadow Overlay during ultra low sanity
+                if (player.sanity < 30) {
+                    ctx.save();
+                    ctx.fillStyle = `rgba(88, 28, 135, ${0.35 * (1 - player.sanity / 30)})`;
+                    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+                    ctx.restore();
+                }
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Start loop on window load
+        window.onload = () => {
+            requestAnimationFrame(gameLoop);
+        };
+    </script>
+</body>
+</html>
