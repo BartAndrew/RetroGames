@@ -6,6 +6,68 @@
   const images = [window.ASHEN_STAGE_1,window.ASHEN_STAGE_2,window.ASHEN_STAGE_3].map(src=>{
     const img = new Image(); img.decoding='async'; img.src=src; return img;
   });
+  // High-resolution generated image layers: 0.14x distant scenery, 0.48x midground,
+  // 1.04x ground cover, 1.3x nearest masked scenery. Fighters stay at 1.0x.
+  const layers=[window.ASHEN_PARALLAX_1,window.ASHEN_PARALLAX_2,window.ASHEN_PARALLAX_3].map(pack=>{
+    const obj={};
+    for(const name of ['mid','floor','edge']){
+      const img=new Image();img.decoding='async';img.src=pack?.[name]||'';
+      obj[name]=img;
+    }
+    return obj;
+  });
+  const ready=img=>img?.complete&&img.naturalWidth>0;
+  const maxCam=1348;
+  const progress=(camera)=>Math.max(0,Math.min(1,camera/maxCam));
+  const reduced=()=>typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const parallaxOn=()=>window.ASHEN_PARALLAX_ENABLED!==false;
+  function midground(ctx,stage,camera,W,H){
+    const image=layers[stage]?.mid;if(!ready(image))return;
+    // The image has an alpha gradient in the upper half, revealing the far scenery.
+    const drawW=W*1.43,drawH=H*1.13;
+    const travel=(drawW-W)*progress(camera);
+    ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    ctx.drawImage(image,-travel,-H*.078,drawW,drawH);ctx.restore();
+  }
+  function foreground(ctx,stage,camera,frame,W,H){
+    if(!parallaxOn())return;
+    const pack=layers[stage];if(!pack)return;
+    const floor=pack.floor,edge=pack.edge;
+    const shift=camera*1.04;
+    ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    if(ready(floor)){
+      // Three contiguous strips prevent gaps while the camera traverses the full 2500px world.
+      const fw=W*1.15,fh=H*.29;
+      const start=-((shift%fw+fw)%fw);
+      ctx.globalAlpha=.57;
+      for(let n=-1;n<3;n++)ctx.drawImage(floor,start+n*fw,H-fh+8,fw,fh);
+    }
+    if(ready(edge)){
+      // Generated cropped architecture/roots with feathered transparency; this passes
+      // in front of the playable sprites but never changes collisions or ground anchors.
+      const ew=W*.34,eh=H*.84;
+      for(let i=0;i<5;i++){
+        const worldX=i*690+(i%2)*70-150;
+        const x=worldX-camera*1.30;
+        if(x>W+ew||x<-ew)continue;
+        ctx.save();ctx.globalAlpha=stage===1?.43:.37;
+        if(i%2){ctx.translate(x+ew,0);ctx.scale(-1,1);ctx.drawImage(edge,0,H-eh,ew,eh)}
+        else ctx.drawImage(edge,x,H-eh,ew,eh);
+        ctx.restore();
+      }
+    }
+    // Very faint screen-near drifting accents strengthen the camera movement.
+    ctx.globalAlpha=.47;
+    for(let i=0;i<13;i++){
+      const x=wrap(i*317-camera*1.23+frame*(reduced()?.012:.12)*(1+i%3),W+70)-35;
+      const y=H-18-(i%4)*14;
+      elliptical(ctx,x,y,1.3+i%3,1.4,stage===1?'#779d8a77':'#c8814b77');
+    }
+    ctx.restore();
+  }
+  window.drawAshenForeground=foreground;
+  window.ASHEN_PARALLAX_STATUS=()=>layers.map((obj,index)=>({stage:index+1,
+    mid:ready(obj.mid),floor:ready(obj.floor),edge:ready(obj.edge)}));
   const hash=(n)=>{const x=Math.sin(n*127.1+17.31)*43758.5453;return x-Math.floor(x)};
   const wrap=(x,width)=>((x%width)+width)%width;
   const elliptical=(ctx,x,y,w,h,fill)=>{ctx.beginPath();ctx.ellipse(x,y,w,h,0,0,Math.PI*2);ctx.fillStyle=fill;ctx.fill()};
@@ -101,7 +163,8 @@
     ctx.save();
     ctx.imageSmoothingEnabled=true;
     ctx.imageSmoothingQuality='high';
-    ctx.drawImage(image,-maxPan*progress,-(baseH-H)*.56,baseW,baseH);
+    ctx.drawImage(image,-maxPan*progress*(parallaxOn()?1:.3),-(baseH-H)*.56,baseW,baseH);
+    if(parallaxOn())midground(ctx,stage,camera,W,H);
     const grade=ctx.createLinearGradient(0,H*.45,0,H);
     grade.addColorStop(0,'#0d111900');
     grade.addColorStop(.56,stage===1?'#0d191017':'#120f1214');
