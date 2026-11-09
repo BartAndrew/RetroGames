@@ -18,6 +18,17 @@ Open `index.html` (any static server works: `python3 -m http.server 8080`, then 
 
 Touch buttons appear automatically on touch devices.
 
+## What's new in V2.3
+
+- **Ambush arenas.** Each stage has two ambushes: the screen locks and a warband (with an elite in later stages) streams in from both sides until it is cleared, then a GO arrow sends you on.
+- **Elite foes.** Gold-tinted, larger, tougher and harder-hitting, worth double score and always drop an item.
+- **Breakable urns and Ember Runes.** Smash urns for health and mana. A rare Ember Rune gives 10 seconds of +40% damage.
+- **Boss fight.** When the Cinder Warden enrages he now calls two warriors in from the sides, and the arena flashes.
+- **Difficulty and accessibility.** Easy / Normal / Hard on the title screen, plus switches for screen shake and screen flashes. Choices are remembered.
+- **Best scores.** The best score per hero and difficulty is saved in the browser and shown on the end screen.
+- **Hit effects.** Pixel-style flash stars, slash marks and glowing sparks on every hit, dust on dodges, heavy moves and walking, enemies dissolve into embers, a screen flash on big hits, a red pulse at low health, and drifting embers, fireflies or ash by stage.
+- **HUD and UX.** A stage progress bar with ambush and boss markers, an Ember Rage timer, first-stage tutorial hints, and a pause screen listing your hero's move list (Q returns to the title).
+
 ## What's new in V2.2
 
 - **Story and cutscenes.** A short cinematic story runs through the game: a prologue, an interlude after each stage, a boss confrontation, an ending and a defeat scene. Each plays over the painted stage art with slow camera moves, colour grading, letterbox, grain and drifting embers, using your chosen hero and the other three champions as the fallen and as spirits. Advance with Enter / Space / J / click, skip with Esc. Script: `story.js`.
