@@ -18,6 +18,11 @@ Open `index.html` (any static server works: `python3 -m http.server 8080`, then 
 
 Touch buttons appear automatically on touch devices.
 
+## What's new in V2.2
+
+- **Story and cutscenes.** A short cinematic story runs through the game: a prologue, an interlude after each stage, a boss confrontation, an ending and a defeat scene. Each plays over the painted stage art with slow camera moves, colour grading, letterbox, grain and drifting embers, using your chosen hero and the other three champions as the fallen and as spirits. Advance with Enter / Space / J / click, skip with Esc. Script: `story.js`.
+- **Reference art.** `reference/` holds character pose sheets for all four heroes, the three backdrop plates, a storyboard of every cutscene shot and the story bible (`reference/STORY.md`).
+
 ## What's new in V2.1
 
 - **Astrid, a new spear-wielding lead.** Long reach, fast thrusts and a red-pennon spear. She is the first card and the default hero.

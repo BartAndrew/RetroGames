@@ -1,4 +1,5 @@
-/* Ashen Realms 2 — game logic (V2.1)
+/* Ashen Realms 2 — game logic (V2.2: story cutscenes, script in story.js)
+ * V2.1
  * V2.0: telegraphed enemy attacks, attacker limit, hit-chain scoring, dodge cooldown,
  * boss enrage, stage bonuses, hit-stop and floating damage numbers.
  * V2.1: rig-animated heroes (rig.js), a new spear-wielding lead (Astrid) and a real
@@ -93,7 +94,7 @@ function reset(l=0){
  level=l;clock=0;frame=0;camera=0;kills=0;hitstop=0;
  enemies=[];drops=[];particles=[];floaters=[];rings=[];
  if(l===0){player.score=0;maxChain=0;totalKills=0;runTime=0}
- Object.assign(player,{x:120,y:480,hp:l===0?100:Math.min(100,player.hp+28),mana:100,face:1,atk:null,buf:null,step:0,strT:0,gait:0,dying:0,pa:'',mixT:1,prevPose:null,lastPose:null,ghostT:0,stun:0,inv:0,dodge:0,dodgeCool:0,anim:0,chain:0,chainTimer:0,moving:false});
+ Object.assign(player,{x:120,y:480,hp:l===0?100:Math.min(100,player.hp+28),mana:100,face:1,atk:null,buf:null,step:0,strT:0,gait:0,dying:0,bossSeen:false,pa:'',mixT:1,prevPose:null,lastPose:null,ghostT:0,stun:0,inv:0,dodge:0,dodgeCool:0,anim:0,chain:0,chainTimer:0,moving:false});
  trail=[];ghosts=[];heroSt=window.AshenRig?window.AshenRig.makeState(chosenHero.id):null;
  for(let i=0;i<12+l*3;i++)enemies.push(makeEnemy(i%5===0?2:i%3===0?1:0,350+i*145+rnd(-30,30),rnd(410,535)));
  enemies.push(makeEnemy(3,world-210,473));
@@ -467,6 +468,7 @@ function stageBonus(){
 const fmtTime=f=>{const s=Math.floor(f/60);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
 function update(dt){
  stepDt=0;
+ if(state==='cutscene'){stepScene(dt);return}
  if(state!=='playing')return;
  soundtrack();
  if(hitstop>0){hitstop-=dt;return}
@@ -519,20 +521,23 @@ function update(dt){
  drops=drops.filter(d=>!d.gone);shake*=Math.pow(.84,dt);
  if(player.hp<=0&&!(player.dying>0)){player.dying=.01;player.atk=null;player.buf=null;player.stun=0;shake=16;hitstop=Math.max(hitstop,8);sfx('death',.3);banner=null}
  if(player.dying>=78){end(false);return}
+ if(level===2&&!player.bossSeen&&player.dying<=0&&player.x>world-780&&enemies.some(e=>e.type===3&&e.hp>0)){player.bossSeen=true;player.atk=null;player.buf=null;playScene('boss',()=>{state='playing'});return}
  if(player.dying<=0&&enemies.every(e=>e.hp<=0)&&player.x>world-400){
   const b=stageBonus(),cleared=level;player.score+=b.hp+b.time;
   if(level===2){end(true,b);return}
   reset(level+1);state='interlude';
   title.textContent=stages[level].name;
   message.textContent=stages[cleared].name+' CLEARED · HP BONUS +'+b.hp+' · TIME BONUS +'+b.time+'. '+stages[level].sub+' — THE CROWN DRAWS NEARER.';
-  start.textContent='CONTINUE THE QUEST';O.hidden=false;
+  start.textContent='CONTINUE THE QUEST';O.hidden=true;
+  playScene('stage'+(cleared+1),()=>{state='interlude';O.hidden=false});
  }
 }
-function end(win,bonus){
+function end(win,bonus,seen){
+ if(!seen&&scene===null&&window.AshenRig){playScene(win?'ending':'fallen',()=>end(win,bonus,true));return}
  state='end';O.hidden=false;
  const stats=' Score: '+player.score+' · Foes felled: '+totalKills+' · Best chain: '+maxChain+' · Time: '+fmtTime(runTime);
  title.textContent=win?'THE CROWN IS YOURS':'THE REALM REMEMBERS';
- message.textContent=(win?'The Cinder King has fallen. You are the last light of the Ashen Realms.'+(bonus?' Final stage bonus +'+(bonus.hp+bonus.time)+'.':''):'Your quest ends beneath the ashes. The fallen await a champion.')+stats;
+ message.textContent=(win?'The Cinder King has fallen and the Ember Crown has gone dark. You are the last light of the Ashen Realms.'+(bonus?' Final stage bonus +'+(bonus.hp+bonus.time)+'.':''):'Your quest ends beneath the ashes. The fallen await a champion.')+stats;
  start.textContent=win?'PLAY AGAIN':'RISE AGAIN';
 }
 
@@ -573,6 +578,7 @@ function hud(){
  }
 }
 function render(){
+ if(state==='cutscene'&&scene){drawScene();return}
  g.save();if(shake>1)g.translate(rnd(-shake,shake),rnd(-shake,shake));
  backdrop();
  for(const d of drops){
@@ -604,9 +610,122 @@ function render(){
  }
 }
 
+// ---------- Story cutscenes (script in story.js) ----------
+let scene=null,grainCv=null,grainT=0;
+const lerp=(a,b,t)=>a+(b-a)*t,GRADES={ember:['#ff7a33',.22],ash:['#8c93a8',.2],cold:['#4e86a8',.26],dusk:['#9a4a88',.24],inferno:['#ff3b1a',.28],dawn:['#ffc878',.3]};
+const cast=who=>{const o=heroes.filter(h=>h!==chosenHero);return who==='hero'?chosenHero:who==='ally'?o[0]:who==='ally2'?o[1]:who==='ally3'?o[2]:null};
+const tokens=t=>(t||'').replace(/\{hero\}/g,chosenHero.name).replace(/\{ally\}/g,cast('ally').name).replace(/\{ally2\}/g,cast('ally2').name).replace(/\{ally3\}/g,cast('ally3').name);
+function playScene(id,done){
+ const shots=window.ASHEN_STORY?.scenes?.[id];
+ if(!shots||!window.AshenRig){done&&done();return}
+ scene={id,shots,i:0,t:0,typed:0,done,rig:{},fxp:[]};
+ state='cutscene';O.hidden=true;choicePanel.hidden=true;
+}
+function endScene(){const d=scene?.done;scene=null;if(d)d()}
+function nextShot(){scene.i++;scene.t=0;scene.typed=0;scene.fxp.length=Math.min(scene.fxp.length,30);if(scene.i>=scene.shots.length)endScene()}
+function sceneAdvance(){
+ if(state!=='cutscene'||!scene)return;
+ const sh=scene.shots[scene.i],len=tokens(sh.text).length;
+ if(scene.typed<len)scene.typed=len;else if(scene.t>.35)nextShot();
+}
+function skipScene(){if(state==='cutscene'&&scene)endScene()}
+function stepScene(dt){
+ if(!scene)return;
+ const sh=scene.shots[scene.i];scene.t+=dt/60;scene.typed+=dt/60*44;
+ const len=tokens(sh.text).length;
+ if(!sh.text&&scene.t>=(sh.len||6)*.85)nextShot();
+ else if(scene.typed>=len&&len&&scene.t>(sh.len||7)+6)nextShot();
+ const fx=sh.fx;
+ if(fx&&scene.fxp.length<90&&Math.random()<.75){
+  const up=fx==='embers'||fx==='dawn'||fx==='motes';
+  scene.fxp.push({x:rnd(0,W),y:up?H+10:-10,vx:rnd(-.4,.9),vy:up?-rnd(.4,1.6):rnd(.25,.9),s:rnd(1,fx==='ash'?3:3.4),l:rnd(260,480),c:fx==='embers'?(Math.random()<.5?'#ff9b4a':'#ffd08a'):fx==='ash'?'#c9ccd6':fx==='motes'?'#9fe6f0':'#ffe7a6',w:rnd(0,6)});
+ }
+ for(const p of scene.fxp){p.x+=p.vx*dt+Math.sin(p.w+scene.t*1.3)*.35*dt;p.y+=p.vy*dt;p.l-=dt}
+ scene.fxp=scene.fxp.filter(p=>p.l>0&&p.y>-30&&p.y<H+30);
+}
+function drawRigChar(c,e){
+ const R=window.AshenRig,S=R.S;
+ const fromT=Array.isArray(c.x)?c.x:[c.x,c.x],x=lerp(fromT[0],fromT[1],e),y=c.y||580,sc=(c.scale||1.6)*lerp(1,1.04,e),face=c.face||1;
+ if(c.who==='king'){
+  const ent=sheetCache.boss?.idle;if(!ent?.ready)return;
+  const idx=Math.floor(scene.t*8)%ent.frames,cw=ent.img.naturalWidth/ent.frames,ch=ent.img.naturalHeight,b=ent.bounds?.[idx]||{bottom:ch-1};
+  g.save();g.translate(x,y);g.fillStyle='#04080acc';g.beginPath();g.ellipse(0,4,sc*16,sc*3.5,0,0,Math.PI*2);g.fill();
+  g.scale(face,1);g.imageSmoothingEnabled=false;g.filter='brightness(.8) saturate(1.3)';
+  g.drawImage(ent.img,idx*cw,0,cw,ch,-cw*sc/2,-(b.bottom+1)*sc+2,cw*sc,ch*sc);g.restore();return;
+ }
+ const h=cast(c.who);if(!h)return;
+ const st=scene.rig[c.who]||(scene.rig[c.who]=R.makeState(h.id));
+ const moving=fromT[0]!==fromT[1],anim=c.anim||(moving?'walk':'idle');
+ const p=c.p!==undefined?c.p:(anim==='walk'?(scene.t*1.15)%1:(scene.t*60/100)%1);
+ const out=R.render(h.id,R.pose(h.id,anim,p),st,{ex:x,ey:y,face,dt:1});
+ g.save();g.translate(x,y);
+ if(c.ghost){
+  const gr=g.createRadialGradient(0,-70*sc,5,0,-70*sc,150*sc);gr.addColorStop(0,'#9fe6f055');gr.addColorStop(1,'#9fe6f000');g.fillStyle=gr;g.fillRect(-160*sc,-230*sc,320*sc,300*sc);
+ }else{g.fillStyle='#04080acc';g.beginPath();g.ellipse(0,4,sc*14,sc*3.4,0,0,Math.PI*2);g.fill()}
+ g.scale(face*sc,sc);g.imageSmoothingEnabled=false;
+ if(c.ghost){g.globalAlpha=.6+.12*Math.sin(scene.t*2.2);g.filter='brightness(1.55) saturate(.45) hue-rotate(165deg)'}
+ else if(c.dim)g.filter='brightness(.58) saturate(.7)';
+ g.drawImage(out.canvas,-out.ox*S,-out.oy*S,out.w*S,out.h*S);g.restore();
+}
+function wrapText(txt,maxW){
+ const words=txt.split(' '),lines=[];let cur='';
+ for(const w of words){const t=cur?cur+' '+w:w;if(g.measureText(t).width>maxW&&cur){lines.push(cur);cur=w}else cur=t}
+ if(cur)lines.push(cur);return lines;
+}
+function drawScene(){
+ const sh=scene.shots[scene.i],t=scene.t,u=clamp(t/(sh.len||7),0,1),e=u*u*(3-2*u),bg=sh.bg<0?level:sh.bg;
+ g.save();g.fillStyle='#05070c';g.fillRect(0,0,W,H);
+ const z=lerp(sh.zoom[0],sh.zoom[1],e),cam=lerp(sh.cam[0],sh.cam[1],e);
+ g.save();g.translate(W/2,H*.58);g.scale(z,z);g.translate(-W/2,-H*.58);
+ if(!window.drawAshenBackdrop?.(g,bg,cam,t*60,W,H)){const s=stages[bg],gr=g.createLinearGradient(0,0,0,H);gr.addColorStop(0,s.sky[0]);gr.addColorStop(.6,s.sky[1]);gr.addColorStop(1,s.sky[2]);g.fillStyle=gr;g.fillRect(0,0,W,H);g.fillStyle=s.ground;g.fillRect(0,H*.66,W,H)}
+ g.restore();
+ // ground haze so figures sit in the picture
+ const hz=g.createLinearGradient(0,H*.55,0,H);hz.addColorStop(0,'#00000000');hz.addColorStop(1,'#05070c99');g.fillStyle=hz;g.fillRect(0,H*.55,W,H);
+ for(const c of sh.chars||[])drawRigChar(c,e);
+ // drifting particles (additive)
+ g.save();g.globalCompositeOperation='lighter';
+ for(const p of scene.fxp){g.globalAlpha=clamp(Math.min(p.l/60,1),0,1)*.8;g.fillStyle=p.c;g.beginPath();g.arc(p.x,p.y,p.s,0,Math.PI*2);g.fill()}
+ g.restore();
+ // colour grade, vignette, film grain
+ const gd=GRADES[sh.grade];
+ if(gd){g.save();g.globalCompositeOperation='soft-light';g.globalAlpha=gd[1]*2.2;g.fillStyle=gd[0];g.fillRect(0,0,W,H);g.restore()}
+ const vg=g.createRadialGradient(W/2,H*.5,H*.28,W/2,H*.5,H*.95);vg.addColorStop(0,'#00000000');vg.addColorStop(1,'#000000cc');g.fillStyle=vg;g.fillRect(0,0,W,H);
+ if(!grainCv){grainCv=document.createElement('canvas');grainCv.width=192;grainCv.height=108}
+ if(--grainT<=0){grainT=3;const gx=grainCv.getContext('2d'),im=gx.createImageData(192,108);for(let i=0;i<im.data.length;i+=4){const v=Math.random()*255;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=255}gx.putImageData(im,0,0)}
+ g.save();g.globalAlpha=.07;g.globalCompositeOperation='overlay';g.imageSmoothingEnabled=false;g.drawImage(grainCv,0,0,W,H);g.restore();
+ // letterbox
+ g.fillStyle='#000';g.fillRect(0,0,W,64);g.fillRect(0,H-64,W,64);
+ // chapter card
+ if(sh.card){
+  const a=Math.min(1,t/1.2,(Math.max(.01,(sh.len||7)-t))/1.5);
+  g.save();g.globalAlpha=clamp(a,0,1);g.textAlign='center';
+  g.font='900 62px Cinzel,Georgia,serif';g.lineWidth=8;g.strokeStyle='#1a0904';g.strokeText(sh.card.big,W/2,H*.44);g.fillStyle='#f8e7bf';g.fillText(sh.card.big,W/2,H*.44);
+  g.font='20px Barlow Condensed,Arial';g.fillStyle='#e0b878';g.fillText(sh.card.small.split('').join(' '),W/2,H*.44+38);g.restore();
+ }
+ // dialogue
+ const full=tokens(sh.text),shown=full.slice(0,Math.floor(scene.typed));
+ if(full){
+  const bar=g.createLinearGradient(0,H-300,0,H-64);bar.addColorStop(0,'#00000000');bar.addColorStop(1,'#000000d0');g.fillStyle=bar;g.fillRect(0,H-300,W,236);
+  const who=tokens(sh.speaker);g.textAlign='left';
+  g.font='italic 27px Georgia,serif';
+  const lines=wrapText(full,W-300),baseY=H-64-26-(lines.length-1)*36;
+  if(who){g.font='bold 18px Cinzel,Georgia,serif';g.fillStyle=who==='KING VAEL'?'#ff8d6a':'#e8bb74';g.fillText(who,150,baseY-40)}
+  g.font=(who?'':'italic ')+'27px Georgia,serif';g.lineWidth=5;g.strokeStyle='#05070c';
+  let n=shown.length;
+  lines.forEach((ln,i)=>{const part=ln.slice(0,Math.max(0,n));n-=ln.length+1;if(part){g.strokeText(part,150,baseY+i*36);g.fillStyle='#f4ead6';g.fillText(part,150,baseY+i*36)}});
+  if(scene.typed>=full.length&&Math.floor(t*2)%2===0){g.font='16px Arial';g.fillStyle='#e0b878';g.textAlign='right';g.fillText('ENTER ▶',W-40,H-26);g.textAlign='left'}
+ }
+ g.font='14px Arial';g.fillStyle='#ffffff88';g.textAlign='right';g.fillText('ESC · SKIP',W-26,44);g.textAlign='left';
+ // fades
+ const fi=clamp(1-t/.55,0,1);if(fi>0){g.fillStyle='rgba(0,0,0,'+fi+')';g.fillRect(0,0,W,H)}
+ if(sh.flash){const f=clamp(1-t/.7,0,1);if(f>0){g.fillStyle='rgba(255,236,200,'+f*.85+')';g.fillRect(0,0,W,H)}}
+ g.restore();
+}
+
 // ---------- Menus, input and main loop ----------
 let menuPadCool=0,menuPadPrevConfirm=false,menuPadPrevBack=false;
 function handleMenuPad(t){
+ if(state==='cutscene'){const gp=navigator.getGamepads?.()[0];const a=!!gp?.buttons[0]?.pressed,s=!!gp?.buttons[9]?.pressed||!!gp?.buttons[1]?.pressed;if(a&&!menuPadPrevConfirm)sceneAdvance();if(s&&!menuPadPrevBack)skipScene();menuPadPrevConfirm=a;menuPadPrevBack=s;return}
  if(state!=='select')return;
  const gp=navigator.getGamepads?.()[0];if(!gp)return;
  const left=gp.buttons[14]?.pressed||gp.axes[0]<-.65,right=gp.buttons[15]?.pressed||gp.axes[0]>.65;
@@ -618,7 +737,7 @@ function handleMenuPad(t){
 }
 function loop(t){
  const dt=Math.min(2.5,(t-last)/16.667||1);last=t;
- handleMenuPad(t);window.ASHEN_AUDIO?.update(level,state);update(dt);render();if(state==='select')paintPortraits(t);requestAnimationFrame(loop);
+ handleMenuPad(t);window.ASHEN_AUDIO?.update(level,state==='cutscene'?'playing':state);update(dt);render();if(state==='select')paintPortraits(t);requestAnimationFrame(loop);
 }
 let lastPaint=0;
 function paintPortraits(t=performance.now()){
@@ -635,7 +754,7 @@ function setHeroChoice(i){
  choiceCards.querySelectorAll('[data-hero]').forEach((b,j)=>{const active=j===selectedHero;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',active?'true':'false')});
  $('#selectedBio').textContent=heroes[selectedHero].bio;lastPaint=0;paintPortraits();
 }
-function beginSelectedGame(){chosenHero=heroes[selectedHero];choicePanel.hidden=true;reset(0);startPlaying()}
+function beginSelectedGame(){chosenHero=heroes[selectedHero];choicePanel.hidden=true;reset(0);playScene('prologue',startPlaying)}
 function startPlaying(){
  nextBeat=0;
  try{audioCtx ||= new(window.AudioContext||window.webkitAudioContext)();audioCtx.resume()}catch{}
@@ -658,7 +777,9 @@ function play(){
 start.addEventListener('click',play);
 window.addEventListener('keydown',e=>{
  if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space'].includes(e.code))e.preventDefault();
- if(state==='select'){
+ if(state==='cutscene'){
+  if(!keys.has(e.code)){if(e.code==='Escape')skipScene();else if(['Enter','Space','KeyJ','KeyK','ArrowRight'].includes(e.code))sceneAdvance();else if(e.code==='KeyM')window.ASHEN_AUDIO?.switchMute()}
+ }else if(state==='select'){
   if(!keys.has(e.code)){
    if(['ArrowLeft','KeyA','ArrowUp','KeyW'].includes(e.code))setHeroChoice(selectedHero-1);
    else if(['ArrowRight','KeyD','ArrowDown','KeyS'].includes(e.code))setHeroChoice(selectedHero+1);
@@ -677,6 +798,7 @@ window.addEventListener('keydown',e=>{
  keys.add(e.code);
 });
 window.addEventListener('keyup',e=>keys.delete(e.code));
+C.addEventListener('pointerdown',()=>sceneAdvance());
 window.addEventListener('blur',()=>keys.clear());
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='playing')state='paused'});
 document.querySelectorAll('[data-key]').forEach(b=>{
@@ -691,7 +813,7 @@ document.querySelectorAll('[data-key]').forEach(b=>{
 
 // Test hook: only exists when the page is opened with ?debug
 if(typeof location!=='undefined'&&/[?&]debug\b/.test(location.search||'')){
- window.ASHEN2_DEBUG={get state(){return state},set state(v){state=v},get level(){return level},get enemies(){return enemies},get hitstop(){return hitstop},get banner(){return banner},get maxChain(){return maxChain},player,heroes,foe,MOVES,reset,attack,pressAttack,damage,dodge,enemyAI,hurtPlayer,update,render,end,loop,beginSelectedGame,attackers,get floaters(){return floaters},get trail(){return trail},get ghosts(){return ghosts},get heroSt(){return heroSt},set chosen(i){chosenHero=heroes[i]},get rings(){return rings}};
+ window.ASHEN2_DEBUG={get state(){return state},set state(v){state=v},get level(){return level},get enemies(){return enemies},get hitstop(){return hitstop},get banner(){return banner},get maxChain(){return maxChain},player,heroes,foe,MOVES,reset,attack,pressAttack,damage,dodge,enemyAI,hurtPlayer,update,render,end,loop,beginSelectedGame,attackers,get floaters(){return floaters},get trail(){return trail},playScene,get scene(){return scene},sceneAdvance,skipScene,drawScene,get ghosts(){return ghosts},get heroSt(){return heroSt},set chosen(i){chosenHero=heroes[i]},get rings(){return rings}};
 }
 reset();state='menu';requestAnimationFrame(loop);
 })();
