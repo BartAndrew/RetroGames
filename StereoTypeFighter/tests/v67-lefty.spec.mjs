@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 const TOTAL=44;
 
 async function boot(page){
-  await page.goto('./?qa=1');
+  await page.goto('./index-v68.html?qa=1');
   await page.waitForFunction(()=>window.SF?.roster().length===20);
   await expect(page.locator('#startButton')).toBeEnabled({timeout:20000});
 }
