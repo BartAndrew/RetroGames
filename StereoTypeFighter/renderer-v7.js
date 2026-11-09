@@ -193,7 +193,15 @@ export function drawRig(ctx, def, f, pose, opts = {}) {
 export class ArtStore {
   constructor() { this.manifest = null; this.imgs = new Map(); }
   async load(url = './art/manifest.json') {
-    try { const r = await fetch(url, { cache: 'no-cache' }); if (!r.ok) return false; this.manifest = await r.json(); return true; } catch { return false; }
+    try { const r = await fetch(url, { cache: 'no-cache' }); if (!r.ok) return false; this.manifest = await r.json(); this.preload(); return true; } catch { return false; }
+  }
+  // load every listed frame up front so a fighter never flashes back to the stand-in rig mid-move
+  preload() {
+    for (const [id, s] of Object.entries(this.manifest || {})) {
+      if (!s || !s.anims) continue;
+      for (const [a, spec] of Object.entries(s.anims)) for (let n = 1; n <= spec.frames; n++) this.img(id, a, n);
+      this.portrait(id);
+    }
   }
   has(id) { return !!(this.manifest && this.manifest[id] && this.manifest[id].anims); }
   spec(id) { return this.manifest && this.manifest[id]; }

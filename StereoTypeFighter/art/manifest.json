@@ -1,1 +1,84 @@
-{}
+{
+  "gym-bro": {
+    "path": "art/{id}/{anim}/{n}.png",
+    "portrait": "art/{id}/portrait.png",
+    "anchor": [
+      256,
+      470
+    ],
+    "scale": 0.38,
+    "anims": {
+      "idle": {
+        "frames": 8,
+        "fps": 7
+      },
+      "walk": {
+        "frames": 7,
+        "fps": 11
+      },
+      "prejump": {
+        "frames": 2,
+        "fps": 8
+      },
+      "jumpUp": {
+        "frames": 2,
+        "fps": 8
+      },
+      "jumpApex": {
+        "frames": 1,
+        "fps": 8
+      },
+      "jumpDown": {
+        "frames": 1,
+        "fps": 8
+      },
+      "land": {
+        "frames": 1,
+        "fps": 8
+      }
+    }
+  },
+  "yuppie": {
+    "path": "art/{id}/{anim}/{n}.png",
+    "portrait": "art/{id}/portrait.png",
+    "anchor": [
+      256,
+      470
+    ],
+    "scale": 0.38,
+    "anims": {
+      "idle": {
+        "frames": 8,
+        "fps": 7
+      },
+      "hp": {
+        "frames": 7
+      },
+      "hk": {
+        "frames": 8
+      }
+    }
+  },
+  "bogan-tradie": {
+    "path": "art/{id}/{anim}/{n}.png",
+    "portrait": "art/{id}/portrait.png",
+    "anchor": [
+      256,
+      470
+    ],
+    "scale": 0.38,
+    "anims": {
+      "idle": {
+        "frames": 8,
+        "fps": 7
+      },
+      "lp": {
+        "frames": 7
+      },
+      "dashF": {
+        "frames": 8,
+        "fps": 14
+      }
+    }
+  }
+}
