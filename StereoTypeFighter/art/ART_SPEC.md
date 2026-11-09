@@ -96,3 +96,5 @@ Cutscene prompt template: *"cinematic photoreal film still, [place from the scen
 - Every fighter is an **original fictional person**. Do not use or imitate a real person or celebrity.
 - The satire targets *tropes and behaviours* (the hi-vis and the sandwich, the synergy talk, the shaker bottle), never demeaning a real group.
   Keep the portrayal affectionate and self-aware, in line with the story's theme that nobody fits the box.
+
+Full ready-to-paste prompts for every fighter animation and cutscene: `art/PROMPTS.md` (regenerate with `python3 tools/build-v7-prompts.py`). Slice generated strips with `python3 tools/slice-v7-strip.py`.

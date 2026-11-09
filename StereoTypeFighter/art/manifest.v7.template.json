@@ -1,0 +1,381 @@
+{
+  "scenes": true,
+  "bogan-tradie": {
+    "path": "art/{id}/{anim}/{n}.png",
+    "portrait": "art/{id}/portrait.png",
+    "anchor": [
+      256,
+      470
+    ],
+    "scale": 0.38,
+    "anims": {
+      "idle": {
+        "frames": 6,
+        "fps": 7
+      },
+      "walk": {
+        "frames": 6,
+        "fps": 11
+      },
+      "walkBack": {
+        "frames": 6,
+        "fps": 10
+      },
+      "dashF": {
+        "frames": 3,
+        "fps": 8
+      },
+      "dashB": {
+        "frames": 3,
+        "fps": 8
+      },
+      "crouch": {
+        "frames": 2,
+        "fps": 8
+      },
+      "block": {
+        "frames": 2,
+        "fps": 8
+      },
+      "blockLow": {
+        "frames": 2,
+        "fps": 8
+      },
+      "prejump": {
+        "frames": 1,
+        "fps": 8
+      },
+      "jumpUp": {
+        "frames": 2,
+        "fps": 8
+      },
+      "jumpApex": {
+        "frames": 1,
+        "fps": 8
+      },
+      "jumpDown": {
+        "frames": 2,
+        "fps": 8
+      },
+      "land": {
+        "frames": 1,
+        "fps": 8
+      },
+      "lp": {
+        "frames": 5
+      },
+      "lk": {
+        "frames": 5
+      },
+      "hp": {
+        "frames": 6
+      },
+      "hk": {
+        "frames": 6
+      },
+      "launcher": {
+        "frames": 6
+      },
+      "sweep": {
+        "frames": 6
+      },
+      "airP": {
+        "frames": 4
+      },
+      "airK": {
+        "frames": 4
+      },
+      "hurt": {
+        "frames": 2,
+        "fps": 6
+      },
+      "hurtLow": {
+        "frames": 2,
+        "fps": 8
+      },
+      "launched": {
+        "frames": 3,
+        "fps": 8
+      },
+      "knockdown": {
+        "frames": 2,
+        "fps": 8
+      },
+      "ko": {
+        "frames": 1,
+        "fps": 8
+      },
+      "getup": {
+        "frames": 5,
+        "fps": 12,
+        "once": true
+      },
+      "special": {
+        "frames": 6
+      },
+      "super": {
+        "frames": 12
+      },
+      "victory": {
+        "frames": 4,
+        "fps": 6
+      },
+      "intro": {
+        "frames": 4,
+        "fps": 6
+      }
+    }
+  },
+  "yuppie": {
+    "path": "art/{id}/{anim}/{n}.png",
+    "portrait": "art/{id}/portrait.png",
+    "anchor": [
+      256,
+      470
+    ],
+    "scale": 0.38,
+    "anims": {
+      "idle": {
+        "frames": 6,
+        "fps": 7
+      },
+      "walk": {
+        "frames": 6,
+        "fps": 11
+      },
+      "walkBack": {
+        "frames": 6,
+        "fps": 10
+      },
+      "dashF": {
+        "frames": 3,
+        "fps": 8
+      },
+      "dashB": {
+        "frames": 3,
+        "fps": 8
+      },
+      "crouch": {
+        "frames": 2,
+        "fps": 8
+      },
+      "block": {
+        "frames": 2,
+        "fps": 8
+      },
+      "blockLow": {
+        "frames": 2,
+        "fps": 8
+      },
+      "prejump": {
+        "frames": 1,
+        "fps": 8
+      },
+      "jumpUp": {
+        "frames": 2,
+        "fps": 8
+      },
+      "jumpApex": {
+        "frames": 1,
+        "fps": 8
+      },
+      "jumpDown": {
+        "frames": 2,
+        "fps": 8
+      },
+      "land": {
+        "frames": 1,
+        "fps": 8
+      },
+      "lp": {
+        "frames": 5
+      },
+      "lk": {
+        "frames": 5
+      },
+      "hp": {
+        "frames": 6
+      },
+      "hk": {
+        "frames": 6
+      },
+      "launcher": {
+        "frames": 6
+      },
+      "sweep": {
+        "frames": 6
+      },
+      "airP": {
+        "frames": 4
+      },
+      "airK": {
+        "frames": 4
+      },
+      "hurt": {
+        "frames": 2,
+        "fps": 6
+      },
+      "hurtLow": {
+        "frames": 2,
+        "fps": 8
+      },
+      "launched": {
+        "frames": 3,
+        "fps": 8
+      },
+      "knockdown": {
+        "frames": 2,
+        "fps": 8
+      },
+      "ko": {
+        "frames": 1,
+        "fps": 8
+      },
+      "getup": {
+        "frames": 5,
+        "fps": 12,
+        "once": true
+      },
+      "special": {
+        "frames": 6
+      },
+      "super": {
+        "frames": 12
+      },
+      "victory": {
+        "frames": 4,
+        "fps": 6
+      },
+      "intro": {
+        "frames": 4,
+        "fps": 6
+      }
+    }
+  },
+  "gym-bro": {
+    "path": "art/{id}/{anim}/{n}.png",
+    "portrait": "art/{id}/portrait.png",
+    "anchor": [
+      256,
+      470
+    ],
+    "scale": 0.38,
+    "anims": {
+      "idle": {
+        "frames": 6,
+        "fps": 7
+      },
+      "walk": {
+        "frames": 6,
+        "fps": 11
+      },
+      "walkBack": {
+        "frames": 6,
+        "fps": 10
+      },
+      "dashF": {
+        "frames": 3,
+        "fps": 8
+      },
+      "dashB": {
+        "frames": 3,
+        "fps": 8
+      },
+      "crouch": {
+        "frames": 2,
+        "fps": 8
+      },
+      "block": {
+        "frames": 2,
+        "fps": 8
+      },
+      "blockLow": {
+        "frames": 2,
+        "fps": 8
+      },
+      "prejump": {
+        "frames": 1,
+        "fps": 8
+      },
+      "jumpUp": {
+        "frames": 2,
+        "fps": 8
+      },
+      "jumpApex": {
+        "frames": 1,
+        "fps": 8
+      },
+      "jumpDown": {
+        "frames": 2,
+        "fps": 8
+      },
+      "land": {
+        "frames": 1,
+        "fps": 8
+      },
+      "lp": {
+        "frames": 5
+      },
+      "lk": {
+        "frames": 5
+      },
+      "hp": {
+        "frames": 6
+      },
+      "hk": {
+        "frames": 6
+      },
+      "launcher": {
+        "frames": 6
+      },
+      "sweep": {
+        "frames": 6
+      },
+      "airP": {
+        "frames": 4
+      },
+      "airK": {
+        "frames": 4
+      },
+      "hurt": {
+        "frames": 2,
+        "fps": 6
+      },
+      "hurtLow": {
+        "frames": 2,
+        "fps": 8
+      },
+      "launched": {
+        "frames": 3,
+        "fps": 8
+      },
+      "knockdown": {
+        "frames": 2,
+        "fps": 8
+      },
+      "ko": {
+        "frames": 1,
+        "fps": 8
+      },
+      "getup": {
+        "frames": 5,
+        "fps": 12,
+        "once": true
+      },
+      "special": {
+        "frames": 6
+      },
+      "super": {
+        "frames": 12
+      },
+      "victory": {
+        "frames": 4,
+        "fps": 6
+      },
+      "intro": {
+        "frames": 4,
+        "fps": 6
+      }
+    }
+  }
+}
