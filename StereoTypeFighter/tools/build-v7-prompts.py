@@ -20,17 +20,19 @@ STYLE_SUFFIX = ("Soft key light from upper left with a subtle cool rim light, sh
 NEGATIVE = ("text, logo, watermark, caption, extra fingers, extra limbs, cropped feet, cropped hands, different outfit, "
             "different face, cartoon, pixel art, celebrity likeness, blurry, deformed")
 
+# User-approved V7 visual redesign on 2026-11-10 for the first three fighters only.
+# See art/ART_SPEC.md, "V7 user-approved artwork direction" for reference filenames.
+# Do not restore legacy hard-hat/suit/neon-green wardrobe on Gaz, Preston, Tyler.
+# The pose/attack timing remains unchanged; only presentation and reference identity change.
 # ----------------------------------------------------------------- fighters
 FIGHTERS = {
   'bogan-tradie': dict(
     name='Bogan Tradie', nick='Gaz',
-    lock=("Gaz, an original fictional Australian tradesman in his mid-30s, stocky athletic build, weathered friendly face with light stubble, "
-          "short brown hair under a yellow hard hat, orange hi-vis vest with two yellow reflective bands over a grey work shirt with rolled sleeves, "
-          "navy cargo work trousers, brown steel-capped boots, worn leather work gloves tucked into his belt"),
+    lock=("Gaz, an original fictional Australian tradesman in his mid-30s, rugged muscular build, tanned skin, brown mullet, sunglasses resting on head, light stubble, arm tattoos, neon-yellow sleeveless hi-vis work vest, dark work shorts, heavy brown steel-capped boots and a brown tool belt with tools"),
     face="weathered friendly face, light stubble, squinting grin",
     victory="holds up a bronze spirit-level trophy and grins proudly",
-    intro_a="tips the brim of the hard hat with two fingers",
-    intro_b="cracks his knuckles and rolls his neck",
+    intro_a="tips the sunglasses resting on his head with two fingers",
+    intro_b="adjusts the tool belt and cracks his knuckles",
     special_name="Nail Gun Burst",
     special=[
       "guard stance, eyes locked on the opponent",
@@ -51,12 +53,11 @@ FIGHTERS = {
   ),
   'yuppie': dict(
     name='Yuppie', nick='Preston',
-    lock=("Preston, an original fictional American finance professional in his mid-30s, lean athletic build, sharp jaw, slicked-back dark hair, "
-          "tailored navy suit jacket and trousers, crisp white shirt, red tie, polished black leather shoes, brown leather briefcase, steel wristwatch"),
+    lock=("Preston, an original fictional American businessman in his mid-30s, lean athletic build, neat brown hair, dark sunglasses, navy blazer, open-neck white shirt, beige chinos, brown leather shoes, belt and wristwatch"),
     face="sharp jaw, confident smirk, slicked-back hair",
-    victory="straightens his tie and checks his wristwatch with a smirk",
-    intro_a="adjusts his cufflinks without breaking eye contact",
-    intro_b="taps the briefcase like he is closing a deal",
+    victory="adjusts his blazer and checks his wristwatch with a smirk",
+    intro_a="adjusts his sunglasses without breaking eye contact",
+    intro_b="rolls up his shirt sleeves like he is closing a deal",
     special_name="Hostile Takeover",
     special=[
       "guard stance, briefcase in the rear hand",
@@ -77,11 +78,10 @@ FIGHTERS = {
   ),
   'gym-bro': dict(
     name='Gym Bro', nick='Tyler',
-    lock=("Tyler, an original fictional American gym-goer in his mid-20s, very muscular with broad shoulders, short dark hair, white sweatband, "
-          "neon-green tank top, black training shorts, white trainers, a clear shaker bottle with green contents, friendly intense expression"),
+    lock=("Tyler, an original fictional American gym-goer in his mid-20s, heavily muscular build, tan skin, dark hair under a backward black cap, vivid yellow sleeveless gym tank with simple GYM BRO lettering, black athletic shorts, black wristbands, white socks and white sneakers"),
     face="friendly intense expression, bright eyes, slight grin",
-    victory="flexes both biceps with the shaker bottle in one hand",
-    intro_a="chugs from the shaker bottle",
+    victory="flexes both biceps in the yellow gym tank",
+    intro_a="adjusts his backwards cap and flexes",
     intro_b="pops a chest-flex and winks",
     special_name="Protein Shaker Blast",
     special=[
