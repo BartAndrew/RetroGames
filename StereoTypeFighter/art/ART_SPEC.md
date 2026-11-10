@@ -66,17 +66,37 @@ so you can start with `idle`, `walk`, `lp`, `hp`, `lk`, `hurt`, `knockdown` and 
 Set `"scenes": true` in the manifest to switch scene art on. Scenes without a file keep the staged fallback, so you can add them gradually.
 Cutscene illustrations should leave the bottom 28% of the frame free: the dialogue box covers it.
 
+
+## V7 user-approved artwork direction (10 November 2026)
+
+**This section supersedes the earlier Gaz/Preston/Tyler clothing and visual descriptions below, and overrides conflicting descriptions in older prompts.** The user explicitly approved the newly generated arcade-realistic sprite-sheet look. This approval applies **only to the V7 render variants** of `bogan-tradie`, `yuppie` and `gym-bro`; do not rewrite the classic V6.8 art or the other 17 fighters.
+
+| Fighter | Approved V7 visual identity | Draft sheet from this conversation |
+| --- | --- | --- |
+| Gaz / Bogan Tradie | Muscular tan man, brown mullet, sunglasses on head, stubble, arm tattoos, neon-yellow sleeveless hi-vis work vest, dark shorts, rugged brown boots and tool belt | `a_wide_sprite_sheet_style_image_on_transparent_che.png` |
+| Preston / Yuppie | Lean smart businessman, neatly styled brown hair and dark sunglasses, navy blazer, open-neck white shirt, beige chinos, brown shoes, belt and wristwatch | `a_large_sprite_sheet_on_a_transparent_checkerboard.png` |
+| Tyler / Gym Bro | Extremely muscular man, backwards black cap, vivid yellow sleeveless gym tank (simple 'GYM BRO' wording optional), black shorts, dark wristbands, white trainers and socks | `a_large_sprite_sheet_game_art_sheet_on_a_transpa.png` |
+
+These three images were generated in ChatGPT as **design reference contact sheets**, not validated sprites. They have not been imported as game frames; their names above are the source attachment names, not claimed GitHub paths. Use the images as conditioning/reference whenever they are available. The user accepts the new outfits, character faces and visual language as the design direction; exact art should be regenerated and normalized for the runtime.
+
+**Visual style:** crisp semi-realistic / photorealistic arcade fighter composite, detailed anatomy and costume, side-on full-body poses facing right, consistent head/face/camera, neutral cutout background during generation, lighting from upper left with restrained rim light, no logos other than optional simple costume lettering. Avoid replacing this look with flat pixel art or old wardrobe descriptions. Do not bake black pose labels, white checkerboard patterns or VFX into the final individual sprite frames.
+
+**Production contract remains unchanged:** crop each verified pose to transparent RGBA PNG at 512 x 512; keep baseline and body-centre anchor at `[256,470]` (unless empirically re-calibrated for a specific fighter), consistent character height (~340 source px for scale 0.38), original correct filename/path `art/<id>/<anim>/01.png` onward. The engine is the authority on animation IDs and timing: use `art/manifest.v7.template.json` for required sequences, and do not infer frame counts from the labels on the concept sheets. Each row requires manual per-frame inspection, separation, temporal order, no clipping, and foot-grounding checks. Source sheets are **NOT** game-ready just because they show several poses.
+
+**Move art guidance without changing combat code:** Gaz's cinematic draft uses hammer / tool-belt visual accents, Preston's uses sleek tech-hologram business styling, and Tyler's uses a stylized blue-energy training strike. This updates their *art direction*, not the existing configured hitboxes, move IDs, or combat rules. Distinctive older signature moves (nail gun, briefcase, shaker) are optional legacy themes until revised deliberately in gameplay data. Avoid accidentally silently changing combat behavior.
+
+**Future work:** first establish one approved identity anchor per fighter from these sheets, then produce individual animation strips with exact count and spacing, slice and alpha-clean, validate rendered frames, and only then link the V7 manifest / publish. Preserve draft source files separately from runtime frames.
+
 ## Keeping the look consistent (works with any image tool)
 
 Generate one **character reference sheet** first (front, side, back, three-quarter, plus close-up of the face and costume),
 then reuse it as the reference input for every frame. Lock these per fighter:
 
-- **Bogan Tradie (Gaz)**: Australian tradesman in his 30s, stocky athletic build, short brown hair, yellow hard hat,
-  orange hi-vis vest with yellow reflective bands over a work shirt, navy work trousers, brown steel-capped boots, weathered friendly face.
-- **Yuppie (Preston)**: American finance professional in his 30s, lean athletic build, slicked dark hair, tailored navy suit,
-  white shirt, red tie, polished black shoes, brown leather briefcase, confident smirk.
-- **Gym Bro (Tyler)**: American gym-goer in his 20s, very muscular build, short dark hair, white headband, neon-green tank top,
-  black training shorts or pants, white trainers, clear shaker bottle with green contents, cheerful intense expression.
+- **Bogan Tradie (Gaz)**: brown mullet, sunglasses on head, arm tattoos, neon-yellow sleeveless hi-vis vest, dark shorts, brown steel-capped boots and tool belt.
+- **Yuppie (Preston)**: styled brown hair, dark sunglasses, navy blazer, white open-neck shirt, beige chinos, brown leather shoes and wristwatch.
+- **Gym Bro (Tyler)**: backward black cap, yellow gym tank, black shorts, wristbands, white socks and white sneakers.
+
+See the *V7 user-approved artwork direction* above for complete details. These replace the older Gaz/Preston/Tyler costume descriptions only in V7.
 
 Style line to append to every prompt: *"photorealistic fighting-game character, full body, facing right, transparent or plain
 grey background, soft studio key light from upper left, sharp focus, consistent face and costume, no text, no logo."*
