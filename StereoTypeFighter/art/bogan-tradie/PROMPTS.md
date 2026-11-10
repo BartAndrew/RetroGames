@@ -2,14 +2,16 @@
 
 Every strip below is one image. Generate them one at a time, then save each as `art/bogan-tradie/strips/<name>.png` and import with the command under it.
 
+**Approved V7 redesign (2026-11-10):** These are the current approved costume and appearance specifications for NEW source art. Earlier first-upload imported frames are left in place for compatibility until replaced by validated 512x512 art. Use the latest ChatGPT multi-row concept sheet as inspiration, not as a ready-to-play sprite. See `../ART_SPEC.md` for provenance and art QA. Any existing checkmarks below describe legacy imports, not newly QA-approved replacements.
+
 **Reference to attach to every prompt:** your existing idle strip for this fighter (same face, outfit, proportions, lighting).
 
-**Character:** Gaz, stocky Australian tradesman with a brown mullet and sunglasses pushed up on his head, yellow sleeveless hi-vis vest with grey reflective bands, tool belt with hammer and tape measure, dirty navy work shorts, tan steel-capped boots, black fingerless gloves, Australian flag shoulder tattoo.
+**Character:** Gaz, rugged muscular Australian tradesman with a brown mullet, sunglasses resting on top of head, light stubble, tanned skin, arm tattoos, neon-yellow sleeveless hi-vis vest, dark work shorts, brown tool belt and heavy tan steel-capped boots.
 
 **Header: paste at the start of every strip prompt**
 
 ```
-Use the attached image as the exact character reference: same face, hair, outfit, proportions, art style and lighting. Gaz, stocky Australian tradesman with a brown mullet and sunglasses pushed up on his head, yellow sleeveless hi-vis vest with grey reflective bands, tool belt with hammer and tape measure, dirty navy work shorts, tan steel-capped boots, black fingerless gloves, Australian flag shoulder tattoo. Photorealistic fighting-game sprite strip, side view, character facing right. {N} equal-size poses in one horizontal row with a wide empty gap between poses, so no limb, fist or weapon ever crosses into a neighbouring pose. Same camera height, distance and scale in every pose; feet on the same ground line unless the pose is airborne. Solid flat magenta (#FF00FF) background, no text, no logo, no shadow, nothing floating loose. Poses left to right:
+Use the attached image as the exact character reference: same face, hair, outfit, proportions, art style and lighting. Gaz, rugged muscular Australian tradesman with a brown mullet, sunglasses resting on top of head, light stubble, tanned skin, arm tattoos, neon-yellow sleeveless hi-vis vest, dark work shorts, brown tool belt and heavy tan steel-capped boots. Photorealistic fighting-game sprite strip, side view, character facing right. {N} equal-size poses in one horizontal row with a wide empty gap between poses, so no limb, fist or weapon ever crosses into a neighbouring pose. Same camera height, distance and scale in every pose; feet on the same ground line unless the pose is airborne. Solid flat magenta (#FF00FF) background, no text, no logo, no shadow, nothing floating loose. Poses left to right:
 ```
 
 Replace `{N}` with the pose count shown on each strip (8, or 6 for the special).
