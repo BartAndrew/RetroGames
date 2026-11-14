@@ -13,7 +13,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from PIL import Image, ImageChops
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 ART = ROOT / "art"
@@ -74,6 +74,7 @@ def main():
     active = json.loads((ART / "manifest.json").read_text(encoding="utf-8"))[FIGHTER]
     required = json.loads((ART / "manifest.v7.template.json").read_text(encoding="utf-8"))[FIGHTER]
     rows, collisions = [], []
+    all_sha = {}
     manifest_mismatch = {}
     actual_files = 0
     required_frames = 0
@@ -96,6 +97,10 @@ def main():
                 invalid.append({"animation": anim, "frame": n, "errors": item["errors"]})
             sha = item.get("sha256")
             if sha:
+                if sha in all_sha:
+                    collisions.append({"animation": anim, "frames": [all_sha[sha], n], "kind": "identical PNG bytes across actions"})
+                else:
+                    all_sha[sha] = f"{anim}/{n:02d}"
                 if sha in sha_seen:
                     collisions.append({"animation": anim, "frames": [sha_seen[sha], n], "kind": "identical PNG bytes"})
                 else:
@@ -112,8 +117,15 @@ def main():
         (f"pre-gym-bro-{opp}", f"post-gym-bro-{opp}")
     ] + ["ending-gym-bro"]
     scenes = [image_audit(ART / "scenes" / (name + ".png"), None, False) for name in scene_names]
+    for scene in scenes:
+        if scene["exists"] and scene.get("size"):
+            w, h = scene["size"]
+            if w * 9 != h * 16:
+                scene.setdefault("errors", []).append(f"scene must be exactly 16:9, got {w}x{h}")
+                invalid.append({"scene": scene["path"], "errors": scene["errors"]})
     complete = (actual_files == required_frames and not invalid and not collisions and
-                portrait["exists"] and all(x["exists"] for x in scenes))
+                portrait["exists"] and all(x["exists"] for x in scenes) and
+                all(x.get("size") and x["size"][0] * 9 == x["size"][1] * 16 for x in scenes))
     report = {
         "fighter": FIGHTER, "status": "complete" if complete else "incomplete",
         "required_actions": len(required["anims"]), "required_frames": required_frames,
@@ -125,6 +137,7 @@ def main():
         "notes": [
             "SHA-256 hashes only reflect original binary files present in the checkout.",
             "Technical checks cannot certify pose uniqueness, visual identity or ground contact.",
+            "Identical PNG SHA-256 checks detect only byte-identical copies, not near-duplicates.",
             "Scenes may be inherited from bidirectional scene assets; missing directions are reported conservatively.",
             "Missing frames are expected during development and do not fail unless --strict is passed.",
             "The active manifest remains unchanged until every animation is verified."
