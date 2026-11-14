@@ -33,3 +33,14 @@ The conversation contains seven reference contact sheets covering the first seve
 ## Handoff
 
 The source image files were packaged separately in this ChatGPT conversation as `StereotypeFighters_V7_art_sources.zip` with a `SOURCES.json` checksum inventory. Add those actual assets via Git or Git LFS to `StereoTypeFighter/art/sources/` when a binary-upload path is available; this document deliberately does **not** claim they are already hosted in GitHub.
+
+
+## Final roster concept: Neckbeard Nate
+
+| Fighter | Source sheet | Stage |
+| --- | --- | --- |
+| `neckbeard-nate` | `neckbeard-nate-source.png`, SHA-256 `a1e60cd35e70e28eab8ef4327cdda5dfa7e5f201bf701e6b8673e68e40498dc2` | Draft contact sheet; binary packaged in ChatGPT, not yet uploaded to GitHub |
+
+- **Design fidelity:** heavyset original fighter, black fedora, rectangular glasses, short beard, black plain tee, khaki cargo shorts, white sneakers. The cyan speech-bubble special represents `Actually…`; other rows cover movement, punches, hurt, knockdown, getup, victory and loss.
+- **Status:** new source ZIP `neckbeard-nate-source.zip` has a README and full-resolution PNG. This commit stores **metadata only**. Source art still requires individual RGBA extraction, frame counts and foot-anchor validation before game integration.
+- **Roster:** 20 distinct fighter IDs defined in `tools/cast_data.py`; Nate is number 20 in that ordering.
