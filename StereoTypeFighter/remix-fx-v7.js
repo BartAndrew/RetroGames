@@ -41,6 +41,7 @@ export function addRemixFx(events,match){
  }
  if(sparks.length>650)sparks.splice(0,sparks.length-650);
 }
+export function clearRemixFx(){sparks.length=0;rings.length=0;labels.length=0;}
 export function advanceRemixFx(){
  for(const s of sparks){s.x+=s.vx;s.y+=s.vy;s.vx*=.965;s.vy=s.vy*.96+.12;s.life--}
  for(const r of rings)r.life--;
