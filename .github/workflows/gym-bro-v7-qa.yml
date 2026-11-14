@@ -1,0 +1,43 @@
+name: Gym Bro V7 development validation
+on:
+  push:
+    branches:
+      - feature/gym-bro-v7-art-qa-20261115
+    paths:
+      - 'StereoTypeFighter/**'
+      - '.github/workflows/gym-bro-v7-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: StereoTypeFighter
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+      - name: Node runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Pillow
+        run: python -m pip install Pillow
+      - name: Gym Bro canonical combat and story tests
+        run: node tools/test-gym-bro-v7.mjs
+      - name: Existing unit tests
+        run: node --test tests/*.unit.mjs
+      - name: Verify all registered V7 image files
+        run: python tools/check-v7-art.py
+      - name: Upload check summary
+        if: always()
+        run: |
+          echo "## Gym Bro V7 staged QA" >> "$GITHUB_STEP_SUMMARY"
+          echo "Branch-only checks; successful workflow does not constitute manual visual QA or production release." >> "$GITHUB_STEP_SUMMARY"
+          echo "Review original sprite provenance, frame uniqueness, transitions, controllers, cinematic art and complete story before promotion." >> "$GITHUB_STEP_SUMMARY"
