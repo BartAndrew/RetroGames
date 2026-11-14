@@ -22,9 +22,9 @@ The conversation contains seven reference contact sheets covering the first seve
 - **Quality check:** visual character silhouette/outfit and two-column panel layout are consistent with prior generated sheets. Some rows are missing or visually merge intended intermediate poses, so **do not** use header counts alone for import. Image contains opaque white background and labels; each pose must be isolated, cleaned, normalized, and checked against the runtime V7 manifest before activation.
 - **GitHub status:** inventory/provenance only. The image file itself is NOT present in this GitHub commit.
 
-## Production standard for remaining fighters
+## Production standard for artwork integration
 
-- Follow the roster ordering and character descriptions in `tools/cast_data.py`. Next is `junkie` (Mickey).
+- Follow the roster ordering and character descriptions in `tools/cast_data.py`. All 20 character contact sheets have now been generated; see `ART_PRODUCTION_AUDIT_2026-11-15.md` for the complete 20-character table and QA status.
 - Maintain original high-detail side-scrolling arcade-fighter visual language, side view facing right, uniform neutral/checkerboard presentation for **contact-sheet previews** and black rounded headings.
 - Canonical game assets must be transparent `512 x 512` PNGs under `art/<fighter-id>/<animation>/NN.png`, registered to the same fighter-specific body centre and grounded foot baseline; contact sheet labels and checkerboard **must not** appear within the frame files.
 - Concept-sheet frame counts and animation labels are illustrative; use the generated manifest / V7 gameplay contract for exact counts and IDs. Inspect every pose for duplicate frames, clipped limbs, inconsistent accessories/costumes, and background contamination before import.
@@ -44,3 +44,7 @@ The source image files were packaged separately in this ChatGPT conversation as 
 - **Design fidelity:** heavyset original fighter, black fedora, rectangular glasses, short beard, black plain tee, khaki cargo shorts, white sneakers. The cyan speech-bubble special represents `Actually…`; other rows cover movement, punches, hurt, knockdown, getup, victory and loss.
 - **Status:** new source ZIP `neckbeard-nate-source.zip` has a README and full-resolution PNG. This commit stores **metadata only**. Source art still requires individual RGBA extraction, frame counts and foot-anchor validation before game integration.
 - **Roster:** 20 distinct fighter IDs defined in `tools/cast_data.py`; Nate is number 20 in that ordering.
+
+## Full roster source bundle (2026-11-15)
+
+The ChatGPT conversation contains `StereoTypeFighters_V7_full_roster_source_art.zip` with all 20 local concept PNGs, organized in `sources/<fighter-id>/contact_sheet.png`, an inventory of SHA-256 hashes, and an import README. The ZIP was tested for structural integrity. **The ZIP and PNG binaries are NOT in GitHub**: they require upload from a Git-enabled checkout. No runtime manifest was altered during this audit. Run `tools/check-v7-art.py` after producing 512x512 RGBA frames. See `ART_PRODUCTION_AUDIT_2026-11-15.md` for rollout order and deficiencies.
