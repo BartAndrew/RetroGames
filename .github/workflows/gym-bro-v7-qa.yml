@@ -38,10 +38,14 @@ jobs:
       - name: Validate V7 selection and renderer JavaScript syntax
         run: |
           node --check app-v7.js
+          node --check app-v7-1.js
+          node --check story-v7-1.js
           node --check renderer-v7.js
           node --check cutscene-v7.js
       - name: Gym Bro canonical combat and story tests
         run: node tools/test-gym-bro-v7.mjs
+      - name: V7.1 version and story coverage
+        run: node tools/test-v7-1.mjs
       - name: Existing unit tests
         run: node --test tests/*.unit.mjs
       - name: Verify all registered V7 image files
