@@ -1,6 +1,6 @@
 // V7 game shell: title > character select > cutscene > match > cutscene (> ending). Everything draws on one canvas.
 import { createMatch, stepMatch, aiInput, STAGE } from './combat-v7.js';
-import { addRemixFx, advanceRemixFx, drawRemixFx } from './remix-fx-v7.js';
+import { addRemixFx, advanceRemixFx, drawRemixFx, clearRemixFx } from './remix-fx-v7.js';
 import { ROSTER, byId } from './roster-v7.js';
 import { ArtStore, drawMatch, drawPortrait, pushFx } from './renderer-v7.js';
 import { Cutscene } from './cutscene-v7.js';
@@ -25,7 +25,7 @@ const DIFFS = ['easy', 'normal', 'hard'];
 
 const G = {
   screen: 'title', menu: 0, diff: 1, mode: null, picks: [0, 1], pickSlot: 0, cursor: 0,
-  match: null, cut: null, story: null, result: null, tick: 0, ai: [null, null], resultMenu: 0, muted: false, resume: null,
+  match: null, cut: null, story: null, result: null, tick: 0, ai: [null, null], resultMenu: 0, muted: false, remixOn: true, resume: null,
 };
 window.SF7 = G;
 
@@ -134,6 +134,7 @@ function afterResult(choice) {
 
 function onKey(code) {
   if (code === 'KeyM') { G.muted = !G.muted; return; }
+  if (code === 'KeyV') { G.remixOn = !G.remixOn; if (!G.remixOn) clearRemixFx(); return; }
   if (G.screen === 'title') {
     if (code === 'ArrowUp' || code === 'KeyW') { G.menu = (G.menu + MODES.length - 1) % MODES.length; sfx('menu'); }
     if (code === 'ArrowDown' || code === 'KeyS') { G.menu = (G.menu + 1) % MODES.length; sfx('menu'); }
@@ -189,7 +190,7 @@ function drawTitle() {
   });
   text(MODES[G.menu].sub, W / 2, 462, 15, 'rgba(255,255,255,0.75)', 'center', 500);
   text(`CPU difficulty: ${DIFFS[G.diff].toUpperCase()}  (← →)`, W / 2, 492, 15, '#ffd31a', 'center', 700);
-  text('M mutes sound · Enter to select', W / 2, 520, 12, 'rgba(255,255,255,0.45)', 'center', 500);
+  text('M mute · V compare FX on/off · Enter select', W / 2, 520, 12, 'rgba(255,255,255,0.45)', 'center', 500);
 }
 function drawSelect() {
   drawBackdrop(G.tick);
@@ -231,14 +232,14 @@ function frame(now) {
 }
 function update() {
   G.tick++;
-  if (G.screen === 'match' && !G.paused) advanceRemixFx();
+  if (G.screen === 'match' && !G.paused && G.remixOn) advanceRemixFx();
   if (G.screen === 'cutscene' && G.cut) G.cut.update();
   if (G.screen === 'match' && !G.paused) {
     const m = G.match, o = G.matchOpts, lvl = DIFFS[G.diff];
     const in0 = readInput(0);
     const in1 = o.cpu ? aiInput(m, 1, lvl) : readInput(1);
     const ev = stepMatch(m, [in0, in1]);
-    pushFx(ev); addRemixFx(ev,m); for (const e of ev) sfx(e.type);
+    pushFx(ev); if (G.remixOn) addRemixFx(ev,m); for (const e of ev) sfx(e.type);
     if (o.training) { for (const f of m.fighters) { f.meter = Math.max(f.meter, 100); } m.fighters[1].hp = Math.max(m.fighters[1].hp, 1); if (m.fighters[1].hp < m.fighters[1].maxHp * 0.3 && m.fighters[1].state === 'idle') m.fighters[1].hp = m.fighters[1].maxHp; if (m.fighters[0].hp < m.fighters[0].maxHp * 0.3 && m.fighters[0].state === 'idle') m.fighters[0].hp = m.fighters[0].maxHp; m.phase = m.phase === 'ko' ? 'fight' : m.phase; }
     if (m.phase === 'over') finishMatch();
   }
@@ -250,7 +251,8 @@ function draw() {
   else if (G.screen === 'cutscene' && G.cut) G.cut.draw(ctx);
   else if (G.screen === 'match') {
     drawMatch(ctx, G.match, store, hud);
-    drawRemixFx(ctx, G.match);
+    if (G.remixOn) drawRemixFx(ctx, G.match);
+    text(`V7.1 SIGNATURE FX: ${G.remixOn ? 'ON' : 'OFF'} · V TO TOGGLE`, W - 18, 24, 12, G.remixOn ? '#7fe0d2' : '#ffd31a', 'right', 800);
     if (G.paused) { ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, 0, W, H); text('PAUSED', W / 2, 250, 64, '#fff', 'center', 900, true); text('P resume · Q quit to title', W / 2, 296, 18, 'rgba(255,255,255,0.8)', 'center', 600); }
     if (G.matchOpts.training) { const f = G.match.fighters[0]; text(f.combo ? `${f.combo} hit combo · ${f.comboDmg} dmg` : '', W / 2, 520, 16, '#ffd31a', 'center', 700); text('TRAINING · R resets · P pause', W / 2, 500, 12, 'rgba(255,255,255,0.5)', 'center', 500); }
     else if (G.match.phase === 'fight' && G.match.phaseT < 400) {
