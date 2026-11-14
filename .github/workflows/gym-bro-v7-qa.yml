@@ -63,6 +63,18 @@ jobs:
           path: StereoTypeFighter/gym-bro-v7-coverage.json
           retention-days: 14
           if-no-files-found: warn
+      - name: Install browser QA dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run V7.1 Chromium game smoke test
+        run: |
+          python3 -m http.server 4173 --directory .. > /tmp/gym-bro-v71-http.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/StereoTypeFighter/v7-1.html > /dev/null; then break; fi
+            sleep 1
+          done
+          SF_NO_WEBSERVER=1 SF_BASE_URL=http://127.0.0.1:4173/StereoTypeFighter/ npx playwright test tests/v7-1-browser.spec.mjs --reporter=line
       - name: Upload check summary
         if: always()
         run: |
