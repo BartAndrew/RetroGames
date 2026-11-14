@@ -35,6 +35,16 @@ jobs:
         run: node --test tests/*.unit.mjs
       - name: Verify all registered V7 image files
         run: python tools/check-v7-art.py
+      - name: Inventory Gym Bro completion and provenance
+        run: python tools/audit-gym-bro-v7.py --output gym-bro-v7-coverage.json
+      - name: Upload Gym Bro coverage evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gym-bro-v7-coverage
+          path: StereoTypeFighter/gym-bro-v7-coverage.json
+          retention-days: 14
+          if-no-files-found: warn
       - name: Upload check summary
         if: always()
         run: |
