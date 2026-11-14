@@ -12,6 +12,16 @@ The conversation contains seven reference contact sheets covering the first seve
 | `bimbo-babe` | `a_clean_high_detail_game_sprite_sheet_on_a_transp.png` | Draft sheet |
 | `douchebag-dave` | `a_highly_detailed_sprite_sheet_illustration_on_a_t.png` | Draft sheet |
 
+
+## New character concept: Punk Princess (Roxy)
+
+| `punk-princess` | `punk-princess-roxy-source.png` (conversation artifact, SHA-256 `773f8ab6ca6a8ebad80749f0475b55e1c2dfcd5e14153d8b15cfe2c977de76b8`) | Draft contact sheet, 1536x1024; binary not yet pushed to GitHub |
+
+- **Source:** generated during ChatGPT conversation (2026-11-15); downloadable artifact is supplied in this chat as a ZIP with a checksum manifest.
+- **Canon:** bright pink mohawk, studded black leather jacket, red-and-black tartan outfit, fishnets, heavy black boots; close-range punk rushdown and magenta Mosh Pit Riot effects.
+- **Quality check:** visual character silhouette/outfit and two-column panel layout are consistent with prior generated sheets. Some rows are missing or visually merge intended intermediate poses, so **do not** use header counts alone for import. Image contains opaque white background and labels; each pose must be isolated, cleaned, normalized, and checked against the runtime V7 manifest before activation.
+- **GitHub status:** inventory/provenance only. The image file itself is NOT present in this GitHub commit.
+
 ## Production standard for remaining fighters
 
 - Follow the roster ordering and character descriptions in `tools/cast_data.py`. Next is `junkie` (Mickey).
