@@ -1,0 +1,75 @@
+// Gym Bro V7: zero-dependency, deterministic combat/story regression checks.
+// Run from StereoTypeFighter: node tools/test-gym-bro-v7.mjs
+import assert from 'node:assert/strict';
+import { FPS, createMatch, stepMatch } from '../combat-v7.js';
+import { ROSTER, byId } from '../roster-v7.js';
+import { getScene, sceneId, ladderFor } from '../story-v7.js';
+
+const gym = byId('gym-bro');
+assert.ok(gym, 'Gym Bro missing from roster');
+assert.equal(FPS, 60, 'The deterministic combat simulation must remain at 60 Hz');
+assert.equal(gym.nick, 'Tyler');
+assert.equal(gym.hp, 1100);
+assert.equal(gym.speed, 0.94);
+assert.equal(gym.jump, 13);
+assert.equal(gym.special, 'Protein Shaker Blast');
+assert.equal(gym.superName, 'LEG DAY TSUNAMI');
+assert.equal(gym.specialSpec.kind, 'projectile');
+assert.equal(gym.specialSpec.speed, 6.2);
+assert.equal(gym.specialSpec.dmg, 13);
+assert.equal(gym.moves.lp.name, 'Pump Jab');
+assert.equal(gym.moves.hp.name, 'Bicep Cross');
+assert.equal(gym.moves.hk.name, 'Quad Axe');
+assert.equal(gym.moves.launcher.name, 'Deadlift Uppercut');
+assert.equal(gym.moves.special.startup, 14);
+assert.equal(gym.moves.special.recovery, 26);
+assert.deepEqual(gym.moves.super.hits, [0, 6, 12, 18, 24]);
+assert.equal(gym.moves.super.finisher.dmg, 24);
+
+const rivals = ['bogan-tradie', 'yuppie', 'fat-gamer', 'cheerleader'];
+assert.deepEqual(ladderFor('gym-bro', ROSTER), rivals, 'Four-fight story rival order changed');
+const scenes = [sceneId.prologue('gym-bro')];
+for (const rival of rivals) {
+  scenes.push(sceneId.pre('gym-bro', rival), sceneId.post('gym-bro', rival));
+}
+scenes.push(sceneId.ending('gym-bro'));
+for (const id of scenes) {
+  const scene = getScene(id);
+  assert.ok(scene, 'Missing scene '+id);
+  assert.ok(scene.place && scene.mood, 'Missing place/mood '+id);
+  assert.ok(Array.isArray(scene.lines) && scene.lines.length >= 4, 'Missing dialogue '+id);
+  for (const line of scene.lines) {
+    assert.ok(line.who && typeof line.text === 'string' && line.text.trim(), 'Invalid dialogue '+id);
+  }
+}
+assert.match(getScene(sceneId.prologue('gym-bro')).lines[0].text, /Protein Shortage/);
+assert.match(getScene(sceneId.ending('gym-bro')).lines[0].text, /real trophy/);
+
+// Feed the same deterministic input sequence to independent 60 Hz simulations.
+// The runner snapshots game state (not any nondeterministic draw/shake effects).
+const opponent = byId('bogan-tradie');
+const clean = Object.freeze({left:false,right:false,up:false,down:false,punch:false,kick:false,special:false,block:false});
+function sample(f) {
+  return {
+    x:f.x,y:f.y,vx:f.vx,vy:f.vy,hp:f.hp,meter:f.meter,
+    state:f.state,anim:f.anim,animT:f.animT,animP:f.animP,
+    facing:f.facing,stun:f.stun,moveId:f.moveId,combo:f.combo,wins:f.wins,
+  };
+}
+function run() {
+  const m=createMatch([gym,opponent],{toWin:1});
+  const timeline=[];
+  for(let tick=0;tick<480;tick++){
+    const p = {...clean};
+    if(tick>=160 && tick<200)p.right=true;
+    if([220,245,280,320].includes(tick))p.punch=true;
+    if(tick===350)p.special=true;
+    if(tick>=390 && tick<420)p.block=true;
+    stepMatch(m,[p,clean]);
+    timeline.push([m.tick,m.phase,m.phaseT,m.timer,m.round,sample(m.fighters[0]),sample(m.fighters[1]),
+      m.projectiles.map(x=>({x:x.x,y:x.y,vx:x.vx,owner:x.owner,dmg:x.dmg}))]);
+  }
+  return timeline;
+}
+assert.deepEqual(run(),run(), 'Identical 60 Hz inputs diverged between simulations');
+console.log('PASS Gym Bro V7: canonical moves, 10 story scenes, four rivals, deterministic 480-tick simulation');
