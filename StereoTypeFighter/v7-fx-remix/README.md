@@ -33,3 +33,9 @@ This is a **first comparison pass**, not a complete 20-character art and animati
 ## Next iteration
 
 Use the per-character art manifests and original sprite references to author missing frames and add contact/anticipation/recovery poses. Integrate selected MIT-licensed PixelFX effects with upstream source revision and notices, instead of just procedural inspiration. Build automated frame-data and visual regression tests before advancing the release label.
+
+## V7.1 visual signatures (2026-11-15)
+
+Every canonical fighter now has a distinct, hand-mapped presentation profile in `../signatures-v7.js`. Effects include shape-specific hit sparks, expressive special/super callouts, orbiting super motifs, and wave, slash, orbit, glitch or pulse attack cues. This pass improves visual differentiation without altering canonical move names, hitboxes, animation frame data, damage or physics.
+
+Automated roster coverage and canvas drawing smoke checks are in `../tests/remix-signatures.unit.mjs` and are picked up by the existing `npm run test:unit` workflow. Visual art replacement, custom acting/voice lines, and the PixelFX upstream asset library are **not** part of this pass. Original V7 stays unchanged.
