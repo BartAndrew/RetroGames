@@ -35,6 +35,11 @@ jobs:
           python-version: '3.12'
       - name: Install Pillow
         run: python -m pip install Pillow
+      - name: Validate V7 selection and renderer JavaScript syntax
+        run: |
+          node --check app-v7.js
+          node --check renderer-v7.js
+          node --check cutscene-v7.js
       - name: Gym Bro canonical combat and story tests
         run: node tools/test-gym-bro-v7.mjs
       - name: Existing unit tests
