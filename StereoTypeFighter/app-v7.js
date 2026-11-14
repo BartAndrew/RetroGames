@@ -190,6 +190,18 @@ function drawTitle() {
   text(`CPU difficulty: ${DIFFS[G.diff].toUpperCase()}  (← →)`, W / 2, 492, 15, '#ffd31a', 'center', 700);
   text('M mutes sound · Enter to select', W / 2, 520, 12, 'rgba(255,255,255,0.45)', 'center', 500);
 }
+// Update the screen reader only on a selection change, never each 60 Hz draw.
+let lastAnnouncedFighter = '';
+function announceSelectedFighter(r) {
+  const live = document.getElementById('fighterSelectionStatus');
+  if (!live || G.screen !== 'select') return;
+  const key = `${G.pickSlot}:${r.id}`;
+  if (key === lastAnnouncedFighter) return;
+  lastAnnouncedFighter = key;
+  live.textContent = `Player ${G.pickSlot + 1}, ${r.name}, ${r.nick}. Fighting style ${r.style}.
+  Health ${r.hp}, speed ${r.speed}, jump ${r.jump}. Special ${r.special}, super ${r.superName}.
+  Arrow keys choose, Enter confirms, Escape goes back.`;
+}
 function drawSelect() {
   drawBackdrop(G.tick);
   const slot = G.mode === 'story' ? 'CHOOSE YOUR STEREOTYPE' : G.mode === 'training' ? (G.pickSlot ? 'TRAINING PARTNER' : 'YOUR FIGHTER') : `PLAYER ${G.pickSlot + 1}: CHOOSE YOUR FIGHTER`;
@@ -199,6 +211,19 @@ function drawSelect() {
     const t = tileRect(i), sel = i === G.cursor;
     ctx.fillStyle = sel ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.35)'; ctx.fillRect(t.x, t.y, t.w, t.h);
     ctx.strokeStyle = sel ? r.accent : 'rgba(255,255,255,0.2)'; ctx.lineWidth = sel ? 3 : 1; ctx.strokeRect(t.x, t.y, t.w, t.h);
+    // A geometric marker makes the selected tile identifiable without relying on colour.
+    if (sel) {
+      ctx.save();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
+      const pad = 5, corner = 12, left = t.x + pad, right = t.x + t.w - pad;
+      const top = t.y + pad, bottom = t.y + t.h - pad;
+      ctx.beginPath();
+      ctx.moveTo(left, top + corner); ctx.lineTo(left, top); ctx.lineTo(left + corner, top);
+      ctx.moveTo(right - corner, top); ctx.lineTo(right, top); ctx.lineTo(right, top + corner);
+      ctx.moveTo(left, bottom - corner); ctx.lineTo(left, bottom); ctx.lineTo(left + corner, bottom);
+      ctx.moveTo(right - corner, bottom); ctx.lineTo(right, bottom); ctx.lineTo(right, bottom - corner);
+      ctx.stroke(); ctx.restore();
+    }
     ctx.save(); ctx.beginPath(); ctx.rect(t.x + 1, t.y - (big ? 210 : 0), t.w - 2, t.h + (big ? 209 : -1)); ctx.clip();
     drawPortrait(ctx, r, store, t.cx, t.y + t.h - 14, big ? (sel ? 1.55 : 1.3) : (sel ? 0.95 : 0.82), G.tick, 'idle'); ctx.restore();
     if (big) text(r.name.toUpperCase(), t.cx, t.y - 8, 16, sel ? r.accent : '#fff', 'center', 800);
@@ -209,6 +234,12 @@ function drawSelect() {
   text(r.bio, W / 2, 106, r.bio.length > 120 ? 11 : r.bio.length > 95 ? 12 : 14, 'rgba(255,255,255,0.8)', 'center', 500, true);
   text(`Special: ${r.special}   ·   Super: ${r.superName}`, W / 2, 128, 14, '#fff', 'center', 700);
   const mv = r.moves; text(`Signature moves: ${mv.hp.name} · ${mv.launcher.name} · ${mv.sweep.name}`, W / 2, 150, 12, 'rgba(255,255,255,0.6)', 'center', 500);
+  if (r.id === 'gym-bro') {
+    // Use source stats and real control mappings; no invented 1-10 ratings.
+    text(`TYLER  ·  HP ${r.hp}  ·  Speed ${r.speed}  ·  Jump ${r.jump}  ·  F punch / G kick / H special / S+H super`,
+      W / 2, 167, 11, '#d8ff86', 'center', 700);
+  }
+  announceSelectedFighter(r);
   text('← → ↑ ↓ choose · Enter confirm · Esc back', W / 2, 536, 11, 'rgba(255,255,255,0.5)', 'center', 500);
 }
 function drawResult() {
