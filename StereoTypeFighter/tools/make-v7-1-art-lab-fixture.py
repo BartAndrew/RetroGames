@@ -52,7 +52,7 @@ def main():
         z.writestr("STORY_PROVENANCE.json",json.dumps(scene_proof))
         z.writestr("art/manifest-v7-1-candidate.json",json.dumps(manifest))
         z.writestr("README.md","TEST FIXTURE ONLY - synthetic image geometry for ZIP import tests")
-        z.writestr("QA_REPORT.json",json.dumps({"fighter":"gym-bro","production_status":"TEST ONLY"}))
+        z.writestr("QA_REPORT.json",json.dumps({"fighter":"gym-bro","production_status":"TEST ONLY","blocked_actions":["launcher","airK"]}))
         z.writestr("animation-review.html","TEST FIXTURE ONLY")
     assert len(ZipFile(target).namelist())==138
     print("Generated only a synthetic ZIP import test fixture:",target)
