@@ -109,3 +109,18 @@ The R4 offline ZIP is delivered in this ChatGPT conversation, **not pushed to Gi
 - Open `v7-1-art-lab.html` from the branch preview and load the R5 ZIP to evaluate the replacement in the actual unchanged game renderer. The ZIP stays on the user's computer and is not transmitted to Vercel.
 
 **Critical:** This updates one image pose, not the entire jump animation or story. Near-identical idle/locomotion/punch frames and low-quality story composites remain unresolved; no R5 binary images have been uploaded into GitHub's active asset tree or promoted to production.
+
+
+## R6 — complete six-frame forward-walk reconstruction (2026-11-15)
+
+**R6 is the current offline candidate, superseding R5.** All six `walk/01.png` through `walk/06.png` were rebuilt from one newly rendered **1536 × 1024** six-pose, right-facing source sheet. Each source cell is 512 × 512. The frames depict successive rightward strides with different foot-plants, passing and recovery poses. All retain the same outfit, camera, foot baseline at y=470, and combat engine locomotion timing; the screenshots are for **visual QA** only.
+
+- Candidate archive: `GymBro_V7.1_Artwork_Candidate_Pack_R6.zip` — **27,042,361 bytes**, SHA-256 `516bbbec31cd0198a3862dfaae3e5f08f3061919e179a995245087a50d60959c`.
+- Source archive: `GymBro_V7.1_Source_Artwork_Archive_R6.zip` — **30,192,709 bytes**, SHA-256 `b411877e4254635a15776d763ceb5ebf2ea04a502e7ebcbbd4dd82c226003c9f`.
+- Complete standalone reproduction script: `reproduction_scripts/build_gymbro_r6.py` in the source archive; original source sheet preserved as `source_art/a_clean_composited_sprite_sheet_style_image_an_ov.png`.
+- All six new images are **512 × 512 RGBA**, with alpha bounds ranging from x=74..438, y=80..470. The magenta-key spill was reduced by applying a strict chroma mask and pixel decontamination; the source images are original keyposes, **not motion interpolation**.
+- The automated 64-bit pose-fingerprint comparison found **no within-walk pair with Hamming distance ≤5**. This does not replace human timing, stride and foot-sliding review.
+- `QA_REPORT.json` and `PROVENANCE.json` contain updated exact checksums, bounding boxes, source references and per-frame replacement evidence; SHA-256 verified for all 120 frames and all ten 1600 × 900 story images.
+- Existing R5 `walk/03–04` similarity warning is superseded; **10 manual-review warnings remain** (idle, dash-back, light and heavy punch pose similarity). Other quality concerns — source softness in some attacks and low-quality story composites — remain release blockers.
+
+**Not yet live:** the R6 binary ZIP is a ChatGPT conversation deliverable and has not been committed to the GitHub source tree or activated in the default V7.1 manifest. Use the existing `v7-1-art-lab.html` preview to load it locally for side-by-side verification. Only a completed visual and runtime review can authorize binary integration and a Vercel production promotion.
