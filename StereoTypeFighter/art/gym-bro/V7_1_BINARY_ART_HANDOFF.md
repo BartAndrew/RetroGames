@@ -4,8 +4,8 @@
 
 The completed local deliverable is named `GymBro_V7.1_Artwork_Candidate_Pack.zip`. Download it from the original ChatGPT delivery; sandbox attachments are not public GitHub URLs and cannot be downloaded by CI automatically.
 
-- Archive size: **26,624,414 bytes**.
-- Archive SHA-256: `cbc0b7a2c7ab99a194ab07c95f8fb7610d11be12f23d04b1dc06042bd19e010a`.
+- Archive size: **26,618,846 bytes**.
+- Archive SHA-256: `9cc06484b4e8347ca7dec7be107d7d6ec88c6770659762a8366eefb2188a7c07`.
 - 31 action directories, 120 numbered 512×512 RGBA PNG files, with matching canonical frame counts from `art/manifest.v7.template.json`.
 - 10 story illustrations (1600×900) including the prologue, four pre-fights, four post-fights and the ending.
 - Full-body photographic hero and 900×1200 character portrait.
