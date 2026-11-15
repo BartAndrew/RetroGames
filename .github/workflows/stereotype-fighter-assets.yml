@@ -19,6 +19,9 @@ jobs:
       - name: Stage complete arcade before installing development dependencies
         run: python3 tools/build_site.py
 
+      - name: Stage the legacy V6.8 entry for its asset QA only
+        run: cp StereoTypeFighter/index-v68.html _site/StereoTypeFighter/index.html
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
