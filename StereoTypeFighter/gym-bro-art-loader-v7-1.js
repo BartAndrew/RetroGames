@@ -82,7 +82,7 @@ async function checkedImage(bytes,path,expected,expectedHash,objects){
   const img=new Image();
   img.src=objectURL;
   await img.decode();
-  if(img.naturalWidth!==expected[0]||img.naturalHeight!==expected[1])
+  if(expected && (img.naturalWidth!==expected[0]||img.naturalHeight!==expected[1]))
     throw Error('Incorrect image size: '+path);
   img.ok=true;
   return img;
