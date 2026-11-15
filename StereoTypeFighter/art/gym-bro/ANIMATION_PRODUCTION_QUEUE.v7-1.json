@@ -1,0 +1,839 @@
+{
+  "fighter_id": "gym-bro",
+  "name": "Gym Bro",
+  "character_name": "Tyler",
+  "version": "V7.1",
+  "locked_identity": "extremely muscular tan adult, backward black cap, vivid yellow GYM BRO sleeveless tank, black shorts and wristbands, white socks and white trainers",
+  "animation_count": 31,
+  "required_frames": 120,
+  "source_sheet_status": "candidate only, not extracted into approved runtime frames",
+  "policy": "Do not enable any unverified asset in the active manifest; use rig fallback. Do not count near duplicates or interpolated images as complete.",
+  "actions": [
+    {
+      "id": "idle",
+      "required_frames": 6,
+      "render_fps": 7,
+      "loop": true,
+      "expected_pose_sequence": "Breathing bounce; distinct in-betweens, guard unchanged; seamless loop",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/idle/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/idle/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/idle/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/idle/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/idle/05.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/idle/06.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "walk",
+      "required_frames": 6,
+      "render_fps": 11,
+      "loop": true,
+      "expected_pose_sequence": "Rightward walk cycle with alternating foot plants and weight transfer",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/walk/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walk/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walk/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walk/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walk/05.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walk/06.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "walkBack",
+      "required_frames": 6,
+      "render_fps": 10,
+      "loop": true,
+      "expected_pose_sequence": "Reverse footwork while maintaining guard and facing right",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/walkBack/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walkBack/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walkBack/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walkBack/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walkBack/05.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/walkBack/06.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "dashF",
+      "required_frames": 3,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Forward anticipation, extended stride, controlled landing",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/dashF/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/dashF/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/dashF/03.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "dashB",
+      "required_frames": 3,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Back-hop push-off, airborne travel backward, recovery",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/dashB/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/dashB/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/dashB/03.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "crouch",
+      "required_frames": 2,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Stand-to-low transition; both feet remain planted",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/crouch/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/crouch/02.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "block",
+      "required_frames": 2,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "High guard forearms protect head and chest",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/block/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/block/02.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "blockLow",
+      "required_frames": 2,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Low guard protects legs and torso; no high-guard reuse",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/blockLow/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/blockLow/02.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "prejump",
+      "required_frames": 1,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Anticipatory deep knee compression before leaving floor",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/prejump/01.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "jumpUp",
+      "required_frames": 2,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Push-off and upward airborne motion; foot anchor refers to shadow floor",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/jumpUp/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/jumpUp/02.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "jumpApex",
+      "required_frames": 1,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Highest airborne compact guard pose",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/jumpApex/01.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "jumpDown",
+      "required_frames": 2,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Descending tuck and extension preparing for land",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/jumpDown/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/jumpDown/02.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "land",
+      "required_frames": 1,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Absorb landing in knees, weight returns to floor",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/land/01.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "lp",
+      "required_frames": 5,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Pump Jab: clear startup, forward fist impact, clean retraction",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/lp/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/lp/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/lp/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/lp/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/lp/05.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "lk",
+      "required_frames": 5,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Low Kick: knee chamber, ankle-height strike, recoil",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/lk/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/lk/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/lk/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/lk/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/lk/05.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "hp",
+      "required_frames": 6,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Bicep Cross: torso coil, rear-hand strike, follow-through and return",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/hp/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hp/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hp/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hp/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hp/05.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hp/06.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "hk",
+      "required_frames": 6,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Quad Axe: hip lift, high descending heel contact, controlled landing",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/hk/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hk/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hk/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hk/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hk/05.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hk/06.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "launcher",
+      "required_frames": 6,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Deadlift Uppercut: crouch-load, uppercut impact, arm recovers",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/launcher/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/launcher/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/launcher/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/launcher/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/launcher/05.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/launcher/06.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "sweep",
+      "required_frames": 6,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Ground-level rotational sweep with distinct low-impact pose",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/sweep/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/sweep/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/sweep/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/sweep/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/sweep/05.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/sweep/06.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "airP",
+      "required_frames": 4,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Airborne forward/downward punch with distinct grounded-free silhouette",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/airP/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/airP/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/airP/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/airP/04.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "airK",
+      "required_frames": 4,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Airborne diagonal kick with full leg extension and recoil",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/airK/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/airK/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/airK/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/airK/04.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "hurt",
+      "required_frames": 2,
+      "render_fps": 6,
+      "loop": true,
+      "expected_pose_sequence": "Upper-body recoil without punch/kick confusion",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/hurt/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hurt/02.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "hurtLow",
+      "required_frames": 2,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Lower-body stagger with knee bent; stay distinct from high hurt",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/hurtLow/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/hurtLow/02.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "launched",
+      "required_frames": 3,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Airborne back-arched launch followed by controlled tumble",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/launched/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/launched/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/launched/03.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "knockdown",
+      "required_frames": 2,
+      "render_fps": 8,
+      "loop": true,
+      "expected_pose_sequence": "Ground impact and settling while facing right",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/knockdown/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/knockdown/02.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "ko",
+      "required_frames": 1,
+      "render_fps": 8,
+      "loop": false,
+      "expected_pose_sequence": "Distinct motionless defeated ground pose",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/ko/01.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "getup",
+      "required_frames": 5,
+      "render_fps": 12,
+      "loop": false,
+      "expected_pose_sequence": "Roll, elbow prop, kneel, planted stand, guard recovery",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/getup/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/getup/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/getup/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/getup/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/getup/05.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "special",
+      "required_frames": 6,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Protein Shaker Blast: retrieve shaker, wind up, launch projectile; separate VFX; restore guard",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/special/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/special/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/special/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/special/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/special/05.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/special/06.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "super",
+      "required_frames": 12,
+      "render_fps": null,
+      "loop": true,
+      "expected_pose_sequence": "Leg Day Tsunami: startup power-up, five canonical hit moments, finishing strike and recovery; do not change engine timings",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/super/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/04.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/05.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/06.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/07.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/08.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/09.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/10.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/11.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/super/12.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "victory",
+      "required_frames": 4,
+      "render_fps": 6,
+      "loop": false,
+      "expected_pose_sequence": "Confident biceps flex celebrating genuine support for opponent",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/victory/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/victory/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/victory/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/victory/04.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "required_frames": 4,
+      "render_fps": 6,
+      "loop": false,
+      "expected_pose_sequence": "Adjust backward cap and warm-up, assume combat guard",
+      "status": "unverified",
+      "canonical_source": "art/manifest.v7.template.json + roster-v7.js + combat-v7.js",
+      "frames": [
+        {
+          "file": "art/gym-bro/intro/01.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/intro/02.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/intro/03.png",
+          "status": "not_qa_approved"
+        },
+        {
+          "file": "art/gym-bro/intro/04.png",
+          "status": "not_qa_approved"
+        }
+      ]
+    }
+  ],
+  "optional_runtime_taunt": {
+    "id": "taunt",
+    "status": "rig-fallback",
+    "description": "Renderer permits taunt; only add dedicated clip after engine action dispatch is confirmed."
+  }
+}
