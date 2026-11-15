@@ -72,6 +72,9 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Build synthetic ZIP fixture for browser-only importer test
         run: python tools/make-v7-1-art-lab-fixture.py
+      - name: Test read-only artwork ZIP inspector on synthetic fixture
+        run: |
+          python tools/inspect-gym-bro-art-zip.py tests/_tmp_gym_bro_synthetic.zip --json gym-bro-synthetic-zip-audit.json
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Run V7.1 Chromium game smoke test
