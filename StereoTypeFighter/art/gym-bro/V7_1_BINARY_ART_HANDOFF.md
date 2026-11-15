@@ -75,3 +75,21 @@ The R3 pack supersedes R2, with **seven total frame repairs since R1**: four hig
 - R3 image quality is **still not approved**. Earlier 13 perceptual/manual-review findings remain recorded, and `special/04.png` still has a partially cropped figure; removal of foreign fragments is not the same as reconstructing a missing limb. Other low-resolution source poses and composited story scenes still need bespoke high-resolution replacements.
 
 To test R3 against the real fighting game, open `v7-1-art-lab.html` on the Vercel branch preview, choose the **R3 ZIP** with the local file input, then toggle candidate artwork versus original rig. The loader checks the R3 hashes and mounts files in memory only. **No artwork binaries are committed to GitHub or promoted to the default live manifest.**
+
+
+## R4 — Protein Shaker Blast rebuilt as six full-body keyposes (latest candidate)
+
+**R4 supersedes R3.** The six special animation frames were replaced from a new 1536 × 1024 magenta-key 3×2 source image. Unlike the R3 special, every frame now includes the complete body, footwear and the appropriate arm gesture. The sequence shows guard with shaker holstered, reach to hip, shaker wind-up, forward extension, release and guarded recovery. The projectile remains governed by the unchanged combat engine (not by a painted damage effect).
+
+- Latest candidate ZIP: `GymBro_V7.1_Artwork_Candidate_Pack_R4.zip`
+- **Archive SHA-256:** `dab1eba889b27f79b6933cdd47c59e0a72b803f7025e8ad6ff8110be27f0416a`
+- **Size:** 26,963,677 bytes; exactly 138 archive members.
+- Latest source archive: `GymBro_V7.1_Source_Artwork_Archive_R4.zip`
+- **Source SHA-256:** `e2f2c5d16a5bc3c19c2f9e75bf9046f478ac0a31c2377714c4d06e37d51bcbd7`
+- 27,539,930 bytes; includes the original R3 source files **plus unchanged R4 source art and the reproducible `build_gymbro_r4.py` script**.
+- Changed entries: `art/gym-bro/special/01.png` through `06.png`; all six 512×512 RGBA PNGs retain foot grounding at y=470, with maximum visible bounds inside the canvas.
+- Recomputed `PROVENANCE.json` SHA-256 for all replaced frames and updated `QA_REPORT.json` per-frame sizes, bounds, hashes and 64-bit preview perceptual fingerprints.
+- Independent archive validation passed **31 actions, 120 frame images, 10 1600×900 story scenes and matching SHA-256 checksums**. Six special frames have distinct binary images and visibly different move phases.
+- Automated **previously flagged special/02–03 similarity issue is now superseded**. Remaining manual-review findings: **12**, including the unresolved jump-apex clipping review, idle/locomotion near-similarity, some punch near-similarity, plus other low-detail/composited art. A source sheet is not itself an approved finished clip.
+
+The R4 offline ZIP is delivered in this ChatGPT conversation, **not pushed to GitHub as image binaries or enabled in production**. To use, load the **R4 ZIP** on `v7-1-art-lab.html` using the local browser file chooser, and compare against the rig. Any updated soundtrack, combat frame timing or story dialogue must remain unaffected. The development and production manifests retain existing verified art until actual binary assets pass acceptance and are committed.
