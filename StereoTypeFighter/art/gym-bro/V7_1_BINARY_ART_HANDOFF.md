@@ -93,3 +93,19 @@ To test R3 against the real fighting game, open `v7-1-art-lab.html` on the Verce
 - Automated **previously flagged special/02–03 similarity issue is now superseded**. Remaining manual-review findings: **12**, including the unresolved jump-apex clipping review, idle/locomotion near-similarity, some punch near-similarity, plus other low-detail/composited art. A source sheet is not itself an approved finished clip.
 
 The R4 offline ZIP is delivered in this ChatGPT conversation, **not pushed to GitHub as image binaries or enabled in production**. To use, load the **R4 ZIP** on `v7-1-art-lab.html` using the local browser file chooser, and compare against the rig. Any updated soundtrack, combat frame timing or story dialogue must remain unaffected. The development and production manifests retain existing verified art until actual binary assets pass acceptance and are committed.
+
+
+## R5 — high-resolution jump-apex replacement (latest offline candidate)
+
+**R5 supersedes R4.** The original `jumpApex/01.png` contained a small blurry airborne figure touching the top pixel boundary (alpha bbox y=0). A purpose-generated, isolated transparent full-body Gym Bro pose has been cropped and resized to 512×512 RGBA, with no cut-off limbs and a **30-pixel top margin**. The new alpha bounding box is **[163,30,349,342]**, keeping the fighter visibly airborne rather than pretending his feet touch the grounded anchor.
+
+- Latest candidate ZIP: `GymBro_V7.1_Artwork_Candidate_Pack_R5.zip` — **26,972,681 bytes**, SHA-256 `8fa297fcb00986eb73174613726417d6a1f0a49615ff669bc334bb12da4eb841`.
+- Updated source ZIP: `GymBro_V7.1_Source_Artwork_Archive_R5.zip` — SHA-256 `923b98d320c388015c6c13736244bb825b470535eda04d9ec02bfbc174818a98`.
+- Replaced PNG: `art/gym-bro/jumpApex/01.png`. New image SHA-256 `a4fc9967e1d950cdad2e2006b767b722d7e2c808f40cde48a70272360bcd3756`.
+- The unmodified full-resolution input PNG and `build_gymbro_r5.py` reproduction script are included in the source archive. Original R4 images remain intact in their own archive.
+- Independent offline package check: **138 ZIP members**, **31 actions / 120 RGBA frames**, ten 1600×900 scenes; all per-file provenance and story hashes match.
+- R4's jump-apex boundary-clipping warning has been removed from `QA_REPORT.json`; **11 visual-review findings remain**. Strict image production approval has **not** been granted.
+- GitHub branch adds `tools/inspect-gym-bro-art-zip.py` to run read-only binary/margin/provenance audits; its CI uses synthetic data for the importer and does not certify real R5 artwork.
+- Open `v7-1-art-lab.html` from the branch preview and load the R5 ZIP to evaluate the replacement in the actual unchanged game renderer. The ZIP stays on the user's computer and is not transmitted to Vercel.
+
+**Critical:** This updates one image pose, not the entire jump animation or story. Near-identical idle/locomotion/punch frames and low-quality story composites remain unresolved; no R5 binary images have been uploaded into GitHub's active asset tree or promoted to production.
