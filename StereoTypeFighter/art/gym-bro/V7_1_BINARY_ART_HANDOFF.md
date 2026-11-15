@@ -36,3 +36,15 @@ The eight pre-/post-fight scenes and the ending are composited from earlier AI c
 - [ ] Commit verified binaries to GitHub only after approval, deploy preview, verify actual asset URLs and storage, then promote if all checks pass.
 
 **Note:** This handoff records a **candidate artwork deliverable** and is not a claim that the new binary artwork has been committed, made live or production-ready.
+
+
+## Offline original source archive
+
+A second download, `GymBro_V7.1_Source_Artwork_Archive.zip`, preserves 10 unmodified source images/ZIPs and the three reproduction scripts, keeping source material out of the Vercel-served production bundle.
+
+- Source archive size: **24,294,246 bytes**.
+- Source archive SHA-256: `078e3f50f9c2da219ab1592ac92a9e62d0eff42dbd36689434f79316776cae03`.
+- Contains `SOURCE_ART_INVENTORY.json` with original image filenames, SHA-256 and sizes.
+- The explicitly named original `Gym Bro Fighting Game Sprite Sheet-3.png` was not available and is recorded as missing, not silently recreated or assigned a fabricated checksum.
+
+These source files also remain outside GitHub unless separately uploaded and reviewed; the named ZIP is delivered as a ChatGPT conversation download, not a publicly reachable CI URL.
