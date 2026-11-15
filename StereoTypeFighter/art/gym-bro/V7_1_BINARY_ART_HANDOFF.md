@@ -4,8 +4,8 @@
 
 The completed local deliverable is named `GymBro_V7.1_Artwork_Candidate_Pack.zip`. Download it from the original ChatGPT delivery; sandbox attachments are not public GitHub URLs and cannot be downloaded by CI automatically.
 
-- Archive size: **26,618,846 bytes**.
-- Archive SHA-256: `9cc06484b4e8347ca7dec7be107d7d6ec88c6770659762a8366eefb2188a7c07`.
+- Archive size: **26,628,612 bytes**.
+- Archive SHA-256: `192a32fff175731d53df275cafe16cc1b72e5a0fba6d9375d10bf09540acb5fb`.
 - 31 action directories, 120 numbered 512×512 RGBA PNG files, with matching canonical frame counts from `art/manifest.v7.template.json`.
 - 10 story illustrations (1600×900) including the prologue, four pre-fights, four post-fights and the ending.
 - Full-body photographic hero and 900×1200 character portrait.
@@ -42,8 +42,8 @@ The eight pre-/post-fight scenes and the ending are composited from earlier AI c
 
 A second download, `GymBro_V7.1_Source_Artwork_Archive.zip`, preserves 10 unmodified source images/ZIPs and the three reproduction scripts, keeping source material out of the Vercel-served production bundle.
 
-- Source archive size: **24,294,246 bytes**.
-- Source archive SHA-256: `078e3f50f9c2da219ab1592ac92a9e62d0eff42dbd36689434f79316776cae03`.
+- Source archive size: **24,294,249 bytes**.
+- Source archive SHA-256: `5f074e48e7f6711678dd63c5b91023b9fb62f69406af5c0f75bd5ca0972fc732`.
 - Contains `SOURCE_ART_INVENTORY.json` with original image filenames, SHA-256 and sizes.
 - The explicitly named original `Gym Bro Fighting Game Sprite Sheet-3.png` was not available and is recorded as missing, not silently recreated or assigned a fabricated checksum.
 
