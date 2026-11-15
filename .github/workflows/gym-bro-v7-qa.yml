@@ -75,6 +75,8 @@ jobs:
       - name: Test read-only artwork ZIP inspector on synthetic fixture
         run: |
           python tools/inspect-gym-bro-art-zip.py tests/_tmp_gym_bro_synthetic.zip --json gym-bro-synthetic-zip-audit.json
+      - name: Check detached foreground detector on synthetic ZIP
+        run: python tools/check-gym-bro-components.py tests/_tmp_gym_bro_synthetic.zip --strict --report gym-bro-synthetic-components.json
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Run V7.1 Chromium game smoke test
