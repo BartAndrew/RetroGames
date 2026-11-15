@@ -8,6 +8,8 @@ import { getScene, sceneId, ladderFor, TITLE_CARD } from './story-v7-1.js';
 const canvas = document.getElementById('game'), ctx = canvas.getContext('2d');
 const W = 960, H = 540;
 const store = new ArtStore();
+// Expose only an asset-install hook for the optional V7.1 art lab. Gameplay state and move timing remain owned by combat-v7.js.
+window.SF7_ART_STORE = store;
 const hud = { chip: [] };
 const keys = new Set(), pressed = new Set();
 const KEYMAP = [
