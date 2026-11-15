@@ -48,3 +48,17 @@ A second download, `GymBro_V7.1_Source_Artwork_Archive.zip`, preserves 10 unmodi
 - The explicitly named original `Gym Bro Fighting Game Sprite Sheet-3.png` was not available and is recorded as missing, not silently recreated or assigned a fabricated checksum.
 
 These source files also remain outside GitHub unless separately uploaded and reviewed; the named ZIP is delivered as a ChatGPT conversation download, not a publicly reachable CI URL.
+
+
+## R2 artwork correction and live local artwork preview
+
+A new **R2 ZIP** is available in this ChatGPT conversation. It supersedes the R1 artwork pack and fixes four broken or soft low-defense/reaction sprites using a higher-resolution, individually generated pose source.
+
+- `GymBro_V7.1_Artwork_Candidate_Pack_R2.zip`: **26,885,041 bytes**, SHA-256 `f6f5c7e6ed650423be54d928c8554e4328f0c9f90170017b4a09fc857da4f3de`.
+- `GymBro_V7.1_Source_Artwork_Archive_R2.zip`: **25,923,100 bytes**, SHA-256 `548f822eff5e5d463fc38c4be5bd2cb761bf7979b5c835081fe45fcddba78b83`.
+- Replaced `blockLow/01.png`, `blockLow/02.png`, `hurtLow/01.png`, `hurtLow/02.png`. Original files and their SHA-256 values are recorded under `QA_REPORT.json.replacements`; new bytes and checksums are in the R2 provenance manifest.
+- Independently verified all 31 actions, 120 RGBA 512 × 512 frames, ten 1600 × 900 scenes and all corresponding recorded SHA-256 values. No replaced frame extends past the bottom 480 px.
+
+The new `v7-1-art-lab.html` is a separate, browser-playable test build that lets the player select this local ZIP directly, without uploading it, and enables **all 31 Gym Bro actions and all ten scenes on demand**. The in-memory loader verifies frame counts, SHA-256, PNG dimensions, decodes the image files, then allows switching candidate art on/off while running the unchanged V7.1 deterministic combat code. GitHub Actions now runs a real Chromium ZIP import/toggle/playability regression using a **synthetic test fixture** (not the real artwork).
+
+This local, opt-in artwork preview is **not production activation**; the incomplete R2 art has not been merged, uploaded to GitHub as binaries, or assigned to the default V7.1 manifest. Existing low-resolution frames and composited story scenes remain candidates until reviewed and replaced.
