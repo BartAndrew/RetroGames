@@ -25,12 +25,16 @@ test('V7.1 Art Lab loads an entire local ZIP without changing deterministic comb
     state:window.SF7_ART_LAB_STATUS,
     count:Object.keys(window.SF7_ART_STORE.manifest['gym-bro'].anims).length,
     punch:window.SF7_ART_STORE.img('gym-bro','hp',1)?.naturalWidth,
+    blockedLauncher:window.SF7_ART_STORE.img('gym-bro','launcher',1),
     portrait:window.SF7_ART_STORE.portrait('gym-bro')?.naturalHeight,
     prologue:window.SF7_ART_STORE.scene('./art/scenes/prologue-gym-bro.png')?.naturalWidth,
     tick:window.SF7.tick
   }));
   expect(loaded.count).toBe(31);
   expect(loaded.punch).toBe(512);
+  expect(loaded.blockedLauncher).toBeNull();
+  expect(loaded.state.blockedActions).toEqual(['launcher','airK']);
+  expect(loaded.state.candidateActions).toBe(29);
   expect(loaded.portrait).toBe(1200);
   expect(loaded.prologue).toBe(1600);
   expect(loaded.tick).toBeGreaterThan(before.tick);
