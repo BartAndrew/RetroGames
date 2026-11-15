@@ -39,6 +39,7 @@ jobs:
         run: |
           node --check app-v7.js
           node --check app-v7-1.js
+          node --check gym-bro-art-loader-v7-1.js
           node --check story-v7-1.js
           node --check renderer-v7.js
           node --check cutscene-v7.js
@@ -69,6 +70,8 @@ jobs:
           if-no-files-found: warn
       - name: Install browser QA dependencies
         run: npm install --no-audit --no-fund
+      - name: Build synthetic ZIP fixture for browser-only importer test
+        run: python tools/make-v7-1-art-lab-fixture.py
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Run V7.1 Chromium game smoke test
@@ -78,7 +81,7 @@ jobs:
             if curl -fsS http://127.0.0.1:4173/StereoTypeFighter/v7-1.html > /dev/null; then break; fi
             sleep 1
           done
-          SF_NO_WEBSERVER=1 SF_BASE_URL=http://127.0.0.1:4173/StereoTypeFighter/ npx playwright test tests/v7-1-browser.spec.mjs --reporter=line
+          SF_NO_WEBSERVER=1 SF_BASE_URL=http://127.0.0.1:4173/StereoTypeFighter/ npx playwright test tests/v7-1-browser.spec.mjs tests/v7-1-art-lab.spec.mjs --reporter=line
       - name: Upload check summary
         if: always()
         run: |
