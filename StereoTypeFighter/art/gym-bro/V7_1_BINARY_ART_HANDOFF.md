@@ -62,3 +62,16 @@ A new **R2 ZIP** is available in this ChatGPT conversation. It supersedes the R1
 The new `v7-1-art-lab.html` is a separate, browser-playable test build that lets the player select this local ZIP directly, without uploading it, and enables **all 31 Gym Bro actions and all ten scenes on demand**. The in-memory loader verifies frame counts, SHA-256, PNG dimensions, decodes the image files, then allows switching candidate art on/off while running the unchanged V7.1 deterministic combat code. GitHub Actions now runs a real Chromium ZIP import/toggle/playability regression using a **synthetic test fixture** (not the real artwork).
 
 This local, opt-in artwork preview is **not production activation**; the incomplete R2 art has not been merged, uploaded to GitHub as binaries, or assigned to the default V7.1 manifest. Existing low-resolution frames and composited story scenes remain candidates until reviewed and replaced.
+
+
+## R3 candidate cleanup (latest offline artwork pack)
+
+The R3 pack supersedes R2, with **seven total frame repairs since R1**: four higher-resolution replacements from R2 and three non-destructive detached-fragment cleanups to the `walkBack/05.png`, `dashF/03.png` and `special/04.png` candidate frames. No original artwork is overwritten or lost; the R3 source archive includes the exact Python scripts and unmodified source-sheet bytes.
+
+- `GymBro_V7.1_Artwork_Candidate_Pack_R3.zip`: **26,869,208 bytes** — SHA-256 `b06d00cfba1e097b6b3543fa1e38e4ce1ca39a72eb14902d62970375bbcd06a7`.
+- `GymBro_V7.1_Source_Artwork_Archive_R3.zip`: **25,924,842 bytes** — SHA-256 `81cfd1bf2973f19b1326d14016ec626ae13e5aea993e178f910b9c1ae3a92cff`.
+- All **31 animation definitions, 120 512×512 RGBA frames, ten 1600×900 story images and per-frame/per-scene SHA-256 hashes** passed independent archive validation.
+- Review artifacts: R2 low-block/hurtLow before-after comparison and R3 fragment-removal comparison are delivered alongside the ZIP in this ChatGPT conversation.
+- R3 image quality is **still not approved**. Earlier 13 perceptual/manual-review findings remain recorded, and `special/04.png` still has a partially cropped figure; removal of foreign fragments is not the same as reconstructing a missing limb. Other low-resolution source poses and composited story scenes still need bespoke high-resolution replacements.
+
+To test R3 against the real fighting game, open `v7-1-art-lab.html` on the Vercel branch preview, choose the **R3 ZIP** with the local file input, then toggle candidate artwork versus original rig. The loader checks the R3 hashes and mounts files in memory only. **No artwork binaries are committed to GitHub or promoted to the default live manifest.**
