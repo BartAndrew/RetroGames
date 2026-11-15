@@ -39,3 +39,7 @@ Use the per-character art manifests and original sprite references to author mis
 Every canonical fighter now has a distinct, hand-mapped presentation profile in `../signatures-v7.js`. Effects include shape-specific hit sparks, expressive special/super callouts, orbiting super motifs, and wave, slash, orbit, glitch or pulse attack cues. This pass improves visual differentiation without altering canonical move names, hitboxes, animation frame data, damage or physics.
 
 Automated roster coverage and canvas drawing smoke checks are in `../tests/remix-signatures.unit.mjs` and are picked up by the existing `npm run test:unit` workflow. Visual art replacement, custom acting/voice lines, and the PixelFX upstream asset library are **not** part of this pass. Original V7 stays unchanged.
+
+## Live A/B testing
+
+During a V7.1 Remix match press **V** to enable or disable the *additional* signature FX without restarting the fight. An on-screen indicator shows the current state. This compares the new effect layer against the original V7 effects and does not toggle the underlying combat simulation or existing V7 particles. Press **M** to mute. A keyboard is required for V; an on-screen toggle has not been added yet.
