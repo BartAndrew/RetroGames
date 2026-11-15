@@ -124,3 +124,18 @@ The R4 offline ZIP is delivered in this ChatGPT conversation, **not pushed to Gi
 - Existing R5 `walk/03–04` similarity warning is superseded; **10 manual-review warnings remain** (idle, dash-back, light and heavy punch pose similarity). Other quality concerns — source softness in some attacks and low-quality story composites — remain release blockers.
 
 **Not yet live:** the R6 binary ZIP is a ChatGPT conversation deliverable and has not been committed to the GitHub source tree or activated in the default V7.1 manifest. Use the existing `v7-1-art-lab.html` preview to load it locally for side-by-side verification. Only a completed visual and runtime review can authorize binary integration and a Vercel production promotion.
+
+
+## R7 (current) — six dash keyposes, truthful fragment audit, safe preview
+
+**Candidate binaries, NOT committed to GitHub:** `GymBro_V7.1_Artwork_Candidate_Pack_R7_QA.zip`, SHA-256 `7f1788d74fe08b1a908309715d13ae57d7ff5d8926f559b0a6b0522439b57c2d` (**27,266,735 bytes**). The source archive `GymBro_V7.1_Source_Artwork_Archive_R7.zip` has SHA-256 `410a8d89898004c59e1c5c88f68f9219c42d6eea3bc9aecafce32afd9a193ce5` (**31,975,657 bytes**).
+
+- New `dashF/01–03.png` and `dashB/01–03.png` come from one 1536×1024 six-pose original source sheet; all six are unique 512×512 RGBA and have one large connected figure silhouette. Source and Python extraction are included in the source archive.
+- Independent image-component QA measured the old R6 dashF detached-alpha fractions of 15.3% and 20.6% for frames 01 and 02, versus **0% for all six R7 dash sprites**; the prior near-identical R6 dashB 02/03 dHash distance of 2 increased to 21 in R7.
+- **However the broader inspection found a previously missed defect class**: 17 other potentially fragmented frames in `airK`, `airP`, `hk`, `intro`, `jumpDown`, `launcher`, `super`, and `victory`. A second independent pHash pass also retains 9 similarity warnings (idle and punches). These 26 combined issues are recorded in the R7_QA `QA_REPORT.json`.
+- R7_QA explicitly records `blocked_actions` for those eight damaged action groups. The updated `v7-1-art-lab.html` loader validates all 120 image checksums but **withholds those eight action groups**, using the original engine rig fallback instead of displaying corrupted sprites. Expected opt-in preview: **23 candidate animation actions / 8 fallback actions**, and ten scene images for comparison only.
+- Original R7 (before adding the full QA evidence) was SHA-256 `06cbf14a10164d224af58fd1a8db0f2b46a754dd2913bbb6e8ae16a4dc03664b` and is superseded by R7_QA.
+- Repo tool `tools/check-gym-bro-components.py` checks whether candidate PNGs contain multiple large detached foreground components; its strict mode fails if missing or suspect images are found. CI tests this tool on a **synthetic** 120-frame fixture only; it does not claim that R7 passes strict QA.
+- Source-of-truth mechanics, the original V7 game and Vercel production are not modified.
+
+**Further blockers:** reconstruct all damaged pose sequences with correctly attached limbs and separated VFX; replace repeated idle/punch keyposes and unapproved low-resolution story composites; commit *actual verified binary images* to GitHub; test full 60 Hz combat, controls, story to credits, and Vercel storage; then merge and deploy. No production promotion on this revision.
