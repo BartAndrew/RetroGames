@@ -93,7 +93,13 @@ function setEnabled(on){
   if(on){
     store.manifest['gym-bro']=installed.spec;
     store.manifest.scenes=true;
-    for(const [k,img] of installed.images)store.imgs.set(k,img);
+    for(const [k,img] of installed.images){
+      const fighterFrame=/^art\/gym-bro\/([^/]+)\/\d+\.png$/.exec(k);
+      // Unapproved silhouettes must use the actual engine rig, never a broken PNG.
+      // The truthy sentinel prevents ArtStore.img from trying a missing network URL.
+      const blocked=fighterFrame&&installed.blockedActions.includes(fighterFrame[1]);
+      store.imgs.set(k,blocked ? {ok:false} : img);
+    }
   }else{
     store.manifest['gym-bro']=installed.previousSpec;
     store.manifest.scenes=installed.previousScenes;
@@ -102,9 +108,13 @@ function setEnabled(on){
       else store.imgs.delete(k);
     }
   }
-  window.SF7_ART_LAB_STATUS={loaded:true,enabled:on,frames:120,scenes:10,origin:'local ZIP, not deployed'};
+  window.SF7_ART_LAB_STATUS={loaded:true,enabled:on,frames:120,scenes:10,
+    candidateActions:31-installed.blockedActions.length,blockedActions:installed.blockedActions,
+    origin:'local ZIP, not deployed'};
   $('useCandidate').checked=on;
-  status(on?'Candidate art active for this browser session (NOT APPROVED).':'Original V7.1 rig/art fallback restored.');
+  status(on ? 'Previewing '+(31-installed.blockedActions.length)+' candidate actions. '+
+    installed.blockedActions.length+' actions withheld for rig fallback due to silhouette QA; NOT APPROVED.'
+    : 'Original V7.1 rig/art fallback restored.');
 }
 async function accept(file){
   if(!file) return;
@@ -114,10 +124,19 @@ async function accept(file){
   try{
     status('Reading local ZIP and verifying the 31-action manifest...');
     const zip=new LocalZip(await file.arrayBuffer());
-    const [candidate,provenance,sceneProof]=await Promise.all([
+    const [candidate,provenance,sceneProof,review]=await Promise.all([
       zip.json('art/manifest-v7-1-candidate.json'),
-      zip.json('PROVENANCE.json'),zip.json('STORY_PROVENANCE.json')
+      zip.json('PROVENANCE.json'),zip.json('STORY_PROVENANCE.json'),
+      zip.json('QA_REPORT.json')
     ]);
+    if(review.fighter!=='gym-bro')throw Error('Invalid Gym Bro artwork QA metadata');
+    // Older ZIPs without a current silhouette review fail closed: their frames are
+    // checksum-valid but not eligible to replace the engine rig.
+    const blockedActions=Array.isArray(review.blocked_actions)
+      ? Array.from(new Set(review.blocked_actions))
+      : Object.keys(REQUIRED);
+    if(blockedActions.some(id=>!Object.prototype.hasOwnProperty.call(REQUIRED,id)))
+      throw Error('Unrecognized blocked action in QA metadata');
     const spec=candidate['gym-bro'];
     if(!spec||provenance.fighter!=='gym-bro'||candidate.scenes!==true)
       throw Error('This ZIP is not a Gym Bro V7.1 candidate pack');
@@ -152,7 +171,7 @@ async function accept(file){
       for(const url of installed.objects)URL.revokeObjectURL(url);
     }
     installed={
-      spec,images,objects,
+      spec,images,objects,blockedActions,
       previousSpec:store.manifest['gym-bro'],previousScenes:store.manifest.scenes,
       previousImages:new Map(Array.from(images.keys(),k=>[k,store.imgs.get(k)]).filter(([,value])=>value))
     };
