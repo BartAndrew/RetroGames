@@ -79,3 +79,17 @@ GitHub Actions job: https://github.com/BartAndrew/RetroGames/actions/runs/436460
 `python tools/audit-gym-bro-v7.py --strict` *and* manual visual, controller,
 story-to-credits and live browser tests. Do not activate missing manifest slots
 to make a coverage number look better.
+
+
+## Attack pose extraction — development update (2026-11-15)
+
+An experimental right-facing 4 × 4 Gym Bro attack pose contact sheet has been generated as a **conversation artifact**, then segmented into 16 transparent 512 × 512 PNG candidate files (LP × 5, HP × 6, LK × 5). A downloadable ZIP contains the raw contact sheet, 16 extracted PNGs, SHA-256 checksums, candidate preview and QA metadata. The binary ZIP is **not checked into GitHub**.
+
+The output is **not motion-complete**. The simple dHash preflight flags **54 possibly similar pairs**, including repeated guard/start/end poses. Detailed manual review found that many cells do not supply distinct startup, active and recovery poses, so **zero of these candidates are activated in the runtime manifest**. Do not count the 16 candidate files toward the verified 18/120 frame coverage.
+
+- Canonical frame queue: `art/gym-bro/ANIMATION_PRODUCTION_QUEUE.v7-1.json` — 31 actions, 120 exact target paths.
+- Candidate preparation helper: `tools/stage-gym-bro-candidates.py` — validates ZIP checksums and RGBA geometry, and writes only under `art/gym-bro/candidates/` if explicitly staged.
+- Source of truth remains `roster-v7.js`, `combat-v7.js` and the complete animation template. Do not change hitboxes, startup, recovery or special tuning to fit concept art.
+- Resume art production by replacing near-duplicates, confirming identity and foot anchors, and building the full independent move clips before updating the V7.1 manifest.
+
+**Release gate stays blocked**. Production and V7.1 active manifest are unchanged.
