@@ -1,0 +1,62 @@
+{
+  "fighter": "gym-bro",
+  "action": "airP",
+  "source": "R9 individual high-resolution keyposes",
+  "frames_checked": 4,
+  "hard_errors": [],
+  "manual_review_warnings": [
+    "airP/01 and airP/04 have similar outlines (dHash distance 6)",
+    "airP/02 and airP/03 have similar outlines (dHash distance 8)"
+  ],
+  "frames": [
+    {
+      "name": "airP/01.png",
+      "bytes": 139749,
+      "sha256": "c526575b2bacb7dce3d0bd7c910975be5efdbd9c65d2ab49c8d2a39973eeeaf6",
+      "alpha_bbox": [
+        137,
+        75,
+        375,
+        470
+      ],
+      "detached_fraction": 0.0
+    },
+    {
+      "name": "airP/02.png",
+      "bytes": 127510,
+      "sha256": "6054ca640d70c361e749cb30c1ed8a52acaefeb02f45685585134b9ba78fef06",
+      "alpha_bbox": [
+        72,
+        75,
+        440,
+        470
+      ],
+      "detached_fraction": 0.0
+    },
+    {
+      "name": "airP/03.png",
+      "bytes": 131030,
+      "sha256": "2cce3a719dc305a27c5e64287d73daf9d0f7938ff833ec88f9dd934e15ad4502",
+      "alpha_bbox": [
+        55,
+        75,
+        457,
+        470
+      ],
+      "detached_fraction": 0.0
+    },
+    {
+      "name": "airP/04.png",
+      "bytes": 133735,
+      "sha256": "db9f21870b1eccd8a57637f8403ab40fd3d5c9f4d0a316d511e855cf85a8d1c5",
+      "alpha_bbox": [
+        133,
+        75,
+        379,
+        470
+      ],
+      "detached_fraction": 0.0
+    }
+  ],
+  "release_approved": false
+}
