@@ -9,7 +9,9 @@ test('Gym Bro R8 launcher PNGs are served, decoded and opt-in only',async({page}
  await page.waitForFunction(()=>window.SF7_LAUNCHER_R8_PREVIEW===true);
  await page.waitForFunction(()=>{
    const a=window.SF7_ART_STORE;
-   return Array.from({length:6},(_,i)=>a.img('gym-bro','launcher',i+1)).every(Boolean);
+   return Array.from({length:6},(_,i)=>a.img('gym-bro','launcher',i+1)).every(Boolean)
+     && a.portrait('gym-bro')?.naturalWidth===900
+     && a.scene('./art/scenes/prologue-gym-bro.png')?.naturalWidth===1600;
  },null,{timeout:15000});
  const result=await page.evaluate(()=>{
    const a=window.SF7_ART_STORE;
@@ -19,11 +21,15 @@ test('Gym Bro R8 launcher PNGs are served, decoded and opt-in only',async({page}
        const x=a.img('gym-bro','launcher',i+1);return [x.naturalWidth,x.naturalHeight];
      }),
      otherActions:Object.keys(a.spec('gym-bro').anims).length,
+     portrait:[a.portrait('gym-bro')?.naturalWidth,a.portrait('gym-bro')?.naturalHeight],
+     prologue:[a.scene('./art/scenes/prologue-gym-bro.png')?.naturalWidth,a.scene('./art/scenes/prologue-gym-bro.png')?.naturalHeight],
    };
  });
  expect(result.frames).toBe(6);
  expect(result.naturalSizes).toEqual(Array.from({length:6},()=>[512,512]));
  expect(result.otherActions).toBe(8);
+ expect(result.portrait).toEqual([900,1200]);
+ expect(result.prologue).toEqual([1600,900]);
  expect(exceptions).toEqual([]);
 });
 test('Stable V7.1 without flag keeps original rig fallback for launcher',async({page})=>{
