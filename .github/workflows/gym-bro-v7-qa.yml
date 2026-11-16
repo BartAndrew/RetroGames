@@ -55,6 +55,8 @@ jobs:
         run: node --test tests/*.unit.mjs
       - name: Verify all registered V7 image files
         run: python tools/check-v7-art.py
+      - name: Verify real R8 Gym Bro launcher PNG assets
+        run: python tools/check-gym-bro-launcher-r8.py
       - name: Inventory Gym Bro completion and provenance
         run: python tools/audit-gym-bro-v7.py --output gym-bro-v7-coverage.json
       - name: Strict candidate release gate
@@ -86,7 +88,7 @@ jobs:
             if curl -fsS http://127.0.0.1:4173/StereoTypeFighter/v7-1.html > /dev/null; then break; fi
             sleep 1
           done
-          SF_NO_WEBSERVER=1 SF_BASE_URL=http://127.0.0.1:4173/StereoTypeFighter/ npx playwright test tests/v7-1-browser.spec.mjs tests/v7-1-art-lab.spec.mjs tests/v7-1-story-ladder.spec.mjs --reporter=line
+          SF_NO_WEBSERVER=1 SF_BASE_URL=http://127.0.0.1:4173/StereoTypeFighter/ npx playwright test tests/v7-1-browser.spec.mjs tests/v7-1-art-lab.spec.mjs tests/v7-1-story-ladder.spec.mjs tests/v7-1-launcher-preview.spec.mjs --reporter=line
       - name: Upload check summary
         if: always()
         run: |
