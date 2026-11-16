@@ -294,9 +294,16 @@ function draw() {
   // branch. Every other action keeps its original verified sprite/rig fallback.
   // There is no combat tuning, damage or hitbox change.
   if (new URLSearchParams(window.location.search).get('gymBroLauncher') === '1' && store.has('gym-bro')) {
-    store.spec('gym-bro').anims.launcher = { frames: 6, fps: 8 };
+    store.spec('gym-bro').anims.launcher = { frames: 6, fps: 8, loop: false };
     for (let n = 1; n <= 6; n++) store.img('gym-bro', 'launcher', n);
     window.SF7_LAUNCHER_R8_PREVIEW = true;
+  }
+  // R9 airP animation is for explicit preview only until temporal pose
+  // similarity and complete opponent/gameplay QA are signed off.
+  if (new URLSearchParams(window.location.search).get('gymBroAirP') === '1' && store.has('gym-bro')) {
+    store.spec('gym-bro').anims.airP = { frames: 4, fps: 8, loop: false };
+    for (let n = 1; n <= 4; n++) store.img('gym-bro', 'airP', n);
+    window.SF7_AIRP_R9_PREVIEW = true;
   }
   requestAnimationFrame(frame);
 })();
