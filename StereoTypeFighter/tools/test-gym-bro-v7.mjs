@@ -72,4 +72,25 @@ function run() {
   return timeline;
 }
 assert.deepEqual(run(),run(), 'Identical 60 Hz inputs diverged between simulations');
+// Verify the actual engine action dispatch that uses the newly committed R8/R9
+// sprite IDs. This tests gameplay state only, never authorizes sprite QA.
+function readyMatch(){
+  const match=createMatch([gym,opponent],{toWin:1});
+  for(let t=0;t<120&&match.phase!=='fight';t++)stepMatch(match,[clean,clean]);
+  assert.equal(match.phase,'fight','combat intro never reached fight phase');
+  return match;
+}
+const inAir=readyMatch();
+stepMatch(inAir,[{...clean,up:true},clean]);
+for(let tick=0;tick<5;tick++)stepMatch(inAir,[clean,clean]);
+assert.equal(inAir.fighters[0].state,'air','Tyler should be airborne before airP input');
+stepMatch(inAir,[{...clean,punch:true},clean]);
+assert.equal(inAir.fighters[0].moveId,'airP','Jump + punch must use airP');
+assert.equal(inAir.fighters[0].anim,'airP','airP must drive the actual renderer ID');
+assert.equal(gym.moves.airP.name,'Jump Punch');
+const onGround=readyMatch();
+stepMatch(onGround,[{...clean,down:true,punch:true},clean]);
+assert.equal(onGround.fighters[0].moveId,'launcher','Down + punch must use canonical launcher');
+assert.equal(onGround.fighters[0].anim,'launcher','launcher must drive the actual renderer ID');
+
 console.log('PASS Gym Bro V7: canonical moves, 10 story scenes, four rivals, deterministic 480-tick simulation');
