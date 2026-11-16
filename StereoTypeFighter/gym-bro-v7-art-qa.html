@@ -58,6 +58,11 @@ $('play').addEventListener('change',()=>{clearInterval(timer);if($('play').check
 document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='ArrowLeft'){$('prev').click()}if(e.key==='ArrowRight'){$('next').click()}});
 $('copy').addEventListener('click',()=>{navigator.clipboard?.writeText('Gym Bro V7 / '+anim+' / '+index+' of '+(spec()?.frames||0)+'\n'+url()+'\n'+$('notes').value)});
 try{const response=await fetch('./art/manifest.json',{cache:'no-store'});if(!response.ok)throw Error('manifest HTTP '+response.status);const data=await response.json();manifest=data['gym-bro'];if(!manifest?.anims)throw Error('Gym Bro is not configured in art/manifest.json');
+if(new URLSearchParams(location.search).get('r12')==='1'){
+  manifest.anims.hk={frames:6,fps:8,loop:false};
+  anim='hk';
+  document.title='Gym Bro R12 QA — Quad Axe Identity-Locked High Kick';
+}
 if(new URLSearchParams(location.search).get('r11')==='1'){
   manifest.anims.intro={frames:4,fps:8,loop:false};
   anim='intro';

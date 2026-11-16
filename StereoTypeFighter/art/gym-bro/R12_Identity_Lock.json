@@ -1,0 +1,30 @@
+{
+  "fighter_id": "gym-bro",
+  "stage": "R12 high-kick candidate (technical pass, motion review pending)",
+  "source_sha256": "bb31c1a684ced36dc267de237b17d30a42880d47c41faa1743161c45bc44117d",
+  "identity_traits": [
+    "tan muscular adult man",
+    "angular clean-shaven face",
+    "short dark hair under backward black cap",
+    "yellow sleeveless GYM BRO tank",
+    "black shorts with white side stripes",
+    "black wristbands",
+    "white trainers and white socks with black stripes"
+  ],
+  "gameplay_orientation": "right-facing",
+  "frame_size": [
+    512,
+    512
+  ],
+  "foot_y": 470,
+  "height_pixels": 390,
+  "blocked_reason": "three similar pose pairs 01/06,02/05,03/04; requires runtime motion review",
+  "assets": {
+    "01.png": "0fc2a13d6fad5001ba2f586b69dee8809a456f3905dd79302e43c7295e8bed97",
+    "02.png": "2898e0a608dd96e6caa1ec33168c765070dd863a120bd361c8c5260dd36389cc",
+    "03.png": "94124e96fdedaa9be60a3889d40f66d498433e4976ff37cdc0468af0af4814d0",
+    "04.png": "5c5248f937c84edf075ca6074e915b84a20bf62e5c1d350dd69d483807ab88dd",
+    "05.png": "2a7a87552666a16e0c607634debb151b47e2d415ff983bfff2ba27427493db0a",
+    "06.png": "326135495a43c1b56d1b092773b60aaa2a668493b0efd5753e314f3da22bcf8d"
+  }
+}

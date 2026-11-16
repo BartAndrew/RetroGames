@@ -324,5 +324,12 @@ function draw() {
     for (let n=1; n<=4; n++) store.img('gym-bro','intro',n);
     window.SF7_INTRO_R11_PREVIEW = true;
   }
+  // R12 identity-locked Quad Axe (hk) sprite candidate: opt-in only.
+  // Attack damage, hitboxes, startup and cancel windows stay in combat-v7.js.
+  if (new URLSearchParams(window.location.search).get('gymBroHK') === '1' && store.has('gym-bro')) {
+    store.spec('gym-bro').anims.hk = { frames: 6, fps: 8, loop: false };
+    for (let n=1; n<=6; n++) store.img('gym-bro','hk',n);
+    window.SF7_HK_R12_PREVIEW = true;
+  }
   requestAnimationFrame(frame);
 })();
