@@ -4,7 +4,7 @@ This is **development candidate artwork**, not a production sign-off.
 
 The original 1536×1024 V7-aligned source `a_clean_composite_sprite_sheet_a_3x2_grid_comic_a.png` is preserved without alteration in the R11 source archive. Four distinct source cells (1, 4, 2, 0) were extracted, chroma-keyed, resized without distortion and grounded to 512×512 RGBA images with foot baseline y=470. The phases are crouch/warm-up, flex, raised guard, ready stance; combat and story data remain unchanged.
 
-Committed paths: `art/gym-bro/intro/01.png`–`04.png`. The original source SHA-256 is `c4... ` (see the source pack and `R11_INTRO_TECHNICAL_QA.json` for the complete verified hash; do not treat this shorthand as a hash).
+Committed paths: `art/gym-bro/intro/01.png`–`04.png`. The original source SHA-256 is `6d7ce258601c863557c42f69ef7abc3b3b4c5e8375c17a95acac009acb59b13d` (verified against the unchanged original source image).
 
 Per-frame checksums, in order:
 - `cc0678b6710194bf1303eb8a0c56759ceb055a1f4ea915006b0548f54debf3ed`
