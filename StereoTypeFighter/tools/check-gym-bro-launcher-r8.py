@@ -63,6 +63,19 @@ for n in range(1,7):
                      'magenta_fraction':round(magenta,5),'bytes':len(data)})
 
 if len(rows)!=6:findings.append('six frames required')
+
+# The new character select and prologue assets are genuinely committed binaries.
+# This verifies geometry/decodability, not story or identity sign-off.
+for relative, expected in [('art/gym-bro/portrait.png',(900,1200)),
+                           ('art/scenes/prologue-gym-bro.png',(1600,900))]:
+    target=ROOT/relative
+    if not target.is_file():
+        findings.append(f'missing real scene/portrait PNG: {relative}')
+        continue
+    with Image.open(target) as picture:
+        picture.load()
+        if picture.format!='PNG' or picture.size!=expected or picture.mode not in ('RGB','RGBA'):
+            findings.append(f'bad scene/portrait format: {relative}')
 report={'fighter':'gym-bro','action':'launcher','source_revision':'R8',
         'frames_checked':len(rows),'technical_findings':findings,
         'warning':'Passing these checks does not approve combat motion, transitions, identity or release.',
