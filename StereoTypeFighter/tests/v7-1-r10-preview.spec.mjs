@@ -21,7 +21,7 @@ test('R10 airK and jumpDown sprites load only behind opt-in flags', async ({page
       actionCount:Object.keys(spec.anims).length
     };
   });
-  expect(actual).toEqual({airK:4,jumpDown:2,airKSize:[512,512],jumpDownSize:[512,512],actionCount:9});
+  expect(actual).toEqual({airK:4,jumpDown:2,airKSize:[512,512],jumpDownSize:[512,512],actionCount:8});
   expect(errors).toEqual([]);
 });
 test('Unflagged V7.1 keeps original airK fallback and legacy jumpDown', async ({page})=>{
@@ -34,4 +34,18 @@ test('Unflagged V7.1 keeps original airK fallback and legacy jumpDown', async ({
     flagged:!!window.SF7_AIRK_R10_PREVIEW || !!window.SF7_JUMPDOWN_R10_PREVIEW
   }));
   expect(state).toEqual({actions:7,airK:null,jumpDown:1,flagged:false});
+});
+test('R10 artwork QA viewer loads and steps through actual committed PNGs',async({page})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('./gym-bro-v7-art-qa.html?r10=1');
+  await page.waitForFunction(()=>document.querySelector('#anim')?.value==='airK');
+  await page.waitForFunction(()=>document.querySelector('#status')?.textContent.includes('art/gym-bro/airK/01.png'));
+  expect(await page.locator('#counter').textContent()).toContain('1 / 4');
+  await page.locator('#next').click();
+  await page.waitForFunction(()=>document.querySelector('#status')?.textContent.includes('art/gym-bro/airK/02.png'));
+  expect(await page.locator('#counter').textContent()).toContain('2 / 4');
+  await page.locator('#anim').selectOption('jumpDown');
+  await page.waitForFunction(()=>document.querySelector('#status')?.textContent.includes('art/gym-bro/jumpDown/01.png'));
+  expect(await page.locator('#counter').textContent()).toContain('1 / 2');
+  expect(errors).toEqual([]);
 });

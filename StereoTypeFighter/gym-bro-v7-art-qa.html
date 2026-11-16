@@ -57,6 +57,15 @@ $('compare').addEventListener('change',render);$('flip').addEventListener('chang
 $('play').addEventListener('change',()=>{clearInterval(timer);if($('play').checked)timer=setInterval(()=>{index=index%(spec()?.frames||1)+1;render()},1000/(spec()?.fps||8))});
 document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='ArrowLeft'){$('prev').click()}if(e.key==='ArrowRight'){$('next').click()}});
 $('copy').addEventListener('click',()=>{navigator.clipboard?.writeText('Gym Bro V7 / '+anim+' / '+index+' of '+(spec()?.frames||0)+'\n'+url()+'\n'+$('notes').value)});
-try{const response=await fetch('./art/manifest.json',{cache:'no-store'});if(!response.ok)throw Error('manifest HTTP '+response.status);const data=await response.json();manifest=data['gym-bro'];if(!manifest?.anims)throw Error('Gym Bro is not configured in art/manifest.json');for(const name of Object.keys(manifest.anims)){$('anim').add(new Option(name,name))}render()}
+try{const response=await fetch('./art/manifest.json',{cache:'no-store'});if(!response.ok)throw Error('manifest HTTP '+response.status);const data=await response.json();manifest=data['gym-bro'];if(!manifest?.anims)throw Error('Gym Bro is not configured in art/manifest.json');
+if(new URLSearchParams(location.search).get('r10')==='1'){
+  // Preview only: compare Git-committed R10 art with canonical rig. Normal game remains unchanged.
+  manifest.anims.airK={frames:4,fps:8,loop:false};
+  manifest.anims.jumpDown={frames:2,fps:8,loop:false};
+  anim='airK';
+  document.title='Gym Bro R10 QA — airK and jumpDown';
+}
+for(const name of Object.keys(manifest.anims)){$('anim').add(new Option(name,name))}
+$('anim').value=anim;render()}
 catch(e){$('status').textContent='Manifest unavailable: '+e.message}
 </script></body></html>

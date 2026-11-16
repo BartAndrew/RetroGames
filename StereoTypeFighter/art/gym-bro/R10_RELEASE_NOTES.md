@@ -6,7 +6,7 @@ Status: DEVELOPMENT PREVIEW ONLY. Production manifest untouched.
 - Newly rebuilt `jumpDown` frames 01–02 (descending preparation, defensive landing approach)
 - All six files are **actual 512×512 RGBA PNG binaries committed to this GitHub branch** at `art/gym-bro/<action>/NN.png`.
 - Source: original `1536×1024` 3×2 right-facing, magenta-key motion sheet.
-- Source checksum (SHA-256): `a4b6...` (use complete hash in R10 technical provenance JSON; never infer a checksum from file names).
+- Source checksum (SHA-256): `f8d3cc4f7a6c71025399abef98a372fc345e32187cb42e71a9acb5caffa5a6d3`.
 - Technical checks of six individual PNGs: 0 clipping, 0 large disconnected components, 0 significant magenta spill, 0 within-action 64-bit dHash near-duplicate pairs; all feet anchored at image y=470.
 - The underlying `combat-v7.js` remains authoritative for move hit/hurt boxes, attack startup/recovery and 60 Hz state changes. No mechanical changes were made.
 - Opt-in URLs: `v7-1.html?gymBroAirK=1&gymBroJumpDown=1` and optionally combine with `gymBroLauncher=1&gymBroAirP=1`.
