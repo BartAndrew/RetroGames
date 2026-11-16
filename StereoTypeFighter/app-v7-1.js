@@ -305,5 +305,17 @@ function draw() {
     for (let n = 1; n <= 4; n++) store.img('gym-bro', 'airP', n);
     window.SF7_AIRP_R9_PREVIEW = true;
   }
+  // R10 isolated airborne-kick and jump-descent assets. Both remain optional,
+  // preserving the original V7.1 rig fallback until final artwork approval.
+  if (new URLSearchParams(window.location.search).get('gymBroAirK') === '1' && store.has('gym-bro')) {
+    store.spec('gym-bro').anims.airK = { frames: 4, fps: 8, loop: false };
+    for (let n=1; n<=4; n++) store.img('gym-bro','airK',n);
+    window.SF7_AIRK_R10_PREVIEW = true;
+  }
+  if (new URLSearchParams(window.location.search).get('gymBroJumpDown') === '1' && store.has('gym-bro')) {
+    store.spec('gym-bro').anims.jumpDown = { frames: 2, fps: 8, loop: false };
+    for (let n=1; n<=2; n++) store.img('gym-bro','jumpDown',n);
+    window.SF7_JUMPDOWN_R10_PREVIEW = true;
+  }
   requestAnimationFrame(frame);
 })();

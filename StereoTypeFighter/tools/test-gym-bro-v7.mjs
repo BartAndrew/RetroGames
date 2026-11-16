@@ -93,4 +93,20 @@ stepMatch(onGround,[{...clean,down:true,punch:true},clean]);
 assert.equal(onGround.fighters[0].moveId,'launcher','Down + punch must use canonical launcher');
 assert.equal(onGround.fighters[0].anim,'launcher','launcher must drive the actual renderer ID');
 
+const airborneKick=readyMatch();
+stepMatch(airborneKick,[{...clean,up:true},clean]);
+for(let t=0;t<5;t++) stepMatch(airborneKick,[clean,clean]);
+assert.equal(airborneKick.fighters[0].state,'air');
+stepMatch(airborneKick,[{...clean,kick:true},clean]);
+assert.equal(airborneKick.fighters[0].moveId,'airK','Jump+kick must trigger airK');
+assert.equal(airborneKick.fighters[0].anim,'airK','airK ID must drive the renderer');
+const descent=readyMatch();
+stepMatch(descent,[{...clean,up:true},clean]);
+let sawDescending=false;
+for(let t=0;t<80;t++) {
+  stepMatch(descent,[clean,clean]);
+  const f=descent.fighters[0];
+  if(f.anim==='jumpDown' && f.y>0) {sawDescending=true;break;}
+}
+assert.equal(sawDescending,true,'Expected renderer jumpDown ID while descending');
 console.log('PASS Gym Bro V7: canonical moves, 10 story scenes, four rivals, deterministic 480-tick simulation');
