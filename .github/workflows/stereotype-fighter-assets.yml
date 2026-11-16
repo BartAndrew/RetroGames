@@ -54,7 +54,7 @@ jobs:
 
       - name: Run staged browser regression suite
         working-directory: StereoTypeFighter
-        run: npm run test:browser
+        run: npx playwright test tests/v66-production.spec.mjs tests/v67-lefty.spec.mjs --reporter=line
 
       - name: Upload browser QA artifacts
         if: always()
