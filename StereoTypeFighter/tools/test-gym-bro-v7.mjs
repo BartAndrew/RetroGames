@@ -109,4 +109,28 @@ for(let t=0;t<80;t++) {
   if(f.anim==='jumpDown' && f.y>0) {sawDescending=true;break;}
 }
 assert.equal(sawDescending,true,'Expected renderer jumpDown ID while descending');
+// Four full 60 Hz engine matches against passive canonical opponents.
+// Unlike the browser story-navigation smoke, these outcomes are *not injected*:
+// a real projectile must damage the opponent and the normal match flow must
+// decide the winner. This does not substitute for CPU AI or controller QA.
+for (const rival of rivals) {
+  const opp=byId(rival);
+  assert.ok(opp,'Missing rival '+rival);
+  const match=createMatch([gym,opp],{toWin:1});
+  let everDamaged=false, won=false;
+  for(let tick=0;tick<5000;tick++){
+    const pressSpecial=match.phase==='fight' && tick%95===0;
+    stepMatch(match,[{...clean,special:pressSpecial},clean]);
+    if(match.fighters[1].hp<match.fighters[1].maxHp)everDamaged=true;
+    if(match.phase==='over'){
+      won=match.winner===0;
+      break;
+    }
+  }
+  assert.ok(everDamaged,'A real Protein Shaker Blast never damaged '+rival);
+  assert.ok(won,'Did not finish a full 60 Hz passive-opponent match against '+rival);
+  assert.ok(Number.isFinite(match.fighters[0].hp));
+  assert.ok(Number.isFinite(match.fighters[1].hp));
+}
+
 console.log('PASS Gym Bro V7: canonical moves, 10 story scenes, four rivals, deterministic 480-tick simulation');
