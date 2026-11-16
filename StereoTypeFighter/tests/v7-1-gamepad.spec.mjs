@@ -29,6 +29,9 @@ test('Gym Bro V7.1 standard gamepad controls drive movement and aerial attacks',
   }
   await page.waitForFunction(()=>window.SF7?.screen==='match',null,{timeout:10000});
   await page.waitForFunction(()=>window.SF7.match.phase==='fight',null,{timeout:10000});
+  // Isolate standard controller mapping from unrelated CPU hitstun. The real
+  // CPU four-rival combat simulation is covered independently by combat tests.
+  await page.evaluate(()=>{window.SF7.match.fighters[1].freeze=1500});
   const start=await page.evaluate(()=>window.SF7.match.fighters[0].x);
   await page.evaluate(()=>window.__qaPad.axes[0]=0.85);
   await page.waitForTimeout(200);
@@ -39,12 +42,13 @@ test('Gym Bro V7.1 standard gamepad controls drive movement and aerial attacks',
   await page.evaluate(()=>window.__qaPad.buttons[2].pressed=true);
   await page.waitForFunction(()=>window.SF7.match.fighters[0].moveId==='lp',null,{timeout:1500});
   await page.evaluate(()=>window.__qaPad.buttons[2].pressed=false);
-  await page.waitForTimeout(570);
+  // Wait for genuine engine recovery rather than assuming 570ms wall time.
+  await page.waitForFunction(()=>['idle','walk'].includes(window.SF7.match.fighters[0].state),null,{timeout:6000});
   // Standard D-pad up (button 12), then button 0 => aerial kick.
   await page.evaluate(()=>window.__qaPad.buttons[12].pressed=true);
-  await page.waitForTimeout(70);
+  await page.waitForFunction(()=>['prejump','air'].includes(window.SF7.match.fighters[0].state),null,{timeout:3000});
+  await page.waitForFunction(()=>window.SF7.match.fighters[0].state==='air',null,{timeout:3000});
   await page.evaluate(()=>window.__qaPad.buttons[12].pressed=false);
-  await page.waitForFunction(()=>window.SF7.match.fighters[0].state==='air',null,{timeout:2000});
   await page.evaluate(()=>window.__qaPad.buttons[0].pressed=true);
   await page.waitForFunction(()=>window.SF7.match.fighters[0].moveId==='airK',null,{timeout:1500});
   await page.evaluate(()=>window.__qaPad.buttons[0].pressed=false);
