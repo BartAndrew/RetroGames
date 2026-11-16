@@ -288,4 +288,15 @@ function draw() {
     }
   } else if (G.screen === 'result') drawResult();
 }
-(async () => { await store.load('./art/manifest-v7-1.json'); requestAnimationFrame(frame); })();
+(async () => {
+  await store.load('./art/manifest-v7-1.json');
+  // QA-only opt-in: show the six real R8 launcher sprites committed in this
+  // branch. Every other action keeps its original verified sprite/rig fallback.
+  // There is no combat tuning, damage or hitbox change.
+  if (new URLSearchParams(window.location.search).get('gymBroLauncher') === '1' && store.has('gym-bro')) {
+    store.spec('gym-bro').anims.launcher = { frames: 6, fps: 8 };
+    for (let n = 1; n <= 6; n++) store.img('gym-bro', 'launcher', n);
+    window.SF7_LAUNCHER_R8_PREVIEW = true;
+  }
+  requestAnimationFrame(frame);
+})();
