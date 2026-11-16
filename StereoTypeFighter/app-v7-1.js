@@ -317,5 +317,12 @@ function draw() {
     for (let n=1; n<=2; n++) store.img('gym-bro','jumpDown',n);
     window.SF7_JUMPDOWN_R10_PREVIEW = true;
   }
+  // R11: reconstructed, technically checked intro keyposes are opt-in only.
+  // Gameplay actions and the default V7.1 art manifest remain unchanged.
+  if (new URLSearchParams(window.location.search).get('gymBroIntro') === '1' && store.has('gym-bro')) {
+    store.spec('gym-bro').anims.intro = { frames: 4, fps: 8, loop: false };
+    for (let n=1; n<=4; n++) store.img('gym-bro','intro',n);
+    window.SF7_INTRO_R11_PREVIEW = true;
+  }
   requestAnimationFrame(frame);
 })();
