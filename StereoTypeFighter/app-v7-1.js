@@ -331,5 +331,11 @@ function draw() {
     for (let n=1; n<=6; n++) store.img('gym-bro','hk',n);
     window.SF7_HK_R12_PREVIEW = true;
   }
+  // R13: four identity-locked victory poses. Opt-in only until all art gates pass.
+  if (new URLSearchParams(window.location.search).get('gymBroVictory') === '1' && store.has('gym-bro')) {
+    store.spec('gym-bro').anims.victory = { frames: 4, fps: 8, loop: false };
+    for (let n=1; n<=4; n++) store.img('gym-bro','victory',n);
+    window.SF7_VICTORY_R13_PREVIEW = true;
+  }
   requestAnimationFrame(frame);
 })();
