@@ -28,8 +28,8 @@ jobs:
           python3 tools/build_site.py
           npm --prefix StereoTypeFighter install
           node StereoTypeFighter/tools/build-v66-assets.mjs --site _site/StereoTypeFighter
-          test -f _site/StereoTypeFighter/assets/characters/v66/lefty-atlas-v65.webp
-          file _site/StereoTypeFighter/assets/characters/v66/lefty-atlas-v65.webp
+          test -f _site/StereoTypeFighter/assets/characters/v70/lefty-atlas.webp
+          file _site/StereoTypeFighter/assets/characters/v70/lefty-atlas.webp
 
       - name: Install Playwright
         run: |
@@ -65,9 +65,9 @@ jobs:
             if (!state.ready) throw new Error(`Lefty V6.9 recovery not ready: ${JSON.stringify(state)}`);
             if (!state.visible) throw new Error('Lefty sprite pixels are not visible');
             if (state.pixels < 500) throw new Error(`Insufficient visible sprite pixels: ${state.pixels}`);
-            if (state.frames !== 48) throw new Error(`Expected 48 validated production frames, got ${state.frames}`);
+            if (state.frames !== 44) throw new Error(`Expected 44 source-derived production frames, got ${state.frames}`);
             if (!state.geometry) throw new Error(`Invalid atlas geometry: ${state.atlas.join('x')}`);
-            if (state.cell[0] !== 160 || state.cell[1] !== 112) throw new Error(`Unexpected cell ${state.cell.join('x')}`);
+            if (state.cell[0] !== 192 || state.cell[1] !== 192) throw new Error(`Unexpected cell ${state.cell.join('x')}`);
             await page.screenshot({path:'artifacts/lefty-animation/idle.png', fullPage:true});
             await page.selectOption('#movement', {label:'kick (4)'});
             await page.waitForTimeout(750);
