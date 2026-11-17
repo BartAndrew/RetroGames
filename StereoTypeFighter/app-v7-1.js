@@ -45,6 +45,24 @@ function sfx(kind) {
   } catch { /* audio unavailable */ }
 }
 
+// Standard controllers also navigate title/selection/results at 60 Hz, with
+// edge triggering and a repeat delay so one tap never skips multiple tiles.
+let prevPadAction = '', nextPadRepeat = 0;
+function menuGamepad() {
+  if (!['title','select','cutscene','result'].includes(G.screen)) { prevPadAction='';return; }
+  const pad = navigator.getGamepads?.()[0];
+  if (!pad) { prevPadAction='';return; }
+  const pressed = i => !!pad.buttons?.[i]?.pressed;
+  const x = pad.axes?.[0]||0, y = pad.axes?.[1]||0;
+  const action = pressed(0) ? 'Enter' : pressed(1) ? 'Escape' :
+    pressed(14)||x < -0.55 ? 'ArrowLeft' : pressed(15)||x > 0.55 ? 'ArrowRight' :
+    pressed(12)||y < -0.55 ? 'ArrowUp' : pressed(13)||y > 0.55 ? 'ArrowDown' : '';
+  if (action && (action!==prevPadAction || (action.startsWith('Arrow') && G.tick>=nextPadRepeat))) {
+    onKey(action); nextPadRepeat=G.tick+(action===prevPadAction?10:17);
+  }
+  if (!action) nextPadRepeat=0;
+  prevPadAction=action;
+}
 // ------------------------------------------------------------------- input
 addEventListener('keydown', e => {
   if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) e.preventDefault();
@@ -292,6 +310,7 @@ function frame(now) {
 }
 function update() {
   G.tick++;
+  menuGamepad();
   if (G.screen === 'cutscene' && G.cut) G.cut.update();
   if (G.screen === 'match' && !G.paused) {
     const m = G.match, o = G.matchOpts, lvl = DIFFS[G.diff];

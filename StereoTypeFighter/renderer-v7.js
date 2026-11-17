@@ -63,7 +63,96 @@ const sampleLoop = (def, tFrames) => {
   const x = (tFrames / 60) * def.fps, i = Math.floor(x) % n, u = smooth(x - Math.floor(x));
   return mixPose(def.frames[i], def.frames[(i + 1) % n], u);
 };
+
+// R16: Gym Bro's identity-locked procedural library. The silhouettes are authored
+// on one stable rig; gameplay startup/active/recovery remain combat-v7.js data.
+const GYM_ATTACKS = {
+  lp: ATK(
+    P(2,0,17,126,75,135,14,-23,-18,-22,5),
+    P(19,-4,85,-8,69,120,20,-25,-21,-24,4),
+    P(10,-2,65,29,70,120,16,-25,-20,-24,4)),
+  lk: ATK(
+    P(-4,1,72,112,70,115,68,-92,-10,-30,7),
+    P(-12,0,80,112,75,115,86,-8,-17,-28,5),
+    P(0,0,73,112,75,115,48,-75,-16,-25,6)),
+  hp: ATK(
+    P(-13,2,24,134,75,110,15,-23,-22,-25,7),
+    P(30,-4,100,-8,70,122,37,-31,-25,-23,10),
+    P(19,-2,83,31,72,121,28,-28,-20,-23,6)),
+  hk: ATK(
+    P(-10,2,90,106,80,114,114,-115,-14,-24,9),
+    P(7,-2,70,110,72,115,150,-64,-23,-18,12),
+    P(-5,1,70,100,72,110,70,-95,-18,-25,7)),
+  launcher: ATK(
+    P(28,8,8,80,11,105,65,-111,55,-90,24),
+    P(-11,-7,165,-15,120,35,16,-33,-30,-20,-2),
+    P(-6,-5,122,37,104,56,24,-25,-22,-28,3)),
+  sweep: ATK(
+    P(32,6,55,120,40,112,70,-122,51,-112,26),
+    P(-36,-8,61,113,45,108,99,-42,90,-118,35),
+    P(0,4,70,110,65,113,61,-109,41,-99,24)),
+  airP: ATK(
+    P(8,0,65,119,59,113,52,-78,25,-100,-1),
+    P(18,-2,98,-8,57,110,49,-88,21,-96,-1),
+    P(12,-1,68,27,58,112,47,-84,21,-95,-1)),
+  airK: ATK(
+    P(-2,-1,63,120,51,115,91,-96,25,-108,-2),
+    P(-17,-2,70,112,58,115,123,-26,21,-106,-2),
+    P(0,0,68,110,56,115,70,-83,25,-104,-2)),
+  special: ATK(
+    P(-12,1,-30,84,68,105,18,-30,-18,-24,7),
+    P(15,-2,100,-9,75,36,32,-29,-21,-21,8),
+    P(4,0,81,24,75,80,25,-27,-19,-24,6)),
+};
+const GYM_SUPER_HITS = [
+  GYM_ATTACKS.lp, GYM_ATTACKS.hp, GYM_ATTACKS.lk,
+  GYM_ATTACKS.hk, GYM_ATTACKS.launcher
+];
+function gymBroPose(f) {
+  const a=f.anim, t=Math.max(0,f.animT||0), p=clamp(f.animP||0,0,1);
+  if (GYM_ATTACKS[a]) return sampleTimeline(GYM_ATTACKS[a], p);
+  if (a==='super') {
+    const startup=f.move?.startup ?? 16;
+    const hitIndex=Math.floor(Math.max(0,(f.moveT??t)-startup)/6);
+    const key=GYM_SUPER_HITS[Math.min(hitIndex,4)];
+    if ((f.moveT??t)<startup) return mixPose(STANCE,P(21,2,145,75,125,90,69,-105,35,-95,16),smooth(clamp(t/startup,0,1)));
+    if (p>0.82) return sampleTimeline(GYM_ATTACKS.launcher,0.6+0.4*smooth((p-0.82)/0.18));
+    return sampleTimeline(key,0.29+0.22*(0.5+0.5*Math.sin(t*Math.PI/3)));
+  }
+  if (a==='victory') {
+    const poses=[
+      P(31,8,22,72,20,78,66,-116,59,-104,22),
+      P(5,-3,156,10,55,94,10,-23,-18,-25,4),
+      P(-2,-4,165,18,-155,18,12,-23,-18,-23,1),
+      STANCE
+    ], u=(t/38)%poses.length, i=Math.floor(u);
+    return mixPose(poses[i],poses[(i+1)%poses.length],smooth(u-i));
+  }
+  if (a==='intro') {
+    const intro=[STANCE,P(18,1,110,58,110,65,52,-83,29,-89,11),
+      P(-5,-2,145,35,35,128,13,-25,-18,-20,3),GUARD];
+    const u=clamp(t/22,0,intro.length-1),i=Math.min(Math.floor(u),intro.length-2);
+    return mixPose(intro[i],intro[i+1],smooth(u-i));
+  }
+  if (a==='idle') {
+    const breath=0.5+0.5*Math.sin(t*Math.PI/24);
+    return mixPose(STANCE,P(8,-1,62,96,45,109,14,-25,-18,-22,6),breath);
+  }
+  if (a==='getup') {
+    const u=clamp(t/20,0,1);
+    return u<0.5?mixPose(POSES.knockdown.frames[0],CROUCH,smooth(u*2)):
+      mixPose(CROUCH,GUARD,smooth(u*2-1));
+  }
+  if (a==='launched') {
+    const pose=sampleLoop(POSES.launched,t);
+    return {...pose,rot:clamp(-24-t*5,-88,-24)};
+  }
+  const entry=POSES[a];
+  return sampleLoop(entry||POSES.idle,t);
+}
+
 export function poseFor(f) {
+  if (f.def?.id === 'gym-bro') return gymBroPose(f);
   const a = f.anim;
   if (a === 'getup') { const u = clamp(f.animT / 20, 0, 1); return u < 0.5 ? mixPose(POSES.knockdown.frames[0], CROUCH, smooth(u * 2)) : mixPose(CROUCH, STANCE, smooth(u * 2 - 1)); }
   if (a === 'super') {
@@ -243,10 +332,13 @@ export class ArtStore {
   portrait(id) { const s = this.spec(id); if (!s || !s.portrait) return null; const url = s.portrait.replace('{id}', id); let e = this.imgs.get(url); if (!e) { e = new Image(); e.src = url; e.ok = false; e.onload = () => (e.ok = true); this.imgs.set(url, e); } return e.ok ? e : null; }
   scene(url) { if (!this.manifest || !this.manifest.scenes) return null; let e = this.imgs.get(url); if (!e) { e = new Image(); e.src = url; e.ok = false; e.onload = () => (e.ok = true); e.onerror = () => (e.bad = true); this.imgs.set(url, e); } return e.ok ? e : null; }
 }
+// Full rig rendering is available in V7.2 for incomplete/unapproved Gym Bro sprites.
+const GYM_RIG_RELEASE = typeof window !== 'undefined' && (new URLSearchParams(window.location.search).get('gymBroRig') === '1' || /\/v7-2\.html$/.test(window.location.pathname));
 const ATTACK_ANIMS = new Set(['lp', 'lk', 'hp', 'hk', 'launcher', 'sweep', 'airP', 'airK', 'special', 'super']);
 const FALLBACKS = { blockLow: 'block', hurtLow: 'hurt', jumpApex: 'jumpUp', prejump: 'crouch', land: 'crouch', dashF: 'walk', dashB: 'walkBack', launched: 'hurt', intro: 'idle', taunt: 'victory' };
 
 function drawArt(ctx, store, def, f) {
+  if (def.id === 'gym-bro' && GYM_RIG_RELEASE) return false;
   const spec = store.spec(def.id);
   let name = f.anim; if (!spec.anims[name]) name = FALLBACKS[name] || 'idle'; if (!spec.anims[name]) return false;
   const a = spec.anims[name], n = a.frames;
@@ -268,7 +360,7 @@ function drawArt(ctx, store, def, f) {
 const GYM_SUPER_FX_PREVIEW = typeof window !== 'undefined' &&
   new URLSearchParams(window.location.search).get('gymBroSuperFX') === '1';
 function drawGymBroSuperEnergy(ctx, f, foreground) {
-  if (!GYM_SUPER_FX_PREVIEW || f.def.id !== 'gym-bro' || f.anim !== 'super') return;
+  if (!(GYM_SUPER_FX_PREVIEW || GYM_RIG_RELEASE) || f.def.id !== 'gym-bro' || f.anim !== 'super') return;
   const t = Math.max(0, f.animT || 0), progress = clamp(f.animP || 0, 0, 1);
   const pulse = 0.5 + 0.5 * Math.sin(t * Math.PI / 6);
   ctx.save();
@@ -349,7 +441,7 @@ function drawFx(ctx) {
 export function drawProjectile(ctx, p) {
   const y = STAGE.floorY - p.y; ctx.save(); ctx.translate(p.x, y); ctx.scale(Math.sign(p.vx) || 1, 1);
   if (p.kind === 'nail') { ctx.shadowColor = '#ffd31a'; ctx.shadowBlur = 12; for (let i = -1; i <= 1; i++) { ctx.fillStyle = '#d8d8d8'; ctx.fillRect(-14, i * 6 - 1, 26, 2.5); ctx.fillStyle = '#ffd31a'; ctx.fillRect(10, i * 6 - 2, 6, 5); } }
-  else if (p.kind === 'shaker') { ctx.rotate(p.x * 0.05); ctx.shadowColor = '#8cff20'; ctx.shadowBlur = 16; ctx.fillStyle = 'rgba(210,240,255,0.9)'; ctx.fillRect(-9, -15, 18, 30); ctx.fillStyle = '#8cff20'; ctx.fillRect(-8, -4, 16, 18); ctx.fillStyle = '#222'; ctx.fillRect(-10, -19, 20, 6); }
+  else if (p.kind === 'shaker') { ctx.rotate(p.x * 0.05); ctx.shadowColor = '#ffda21'; ctx.shadowBlur = 16; ctx.fillStyle = 'rgba(210,240,255,0.9)'; ctx.fillRect(-9, -15, 18, 30); ctx.fillStyle = '#ffda21'; ctx.fillRect(-8, -4, 16, 18); ctx.fillStyle = '#222'; ctx.fillRect(-10, -19, 20, 6); }
   else if (p.kind === 'sound' || p.kind === 'palm') { ctx.strokeStyle = p.kind === 'sound' ? '#35e6e1' : '#4ed8b4'; ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = 14; ctx.lineWidth = 4; for (let i = 0; i < 3; i++) { ctx.globalAlpha = 1 - i * 0.28; ctx.beginPath(); ctx.arc(-i * 10, 0, 12 + i * 6, -1, 1); ctx.stroke(); } }
   else if (p.kind === 'flash') { ctx.shadowColor = '#ff74a6'; ctx.shadowBlur = 20; ctx.fillStyle = '#fff'; ctx.beginPath(); for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4, r = i % 2 ? 7 : 18; ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r); } ctx.closePath(); ctx.fill(); }
   else if (p.kind === 'bubble') { ctx.shadowColor = '#6ac0ff'; ctx.shadowBlur = 12; ctx.fillStyle = 'rgba(210,235,255,0.92)'; ctx.strokeStyle = '#6ac0ff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(0, 0, 22, 14, 0, 0, 7); ctx.fill(); ctx.stroke(); ctx.fillStyle = '#6ac0ff'; ctx.fillRect(-12, -3, 24, 2.5); ctx.fillRect(-12, 2, 16, 2.5); }
