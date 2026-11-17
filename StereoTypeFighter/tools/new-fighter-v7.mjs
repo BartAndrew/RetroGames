@@ -66,7 +66,7 @@ export async function buildHandoff(id) {
    art_directory:`StereoTypeFighter/art/${id}`,
    release_entry:'StereoTypeFighter/index.html'},
   release_gates:{canon_and_rights:'pending',art_technical_qa:'pending',manual_fidelity_qa:'pending',
-   60hz_gameplay:'pending',selection_controls:'pending',four_rival_story_or_canonical_ladder:'pending',
+   '60hz_gameplay':'pending',selection_controls:'pending',four_rival_story_or_canonical_ladder:'pending',
    browser_keyboard_gamepad_mobile:'pending',vercel_production:'pending'},
   policy:'Never change canonical moves, identity, dialogue or hitboxes to match unapproved images; never enable a sprite or claim sign-off without validated assets and QA.'
  };
