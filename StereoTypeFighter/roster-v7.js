@@ -35,7 +35,8 @@ export const ROSTER = [
     id: 'gym-bro', name: 'Gym Bro', nick: 'Tyler', country: 'USA', accent: '#8cff20', accent2: '#1e1e1e',
     style: 'Fitness Brawler', bio: 'Heavy punches, high kicks, and a shaker bottle full of explosive opinions.',
     hp: 1100, speed: 0.94, jump: 13.0, special: 'Protein Shaker Blast', superName: 'LEG DAY TSUNAMI',
-    look: { skin: '#c98e68', hair: '#2b1d12', top: '#8cff20', topDark: '#4f9a00', pants: '#222222', boots: '#e8e8e8', hat: 'none', tank: true, build: 1.22, prop: 'shaker' },
+    // R14: the original procedural fallback must match the approved V7 design.
+    look: { skin: '#c98e68', hair: '#2b1d12', top: '#ffda21', topDark: '#c49a00', pants: '#202024', boots: '#f7f7fb', hat: 'backcap', hatColor: '#0c0d12', tank: true, build: 1.22, prop: 'shaker' },
     specialSpec: { kind: 'projectile', speed: 6.2, dmg: 13, w: 46, h: 34, py: 88, fx: 'shaker' },
     moves: baseMoves({
       lp: { dmg: 5, startup: 5, name: 'Pump Jab' },

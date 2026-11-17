@@ -101,7 +101,7 @@ function drawProp(ctx, look, hx, hy, ang) {
   if (look.prop === 'controller') { ctx.fillStyle = '#2b2b33'; ctx.strokeStyle = '#000'; ctx.lineWidth = 2; ctx.fillRect(-2, 6, 26, 12); ctx.strokeRect(-2, 6, 26, 12); ctx.fillStyle = '#96d84e'; ctx.fillRect(15, 9, 4, 4); }
   if (look.prop === 'phone') { ctx.fillStyle = '#111'; ctx.strokeStyle = '#ff74a6'; ctx.lineWidth = 2; ctx.fillRect(2, -4, 12, 22); ctx.strokeRect(2, -4, 12, 22); }
   if (look.prop === 'pompom') { ctx.fillStyle = '#f4f4f4'; ctx.strokeStyle = '#d93030'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(8, 8, 11, 0, 7); ctx.fill(); ctx.stroke(); }
-  if (look.prop === 'shaker') { ctx.fillStyle = 'rgba(220,240,255,0.85)'; ctx.strokeStyle = '#222'; ctx.lineWidth = 2; ctx.fillRect(2, -6, 12, 24); ctx.strokeRect(2, -6, 12, 24); ctx.fillStyle = '#8cff20'; ctx.fillRect(3, 6, 10, 11); ctx.fillStyle = '#222'; ctx.fillRect(1, -10, 14, 5); }
+  if (look.prop === 'shaker') { ctx.fillStyle = 'rgba(220,240,255,0.85)'; ctx.strokeStyle = '#222'; ctx.lineWidth = 2; ctx.fillRect(2, -6, 12, 24); ctx.strokeRect(2, -6, 12, 24); ctx.fillStyle = look.top || '#ffda21'; ctx.fillRect(3, 6, 10, 11); ctx.fillStyle = '#222'; ctx.fillRect(1, -10, 14, 5); }
   ctx.restore();
 }
 
@@ -123,14 +123,33 @@ export function drawRig(ctx, def, f, pose, opts = {}) {
     const sleeve = L.tank ? skin : top, sleeveHi = L.tank ? skinHi : topHi;
     const e = limb(ctx, sx, sy, u * D2R, SEG.upper, armW + 2, armW, sleeve, sleeveHi);
     const h = limb(ctx, e[0], e[1], (u + l) * D2R, SEG.lower, armW, armW - 1.5, skin, skinHi);
+    if (def.id === 'gym-bro') {
+      // Wristbands track the forearm rather than floating at a fixed canvas point.
+      const a = (u + l) * D2R, wx = h[0] - Math.sin(a) * 6, wy = h[1] - Math.cos(a) * 6;
+      ctx.strokeStyle = '#141419'; ctx.lineWidth = 5.5; ctx.beginPath();
+      ctx.moveTo(wx - 2.5, wy); ctx.lineTo(wx + 2.5, wy); ctx.stroke();
+    }
     ctx.fillStyle = skin; ctx.strokeStyle = 'rgba(0,0,0,0.5)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(h[0], h[1], 5.2 * B, 0, 7); ctx.fill(); ctx.stroke();
     return [h[0], h[1], (u + l) * D2R];
   };
   const drawLeg = (u, l, back) => {
     const ox = back ? -3 : 2;
     const k = limb(ctx, ox, 2, u * D2R, SEG.thigh, legW + 2, legW, pants, pantsHi);
-    const a = limb(ctx, k[0], k[1], (u + l) * D2R, SEG.shin, legW, legW - 2, pants, pantsHi);
+    // Shorts + exposed tan legs + striped socks; other fighters retain long trousers.
+    const isTyler = def.id === 'gym-bro', shin = isTyler ? skin : pants;
+    const a = limb(ctx, k[0], k[1], (u + l) * D2R, SEG.shin, legW, legW - 2, shin, isTyler ? skinHi : pantsHi);
     const fa = (u + l) * D2R;
+    if (isTyler) {
+      const sx = Math.sin(fa), sy = Math.cos(fa);
+      ctx.strokeStyle = '#f9f9f6'; ctx.lineWidth = legW - 2; ctx.lineCap = 'butt';
+      ctx.beginPath(); ctx.moveTo(a[0] - sx * 3, a[1] - sy * 3); ctx.lineTo(a[0] - sx * 15, a[1] - sy * 15); ctx.stroke();
+      ctx.strokeStyle = '#2d2d35'; ctx.lineWidth = 2.3; ctx.beginPath();
+      ctx.moveTo(a[0] - sx * 15, a[1] - sy * 15); ctx.lineTo(a[0] - sx * 13, a[1] - sy * 13); ctx.stroke();
+      ctx.save(); ctx.translate(ox, 2); ctx.rotate(-u * D2R);
+      ctx.strokeStyle = '#f0f0f2'; ctx.lineWidth = 1.8; ctx.beginPath();
+      ctx.moveTo(-legW * 0.3, 1); ctx.lineTo(-legW * 0.3, SEG.thigh * 0.65); ctx.stroke();
+      ctx.restore();
+    }
     ctx.save(); ctx.translate(a[0], a[1]); ctx.rotate(-fa * 0.35);
     ctx.fillStyle = L.boots; ctx.strokeStyle = 'rgba(0,0,0,0.6)'; ctx.lineWidth = 1.5;
     ctx.beginPath(); ctx.roundRect(-5, -3, 21 * B, 9, 3); ctx.fill(); ctx.stroke();
@@ -151,6 +170,11 @@ export function drawRig(ctx, def, f, pose, opts = {}) {
   if (L.shirt) { ctx.fillStyle = L.shirt; ctx.beginPath(); ctx.moveTo(sh[0] - 3, sh[1] - 1); ctx.lineTo(sh[0] + 4, sh[1] - 1); ctx.lineTo(hip[0] + up[0] * 12 + 3, hip[1] + up[1] * 12); ctx.lineTo(hip[0] + up[0] * 12 - 3, hip[1] + up[1] * 12); ctx.fill(); }
   if (L.tie) { ctx.strokeStyle = L.tie; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(sh[0] + nx * 1, sh[1] - 2); ctx.lineTo(hip[0] + up[0] * 14, hip[1] + up[1] * 14); ctx.stroke(); }
   if (L.tank) { ctx.fillStyle = skin; ctx.beginPath(); ctx.arc(sh[0] - up[0] * 4 + 2, sh[1] - up[1] * 4, 6, 0, 7); ctx.fill(); ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.fillRect(sh[0] - 3, sh[1] + 8, 10, 2); }
+  if (def.id === 'gym-bro') {
+    ctx.save(); ctx.translate((sh[0] + hip[0]) * 0.5, (sh[1] + hip[1]) * 0.5); ctx.rotate(lean);
+    ctx.fillStyle = '#181715'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.font = '900 8px sans-serif'; ctx.fillText('GYM', 0, -4); ctx.fillText('BRO', 0, 5); ctx.restore();
+  }
   if (!L.tank && !L.shirt && def.id === 'bogan-tradie') { ctx.fillStyle = '#e8f04a'; ctx.globalAlpha = 0.8; ctx.fillRect(sh[0] - tw, sh[1] + 12, tw * 2.2, 3); ctx.fillRect(sh[0] - tw, sh[1] + 20, tw * 2.2, 3); ctx.globalAlpha = 1; }
   ctx.restore();
   // belt
@@ -176,12 +200,18 @@ export function drawRig(ctx, def, f, pose, opts = {}) {
     ctx.fillRect(-SEG.head - 1, -7, SEG.head * 2 + 9, 3.5); ctx.strokeRect(-SEG.head - 1, -7, SEG.head * 2 + 9, 3.5);
     ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillRect(-4, -13, 8, 2);
   }
+  if (L.hat === 'backcap') {
+    // Right-facing Tyler: visor projects backward, never over his eyes.
+    ctx.fillStyle = L.hatColor || '#0c0d12'; ctx.strokeStyle = 'rgba(0,0,0,0.7)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.ellipse(-1, -6.5, SEG.head + 1, 8.7, 0, Math.PI, 0); ctx.fill(); ctx.stroke();
+    ctx.fillRect(-SEG.head - 3, -8.5, SEG.head * 2 + 2, 3.5); ctx.fillRect(-SEG.head - 10, -8, 9, 3);
+    ctx.fillStyle = '#dadada'; ctx.fillRect(2, -12, 3.5, 1.5);
+  }
   if (L.hat === 'cap' || L.hat === 'beanie') { ctx.fillStyle = L.hatColor || '#222'; ctx.strokeStyle = 'rgba(0,0,0,0.6)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(-1, -5, SEG.head, 9, 0, Math.PI, 0); ctx.fill(); ctx.stroke(); if (L.hat === 'cap') ctx.fillRect(2, -7, SEG.head + 6, 3); }
   if (L.hat === 'fedora') { ctx.fillStyle = L.hatColor || '#111'; ctx.strokeStyle = 'rgba(0,0,0,0.7)'; ctx.lineWidth = 2; ctx.fillRect(-SEG.head - 3, -9, SEG.head * 2 + 10, 3); ctx.beginPath(); ctx.ellipse(-1, -9, SEG.head - 2, 8, 0, Math.PI, 0); ctx.fill(); ctx.stroke(); }
   if (L.hat === 'headset') { ctx.strokeStyle = '#2b2b3a'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, -3, SEG.head + 1, Math.PI * 1.05, Math.PI * 1.95); ctx.stroke(); ctx.fillStyle = '#6a3dc0'; ctx.fillRect(-SEG.head - 3, -2, 5, 8); }
   if (L.sunglasses || L.glasses) { ctx.fillStyle = L.sunglasses ? '#0a0a0a' : 'rgba(255,255,255,0.35)'; ctx.strokeStyle = '#0a0a0a'; ctx.lineWidth = 1.2; ctx.fillRect(3, -5, 7, 5); ctx.strokeRect(3, -5, 7, 5); }
   if (def.id === 'yuppie') { ctx.strokeStyle = L.hair; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(-9, -6); ctx.quadraticCurveTo(0, -17, 10, -7); ctx.stroke(); }
-  if (def.id === 'gym-bro') { ctx.fillStyle = '#e9e9e9'; ctx.fillRect(-SEG.head, -9, SEG.head * 2, 3); }
   ctx.restore();
   // front arm last (over torso), with prop
   const h = drawArm(pose.a1u, pose.a1l, false);
