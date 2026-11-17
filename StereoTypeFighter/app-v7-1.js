@@ -337,5 +337,10 @@ function draw() {
     for (let n=1; n<=4; n++) store.img('gym-bro','victory',n);
     window.SF7_VICTORY_R13_PREVIEW = true;
   }
+  // R13 purely visual, deterministic super energy, separate from the fighter
+  // sprites and from canonical combat hit timing. Only on explicit opt-in.
+  if (new URLSearchParams(window.location.search).get('gymBroSuperFX') === '1') {
+    window.SF7_SUPER_FX_R13_PREVIEW = true;
+  }
   requestAnimationFrame(frame);
 })();

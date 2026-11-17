@@ -98,7 +98,7 @@ jobs:
             if curl -fsS http://127.0.0.1:4173/StereoTypeFighter/v7-1.html > /dev/null; then break; fi
             sleep 1
           done
-          SF_NO_WEBSERVER=1 SF_BASE_URL=http://127.0.0.1:4173/StereoTypeFighter/ npx playwright test tests/v7-browser.spec.mjs tests/v7-1-browser.spec.mjs tests/v7-1-art-lab.spec.mjs tests/v7-1-story-ladder.spec.mjs tests/v7-1-launcher-preview.spec.mjs tests/v7-1-airp-preview.spec.mjs tests/v7-1-r10-preview.spec.mjs tests/v7-1-gamepad.spec.mjs tests/v7-1-intro-r11.spec.mjs tests/v7-1-hk-r12.spec.mjs tests/v7-1-victory-r13.spec.mjs --reporter=line
+          SF_NO_WEBSERVER=1 SF_BASE_URL=http://127.0.0.1:4173/StereoTypeFighter/ npx playwright test tests/v7-browser.spec.mjs tests/v7-1-browser.spec.mjs tests/v7-1-art-lab.spec.mjs tests/v7-1-story-ladder.spec.mjs tests/v7-1-launcher-preview.spec.mjs tests/v7-1-airp-preview.spec.mjs tests/v7-1-r10-preview.spec.mjs tests/v7-1-gamepad.spec.mjs tests/v7-1-intro-r11.spec.mjs tests/v7-1-hk-r12.spec.mjs tests/v7-1-victory-r13.spec.mjs tests/v7-1-superfx-r13.spec.mjs --reporter=line
       - name: Upload check summary
         if: always()
         run: |

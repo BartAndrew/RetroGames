@@ -232,6 +232,49 @@ function drawArt(ctx, store, def, f) {
   return true;
 }
 
+// Visual-only R13 Leg Day Tsunami preview. The charged floor wave is drawn
+// independently of sprite PNGs; it never changes 60 Hz combat, hitboxes or RNG.
+// The canonical five-hit timing is owned by combat-v7.js, not these graphics.
+const GYM_SUPER_FX_PREVIEW = typeof window !== 'undefined' &&
+  new URLSearchParams(window.location.search).get('gymBroSuperFX') === '1';
+function drawGymBroSuperEnergy(ctx, f, foreground) {
+  if (!GYM_SUPER_FX_PREVIEW || f.def.id !== 'gym-bro' || f.anim !== 'super') return;
+  const t = Math.max(0, f.animT || 0), progress = clamp(f.animP || 0, 0, 1);
+  const pulse = 0.5 + 0.5 * Math.sin(t * Math.PI / 6);
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  ctx.shadowColor = foreground ? '#fff1a3' : '#e4d921';
+  ctx.shadowBlur = 9 + 16 * pulse;
+  if (!foreground) {
+    // Ground ripple and expanding energy halo, always rooted to the fighter.
+    for (let band = 0; band < 3; band++) {
+      const u = (progress + band / 3) % 1;
+      ctx.globalAlpha = 0.15 + 0.55 * (1 - u);
+      ctx.strokeStyle = band === 0 ? '#f8ff91' : '#ffd143';
+      ctx.lineWidth = 2.6 * (1 - u) + 0.9;
+      ctx.beginPath();
+      ctx.ellipse(0, -7, 23 + u * 93, 7 + u * 27, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+  } else {
+    // Lightning arcs are deterministic functions of the move frame, not damage
+    // events or random particle simulation. Keep the chest/face unobstructed.
+    const hitPulse = (t % 6) / 6;
+    for (let side of [-1, 1]) {
+      ctx.globalAlpha = 0.15 + 0.28 * (1 - hitPulse);
+      ctx.strokeStyle = '#fff0a2';
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      ctx.moveTo(side * 27, -24);
+      ctx.lineTo(side * (43 + pulse * 10), -35);
+      ctx.lineTo(side * (34 + pulse * 10), -50);
+      ctx.lineTo(side * (50 + pulse * 13), -64);
+      ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
 // ------------------------------------------------------------ fighter + fx
 export function drawFighter(ctx, f, store) {
   const def = f.def, s = DRAW_SCALE, floor = STAGE.floorY;
@@ -239,11 +282,13 @@ export function drawFighter(ctx, f, store) {
   const sh = clamp(1 - f.y / 260, 0.25, 1);
   ctx.save(); ctx.translate(f.x, floor); ctx.fillStyle = `rgba(0,0,0,${0.38 * sh})`; ctx.beginPath(); ctx.ellipse(0, 4, 42 * sh, 9 * sh, 0, 0, 7); ctx.fill(); ctx.restore();
   ctx.save(); ctx.translate(f.x, floor - f.y); ctx.scale(f.facing * s, s);
+  drawGymBroSuperEnergy(ctx, f, false);
   if (f.invuln > 0 && f.anim === 'super') { ctx.shadowColor = def.accent; ctx.shadowBlur = 28; }
   let done = false;
   if (f.freeze > 0 && (f.state === 'hit' || f.state === 'launched')) ctx.filter = 'brightness(2.1) saturate(0.6)'; // hit-stop flash on the silhouette
   if (store && store.has(def.id)) done = drawArt(ctx, store, def, f);
   if (!done) drawRig(ctx, def, f, poseFor(f));
+  drawGymBroSuperEnergy(ctx, f, true);
   ctx.filter = 'none';
   ctx.restore();
 }
