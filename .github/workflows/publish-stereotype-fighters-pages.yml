@@ -84,7 +84,7 @@ jobs:
 
       - name: Run existing arcade production browser and mobile regression suite
         working-directory: StereoTypeFighter
-        run: npm run test:browser
+        run: npm run test:browser:release
 
       - name: Upload browser QA artifacts
         if: always()
