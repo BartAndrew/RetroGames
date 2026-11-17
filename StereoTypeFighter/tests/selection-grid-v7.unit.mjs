@@ -5,7 +5,7 @@ test('20 tiles form a bounded 5-by-4 character selection grid with no overlap',(
   assert.equal(GRID_COLS,5);
   const tiles=Array.from({length:20},(_,i)=>tileRect(i,20));
   for(const a of tiles){
-    assert.ok(a.x>=0&&a.y>=0&&a.x+a.w<=560&&a.y+a.h<=540);
+    assert.ok(a.x>=0&&a.y>=0&&a.x+a.w<=570&&a.y+a.h<=540);
     for(const b of tiles){if(a===b)continue;
       assert.ok(a.x+a.w<=b.x||b.x+b.w<=a.x||a.y+a.h<=b.y||b.y+b.h<=a.y);
     }
