@@ -1,0 +1,202 @@
+{
+  "fighter": "gym-bro",
+  "source": "a_clean_high_detail_sprite_sheet_style_illustrati.png",
+  "source_sha256": "f8d3cc4f7a6c71025399abef98a372fc345e32187cb42e71a9acb5caffa5a6d3",
+  "revision": "R10",
+  "status": "TECHNICAL PASS \u2014 manual pose/timing QA pending",
+  "actions": {
+    "airK": "chamber, forward kick, followthrough, recovery",
+    "jumpDown": "controlled descent and guarded landing approach"
+  },
+  "frames": [
+    {
+      "action": "airK",
+      "frame": 1,
+      "path": "art/gym-bro/airK/01.png",
+      "sha256_file": "23397ecc95ba1b29d55bb24f955dafeda15445ac4a0ea9c8e47ca2b322e7f61c",
+      "bytes": 150213,
+      "bbox": [
+        128,
+        34,
+        384,
+        470
+      ],
+      "magenta_opaque_pixels": 5,
+      "foot_anchor_y": 470,
+      "dhash": "1271617939396468",
+      "original_bbox": [
+        84,
+        18,
+        345,
+        462
+      ],
+      "original_body_px": 55416,
+      "scale": 0.98198,
+      "all_components": 2,
+      "significant_detached": [],
+      "detached_fraction": 0.0003
+    },
+    {
+      "action": "airK",
+      "frame": 2,
+      "path": "art/gym-bro/airK/02.png",
+      "sha256_file": "d4535f7bfc952c882391baa3feb9c51b2340a9f65f77d8b60873279ab24398b4",
+      "bytes": 164184,
+      "bbox": [
+        38,
+        34,
+        474,
+        470
+      ],
+      "magenta_opaque_pixels": 0,
+      "foot_anchor_y": 470,
+      "dhash": "64e3c2d067e89090",
+      "original_bbox": [
+        17,
+        19,
+        463,
+        465
+      ],
+      "original_body_px": 63099,
+      "scale": 0.97758,
+      "all_components": 1,
+      "significant_detached": [],
+      "detached_fraction": 0.0
+    },
+    {
+      "action": "airK",
+      "frame": 3,
+      "path": "art/gym-bro/airK/03.png",
+      "sha256_file": "e9c91081f8dd8a63b69e8024e921ef1a3a79b57ae130f9d72e98697b5921c29f",
+      "bytes": 141872,
+      "bbox": [
+        27,
+        47,
+        485,
+        470
+      ],
+      "magenta_opaque_pixels": 4,
+      "foot_anchor_y": 470,
+      "dhash": "48cbc05051e4c890",
+      "original_bbox": [
+        38,
+        18,
+        496,
+        441
+      ],
+      "original_body_px": 56966,
+      "scale": 1.0,
+      "all_components": 1,
+      "significant_detached": [],
+      "detached_fraction": 0.0
+    },
+    {
+      "action": "airK",
+      "frame": 4,
+      "path": "art/gym-bro/airK/04.png",
+      "sha256_file": "938292fcb5763d3aa7447d500a89c985a7b360d2979dd92195fe96dae1d045bc",
+      "bytes": 136101,
+      "bbox": [
+        65,
+        85,
+        447,
+        470
+      ],
+      "magenta_opaque_pixels": 4,
+      "foot_anchor_y": 470,
+      "dhash": "0432e1e060393232",
+      "original_bbox": [
+        58,
+        3,
+        440,
+        388
+      ],
+      "original_body_px": 53221,
+      "scale": 1.0,
+      "all_components": 1,
+      "significant_detached": [],
+      "detached_fraction": 0.0
+    },
+    {
+      "action": "jumpDown",
+      "frame": 1,
+      "path": "art/gym-bro/jumpDown/01.png",
+      "sha256_file": "72a3fe141e7d44d98f66283824b64987bf308adf3d999ff1e08a9583bc013fcd",
+      "bytes": 155717,
+      "bbox": [
+        66,
+        34,
+        446,
+        470
+      ],
+      "magenta_opaque_pixels": 1,
+      "foot_anchor_y": 470,
+      "dhash": "1273e0e2396a626a",
+      "original_bbox": [
+        16,
+        11,
+        429,
+        485
+      ],
+      "original_body_px": 62524,
+      "scale": 0.91983,
+      "all_components": 1,
+      "significant_detached": [],
+      "detached_fraction": 0.0
+    },
+    {
+      "action": "jumpDown",
+      "frame": 2,
+      "path": "art/gym-bro/jumpDown/02.png",
+      "sha256_file": "19267e7326ade45c88872e97e6c5b73d34c3731b1f4409e891a79a462788ec58",
+      "bytes": 136008,
+      "bbox": [
+        140,
+        49,
+        372,
+        470
+      ],
+      "magenta_opaque_pixels": 2,
+      "foot_anchor_y": 470,
+      "dhash": "1832716031316222",
+      "original_bbox": [
+        107,
+        11,
+        339,
+        432
+      ],
+      "original_body_px": 52906,
+      "scale": 1.0,
+      "all_components": 1,
+      "significant_detached": [],
+      "detached_fraction": 0.0
+    }
+  ],
+  "warnings": [],
+  "source_cells": {
+    "airK/01": [
+      0,
+      0
+    ],
+    "airK/02": [
+      1,
+      0
+    ],
+    "airK/03": [
+      2,
+      0
+    ],
+    "airK/04": [
+      0,
+      1
+    ],
+    "jumpDown/01": [
+      1,
+      1
+    ],
+    "jumpDown/02": [
+      2,
+      1
+    ]
+  }
+}

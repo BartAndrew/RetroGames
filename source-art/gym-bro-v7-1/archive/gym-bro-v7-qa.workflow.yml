@@ -1,0 +1,107 @@
+name: Gym Bro V7 development validation
+on:
+  push:
+    branches:
+      - feature/gym-bro-v7-art-qa-20261115
+    paths:
+      - 'StereoTypeFighter/**'
+      - '.github/workflows/gym-bro-v7-qa.yml'
+  workflow_dispatch:
+    inputs:
+      release_gate:
+        description: 'Run full strict asset-completeness gate (fails until production-ready)'
+        required: false
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: StereoTypeFighter
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+      - name: Node runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Pillow
+        run: python -m pip install Pillow
+      - name: Validate V7 selection and renderer JavaScript syntax
+        run: |
+          node --check app-v7.js
+          node --check app-v7-1.js
+          node --check gym-bro-art-loader-v7-1.js
+          node --check story-v7-1.js
+          node --check renderer-v7.js
+          node --check cutscene-v7.js
+      - name: Validate candidate art-pack importer
+        run: |
+          python -m py_compile tools/import-gym-bro-full-pack.py
+          python tools/import-gym-bro-full-pack.py --help
+      - name: Gym Bro canonical combat and story tests
+        run: node tools/test-gym-bro-v7.mjs
+      - name: V7.1 version and story coverage
+        run: node tools/test-v7-1.mjs
+      - name: Existing unit tests
+        run: node --test tests/*.unit.mjs
+      - name: Verify all registered V7 image files
+        run: python tools/check-v7-art.py
+      - name: Verify real R8 Gym Bro launcher PNG assets
+        run: python tools/check-gym-bro-launcher-r8.py
+      - name: Validate committed R9 Gym Bro airborne-punch PNGs
+        run: python tools/check-gym-bro-airp-r9.py --json gym-bro-r9-airp-qa.json
+      - name: Verify committed R10 kick and descent sprites
+        run: python tools/check-gym-bro-r10.py --json gym-bro-r10-technical.json
+      - name: Validate four committed Gym Bro R11 intro PNGs
+        run: python tools/check-gym-bro-intro-r11.py
+      - name: Validate six R12 Gym Bro high-kick sprites and costume identity
+        run: python tools/check-gym-bro-hk-r12.py
+      - name: Validate four identity-locked Gym Bro R13 victory PNGs
+        run: python tools/check-gym-bro-victory-r13.py
+      - name: Inventory Gym Bro completion and provenance
+        run: python tools/audit-gym-bro-v7.py --output gym-bro-v7-coverage.json
+      - name: Strict candidate release gate
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.release_gate }}
+        run: python tools/audit-gym-bro-v7.py --strict
+      - name: Upload Gym Bro coverage evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gym-bro-v7-coverage
+          path: StereoTypeFighter/gym-bro-v7-coverage.json
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Install browser QA dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build synthetic ZIP fixture for browser-only importer test
+        run: python tools/make-v7-1-art-lab-fixture.py
+      - name: Test read-only artwork ZIP inspector on synthetic fixture
+        run: |
+          python tools/inspect-gym-bro-art-zip.py tests/_tmp_gym_bro_synthetic.zip --json gym-bro-synthetic-zip-audit.json
+      - name: Check detached foreground detector on synthetic ZIP
+        run: python tools/check-gym-bro-components.py tests/_tmp_gym_bro_synthetic.zip --strict --report gym-bro-synthetic-components.json
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run V7.1 Chromium game smoke test
+        run: |
+          python3 -m http.server 4173 --directory .. > /tmp/gym-bro-v71-http.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/StereoTypeFighter/v7-1.html > /dev/null; then break; fi
+            sleep 1
+          done
+          SF_NO_WEBSERVER=1 SF_BASE_URL=http://127.0.0.1:4173/StereoTypeFighter/ npx playwright test tests/v7-browser.spec.mjs tests/v7-1-browser.spec.mjs tests/v7-1-art-lab.spec.mjs tests/v7-1-story-ladder.spec.mjs tests/v7-1-launcher-preview.spec.mjs tests/v7-1-airp-preview.spec.mjs tests/v7-1-r10-preview.spec.mjs tests/v7-1-gamepad.spec.mjs tests/v7-1-intro-r11.spec.mjs tests/v7-1-hk-r12.spec.mjs tests/v7-1-victory-r13.spec.mjs tests/v7-1-superfx-r13.spec.mjs tests/v7-1-selection-r15.spec.mjs tests/v7-2-r16.spec.mjs --reporter=line
+      - name: Upload check summary
+        if: always()
+        run: |
+          echo "## Gym Bro V7 staged QA" >> "$GITHUB_STEP_SUMMARY"
+          echo "Branch-only checks; successful workflow does not constitute manual visual QA or production release." >> "$GITHUB_STEP_SUMMARY"
+          echo "Review original sprite provenance, frame uniqueness, transitions, controllers, cinematic art and complete story before promotion." >> "$GITHUB_STEP_SUMMARY"

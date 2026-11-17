@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gym Bro V7 — frame QA</title>
+<style>
+:root{color-scheme:dark;font:16px system-ui,sans-serif;background:#080a13;color:#f5f6fb}
+*{box-sizing:border-box}body{margin:0 auto;max-width:1240px;padding:20px}h1{margin:0 0 8px;color:#d0ff65}
+p{color:#b9bfcc;line-height:1.5}a{color:#cfff6a}header{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.controls{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:18px 0;padding:14px;background:#171b2b;border:1px solid #343b4c;border-radius:12px}
+label{display:grid;gap:5px;font-size:13px;color:#ced3e0}select,button,input{font:inherit;border-radius:7px;border:1px solid #8790a8;padding:8px 12px;color:#fff;background:#232a3e}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #d0ff65;outline-offset:3px}
+button{cursor:pointer}button:hover{background:#3b4662}button:disabled{opacity:.35;cursor:default}
+.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.panel{background:#121625;border:1px solid #343b4c;border-radius:12px;padding:12px;min-width:0}
+canvas{width:100%;height:auto;display:block;aspect-ratio:1;background:#141925;border-radius:8px}
+.panel h2{font-size:17px;margin:0 0 9px}.meter{font-variant-numeric:tabular-nums;color:#d0ff65}
+#status{min-height:2.8em}#notes{width:100%;min-height:92px}footer{margin-top:22px;border-top:1px solid #343b4c;padding-top:12px}
+@media(max-width:700px){.panels{grid-template-columns:1fr}}
+</style></head><body>
+<header><div><h1>GYM BRO <small>V7 art QA</small></h1><p>Review registered sprite frames against the game's actual rig fallback. This page never modifies gameplay or saves artwork.</p></div><p><a href="./v7.html">Open V7 game</a></p></header>
+<div class="controls">
+<label>Animation<select id="anim"></select></label>
+<button id="prev" aria-label="Previous frame">◀ Previous</button><button id="next" aria-label="Next frame">Next ▶</button>
+<label>Frame<input id="frame" type="number" min="1" value="1" step="1" style="width:90px"></label>
+<span id="counter" class="meter" aria-live="polite"></span>
+<label><input id="compare" type="checkbox" checked> Show rig fallback</label>
+<label><input id="flip" type="checkbox"> Flip facing</label>
+<label><input id="play" type="checkbox"> Play loop</label>
+</div>
+<div class="panels"><section class="panel"><h2>Imported PNG (exact pixels)</h2><canvas id="sprite" width="512" height="512" aria-label="Imported sprite"></canvas><p id="status" role="status"></p></section><section class="panel" id="fallbackPanel"><h2>Engine rig fallback (reference)</h2><canvas id="rig" width="512" height="512" aria-label="Rig fallback"></canvas><p>Uses the actual V7 renderer's <code>poseFor</code> and <code>drawRig</code>, not a replacement illustration.</p></section></div>
+<footer><label>Reviewer notes (copy manually)<textarea id="notes" placeholder="Identity, silhouette, frame order, clipping, feet, halos, distinct motion..." style="font:inherit;background:#171b2b;color:#fff;padding:10px;border:1px solid #8790a8;border-radius:7px"></textarea></label><button id="copy">Copy QA observation</button><p>Asset presence does not equal QA approval. A missing image intentionally displays a missing-frame message, never an unrelated image.</p></footer>
+<script type="module">
+import { byId } from './roster-v7.js';
+import { poseFor, drawRig } from './renderer-v7.js';
+const fighter=byId('gym-bro'), $=id=>document.getElementById(id);
+const sprite=$('sprite').getContext('2d'), rig=$('rig').getContext('2d');
+let manifest,anim='idle',index=1,cache=new Map(),timer=0;
+const backgrounds=(ctx)=>{ctx.clearRect(0,0,512,512);ctx.fillStyle='#12192a';ctx.fillRect(0,0,512,512);ctx.strokeStyle='#738096';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,470);ctx.lineTo(512,470);ctx.stroke();ctx.fillStyle='#d0ff65';ctx.fillRect(254,468,4,4);};
+const spec=()=>manifest?.anims?.[anim];
+const url=()=> (manifest.path||'art/{id}/{anim}/{n}.png').replace('{id}','gym-bro').replace('{anim}',anim).replace('{n}',String(index).padStart(2,'0'));
+function load(path){if(!cache.has(path)){const img=new Image();const promise=new Promise(resolve=>{img.onload=()=>resolve(img);img.onerror=()=>resolve(null)});img.src=path;cache.set(path,promise)}return cache.get(path)}
+async function render(){
+ const count=spec()?.frames||1;index=Math.max(1,Math.min(index,count));$('frame').max=count;$('frame').value=index;$('counter').textContent=index+' / '+count;
+ $('fallbackPanel').hidden=!$('compare').checked;
+ const path=url();const request=path;const flip=$('flip').checked;
+ backgrounds(sprite);backgrounds(rig);$('status').textContent='Loading '+path;
+ const img=await load(path);if(path!==url())return;
+ if(img){sprite.save();if(flip){sprite.translate(512,0);sprite.scale(-1,1)}sprite.drawImage(img,0,0,512,512);sprite.restore();$('status').textContent=path+' — '+img.width+'×'+img.height+(img.width===512&&img.height===512?'':' (INVALID DIMENSIONS)');}
+ else {$('status').textContent='MISSING: '+path;$('status').style.color='#ff9188'}
+ if(img)$('status').style.color='#c5d0e4';
+ const f={def:fighter,anim,animT:(index-1)*2,animP:count>1?(index-1)/(count-1):0,state:'idle',vx:0,facing:flip?-1:1};
+ rig.save();rig.translate(256,470);rig.scale(f.facing*1.12*2.0,1.12*2.0);drawRig(rig,fighter,f,poseFor(f));rig.restore();
+}
+function changed(){index=1;cache.clear();render()}
+$('anim').addEventListener('change',()=>{anim=$('anim').value;changed()});
+$('prev').addEventListener('click',()=>{index--;render()});$('next').addEventListener('click',()=>{index++;render()});
+$('frame').addEventListener('change',()=>{index=Number($('frame').value)||1;render()});
+$('compare').addEventListener('change',render);$('flip').addEventListener('change',render);
+$('play').addEventListener('change',()=>{clearInterval(timer);if($('play').checked)timer=setInterval(()=>{index=index%(spec()?.frames||1)+1;render()},1000/(spec()?.fps||8))});
+document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='ArrowLeft'){$('prev').click()}if(e.key==='ArrowRight'){$('next').click()}});
+$('copy').addEventListener('click',()=>{navigator.clipboard?.writeText('Gym Bro V7 / '+anim+' / '+index+' of '+(spec()?.frames||0)+'\n'+url()+'\n'+$('notes').value)});
+try{const response=await fetch('./art/manifest.json',{cache:'no-store'});if(!response.ok)throw Error('manifest HTTP '+response.status);const data=await response.json();manifest=data['gym-bro'];if(!manifest?.anims)throw Error('Gym Bro is not configured in art/manifest.json');
+if(new URLSearchParams(location.search).get('r13')==='1'){
+  manifest.anims.victory={frames:4,fps:8,loop:false};
+  anim='victory';
+  document.title='Gym Bro R13 QA — Recovery, Flex and Celebration';
+}
+if(new URLSearchParams(location.search).get('r12')==='1'){
+  manifest.anims.hk={frames:6,fps:8,loop:false};
+  anim='hk';
+  document.title='Gym Bro R12 QA — Quad Axe Identity-Locked High Kick';
+}
+if(new URLSearchParams(location.search).get('r11')==='1'){
+  manifest.anims.intro={frames:4,fps:8,loop:false};
+  anim='intro';
+  document.title='Gym Bro R11 QA — Intro Poses';
+}
+if(new URLSearchParams(location.search).get('r10')==='1'){
+  // Preview only: compare Git-committed R10 art with canonical rig. Normal game remains unchanged.
+  manifest.anims.airK={frames:4,fps:8,loop:false};
+  manifest.anims.jumpDown={frames:2,fps:8,loop:false};
+  anim='airK';
+  document.title='Gym Bro R10 QA — airK and jumpDown';
+}
+for(const name of Object.keys(manifest.anims)){$('anim').add(new Option(name,name))}
+$('anim').value=anim;render()}
+catch(e){$('status').textContent='Manifest unavailable: '+e.message}
+</script></body></html>
