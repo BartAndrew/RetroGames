@@ -69,10 +69,10 @@ jobs:
             if (!state.geometry) throw new Error(`Invalid atlas geometry: ${state.atlas.join('x')}`);
             if (state.cell[0] !== 192 || state.cell[1] !== 192) throw new Error(`Unexpected cell ${state.cell.join('x')}`);
             await page.screenshot({path:'artifacts/lefty-animation/idle.png', fullPage:true});
-            await page.selectOption('#movement', {label:'kick (4)'});
+            await page.selectOption('#movement', {label:'kick (3)'});
             await page.waitForTimeout(750);
             await page.screenshot({path:'artifacts/lefty-animation/kick.png', fullPage:true});
-            await page.selectOption('#movement', {label:'special (4)'});
+            await page.selectOption('#movement', {label:'special (2)'});
             await page.waitForTimeout(900);
             await page.screenshot({path:'artifacts/lefty-animation/special.png', fullPage:true});
             const status = await page.locator('#selfTest').textContent();
