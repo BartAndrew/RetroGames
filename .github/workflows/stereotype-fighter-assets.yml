@@ -51,7 +51,7 @@ jobs:
 
       - name: Run staged browser regression suite
         working-directory: StereoTypeFighter
-        run: npm run test:browser
+        run: npm run test:browser:release
 
       - name: Upload browser QA artifacts
         if: always()
