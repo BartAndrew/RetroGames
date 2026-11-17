@@ -4,6 +4,7 @@ import { ROSTER, byId } from './roster-v7.js';
 import { ArtStore, drawMatch, drawPortrait, pushFx } from './renderer-v7.js';
 import { Cutscene } from './cutscene-v7.js';
 import { getScene, sceneId, ladderFor, TITLE_CARD } from './story-v7-1.js';
+import { GRID_COLS, tileRect, selectButtonRect, moveSelection } from './selection-grid-v7.js';
 
 const canvas = document.getElementById('game'), ctx = canvas.getContext('2d');
 const W = 960, H = 540;
@@ -65,14 +66,9 @@ function readInput(i) {
   return o;
 }
 
-// roster grid: up to 10 per row, tiles shrink as the roster grows
-const GRID_COLS = 10;
-function tileRect(i) {
-  const n = ROSTER.length, cols = Math.min(GRID_COLS, n), tw = Math.min(220, Math.floor(920 / cols) - 6), th = n > 10 ? 150 : 210;
-  const row = Math.floor(i / cols), col = i % cols, inRow = Math.min(cols, n - row * cols);
-  const x = 480 + (col - (inRow - 1) / 2) * (tw + 6) - tw / 2;
-  return { x, y: (n > 10 ? 176 : 290) + row * (th + 28), w: tw, h: th, cx: x + tw / 2 };
-}
+// Character selection uses a predictable 5 x 4 hit-test and visual grid.
+// Layout is shared with pure Node/browser tests to catch off-canvas regressions.
+const selectedTile = i => tileRect(i,ROSTER.length);
 
 // ------------------------------------------------------------------ flow
 function go(screen) { G.screen = screen; sfx('menu'); }
@@ -81,7 +77,7 @@ function startMode(mode) {
 }
 function confirmPick() {
   G.picks[G.pickSlot] = G.cursor;
-  if (G.mode === 'story' || G.mode === 'training' && false) { beginStory(ROSTER[G.cursor].id); return; }
+  if (G.mode === 'story') { beginStory(ROSTER[G.cursor].id); return; }
   if ((G.mode === 'cpu') && G.pickSlot === 0) { G.pickSlot = 1; G.cursor = (G.picks[0] + 1) % ROSTER.length; sfx('menu'); return; }
   if (G.mode === 'local' && G.pickSlot === 0) { G.pickSlot = 1; G.cursor = (G.picks[0] + 1) % ROSTER.length; sfx('menu'); return; }
   if (G.mode === 'training' && G.pickSlot === 0) { G.pickSlot = 1; G.cursor = (G.picks[0] + 1) % ROSTER.length; sfx('menu'); return; }
@@ -141,10 +137,8 @@ function onKey(code) {
     if (code === 'ArrowLeft' || code === 'ArrowRight' || code === 'KeyD' || code === 'KeyA') { G.diff = (G.diff + (code.includes('Left') || code === 'KeyA' ? 2 : 1)) % 3; sfx('menu'); }
     if (code === 'Enter' || code === 'Space') startMode(MODES[G.menu].id);
   } else if (G.screen === 'select') {
-    if (code === 'ArrowLeft' || code === 'KeyA') { G.cursor = (G.cursor + ROSTER.length - 1) % ROSTER.length; sfx('menu'); }
-    if (code === 'ArrowRight' || code === 'KeyD') { G.cursor = (G.cursor + 1) % ROSTER.length; sfx('menu'); }
-    if ((code === 'ArrowUp' || code === 'KeyW') && ROSTER.length > GRID_COLS) { G.cursor = (G.cursor + ROSTER.length - GRID_COLS) % ROSTER.length; sfx('menu'); }
-    if ((code === 'ArrowDown' || code === 'KeyS') && ROSTER.length > GRID_COLS) { G.cursor = (G.cursor + GRID_COLS) % ROSTER.length; sfx('menu'); }
+    const next = moveSelection(G.cursor,code,ROSTER.length);
+    if (next !== G.cursor) { G.cursor = next; sfx('menu'); }
     if (code === 'Enter' || code === 'Space' || code === 'KeyF') confirmPick();
     if (code === 'Escape') { if (G.pickSlot === 1) { G.pickSlot = 0; G.cursor = G.picks[0]; } else go('title'); }
   } else if (G.screen === 'cutscene' && G.cut) {
@@ -164,7 +158,18 @@ function onClick(x, y) {
     MODES.forEach((m, i) => { if (x > 300 && x < 660 && y > 250 + i * 50 && y < 292 + i * 50) { G.menu = i; startMode(m.id); } });
     if (y > 470 && y < 500 && x > 330 && x < 630) { G.diff = (G.diff + 1) % 3; sfx('menu'); }
   } else if (G.screen === 'select') {
-    ROSTER.forEach((r, i) => { const t = tileRect(i); if (x > t.x && x < t.x + t.w && y > t.y && y < t.y + t.h) { if (G.cursor === i) confirmPick(); else { G.cursor = i; sfx('menu'); } } });
+    const button = selectButtonRect;
+    if (x >= button.x && x <= button.x + button.w && y >= button.y && y <= button.y + button.h) {
+      confirmPick(); return;
+    }
+    for (let i = 0; i < ROSTER.length; i++) {
+      const t = selectedTile(i);
+      if (x >= t.x && x <= t.x + t.w && y >= t.y && y <= t.y + t.h) {
+        // Single tap previews; double tap on the same tile confirms.
+        if (G.cursor === i) confirmPick(); else { G.cursor = i; sfx('menu'); }
+        return;
+      }
+    }
   } else if (G.screen === 'cutscene' && G.cut) G.cut.advance();
   else if (G.screen === 'result') { if (x > 330 && x < 630) { if (y > 300 && y < 350) afterResult(0); if (y > 360 && y < 410) afterResult(1); } }
 }
@@ -206,43 +211,67 @@ function announceSelectedFighter(r) {
 }
 function drawSelect() {
   drawBackdrop(G.tick);
-  const slot = G.mode === 'story' ? 'CHOOSE YOUR STEREOTYPE' : G.mode === 'training' ? (G.pickSlot ? 'TRAINING PARTNER' : 'YOUR FIGHTER') : `PLAYER ${G.pickSlot + 1}: CHOOSE YOUR FIGHTER`;
-  text(slot, W / 2, 52, 28, '#fff', 'center', 900, true);
-  const big = ROSTER.length <= 10;
+  const modeTitle = G.mode === 'story' ? 'SELECT YOUR FIGHTER' :
+    G.mode === 'training' ? (G.pickSlot ? 'SELECT TRAINING PARTNER' : 'SELECT YOUR FIGHTER') :
+    `PLAYER ${G.pickSlot + 1} · SELECT FIGHTER`;
+  text(modeTitle, W / 2, 49, 29, '#fff', 'center', 900, true);
+  text('20 ORIGINAL FIGHTERS   ·   5 × 4 ROSTER', 292, 85, 12, 'rgba(255,255,255,0.75)', 'center', 700);
+
+  // Portrait tiles crop the face/upper body of a supplied image. Sprite-only
+  // fighters retain the canonical rig and never disappear behind a broken URL.
   ROSTER.forEach((r, i) => {
-    const t = tileRect(i), sel = i === G.cursor;
-    ctx.fillStyle = sel ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.35)'; ctx.fillRect(t.x, t.y, t.w, t.h);
-    ctx.strokeStyle = sel ? r.accent : 'rgba(255,255,255,0.2)'; ctx.lineWidth = sel ? 3 : 1; ctx.strokeRect(t.x, t.y, t.w, t.h);
-    // A geometric marker makes the selected tile identifiable without relying on colour.
-    if (sel) {
-      ctx.save();
-      ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
-      const pad = 5, corner = 12, left = t.x + pad, right = t.x + t.w - pad;
-      const top = t.y + pad, bottom = t.y + t.h - pad;
-      ctx.beginPath();
-      ctx.moveTo(left, top + corner); ctx.lineTo(left, top); ctx.lineTo(left + corner, top);
-      ctx.moveTo(right - corner, top); ctx.lineTo(right, top); ctx.lineTo(right, top + corner);
-      ctx.moveTo(left, bottom - corner); ctx.lineTo(left, bottom); ctx.lineTo(left + corner, bottom);
-      ctx.moveTo(right - corner, bottom); ctx.lineTo(right, bottom); ctx.lineTo(right, bottom - corner);
-      ctx.stroke(); ctx.restore();
+    const t = selectedTile(i), selected = i === G.cursor, locked = G.pickSlot === 1 && i === G.picks[0];
+    ctx.fillStyle = selected ? 'rgba(255,255,255,0.21)' : 'rgba(0,0,0,0.55)';
+    ctx.fillRect(t.x, t.y, t.w, t.h);
+    ctx.strokeStyle = selected ? '#ffffff' : locked ? '#ffd31a' : 'rgba(255,255,255,0.25)';
+    ctx.lineWidth = selected ? 3 : locked ? 2 : 1;
+    ctx.strokeRect(t.x + 1, t.y + 1, t.w - 2, t.h - 2);
+    ctx.save(); ctx.beginPath(); ctx.rect(t.x + 3, t.y + 3, t.w - 6, t.h - 24); ctx.clip();
+    const portrait = store.portrait(r.id);
+    if (portrait) {
+      const cropY = Math.floor(portrait.height * 0.05);
+      const cropH = Math.max(1,Math.floor(portrait.height * 0.57));
+      ctx.drawImage(portrait, 0, cropY, portrait.width, cropH, t.x + 3, t.y + 3, t.w - 6, t.h - 25);
+    } else {
+      drawPortrait(ctx, r, store, t.cx, t.y + t.h - 23, selected ? 0.77 : 0.69, G.tick, 'idle');
     }
-    ctx.save(); ctx.beginPath(); ctx.rect(t.x + 1, t.y - (big ? 210 : 0), t.w - 2, t.h + (big ? 209 : -1)); ctx.clip();
-    drawPortrait(ctx, r, store, t.cx, t.y + t.h - 14, big ? (sel ? 1.55 : 1.3) : (sel ? 0.95 : 0.82), G.tick, 'idle'); ctx.restore();
-    if (big) text(r.name.toUpperCase(), t.cx, t.y - 8, 16, sel ? r.accent : '#fff', 'center', 800);
-    else text(r.nick.toUpperCase(), t.cx, t.y + t.h + 15, 11, sel ? r.accent : 'rgba(255,255,255,0.8)', 'center', 800);
+    ctx.restore();
+    ctx.fillStyle = selected ? r.accent : '#f1f1f6';
+    ctx.fillRect(t.x + 3,t.y + t.h - 22,t.w - 6,19);
+    text(r.name.toUpperCase(),t.cx,t.y + t.h - 8,r.name.length > 15 ? 8 : r.name.length > 12 ? 9 : 10,
+      selected ? '#070c12' : '#14121c','center',900);
+    if (locked) { ctx.fillStyle='#101219';ctx.fillRect(t.x+4,t.y+4,24,15);text('P1',t.x+16,t.y+15,10,'#ffd31a','center',900); }
   });
-  const r = ROSTER[G.cursor];
-  text(`${r.style} · ${r.country}`, W / 2, 84, 15, r.accent, 'center', 700);
-  text(r.bio, W / 2, 106, r.bio.length > 120 ? 11 : r.bio.length > 95 ? 12 : 14, 'rgba(255,255,255,0.8)', 'center', 500, true);
-  text(`Special: ${r.special}   ·   Super: ${r.superName}`, W / 2, 128, 14, '#fff', 'center', 700);
-  const mv = r.moves; text(`Signature moves: ${mv.hp.name} · ${mv.launcher.name} · ${mv.sweep.name}`, W / 2, 150, 12, 'rgba(255,255,255,0.6)', 'center', 500);
-  if (r.id === 'gym-bro') {
-    // Use source stats and real control mappings; no invented 1-10 ratings.
-    text(`TYLER  ·  HP ${r.hp}  ·  Speed ${r.speed}  ·  Jump ${r.jump}  ·  F punch / G kick / H special / S+H super`,
-      W / 2, 167, 11, '#d8ff86', 'center', 700);
+
+  const r = ROSTER[G.cursor], panel = {x:586,y:105,w:349,h:274};
+  ctx.fillStyle = 'rgba(0,0,0,0.49)'; ctx.fillRect(panel.x,panel.y,panel.w,panel.h);
+  ctx.strokeStyle = r.accent; ctx.lineWidth = 2; ctx.strokeRect(panel.x,panel.y,panel.w,panel.h);
+  // One large identity-focused preview; clip artwork to the panel.
+  ctx.save(); ctx.beginPath(); ctx.rect(panel.x + 2,panel.y + 2,panel.w - 4,panel.h - 4); ctx.clip();
+  const large = store.portrait(r.id);
+  if (large) {
+    const h = panel.h * 1.25, w = large.width * h / large.height;
+    ctx.drawImage(large,panel.x + (panel.w - w) / 2,panel.y + panel.h - h,w,h);
+  } else {
+    drawPortrait(ctx,r,store,panel.x + panel.w / 2,panel.y + panel.h - 7,2.1,G.tick,'idle');
   }
+  const dark = ctx.createLinearGradient(0,panel.y + 160,0,panel.y + panel.h);
+  dark.addColorStop(0,'rgba(0,0,0,0)'); dark.addColorStop(1,'rgba(0,0,0,0.9)');
+  ctx.fillStyle=dark;ctx.fillRect(panel.x,panel.y + 160,panel.w,114);ctx.restore();
+  text(r.name.toUpperCase(), panel.x + panel.w / 2, panel.y + 235, 26, '#fff','center',900);
+  text(`${r.nick.toUpperCase()} · ${r.style.toUpperCase()}`, panel.x + panel.w / 2, panel.y + 258,13,r.accent,'center',700);
+
+  ctx.fillStyle='rgba(5,8,17,0.91)';ctx.fillRect(586,383,349,86);
+  text(`HP ${r.hp}  ·  SPD ${r.speed}  ·  JUMP ${r.jump}`,760,404,12,'#f8f8f8','center',800);
+  text(`SPECIAL · ${r.special}`,760,427,r.special.length > 18 ? 12 : 14,'#ffda21','center',800);
+  text(`SUPER · ${r.superName}`,760,448,r.superName.length > 18 ? 12 : 14,'#fff','center',800);
+  text(`${r.moves.hp.name} / ${r.moves.launcher.name}`,760,463,10,'#a5b6cd','center',600);
+  const b = selectButtonRect;
+  ctx.fillStyle=r.accent;ctx.fillRect(b.x,b.y,b.w,b.h);
+  text(G.pickSlot === 1 ? 'CONFIRM OPPONENT' : 'CONFIRM FIGHTER', b.x+b.w/2,b.y+25,18,'#090b11','center',900);
+
   announceSelectedFighter(r);
-  text('← → ↑ ↓ choose · Enter confirm · Esc back', W / 2, 536, 11, 'rgba(255,255,255,0.5)', 'center', 500);
+  text('ARROWS / WASD MOVE · ENTER CONFIRM · ESC BACK · TAP TO PREVIEW', W/2,532,11,'rgba(255,255,255,0.82)','center',700);
 }
 function drawResult() {
   drawBackdrop(G.tick); const r = G.result;
