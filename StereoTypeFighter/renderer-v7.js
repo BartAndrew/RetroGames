@@ -346,7 +346,17 @@ function drawArt(ctx, store, def, f) {
       (window.SF_RELEASE?.version !== '8.0' ||
         new URLSearchParams(window.location.search).get('gymBroRig') === '1')) return false;
   const spec = store.spec(def.id);
-  let name = f.anim; if (!spec.anims[name]) name = FALLBACKS[name] || 'idle'; if (!spec.anims[name]) return false;
+  let name = f.anim;
+  if (def.id === 'gym-bro' && typeof window !== 'undefined' &&
+      window.SF_RELEASE?.version === '8.0') {
+    // Action-by-action release: never substitute the newly released Idle art
+    // for missing Walk, Block, Hurt or attack frames. Each action must have
+    // its own approved animation, otherwise keep the articulated yellow rig.
+    if (!spec.anims[name]) return false;
+  } else {
+    if (!spec.anims[name]) name = FALLBACKS[name] || 'idle';
+    if (!spec.anims[name]) return false;
+  }
   const a = spec.anims[name], n = a.frames;
   let x, idx;
   if (ATTACK_ANIMS.has(f.anim) || a.once) x = clamp(f.animP || f.animT / (a.fps ? 60 / a.fps * n : 20), 0, 0.999) * n;
