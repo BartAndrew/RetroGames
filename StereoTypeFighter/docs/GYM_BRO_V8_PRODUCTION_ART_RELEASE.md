@@ -1,4 +1,12 @@
-# Gym Bro — V8.0 production artwork patch (18 November 2026)
+# Gym Bro — V8 production artwork and staged action releases
+
+## Current release: Action 01/25 — Idle (user review pending)
+
+The newest V8 build contains **seven sprite-backed action sequences / 34 RGBA frames**. Newly added: six 512×512 transparent `idle` frames at 7 fps, with shared anchor [256,470] and the approved backward black cap / yellow GYM BRO costume. The **other 24 actions** continue to use the procedural fighter rig; 86 of the planned 120 art frames remain. The original 3×2 source and contact sheet are preserved in `source-art/gym-bro-v8/idle/`.
+
+For reproducible QA: `npm run test:unit` and `npm run test:browser:release`. The V8 animation inspector defaults to Idle, and a new browser regression checks 01→02→03→04→05→06→01 through the real renderer. Gameplay, hitboxes and old V7 versions remain unchanged. **Do not proceed to Action 02 until the user tests Idle and requests continuation.**
+
+## Historical V8 initial artwork release — 28 frames (18 November 2026)
 
 The V8.0 default and `v8.html` now use `art/manifest-v8.json` and
 version-isolated assets under `art/v8/`. Historical V7, V7.1, V7.2, their
@@ -13,9 +21,9 @@ artwork and gameplay remain unchanged.
   cap, bright yellow `GYM BRO` tank, muscular tan build, black shorts.
 - **1 illustrated prologue**: 1600×900 PNG showing Tyler at the 24/7 gym.
   Its existing canon dialogue and location text remain unchanged.
-- **25 rig-rendered action states remain**. The previous dark-tank,
+- **24 rig-rendered action states remain after Action 01**. The previous dark-tank,
   no-cap idle/walk images do not activate in V8; the approved yellow-kit
-  procedural rig fills all unreleased actions (including idle, walk and super).
+  procedural rig fills all unreleased actions (including walk and super).
 
 ## Quality evidence
 GitHub artifact: `source-art/gym-bro-v7-1/qa-v8/REPORT.json`, generated
@@ -30,8 +38,8 @@ rig movements remain **known polish limitations**, not hidden defects.
 This is a **user-requested staged production art release**. It is **not** a
 claim that all 120 target sprite frames have been completed, that remaining are resolved, or that the nine remaining story illustrations
 exist. The canonical 31-action/120-frame artwork target therefore remains
-partially complete: 6 sprite sequences / 28 distinct frame files are live;
-25 actions / 92 target frames still require artwork. One of ten scene
+partially complete: 7 sprite sequences / 34 distinct frame files are live after Action 01;
+24 actions / 86 target frames still require artwork after Action 01. One of ten scene
 illustrations is live.
 
 ## Implementation and rollback
@@ -60,6 +68,6 @@ for next-character replication.
 
 Corrected an overlooked visual-only integration defect: the four `intro` keyposes were present in the released files but the fighting engine began each round in `idle`. The V8 renderer now plays `intro` once during the 100-tick round lead-in, without changing any combat state or move frame timing. Historical V7 routes stay untouched.
 
-Added the inspectable `gym-bro-animation-qa-v8.html` visual preview and `tests/v8-animations-actual-render.spec.mjs`, which actually renders all 31 states and checks that six named sprite actions decode to image draw calls while 25 others draw the canonical rig. The browser test also draws a real round-intro match and verifies that sprite 03 appears and combat state remains `idle`.
+Added the inspectable `gym-bro-animation-qa-v8.html` visual preview and `tests/v8-animations-actual-render.spec.mjs`, which actually renders all 31 states and checks that seven named sprite actions decode to image draw calls while 24 others draw the canonical rig. The browser test also draws a real round-intro match and verifies that sprite 03 appears and combat state remains `idle`.
 
-All 31 procedural states and the six current sprite actions are playable. This does **not** turn 28 PNGs into the 120 individually required production frames; remaining premium artwork is a separate deliverable.
+All 31 states are playable, including seven current sprite actions. This does **not** turn 28 PNGs into the 120 individually required production frames; remaining premium artwork is a separate deliverable.

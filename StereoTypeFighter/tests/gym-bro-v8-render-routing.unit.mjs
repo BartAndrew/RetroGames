@@ -13,7 +13,7 @@ const {drawFighter,drawMatch}=await import('../renderer-v7.js');
 const {byId}=await import('../roster-v7.js');
 const {createMatch}=await import('../combat-v7.js');
 const manifest=JSON.parse(fs.readFileSync(fileURLToPath(new URL('../art/manifest-v8.json',import.meta.url)),'utf8'));
-const def=byId('gym-bro'), spriteActions=['airK','airP','hk','intro','launcher','victory'];
+const def=byId('gym-bro'), spriteActions=['airK','airP','hk','idle','intro','launcher','victory'];
 const allActions=['idle','walk','walkBack','dashF','dashB','crouch','block','blockLow','prejump','jumpUp','jumpApex','jumpDown','land',
   'lp','lk','hp','hk','launcher','sweep','airP','airK','hurt','hurtLow','launched','knockdown','ko','getup','special','super','victory','intro'];
 
@@ -43,9 +43,9 @@ function fighter(anim){
    state:'attack',anim,animT:25,animP:.48,moveT:25,move:def.moves.super};
 }
 
-test('actual V8 drawFighter routes exactly six sprite actions; remaining 25 render as rig',()=>{
+test('actual V8 drawFighter routes exactly seven sprite actions; remaining 24 render as rig',()=>{
  assert.equal(allActions.length,31);
- assert.equal(spriteActions.length,6);
+ assert.equal(spriteActions.length,7);
  const used=[];
  for(const anim of allActions){
    const spy=spyContext();
