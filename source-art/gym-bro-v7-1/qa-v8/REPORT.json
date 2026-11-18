@@ -1,0 +1,636 @@
+{
+  "fighter": "gym-bro",
+  "version": "8.0",
+  "approved_by_automation": false,
+  "source": "source-art/gym-bro-v7-1/branch-candidates",
+  "actions": {
+    "airP": {
+      "frames": 4,
+      "technical_validation": "passed",
+      "manual_motion_review": "pending",
+      "paths": [
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airP/01.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airP/02.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airP/03.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airP/04.png"
+      ]
+    },
+    "airK": {
+      "frames": 4,
+      "technical_validation": "passed",
+      "manual_motion_review": "pending",
+      "paths": [
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airK/01.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airK/02.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airK/03.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airK/04.png"
+      ]
+    },
+    "hk": {
+      "frames": 6,
+      "technical_validation": "passed",
+      "manual_motion_review": "pending",
+      "paths": [
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/01.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/02.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/03.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/04.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/05.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/06.png"
+      ]
+    },
+    "launcher": {
+      "frames": 6,
+      "technical_validation": "passed",
+      "manual_motion_review": "pending",
+      "paths": [
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/01.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/02.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/03.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/04.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/05.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/06.png"
+      ]
+    },
+    "intro": {
+      "frames": 4,
+      "technical_validation": "passed",
+      "manual_motion_review": "pending",
+      "paths": [
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/intro/01.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/intro/02.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/intro/03.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/intro/04.png"
+      ]
+    },
+    "victory": {
+      "frames": 4,
+      "technical_validation": "passed",
+      "manual_motion_review": "pending",
+      "paths": [
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/victory/01.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/victory/02.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/victory/03.png",
+        "source-art/gym-bro-v7-1/branch-candidates/gym-bro/victory/04.png"
+      ]
+    }
+  },
+  "image_checks": [
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airP/01.png",
+      "sha256": "c526575b2bacb7dce3d0bd7c910975be5efdbd9c65d2ab49c8d2a39973eeeaf6",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        137,
+        75,
+        375,
+        470
+      ],
+      "detached_fraction": 0.00066,
+      "bytes": 139749,
+      "action": "airP",
+      "index": 1
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airP/02.png",
+      "sha256": "6054ca640d70c361e749cb30c1ed8a52acaefeb02f45685585134b9ba78fef06",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        72,
+        75,
+        440,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 127510,
+      "action": "airP",
+      "index": 2
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airP/03.png",
+      "sha256": "2cce3a719dc305a27c5e64287d73daf9d0f7938ff833ec88f9dd934e15ad4502",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        55,
+        75,
+        457,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 131030,
+      "action": "airP",
+      "index": 3
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airP/04.png",
+      "sha256": "db9f21870b1eccd8a57637f8403ab40fd3d5c9f4d0a316d511e855cf85a8d1c5",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        133,
+        75,
+        379,
+        470
+      ],
+      "detached_fraction": 0.00035,
+      "bytes": 133735,
+      "action": "airP",
+      "index": 4
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airK/01.png",
+      "sha256": "23397ecc95ba1b29d55bb24f955dafeda15445ac4a0ea9c8e47ca2b322e7f61c",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        128,
+        34,
+        384,
+        470
+      ],
+      "detached_fraction": 0.0003,
+      "bytes": 150213,
+      "action": "airK",
+      "index": 1
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airK/02.png",
+      "sha256": "d4535f7bfc952c882391baa3feb9c51b2340a9f65f77d8b60873279ab24398b4",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        38,
+        34,
+        474,
+        470
+      ],
+      "detached_fraction": 0.00026,
+      "bytes": 164184,
+      "action": "airK",
+      "index": 2
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airK/03.png",
+      "sha256": "e9c91081f8dd8a63b69e8024e921ef1a3a79b57ae130f9d72e98697b5921c29f",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        27,
+        47,
+        485,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 141872,
+      "action": "airK",
+      "index": 3
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/airK/04.png",
+      "sha256": "938292fcb5763d3aa7447d500a89c985a7b360d2979dd92195fe96dae1d045bc",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        65,
+        85,
+        447,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 136101,
+      "action": "airK",
+      "index": 4
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/01.png",
+      "sha256": "0fc2a13d6fad5001ba2f586b69dee8809a456f3905dd79302e43c7295e8bed97",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        109,
+        80,
+        408,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 115813,
+      "action": "hk",
+      "index": 1
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/02.png",
+      "sha256": "2898e0a608dd96e6caa1ec33168c765070dd863a120bd361c8c5260dd36389cc",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        196,
+        80,
+        395,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 102609,
+      "action": "hk",
+      "index": 2
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/03.png",
+      "sha256": "94124e96fdedaa9be60a3889d40f66d498433e4976ff37cdc0468af0af4814d0",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        128,
+        80,
+        489,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 108801,
+      "action": "hk",
+      "index": 3
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/04.png",
+      "sha256": "5c5248f937c84edf075ca6074e915b84a20bf62e5c1d350dd69d483807ab88dd",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        152,
+        80,
+        480,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 104879,
+      "action": "hk",
+      "index": 4
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/05.png",
+      "sha256": "2a7a87552666a16e0c607634debb151b47e2d415ff983bfff2ba27427493db0a",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        189,
+        80,
+        399,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 102759,
+      "action": "hk",
+      "index": 5
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/hk/06.png",
+      "sha256": "326135495a43c1b56d1b092773b60aaa2a668493b0efd5753e314f3da22bcf8d",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        122,
+        80,
+        402,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 113681,
+      "action": "hk",
+      "index": 6
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/01.png",
+      "sha256": "4735f29143ad873c913a52b75705fb2e1241726919954ccaf24d536d63897ff8",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        118,
+        75,
+        395,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 124363,
+      "action": "launcher",
+      "index": 1
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/02.png",
+      "sha256": "ffa86bbb41f82287a58fe9ab2f4ab31f64fe7541ab5186a0cab5dbd7e9fdd02d",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        109,
+        75,
+        403,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 161042,
+      "action": "launcher",
+      "index": 2
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/03.png",
+      "sha256": "e8642af993186d7d5b93ffd387f8152db70cedade9f70987719d4f066be9ea99",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        112,
+        75,
+        400,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 134957,
+      "action": "launcher",
+      "index": 3
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/04.png",
+      "sha256": "112947f26d7e5c0ae067711c1d7ac7e102554190373bb865a7f4190cd64c6400",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        140,
+        29,
+        373,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 105947,
+      "action": "launcher",
+      "index": 4
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/05.png",
+      "sha256": "3db0b346feaae567a6a8fa3d6b51c7334a5b4d2ded42b8b2eb9a482d039ce561",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        131,
+        75,
+        381,
+        470
+      ],
+      "detached_fraction": 0.0008,
+      "bytes": 117622,
+      "action": "launcher",
+      "index": 5
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/launcher/06.png",
+      "sha256": "f2e8ce8aba06b2e8e968108e30ccc297082bbf16083b215413ba847ca4fff4ab",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        125,
+        75,
+        387,
+        470
+      ],
+      "detached_fraction": 0.00038,
+      "bytes": 122939,
+      "action": "launcher",
+      "index": 6
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/intro/01.png",
+      "sha256": "cc0678b6710194bf1303eb8a0c56759ceb055a1f4ea915006b0548f54debf3ed",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        112,
+        85,
+        399,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 158099,
+      "action": "intro",
+      "index": 1
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/intro/02.png",
+      "sha256": "ff4e0f7721cd3a5ad7685b64d8906ce55f83aa5bdd75ace7223b002685365128",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        134,
+        85,
+        377,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 117441,
+      "action": "intro",
+      "index": 2
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/intro/03.png",
+      "sha256": "44432c08db4f938ed702ac68d4ba5c4ec012cdd03c03cb233b20a3ae828c071b",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        116,
+        85,
+        396,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 134013,
+      "action": "intro",
+      "index": 3
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/intro/04.png",
+      "sha256": "21e0b558371210105a0a809ebc03688d70acaf09bdd820ee13482a236b8d1fb8",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        121,
+        85,
+        391,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 123484,
+      "action": "intro",
+      "index": 4
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/victory/01.png",
+      "sha256": "7ea2843a7d33dd24ee1a82cc0ed3fa5f3161e99e3dc8acbd1c86808edf6ba622",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        128,
+        91,
+        383,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 112870,
+      "action": "victory",
+      "index": 1
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/victory/02.png",
+      "sha256": "e7b13790f2ff2d64334d0a30cf4cbf7bac01ebef9c844126571fa2c99c092bab",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        141,
+        65,
+        371,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 119438,
+      "action": "victory",
+      "index": 2
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/victory/03.png",
+      "sha256": "546c3abed5e4b7116c4f7fb73576a569696d047cddf602ef9ca95b3a926f74b5",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        124,
+        54,
+        387,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 125513,
+      "action": "victory",
+      "index": 3
+    },
+    {
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/victory/04.png",
+      "sha256": "e262b96209b9d8696d29a48e3f813037a0c1a0ced7ff58b843fb3ecd2ef2fbaa",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bbox": [
+        138,
+        50,
+        375,
+        470
+      ],
+      "detached_fraction": 0.0,
+      "bytes": 114513,
+      "action": "victory",
+      "index": 4
+    }
+  ],
+  "review_images": [
+    {
+      "kind": "portrait",
+      "path": "source-art/gym-bro-v7-1/branch-candidates/gym-bro/portrait.png",
+      "preview": "source-art/gym-bro-v7-1/qa-v8/preview-portrait.jpg",
+      "dimensions": [
+        900,
+        1200
+      ],
+      "sha256": "aca13a42241a337f0089f16546f3d43dd50c9089c7271fb9f8a754c206363ef6",
+      "visual_identity_review": "pending"
+    },
+    {
+      "kind": "prologue",
+      "path": "source-art/gym-bro-v7-1/branch-candidates/scenes/prologue-gym-bro.png",
+      "preview": "source-art/gym-bro-v7-1/qa-v8/preview-prologue.jpg",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "18dbcef0e724b56241214ae6f0cb79770f1f696135c820caf43a1dbcfd04db2e",
+      "visual_identity_review": "pending"
+    }
+  ]
+}
