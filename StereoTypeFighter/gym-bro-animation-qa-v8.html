@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gym Bro V8.0 — 31-action animation QA</title>
+<style>
+:root{font-family:system-ui,Segoe UI,sans-serif;color:#eef3ff;background:#0b101d;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;padding:18px;max-width:1200px;margin-inline:auto}
+a{color:#e5d94b}header{display:flex;align-items:start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font-size:clamp(24px,4vw,36px);margin:8px 0 6px}.sub{color:#a8b9d0;line-height:1.45;max-width:870px}
+strong{color:#ffd335}.bar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:14px 0}
+button,select,input{font:inherit}button,select{border:1px solid #50617a;background:#18223a;color:#eaf3ff;border-radius:8px;padding:9px 13px;cursor:pointer}
+button:focus-visible{outline:3px solid #ffdf53}button.active{background:#3c471d;border-color:#efd84b;color:#fff6b8}
+main{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(230px,0.9fr);gap:16px}
+canvas{width:100%;height:auto;display:block;border-radius:10px;background:#182235}
+h2{font-size:17px;margin:6px 0 12px}.preview{border:1px solid #425370;padding:10px;border-radius:12px;background:#121b2d}
+#summary{font-weight:700;padding:12px;border:1px solid #45526a;border-radius:10px;background:#19243b}
+#actionGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-height:660px;overflow:auto}
+#actionGrid button{font-size:12px;text-align:left;padding:8px;min-height:43px}
+#actionGrid button span{display:block;opacity:.7;font-size:10px}
+#status{min-height:42px;color:#a8b9d0;margin-top:10px}.controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.controls input{flex:1;min-width:100px}footer{color:#aab4c5;margin:20px 0;font-size:13px}
+@media(max-width:740px){main{grid-template-columns:1fr}#actionGrid{grid-template-columns:repeat(4,minmax(0,1fr));max-height:none}#actionGrid button{font-size:11px}}
+</style>
+</head>
+<body>
+<header><div><h1>Gym Bro · V8.0 animation audit</h1>
+<p class="sub">Real V8 renderer and source-of-truth roster. Preview every one of the 31 gameplay states, inspect the released sprite sequences, and compare against the same yellow-kit procedural rig used for missing art.</p></div>
+<div><a href="./v8.html">Play V8.0</a> · <a href="./v7-2.html">Compare V7.2</a></div></header>
+<div id="summary">Loading production manifest…</div>
+<main>
+<section class="preview">
+<div class="bar"><label for="actionSelect">Action</label><select id="actionSelect" aria-label="Choose animation"></select>
+<button id="prev" type="button">Previous</button><button id="next" type="button">Next</button></div>
+<canvas id="preview" width="960" height="540" aria-label="Gym Bro animation preview"></canvas>
+<div class="bar controls"><button id="play" type="button">Pause</button>
+<label for="scrub">Timeline</label><input id="scrub" type="range" min="0" max="100" value="0" step="1">
+<span id="frame">0 / 100</span></div>
+<h2 id="currentAction">Loading…</h2><p id="status" role="status">Loading fighter frames…</p>
+</section>
+<section><h2>31 required actions</h2><div id="actionGrid"></div></section></main>
+<footer>This page audits artwork playback, not attack damage or hitboxes. Exactly six sprite actions are released; other action silhouettes are the unified Gym Bro rig. <a href="?gymBroRig=1">Force procedural-only comparison</a>. Source artwork and previous game versions are preserved.</footer>
+<script type="module" src="./gym-bro-animation-qa-v8.js"></script>
+</body></html>
