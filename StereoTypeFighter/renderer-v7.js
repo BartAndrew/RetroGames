@@ -338,7 +338,12 @@ const ATTACK_ANIMS = new Set(['lp', 'lk', 'hp', 'hk', 'launcher', 'sweep', 'airP
 const FALLBACKS = { blockLow: 'block', hurtLow: 'hurt', jumpApex: 'jumpUp', prejump: 'crouch', land: 'crouch', dashF: 'walk', dashB: 'walkBack', launched: 'hurt', intro: 'idle', taunt: 'victory' };
 
 function drawArt(ctx, store, def, f) {
-  if (def.id === 'gym-bro' && GYM_RIG_RELEASE) return false;
+  // V8 uses only six validated, identity-locked sprite actions from its own
+  // manifest. All other Gym Bro actions keep the unified yellow-kit rig.
+  // ?gymBroRig=1 remains an explicit comparison/diagnostic override.
+  if (def.id === 'gym-bro' && GYM_RIG_RELEASE &&
+      (window.SF_RELEASE?.version !== '8.0' ||
+        new URLSearchParams(window.location.search).get('gymBroRig') === '1')) return false;
   const spec = store.spec(def.id);
   let name = f.anim; if (!spec.anims[name]) name = FALLBACKS[name] || 'idle'; if (!spec.anims[name]) return false;
   const a = spec.anims[name], n = a.frames;

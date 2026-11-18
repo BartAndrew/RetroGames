@@ -337,7 +337,9 @@ function draw() {
   } else if (G.screen === 'result') drawResult();
 }
 (async () => {
-  await store.load('./art/manifest-v7-1.json');
+  const releaseV8 = window.SF_RELEASE?.version === '8.0';
+  await store.load(releaseV8 ? './art/manifest-v8.json' : './art/manifest-v7-1.json');
+  if (!releaseV8) { // Historical V7.1 preview flags never mutate V8 production art.
   // QA-only opt-in: show the six real R8 launcher sprites committed in this
   // branch. Every other action keeps its original verified sprite/rig fallback.
   // There is no combat tuning, damage or hitbox change.
@@ -389,6 +391,7 @@ function draw() {
   // sprites and from canonical combat hit timing. Only on explicit opt-in.
   if (new URLSearchParams(window.location.search).get('gymBroSuperFX') === '1') {
     window.SF7_SUPER_FX_R13_PREVIEW = true;
+  }
   }
   requestAnimationFrame(frame);
 })();

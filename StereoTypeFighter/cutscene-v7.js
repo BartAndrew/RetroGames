@@ -30,7 +30,9 @@ export class Cutscene {
     const s = this.s, m = MOODS[s.mood] || MOODS.calm, T = this.sceneT;
     const bg = ctx.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, m[0]); bg.addColorStop(1, m[1]); ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
     // Ken Burns on supplied scene art; slow push on the staged version
-    const art = s.art && this.store ? this.store.scene(`./art/scenes/${s.art}.png`) : null;
+    // Version-scoped art avoids changing previously published V7 cutscenes.
+    const sceneRoot = window.SF_RELEASE?.version === '8.0' ? './art/v8/scenes/' : './art/scenes/';
+    const art = s.art && this.store ? this.store.scene(`${sceneRoot}${s.art}.png`) : null;
     const zoom = 1.04 + 0.06 * ease(clamp(T / 600, 0, 1)), px = Math.sin(T / 300) * 10;
     ctx.save(); ctx.translate(W / 2 + px, H / 2); ctx.scale(zoom, zoom); ctx.translate(-W / 2, -H / 2);
     if (art) { const r = Math.max(W / art.width, H / art.height); ctx.drawImage(art, (W - art.width * r) / 2, (H - art.height * r) / 2, art.width * r, art.height * r); }
