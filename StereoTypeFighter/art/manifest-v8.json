@@ -31,7 +31,8 @@
       "intro": {
         "frames": 4,
         "fps": 7,
-        "loop": true
+        "loop": false,
+        "once": true
       },
       "victory": {
         "frames": 4,

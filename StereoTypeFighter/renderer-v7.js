@@ -523,7 +523,18 @@ export function drawMatch(ctx, m, store, hudState) {
   drawStage(ctx, m.tick, m.fighters[0].def.accent);
   // draw the attacker in front
   const order = m.fighters.slice().sort((p, q) => (p.state === 'attack' ? 1 : 0) - (q.state === 'attack' ? 1 : 0));
-  for (const f of order) drawFighter(ctx, f, store);
+  for (const f of order) {
+    // The 100-tick round intro is a presentation-only window: combat keeps
+    // its actual idle state, but Tyler's V8 introductory sprite sequence plays
+    // exactly once before control starts. This cannot change hitboxes, inputs,
+    // fighter state or the deterministic 60 Hz simulation.
+    const view = m.phase === 'intro' && f.def.id === 'gym-bro' &&
+      typeof window !== 'undefined' && window.SF_RELEASE?.version === '8.0'
+      ? { ...f, anim: 'intro', animT: m.phaseT,
+          animP: clamp(m.phaseT / 100, 0, 0.999) }
+      : f;
+    drawFighter(ctx, view, store);
+  }
   for (const p of m.projectiles) drawProjectile(ctx, p);
   drawFx(ctx);
   ctx.restore();
