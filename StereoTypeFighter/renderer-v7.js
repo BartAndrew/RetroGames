@@ -333,7 +333,7 @@ export class ArtStore {
   scene(url) { if (!this.manifest || !this.manifest.scenes) return null; let e = this.imgs.get(url); if (!e) { e = new Image(); e.src = url; e.ok = false; e.onload = () => (e.ok = true); e.onerror = () => (e.bad = true); this.imgs.set(url, e); } return e.ok ? e : null; }
 }
 // Full rig rendering is available in V7.2 for incomplete/unapproved Gym Bro sprites.
-const GYM_RIG_RELEASE = typeof window !== 'undefined' && (new URLSearchParams(window.location.search).get('gymBroRig') === '1' || /\/v7-2\.html$/.test(window.location.pathname) || /\/StereoTypeFighter\/(?:index\.html)?$/.test(window.location.pathname));
+const GYM_RIG_RELEASE = typeof window !== 'undefined' && (new URLSearchParams(window.location.search).get('gymBroRig') === '1' || /\/(?:v7-2|v8)\.html$/.test(window.location.pathname) || /\/StereoTypeFighter\/(?:index\.html)?$/.test(window.location.pathname));
 const ATTACK_ANIMS = new Set(['lp', 'lk', 'hp', 'hk', 'launcher', 'sweep', 'airP', 'airK', 'special', 'super']);
 const FALLBACKS = { blockLow: 'block', hurtLow: 'hurt', jumpApex: 'jumpUp', prejump: 'crouch', land: 'crouch', dashF: 'walk', dashB: 'walkBack', launched: 'hurt', intro: 'idle', taunt: 'victory' };
 
