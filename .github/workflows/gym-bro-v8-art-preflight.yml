@@ -1,0 +1,32 @@
+name: Gym Bro V8 art candidate preflight
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/gym-bro-v8-art-preflight.yml'
+      - 'StereoTypeFighter/tools/qa-gym-bro-v8.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  artwork:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'Pillow==11.3.0'
+      - name: Validate sprites and generate review images
+        run: python StereoTypeFighter/tools/qa-gym-bro-v8.py
+      - name: Commit review outputs (never activate production art)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add source-art/gym-bro-v7-1/qa-v8
+          if ! git diff --staged --quiet; then
+            git commit -m "ci(gym-bro): generate candidate V8 art QA contact sheets"
+            git push origin HEAD:main
+          fi
