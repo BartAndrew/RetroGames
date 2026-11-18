@@ -1,4 +1,13 @@
-# Stereotype Fighters - V5.1
+# StereoType Fighters — V8.0
+
+**Current stable build:** V8.0. Launch `index.html` or `v8.html`. The V8 release uses the established V7.2 combat, character-selection and story framework, including the 20-fighter roster and Gym Bro's 31-action procedural rig. Realistic sprite frames, portrait and cinematic art remain separate approval tasks.
+
+Previous versions `v7.html`, `v7-1.html` and `v7-2.html` are retained. The engine source modules still use V7 filenames intentionally to preserve combat determinism and avoid breaking historical builds. See `docs/FIGHTER_PRODUCTION_PLAYBOOK_V7.md` for the reusable next-character build process.
+
+---
+
+## Historical V5.1 notes
+
 
 A browser arcade prototype using the repository's original character artwork. V5 replaces the string-replacement/eval loader with direct ES modules and a rebuilt character-select interface.
 
