@@ -6,9 +6,9 @@ const ACTIONS = [
   'launcher','sweep','airP','airK','hurt','hurtLow','launched',
   'knockdown','ko','getup','special','super','victory','intro'
 ];
-const SPRITES = ['airK','airP','hk','intro','launcher','victory'];
+const SPRITES = ['airK','airP','hk','idle','intro','launcher','victory'];
 
-test('real V8 renderer draws sprites for six actions and visible rig for all other 25', async ({ page }) => {
+test('real V8 renderer draws sprites for seven actions and visible rig for the other 24', async ({ page }) => {
   const errors=[]; page.on('pageerror',e=>errors.push(e.message));
   await page.goto('./v8.html');
   await page.waitForFunction(()=>{
@@ -39,10 +39,10 @@ test('real V8 renderer draws sprites for six actions and visible rig for all oth
       .reduce((n,v)=>n+v.frames,0)};
   });
   expect(result.statuses).toHaveLength(31);
-  expect(result.loaded).toBe(28);
+  expect(result.loaded).toBe(34);
   const used=result.statuses.filter(s=>s.sprite).map(s=>s.anim).sort();
   expect(used).toEqual(SPRITES);
-  expect(result.statuses.filter(s=>!s.sprite)).toHaveLength(25);
+  expect(result.statuses.filter(s=>!s.sprite)).toHaveLength(24);
   expect(errors).toEqual([]);
 });
 
@@ -73,11 +73,11 @@ test('the real 100-tick round intro displays Gym Bro intro frames, without modif
   expect(errors).toEqual([]);
 });
 
-test('V8 diagnostic gallery presents all 31 actions and shows which six have art',async({page})=>{
+test('V8 diagnostic gallery presents all 31 actions and shows which seven have art',async({page})=>{
   await page.goto('./gym-bro-animation-qa-v8.html');
   await expect(page.locator('[data-action]')).toHaveCount(31);
-  await expect(page.locator('#summary')).toContainText('6 sprite');
-  await expect(page.locator('#summary')).toContainText('25 rig');
+  await expect(page.locator('#summary')).toContainText('7 sprite');
+  await expect(page.locator('#summary')).toContainText('24 rig');
   await page.locator('[data-action="hk"]').click();
   await expect(page.locator('#currentAction')).toContainText('hk');
   await page.locator('[data-action="idle"]').click();

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('V8 game loads Gym Bro portrait and all six production sprite actions',async({page})=>{
+test('V8 game loads Gym Bro portrait and all seven production sprite actions',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('./v8.html');
  await page.waitForFunction(()=>window.SF8?.screen==='title' &&
@@ -11,11 +11,13 @@ test('V8 game loads Gym Bro portrait and all six production sprite actions',asyn
  }));
  expect(art.release.version).toBe('8.0');
  expect(art.manifest.path).toContain('/v8/');
- expect(Object.keys(art.manifest.anims).sort()).toEqual(['airK','airP','hk','intro','launcher','victory']);
- expect(art.manifest.anims.idle).toBeUndefined();
+ expect(Object.keys(art.manifest.anims).sort()).toEqual(['airK','airP','hk','idle','intro','launcher','victory']);
+ expect(art.manifest.anims.idle).toEqual({frames:6,fps:7,loop:true});
  await page.waitForFunction(()=>window.SF7_ART_STORE.portrait('gym-bro')?.naturalWidth===900);
  for(const url of [
   './art/v8/gym-bro/portrait.png',
+  './art/v8/gym-bro/idle/01.png',
+  './art/v8/gym-bro/idle/06.png',
   './art/v8/gym-bro/hk/03.png',
   './art/v8/gym-bro/launcher/04.png',
   './art/v8/gym-bro/airP/03.png',

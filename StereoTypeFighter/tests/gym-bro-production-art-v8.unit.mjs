@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const actionFrames={airP:4,airK:4,hk:6,launcher:6,intro:4,victory:4};
+const actionFrames={idle:6,airP:4,airK:4,hk:6,launcher:6,intro:4,victory:4};
 function file(...parts){return path.join(root,...parts)}
 async function imageInfo(name) {
  const fd=await fs.open(name,'r');
@@ -15,7 +15,7 @@ async function imageInfo(name) {
   return {w:bytes.readUInt32BE(16),h:bytes.readUInt32BE(20),color:bytes[25]};
  }finally{await fd.close()}
 }
-test('V8 Gym Bro production art has 28 verified RGBA sprite frames across 6 complete actions',async()=>{
+test('V8 Gym Bro production art has 34 verified RGBA sprite frames across 7 complete actions',async()=>{
  const manifest=JSON.parse(await fs.readFile(file('art','manifest-v8.json'),'utf8'));
  const spec=manifest['gym-bro'];
  assert.equal(spec.path,'art/v8/{id}/{anim}/{n}.png');
@@ -23,7 +23,7 @@ test('V8 Gym Bro production art has 28 verified RGBA sprite frames across 6 comp
  assert.equal(spec.anims.intro?.loop,false,'intro should not reset mid-entrance');
  assert.equal(spec.portrait,'art/v8/{id}/portrait.png');
  assert.deepEqual(Object.keys(spec.anims),Object.keys(actionFrames));
- assert.ok(!('idle' in spec.anims),'mismatched old gray-tank idle must remain disabled');
+ assert.deepEqual(spec.anims.idle,{frames:6,fps:7,loop:true});
  assert.ok(!('walk' in spec.anims),'mismatched old gray-tank walk must remain disabled');
  let count=0;
  for(const [action,n] of Object.entries(actionFrames)){
@@ -35,7 +35,7 @@ test('V8 Gym Bro production art has 28 verified RGBA sprite frames across 6 comp
      count++;
    }
  }
- assert.equal(count,28);
+ assert.equal(count,34);
  assert.deepEqual(spec.anchor,[256,470]);
  assert.equal(manifest.scenes,true);
  const portrait=await imageInfo(file('art','v8','gym-bro','portrait.png'));
