@@ -325,7 +325,8 @@ export class ArtStore {
   has(id) { return !!(this.manifest && this.manifest[id] && this.manifest[id].anims); }
   spec(id) { return this.manifest && this.manifest[id]; }
   img(id, anim, n) {
-    const s = this.spec(id), url = s.path.replace('{id}', id).replace('{anim}', anim).replace('{n}', String(n).padStart(2, '0'));
+    const s = this.spec(id); if (!s || !s.path || !s.anims?.[anim]) return null;
+    const url = s.path.replace('{id}', id).replace('{anim}', anim).replace('{n}', String(n).padStart(2, '0'));
     let e = this.imgs.get(url); if (!e) { e = new Image(); e.src = url; e.ok = false; e.onload = () => (e.ok = true); this.imgs.set(url, e); }
     return e.ok ? e : null;
   }

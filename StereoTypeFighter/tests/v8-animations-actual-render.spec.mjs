@@ -49,7 +49,7 @@ test('real V8 renderer draws sprites for six actions and visible rig for all oth
 test('the real 100-tick round intro displays Gym Bro intro frames, without modifying combat state',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('./v8.html');
-  await page.waitForFunction(()=>window.SF7_ART_STORE?.img('gym-bro','intro',3));
+  await page.waitForFunction(()=>window.SF7_ART_STORE?.manifest?.['gym-bro'] && window.SF7_ART_STORE.img('gym-bro','intro',3),null,{timeout:15000});
   const result=await page.evaluate(async()=>{
     const { drawMatch } = await import('./renderer-v7.js');
     const { createMatch } = await import('./combat-v7.js');
