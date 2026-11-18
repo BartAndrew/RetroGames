@@ -19,6 +19,8 @@ test('V8 Gym Bro production art has 28 verified RGBA sprite frames across 6 comp
  const manifest=JSON.parse(await fs.readFile(file('art','manifest-v8.json'),'utf8'));
  const spec=manifest['gym-bro'];
  assert.equal(spec.path,'art/v8/{id}/{anim}/{n}.png');
+ assert.equal(spec.anims.intro?.once,true,'round intro must run once per 100-tick presentation');
+ assert.equal(spec.anims.intro?.loop,false,'intro should not reset mid-entrance');
  assert.equal(spec.portrait,'art/v8/{id}/portrait.png');
  assert.deepEqual(Object.keys(spec.anims),Object.keys(actionFrames));
  assert.ok(!('idle' in spec.anims),'mismatched old gray-tank idle must remain disabled');
@@ -52,4 +54,6 @@ test('V8 releases art without rewriting historical manifests or combat timing',a
  assert.match(renderer,/GYM_RIG_RELEASE/);
  const cutscene=await fs.readFile(file('cutscene-v7.js'),'utf8');
  assert.match(cutscene,/\.\/art\/v8\/scenes\//);
+ assert.match(renderer,/m\.phase === 'intro' && f\.def\.id === 'gym-bro'/);
+ assert.match(renderer,/window\.SF_RELEASE\?\.version === '8\.0'/);
 });

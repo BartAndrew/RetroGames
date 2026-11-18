@@ -55,3 +55,11 @@ illustrations is live.
 The 120-frame sprite-and-cutscene art delivery is still an independent
 follow-up milestone. Continue to use the `docs/FIGHTER_PRODUCTION_PLAYBOOK_V7.md`
 for next-character replication.
+
+## V8.0 animation playback verification (18 November 2026)
+
+Corrected an overlooked visual-only integration defect: the four `intro` keyposes were present in the released files but the fighting engine began each round in `idle`. The V8 renderer now plays `intro` once during the 100-tick round lead-in, without changing any combat state or move frame timing. Historical V7 routes stay untouched.
+
+Added the inspectable `gym-bro-animation-qa-v8.html` visual preview and `tests/v8-animations-actual-render.spec.mjs`, which actually renders all 31 states and checks that six named sprite actions decode to image draw calls while 25 others draw the canonical rig. The browser test also draws a real round-intro match and verifies that sprite 03 appears and combat state remains `idle`.
+
+All 31 procedural states and the six current sprite actions are playable. This does **not** turn 28 PNGs into the 120 individually required production frames; remaining premium artwork is a separate deliverable.

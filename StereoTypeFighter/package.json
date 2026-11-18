@@ -7,7 +7,7 @@
     "test:layout": "node tools/check-layout-v66.mjs",
     "verify:assets": "node tools/verify-v66-assets.mjs",
     "test:browser": "playwright test",
-    "test:browser:release": "playwright test tests/v66-production.spec.mjs tests/v67-lefty.spec.mjs tests/v7-browser.spec.mjs tests/v7-1-browser.spec.mjs tests/v7-1-story-ladder.spec.mjs tests/v7-1-gamepad.spec.mjs tests/v7-1-selection-r15.spec.mjs tests/v7-1-superfx-r13.spec.mjs tests/v7-2-r16.spec.mjs --reporter=line tests/v8-release.spec.mjs tests/v8-art-release.spec.mjs"
+    "test:browser:release": "playwright test tests/v66-production.spec.mjs tests/v67-lefty.spec.mjs tests/v7-browser.spec.mjs tests/v7-1-browser.spec.mjs tests/v7-1-story-ladder.spec.mjs tests/v7-1-gamepad.spec.mjs tests/v7-1-selection-r15.spec.mjs tests/v7-1-superfx-r13.spec.mjs tests/v7-2-r16.spec.mjs tests/v8-release.spec.mjs tests/v8-art-release.spec.mjs tests/v8-animations-actual-render.spec.mjs --reporter=line"
   },
   "devDependencies": {
     "@playwright/test": "1.55.0",
